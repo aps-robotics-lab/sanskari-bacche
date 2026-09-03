@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b16">
+<meta name="description" content="A Teachers' Day tribute from Class 10th I, Army Public School, Lal Bahadur Shastri Marg.">
+<title>Happy Teachers' Day — Class 10th I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+:root{
+  --bg:#030811;
+  --bg2:#09182b;
+  --gold:#e8bd62;
+  --gold-soft:#f2d591;
+  --text:#f4f5f7;
+  --muted:#8f9bae;
+  --line:rgba(255,255,255,.09);
+  --glass:rgba(255,255,255,.045);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;overflow-x:hidden;color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  background:
+    radial-gradient(circle at 12% 15%,rgba(46,88,145,.20),transparent 30%),
+    radial-gradient(circle at 87% 60%,rgba(203,153,55,.08),transparent 28%),
+    linear-gradient(135deg,var(--bg),#071222 38%,var(--bg2) 68%,#040b15);
+  background-size:180% 180%;
+  animation:atmosphere 24s ease-in-out infinite alternate;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:linear-gradient(to bottom,black,transparent 86%);
+}
+a{color:inherit;text-decoration:none}
+button,select{font:inherit}
+@keyframes atmosphere{
+  0%{background-position:0 20%}
+  50%{background-position:100% 70%}
+  100%{background-position:20% 100%}
+}
+
+#particleCanvas{
+  position:fixed;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;opacity:.55;
+}
+.cursor-glow{
+  position:fixed;width:240px;height:240px;border-radius:50%;
+  pointer-events:none;z-index:2;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(232,189,98,.075),transparent 68%);
+}
+.page{position:relative;z-index:3;width:min(1180px,91%);margin:auto}
+
+.topbar{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  width:min(1120px,88%);display:flex;justify-content:space-between;align-items:center;
+  padding:11px 14px 11px 18px;border:1px solid var(--line);
+  background:rgba(6,15,28,.62);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border-radius:100px;z-index:20;
+  box-shadow:0 12px 40px rgba(0,0,0,.12);
+}
+.brand{display:flex;align-items:center;gap:11px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.brand-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(232,189,98,.7)}
+.nav-label{color:rgba(255,255,255,.35);font-size:.7rem;letter-spacing:.12em}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;position:relative}
+.hero-content{max-width:950px}
+.hero-kicker{
+  display:flex;align-items:center;gap:13px;color:#d5b66e;font-size:.72rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px;
+  opacity:0;animation:revealUp .9s .1s ease forwards;
+}
+.hero-kicker:before{content:"";width:38px;height:1px;background:#d5b66e}
+.hero h1{
+  font-family:"Playfair Display",serif;font-size:clamp(4.2rem,11vw,9.5rem);
+  line-height:.88;font-weight:600;letter-spacing:-.055em;
+  opacity:0;animation:revealUp .9s .23s ease forwards;
+}
+.gold{color:var(--gold);text-shadow:0 0 45px rgba(232,189,98,.14)}
+.hero-subtitle{
+  max-width:720px;margin-top:38px;color:#dce2eb;font-size:clamp(1rem,2vw,1.3rem);
+  line-height:1.7;opacity:0;animation:revealUp .9s .4s ease forwards;
+}
+.hero-description{
+  max-width:670px;margin-top:18px;color:var(--muted);font-size:.95rem;line-height:1.85;
+  opacity:0;animation:revealUp .9s .54s ease forwards;
+}
+.hero-bottom{display:flex;align-items:center;gap:25px;margin-top:45px;opacity:0;animation:revealUp .9s .68s ease forwards}
+.explore{
+  display:inline-flex;align-items:center;gap:12px;padding:13px 20px;border-radius:100px;
+  border:1px solid rgba(232,189,98,.35);color:#f1d58f;background:rgba(232,189,98,.055);
+  transition:transform .3s,background .3s,box-shadow .3s;
+}
+.explore:hover{transform:translateY(-3px);background:rgba(232,189,98,.11);box-shadow:0 10px 35px rgba(232,189,98,.09)}
+.explore span{font-size:1.1rem}.hero-note{color:rgba(255,255,255,.32);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+@keyframes revealUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+.section{padding:110px 0}
+.section-intro{max-width:700px;margin-bottom:55px}
+.section-index,.report-pretitle,.closing-small{color:#d5b66e;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase}
+.section-title{
+  margin-top:14px;font-family:"Playfair Display",serif;font-size:clamp(2.7rem,6vw,5rem);
+  line-height:1;letter-spacing:-.035em;
+}
+.section-description{margin-top:20px;color:var(--muted);line-height:1.8;max-width:620px}
+
+.teacher-list{border-top:1px solid var(--line)}
+.teacher{
+  position:relative;display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:25px;
+  min-height:145px;border-bottom:1px solid var(--line);
+  transition:padding .4s var(--ease),background .4s;
+}
+.teacher:before{
+  content:"";position:absolute;left:-30px;right:-30px;top:12px;bottom:12px;border-radius:20px;
+  background:radial-gradient(circle at 20% 50%,rgba(232,189,98,.07),transparent 45%);
+  opacity:0;transform:scaleX(.96);transition:opacity .35s,transform .35s;
+}
+.teacher:hover{padding-left:15px}
+.teacher:hover:before{opacity:1;transform:scaleX(1)}
+.teacher-number{position:relative;color:rgba(255,255,255,.28);font-family:"Manrope";font-size:.72rem;letter-spacing:.15em}
+.teacher-info{position:relative}.teacher-name{
+  font-family:"Playfair Display",serif;font-size:clamp(1.65rem,3vw,2.45rem);color:#f1f2f4;transition:color .3s;
+}
+.teacher:hover .teacher-name{color:#f0d38d}
+.teacher-subject{margin-top:6px;color:#778397;font-size:.82rem;letter-spacing:.03em}
+.teacher-action{position:relative;display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.42);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+.teacher-arrow{
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);
+  color:#d5b66e;transition:transform .35s,background .35s,color .35s;
+}
+.teacher:hover .teacher-arrow{transform:rotate(-45deg);background:var(--gold);color:#071222}
+
+.report-section{position:relative;padding:150px 0 120px}
+.report-heading{max-width:650px;margin-bottom:55px}
+.report-heading h2{margin-top:15px;font-family:"Playfair Display",serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:.98;letter-spacing:-.04em}
+.report-heading p{margin-top:22px;color:#8995a8;line-height:1.8}
+.report-selector{position:relative;max-width:650px;margin-bottom:35px}
+.selector-label{display:block;margin-bottom:11px;color:rgba(255,255,255,.4);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase}
+.select-wrap{position:relative}
+select{
+  appearance:none;width:100%;padding:18px 50px 18px 20px;border-radius:16px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.045);color:#edf0f5;outline:none;cursor:pointer;
+  backdrop-filter:blur(12px);transition:border-color .3s,box-shadow .3s;
+}
+select:hover,select:focus{border-color:rgba(232,189,98,.45);box-shadow:0 0 35px rgba(232,189,98,.06)}
+select option{background:#0a1729;color:#fff}.select-arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:#d5b66e;pointer-events:none}
+
+.report-panel{
+  position:relative;max-width:900px;min-height:560px;padding:clamp(28px,5vw,55px);border-radius:30px;
+  border:1px solid rgba(255,255,255,.1);
+  background:linear-gradient(135deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+  backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);overflow:hidden;
+  box-shadow:0 30px 100px rgba(0,0,0,.24);transition:border-color .5s,box-shadow .5s,opacity .25s,transform .25s;
+}
+.report-panel:before{
+  content:"";position:absolute;width:400px;height:400px;right:-180px;top:-190px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,189,98,.11),transparent 68%);pointer-events:none;
+}
+.report-panel.active{border-color:rgba(232,189,98,.25);box-shadow:0 35px 100px rgba(0,0,0,.27),0 0 60px rgba(232,189,98,.045)}
+.report-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.report-type{color:#d5b66e;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase}
+.report-class{margin-top:8px;color:rgba(255,255,255,.32);font-size:.68rem;letter-spacing:.1em}
+.report-status{color:rgba(255,255,255,.3);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase}
+.report-name{margin-top:35px;font-family:"Playfair Display",serif;color:#f0d28c;font-size:clamp(2rem,5vw,3.7rem);line-height:1}
+.report-subject{margin-top:10px;color:#8995a8;font-size:.88rem}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 45px;margin-top:42px}
+.metric{min-width:0}.metric-top{display:flex;justify-content:space-between;gap:15px;margin-bottom:9px}
+.metric-name{color:#b9c2d0;font-size:.8rem}.metric-score{color:#e8bd62;font-size:.75rem;font-weight:600}
+.metric-track{height:3px;background:rgba(255,255,255,.08);overflow:hidden;border-radius:10px}
+.metric-fill{width:0;height:100%;background:linear-gradient(90deg,rgba(232,189,98,.5),#e8bd62);border-radius:inherit;transition:width 1s var(--ease)}
+.final-result{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-top:50px;padding-top:30px;border-top:1px solid var(--line)}
+.final-label{color:rgba(255,255,255,.32);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase}
+.final-word{margin-top:8px;font-family:"Manrope";color:#f2d591;font-size:clamp(1.8rem,5vw,3rem);font-weight:800;letter-spacing:-.05em}
+.final-mark{color:rgba(255,255,255,.25);font-size:.72rem;text-align:right;max-width:250px;line-height:1.6}
+.report-remark{margin-top:35px;color:#aab4c3;font-family:"Playfair Display",serif;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.6}
+.report-remark span{color:var(--gold)}
+
+.closing{position:relative;padding:140px 0 120px;text-align:center}
+.closing:before{
+  content:"";position:absolute;left:50%;top:50%;width:500px;height:500px;transform:translate(-50%,-50%);
+  border-radius:50%;background:radial-gradient(circle,rgba(232,189,98,.065),transparent 70%);pointer-events:none;
+}
+.closing h2{position:relative;max-width:850px;margin:22px auto 0;font-family:"Playfair Display",serif;font-size:clamp(2.8rem,7vw,6.5rem);line-height:.98;letter-spacing:-.045em}
+.closing h2 span{color:var(--gold)}
+.closing-signature{position:relative;margin-top:35px;color:rgba(255,255,255,.4);font-size:.8rem;letter-spacing:.1em}
+
+.message-wrap{margin:48px auto 0;position:relative;z-index:2}
+.message-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  min-width:230px;padding:15px 25px;border:1px solid rgba(232,189,98,.38);border-radius:100px;
+  background:rgba(232,189,98,.06);color:#f2d591;cursor:pointer;
+  transition:transform .3s,background .3s,box-shadow .3s;
+}
+.message-button:hover{transform:translateY(-3px);background:rgba(232,189,98,.12);box-shadow:0 15px 45px rgba(232,189,98,.10)}
+.message-button .plus{font-size:1.15rem;transition:transform .35s}
+.message-button.open .plus{transform:rotate(45deg)}
+.class-message{
+  max-width:760px;margin:22px auto 0;padding:0 30px;max-height:0;opacity:0;overflow:hidden;
+  border:1px solid transparent;border-radius:24px;
+  background:rgba(255,255,255,.035);backdrop-filter:blur(12px);
+  transition:max-height .65s var(--ease),opacity .45s,padding .65s,border-color .45s;
+}
+.class-message.open{max-height:330px;opacity:1;padding:32px 30px;border-color:rgba(232,189,98,.16)}
+.class-message p{font-family:"Playfair Display",serif;font-size:clamp(1.2rem,2.5vw,1.65rem);line-height:1.7;color:#d8dee7}
+.class-message strong{color:var(--gold-soft);font-weight:600}
+.message-sign{margin-top:18px;color:#d5b66e;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+
+footer{padding:60px 0 45px;border-top:1px solid rgba(255,255,255,.08);text-align:center}
+.footer-quote{max-width:750px;margin:auto;color:#c8d0dc;font-family:"Playfair Display",serif;font-size:clamp(1.15rem,2.5vw,1.65rem);line-height:1.6}
+.footer-sign{margin-top:25px;color:#d5b66e;font-size:.78rem;line-height:1.7}
+.footer-location{margin-top:35px;color:rgba(255,255,255,.22);font-size:.65rem;letter-spacing:.13em;text-transform:uppercase}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:760px){
+  body{animation-duration:32s}
+  .page{width:min(92%,520px)}
+  .topbar{top:12px;width:92%}.nav-label{display:none}
+  .hero{padding-top:145px}.hero h1{font-size:clamp(4rem,18vw,6.5rem)}
+  .hero-bottom{align-items:flex-start;flex-direction:column;gap:17px}
+  .section{padding:80px 0}.teacher{grid-template-columns:42px 1fr auto;gap:12px;min-height:125px}
+  .teacher-action span{display:none}.teacher-arrow{width:38px;height:38px}.teacher-name{font-size:1.45rem}
+  .report-section{padding:90px 0}.metrics{grid-template-columns:1fr;gap:18px}
+  .report-panel{border-radius:22px;min-height:auto}
+  .final-result{align-items:flex-start;flex-direction:column}.final-mark{text-align:left}
+  .closing{padding:100px 0 110px}.closing:before{width:360px;height:360px}
+}
+@media(max-width:420px){
+  .brand{font-size:.62rem}.hero h1{font-size:3.75rem}
+  .teacher{grid-template-columns:30px 1fr auto}.teacher-number{font-size:.62rem}
+  .teacher-subject{font-size:.75rem}.report-panel{padding:25px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+<canvas id="particleCanvas" aria-hidden="true"></canvas>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<nav class="topbar">
+  <div class="brand"><span class="brand-dot"></span>Class 10th I</div>
+  <div class="nav-label">Army Public School · Lal Bahadur Shastri Marg</div>
+</nav>
+
+<main class="page">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-kicker">A tribute from Class 10th I</div>
+    <h1>Happy<br><span class="gold">Teachers'</span><br>Day!</h1>
+    <p class="hero-subtitle">To the guiding lights of Army Public School, Lal Bahadur Shastri Marg.</p>
+    <p class="hero-description">Thank you for your endless patience, dedication, and for inspiring us. We might not say it enough, but we appreciate everything you do for us.</p>
+    <div class="hero-bottom">
+      <a href="#teachers" class="explore">Meet your teachers <span>↓</span></a>
+      <div class="hero-note">Six teachers · One unforgettable class</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="teachers">
+  <div class="section-intro reveal">
+    <div class="section-index">01 / The people behind the lessons</div>
+    <h2 class="section-title">More than<br>just subjects.</h2>
+    <p class="section-description">Every chapter we studied came with a voice, a story, a warning, a laugh, or a memory. These are the people who made 10th I what it was.</p>
+  </div>
+
+  <div class="teacher-list">
+    <a href="shonali.html" class="teacher reveal"><div class="teacher-number">01</div><div class="teacher-info"><div class="teacher-name">Mrs. Shonali Saha</div><div class="teacher-subject">English · Class Teacher</div></div><div class="teacher-action"><span>Enter story</span><div class="teacher-arrow">↗</div></div></a>
+    <a href="ritesh.html" class="teacher reveal"><div class="teacher-number">02</div><div class="teacher-info"><div class="teacher-name">Mr. Ritesh Tiwari</div><div class="teacher-subject">Mathematics</div></div><div class="teacher-action"><span>Enter story</span><div class="teacher-arrow">↗</div></div></a>
+    <a href="shalini.html" class="teacher reveal"><div class="teacher-number">03</div><div class="teacher-info"><div class="teacher-name">Mrs. Shalini Sinha</div><div class="teacher-subject">Social Science</div></div><div class="teacher-action"><span>Enter story</span><div class="teacher-arrow">↗</div></div></a>
+    <a href="ajay.html" class="teacher reveal"><div class="teacher-number">04</div><div class="teacher-info"><div class="teacher-name">Mr. Ajay Trivedi</div><div class="teacher-subject">Hindi · Sparsh</div></div><div class="teacher-action"><span>Enter story</span><div class="teacher-arrow">↗</div></div></a>
+    <a href="ariba.html" class="teacher reveal"><div class="teacher-number">05</div><div class="teacher-info"><div class="teacher-name">Ms. Ariba Ansari</div><div class="teacher-subject">Biology · Chemistry</div></div><div class="teacher-action"><span>Enter story</span><div class="teacher-arrow">↗</div></div></a>
+    <a href="himanshu.html" class="teacher reveal"><div class="teacher-number">06</div><div class="teacher-info"><div class="teacher-name">Mr. Himanshu</div><div class="teacher-subject">Physics</div></div><div class="teacher-action"><span>Enter story</span><div class="teacher-arrow">↗</div></div></a>
+  </div>
+</section>
+
+<section class="report-section" id="report">
+  <div class="report-heading reveal">
+    <div class="report-pretitle">02 / One last thing</div>
+    <h2>We couldn't<br>give you marks.</h2>
+    <p>So we made our own report card. Select a teacher and see what 10th I really thinks about them.</p>
+  </div>
+
+  <div class="report-selector reveal">
+    <label class="selector-label" for="teacherSelect">Select your teacher</label>
+    <div class="select-wrap">
+      <select id="teacherSelect">
+        <option value="shonali">Mrs. Shonali Saha</option>
+        <option value="ritesh">Mr. Ritesh Tiwari</option>
+        <option value="shalini">Mrs. Shalini Sinha</option>
+        <option value="ajay">Mr. Ajay Trivedi</option>
+        <option value="ariba">Ms. Ariba Ansari</option>
+        <option value="himanshu">Mr. Himanshu</option>
+      </select>
+      <div class="select-arrow">↓</div>
+    </div>
+  </div>
+
+  <div class="report-panel reveal" id="reportPanel">
+    <div class="report-top">
+      <div><div class="report-type">Teacher Report / 10th I</div><div class="report-class">Army Public School · Lal Bahadur Shastri Marg</div></div>
+      <div class="report-status">Final evaluation</div>
+    </div>
+    <div class="report-name" id="reportName">Mrs. Shonali Saha</div>
+    <div class="report-subject" id="reportSubject">English · Class Teacher</div>
+    <div class="metrics" id="metrics"></div>
+    <div class="final-result">
+      <div><div class="final-label">Overall result</div><div class="final-word" id="finalWord">INCOMPARABLE</div></div>
+      <div class="final-mark" id="finalMark">Some teachers cannot be measured in marks.</div>
+    </div>
+    <div class="report-remark" id="reportRemark">“The person who made English, stories and 10th I feel a little more like home.”</div>
+  </div>
+</section>
+
+<section class="closing reveal">
+  <div class="closing-small">03 / The final verdict</div>
+  <h2>You didn't just teach us.<br>You became part of <span>our story.</span></h2>
+
+  <div class="message-wrap">
+    <button class="message-button" id="messageButton" type="button" aria-expanded="false">
+      A message from 10th I <span class="plus">+</span>
+    </button>
+    <div class="class-message" id="classMessage" aria-hidden="true">
+      <p>“You gave us more than lessons. You gave us moments we will remember long after the last bell, the last notebook, and the last school day. <strong>Thank you for becoming a part of our story.</strong>”</p>
+      <div class="message-sign">With love · Class 10th I</div>
+    </div>
+  </div>
+
+  <div class="closing-signature">— Class 10th I</div>
+</section>
+
+<footer>
+  <div class="footer-quote">“A good teacher can inspire hope, ignite the imagination, and instill a love of learning.”</div>
+  <div class="footer-sign">With deepest respect and gratitude,<br>Class 10th I</div>
+  <div class="footer-location">Army Public School · Lal Bahadur Shastri Marg</div>
+</footer>
+
+</main>
+
+<script>
+const teacherData={
+  shonali:{name:"Mrs. Shonali Saha",subject:"English · Class Teacher",metrics:[["Storytelling",99],["Motivation",100],["Patience",98],["Chaos Management",100]],final:"INCOMPARABLE",mark:"Some teachers cannot be measured in marks.",remark:"“The person who made English, stories and 10th I feel a little more like home.”"},
+  ritesh:{name:"Mr. Ritesh Tiwari",subject:"Mathematics",metrics:[["Mathematics",100],["Board Motivation",100],["Hard Work",99],["Unexpected Comedy",98]],final:"LEGENDARY",mark:"Strict on the outside. Invested in our future on the inside.",remark:"“Five questions, board preparation and somehow... a lot of memories.”"},
+  shalini:{name:"Mrs. Shalini Sinha",subject:"Social Science",metrics:[["Storytelling",100],["Student Connection",99],["Making History Alive",100],["Classroom Energy",98]],final:"UNFORGETTABLE",mark:"Because chapters become memories when someone makes them come alive.",remark:"“Somehow, history stopped feeling like history and started feeling like a story.”"},
+  ajay:{name:"Mr. Ajay Trivedi",subject:"Hindi · Sparsh",metrics:[["Student Connection",100],["Humour",98],["Life Lessons",99],["Discipline",100]],final:"INCOMPARABLE",mark:"A little strict. A lot caring. Completely unforgettable.",remark:"“Some lessons were written in Sparsh. Others were written by you.”"},
+  ariba:{name:"Ms. Ariba Ansari",subject:"Biology · Chemistry",metrics:[["Science",100],["Focus Recovery",99],["Roasting",100],["Lala Land Detection",100]],final:"ICONIC",mark:"For bringing 10th I back to Earth, one roast at a time.",remark:"“Strict, loving, and somehow always aware when someone had left for Lala Land.”"},
+  himanshu:{name:"Mr. Himanshu",subject:"Physics",metrics:[["Concept Clarity",100],["Calmness",99],["Storytelling",98],["Focus Recovery",97]],final:"UNFORGETTABLE",mark:"Complex physics became easier when you told us the story behind it.",remark:"“Idhar dhyan de beta — and somehow, the lesson stayed with us.”"}
+};
+
+const select=document.getElementById("teacherSelect");
+const panel=document.getElementById("reportPanel");
+const nameEl=document.getElementById("reportName");
+const subjectEl=document.getElementById("reportSubject");
+const metricsEl=document.getElementById("metrics");
+const finalEl=document.getElementById("finalWord");
+const markEl=document.getElementById("finalMark");
+const remarkEl=document.getElementById("reportRemark");
+
+function renderReport(key){
+  const t=teacherData[key];
+  panel.classList.remove("active");
+  setTimeout(()=>{
+    nameEl.textContent=t.name;
+    subjectEl.textContent=t.subject;
+    finalEl.textContent=t.final;
+    markEl.textContent=t.mark;
+    remarkEl.textContent=t.remark;
+    metricsEl.innerHTML=t.metrics.map(([label,score])=>`
+      <div class="metric">
+        <div class="metric-top"><div class="metric-name">${label}</div><div class="metric-score">${score}%</div></div>
+        <div class="metric-track"><div class="metric-fill" data-score="${score}"></div></div>
+      </div>`).join("");
+    requestAnimationFrame(()=>{
+      panel.classList.add("active");
+      metricsEl.querySelectorAll(".metric-fill").forEach((bar,i)=>{
+        setTimeout(()=>bar.style.width=bar.dataset.score+"%",70+i*45);
+      });
+    });
+  },140);
+}
+renderReport("shonali");
+
+select.addEventListener("change",()=>{
+  renderReport(select.value);
+  celebrate("report");
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12,rootMargin:"0px 0px -30px 0px"});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+const button=document.getElementById("messageButton");
+const message=document.getElementById("classMessage");
+button.addEventListener("click",()=>{
+  const open=message.classList.toggle("open");
+  button.classList.toggle("open",open);
+  button.setAttribute("aria-expanded",open);
+  message.setAttribute("aria-hidden",!open);
+  if(open) celebrate("message");
+});
+
+const glow=document.getElementById("cursorGlow");
+if(window.matchMedia("(pointer:fine)").matches){
+  let gx=innerWidth/2,gy=innerHeight/2,tx=gx,ty=gy;
+  addEventListener("pointermove",e=>{tx=e.clientX;ty=e.clientY});
+  function glowLoop(){
+    gx+=(tx-gx)*.12;gy+=(ty-gy)*.12;
+    glow.style.left=gx+"px";glow.style.top=gy+"px";
+    requestAnimationFrame(glowLoop);
+  }
+  glowLoop();
+}else glow.style.display="none";
+
+const canvas=document.getElementById("particleCanvas");
+const ctx=canvas.getContext("2d",{alpha:true});
+let particles=[],cw=innerWidth,ch=innerHeight,dpr=Math.min(devicePixelRatio||1,1.5);
+const reduced=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+function resize(){
+  cw=innerWidth;ch=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);
+  canvas.width=cw*dpr;canvas.height=ch*dpr;
+  canvas.style.width=cw+"px";canvas.style.height=ch+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  createParticles();
+}
+function createParticles(){
+  const count=reduced?0:(cw<700?24:48);
+  particles=Array.from({length:count},()=>({
+    x:Math.random()*cw,y:Math.random()*ch,r:.25+Math.random()*1.15,
+    vy:.035+Math.random()*.18,vx:(Math.random()-.5)*.07,
+    a:.07+Math.random()*.28
+  }));
+}
+function animate(){
+  ctx.clearRect(0,0,cw,ch);
+  for(const p of particles){
+    p.y-=p.vy;p.x+=p.vx;
+    if(p.y<-5)p.y=ch+5;
+    if(p.x<-5)p.x=cw+5;if(p.x>cw+5)p.x=-5;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(232,189,98,${p.a})`;ctx.fill();
+  }
+  requestAnimationFrame(animate);
+}
+resize();addEventListener("resize",resize);animate();
+
+function celebrate(kind){
+  if(reduced||typeof confetti!=="function")return;
+  if(kind==="load"){
+    confetti({particleCount:55,spread:58,startVelocity:25,gravity:.85,scalar:.72,origin:{x:.18,y:.48}});
+    setTimeout(()=>confetti({particleCount:55,spread:58,startVelocity:25,gravity:.85,scalar:.72,origin:{x:.82,y:.48}}),120);
+  }else if(kind==="message"){
+    confetti({particleCount:65,spread:70,startVelocity:28,gravity:.9,scalar:.72,origin:{x:.5,y:.62}});
+  }else{
+    confetti({particleCount:30,spread:52,startVelocity:20,gravity:.95,scalar:.65,origin:{x:.5,y:.62}});
+  }
+}
+addEventListener("load",()=>setTimeout(()=>celebrate("load"),700));
+</script>
+</body>
+</html>
