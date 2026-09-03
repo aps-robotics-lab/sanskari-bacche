@@ -1,0 +1,2004 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b16">
+<meta name="description" content="A Teachers' Day tribute to Ms. Ariba Ansari from Class 10th I."><title>Ms. Ariba Ansari — Class 10th I</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script><style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    color: #f5f6f8;
+
+    font-family: "DM Sans", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(46, 91, 150, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 82% 65%,
+            rgba(232, 189, 98, 0.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #030811 0%,
+            #071222 38%,
+            #09182a 67%,
+            #030913 100%
+        );
+
+    background-size: 180% 180%;
+
+    animation:
+        atmosphere 24s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphere {
+
+    0% {
+        background-position: 0% 20%;
+    }
+
+    50% {
+        background-position: 100% 70%;
+    }
+
+    100% {
+        background-position: 20% 100%;
+    }
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 88%
+        );
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* =========================================================
+   PARTICLE CANVAS
+========================================================= */
+
+#particleCanvas {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   CURSOR LIGHT
+========================================================= */
+
+.cursor-glow {
+    position: fixed;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.07),
+            transparent 68%
+        );
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(1120px, 91%);
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.topbar {
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: min(1080px, 90%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 10px 12px 10px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    border-radius: 100px;
+
+    background:
+        rgba(5,14,27,0.62);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    z-index: 50;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,0.15);
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color:
+        rgba(255,255,255,0.62);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+.brand-dot {
+    width: 7px;
+    height: 7px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: #e8bd62;
+
+    box-shadow:
+        0 0 14px
+        rgba(232,189,98,0.7);
+}
+
+.back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        10px 16px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.3);
+
+    border-radius: 100px;
+
+    background:
+        rgba(232,189,98,0.055);
+
+    color:
+        #efd48f;
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.03em;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(232,189,98,0.11);
+
+    box-shadow:
+        0 8px 30px
+        rgba(232,189,98,0.09);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        150px 0
+        90px;
+
+    position: relative;
+}
+
+.hero-content {
+    width: 100%;
+
+    max-width: 900px;
+}
+
+.eyebrow {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 28px;
+
+    color: #d5b66e;
+
+    font-size: 0.68rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.23em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        0.9s
+        0.1s
+        ease
+        forwards;
+}
+
+.eyebrow::before {
+    content: "";
+
+    width: 38px;
+    height: 1px;
+
+    background: #d5b66e;
+}
+
+.hero h1 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            4rem,
+            10vw,
+            8.7rem
+        );
+
+    line-height: 0.9;
+
+    font-weight: 600;
+
+    letter-spacing: -0.055em;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        1s
+        0.22s
+        ease
+        forwards;
+}
+
+.hero h1 span {
+    color: #e8bd62;
+
+    text-shadow:
+        0 0 50px
+        rgba(232,189,98,0.14);
+}
+
+.hero-role {
+    margin-top: 30px;
+
+    color:
+        #dce1e9;
+
+    font-family:
+        "Manrope",
+        sans-serif;
+
+    font-size:
+        clamp(
+            1rem,
+            2.3vw,
+            1.35rem
+        );
+
+    font-weight: 600;
+
+    letter-spacing: -0.01em;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        1s
+        0.4s
+        ease
+        forwards;
+}
+
+.hero-description {
+    max-width: 650px;
+
+    margin-top: 17px;
+
+    color:
+        #8d99ab;
+
+    font-size: 0.96rem;
+
+    line-height: 1.85;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        1s
+        0.54s
+        ease
+        forwards;
+}
+
+.hero-line {
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(232,189,98,0.35),
+            rgba(255,255,255,0.08),
+            transparent
+        );
+
+    transform-origin: left;
+
+    transform: scaleX(0);
+
+    animation:
+        lineReveal
+        1.2s
+        0.75s
+        ease
+        forwards;
+}
+
+.hero-meta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-top: 24px;
+
+    color:
+        rgba(255,255,255,0.32);
+
+    font-size: 0.66rem;
+
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        0.9s
+        0.8s
+        ease
+        forwards;
+}
+
+.hero-meta span:first-child {
+    color: #d5b66e;
+}
+
+@keyframes revealUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes lineReveal {
+
+    from {
+        transform:
+            scaleX(0);
+    }
+
+    to {
+        transform:
+            scaleX(1);
+    }
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.scroll-hint {
+    position: absolute;
+
+    left: 0;
+
+    bottom: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color:
+        rgba(255,255,255,0.25);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.17em;
+
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 45px;
+    height: 1px;
+
+    background:
+        rgba(232,189,98,0.45);
+
+    animation:
+        scrollPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        transform:
+            scaleX(0.5);
+
+        transform-origin: left;
+
+        opacity: 0.35;
+    }
+
+    50% {
+        transform:
+            scaleX(1);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+    padding:
+        115px 0;
+}
+
+.section-label {
+    color: #d5b66e;
+
+    font-size: 0.67rem;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+}
+
+.section-title {
+    margin-top: 14px;
+
+    max-width: 760px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            2.8rem,
+            6vw,
+            5.4rem
+        );
+
+    line-height: 0.98;
+
+    letter-spacing: -0.045em;
+}
+
+.section-title span {
+    color: #e8bd62;
+}
+
+.section-intro {
+    max-width: 680px;
+
+    margin-bottom: 55px;
+}
+
+.section-copy {
+    margin-top: 20px;
+
+    max-width: 650px;
+
+    color:
+        #8f9bad;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   QUOTES
+========================================================= */
+
+.dialogue-wrap {
+    position: relative;
+
+    padding:
+        1px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(232,189,98,0.27),
+            rgba(255,255,255,0.06),
+            rgba(232,189,98,0.09)
+        );
+}
+
+.dialogues {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+
+    gap: 1px;
+
+    overflow: hidden;
+
+    border-radius: 27px;
+
+    background:
+        rgba(6,16,29,0.9);
+
+    backdrop-filter:
+        blur(20px);
+}
+
+.dialogue {
+    position: relative;
+
+    min-height: 190px;
+
+    padding:
+        34px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+.dialogue::before {
+    content: "“";
+
+    position: absolute;
+
+    right: 25px;
+    top: -12px;
+
+    color:
+        rgba(232,189,98,0.07);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 8rem;
+
+    line-height: 1;
+}
+
+.dialogue:hover {
+    background:
+        rgba(232,189,98,0.055);
+
+    transform:
+        translateY(-4px);
+}
+
+.dialogue-index {
+    color:
+        rgba(255,255,255,0.27);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+}
+
+.dialogue-text {
+    position: relative;
+
+    max-width: 520px;
+
+    margin-top: 25px;
+
+    color:
+        #f0d38d;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            1.25rem,
+            2.6vw,
+            1.75rem
+        );
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   SCIENCE ACCENT
+========================================================= */
+
+.science-strip {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 30px;
+
+    padding: 18px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    color:
+        rgba(255,255,255,0.43);
+
+    font-size: 0.72rem;
+
+    line-height: 1.6;
+}
+
+.science-orb {
+    width: 28px;
+    height: 28px;
+
+    flex: 0 0 auto;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.35);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 18px
+        rgba(232,189,98,0.08);
+
+    position: relative;
+}
+
+.science-orb::before,
+.science-orb::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.25);
+
+    border-radius: 50%;
+
+    animation:
+        orbit
+        3s
+        linear
+        infinite;
+}
+
+.science-orb::after {
+    transform:
+        rotate(60deg);
+}
+
+@keyframes orbit {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+    position: relative;
+
+    max-width: 900px;
+
+    padding:
+        clamp(
+            30px,
+            6vw,
+            65px
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.06),
+            rgba(255,255,255,0.022)
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,0.2);
+}
+
+.message::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    right: -210px;
+    top: -220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.12),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+.message-label {
+    position: relative;
+
+    color: #d5b66e;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+}
+
+.message h2 {
+    position: relative;
+
+    max-width: 800px;
+
+    margin-top: 22px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            2rem,
+            4.5vw,
+            3.8rem
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -0.035em;
+}
+
+.message h2 span {
+    color: #e8bd62;
+}
+
+.message p {
+    position: relative;
+
+    max-width: 760px;
+
+    margin-top: 30px;
+
+    color:
+        #b1bbc9;
+
+    font-size:
+        clamp(
+            1rem,
+            2vw,
+            1.12rem
+        );
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+.final-section {
+    padding:
+        130px 0
+        150px;
+
+    text-align: center;
+}
+
+.final-small {
+    color: #d5b66e;
+
+    font-size: 0.66rem;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+}
+
+.final-section h2 {
+    max-width: 850px;
+
+    margin:
+        22px auto 0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            2.8rem,
+            7vw,
+            6.4rem
+        );
+
+    line-height: 0.98;
+
+    letter-spacing: -0.045em;
+}
+
+.final-section h2 span {
+    color: #e8bd62;
+
+    text-shadow:
+        0 0 45px
+        rgba(232,189,98,0.12);
+}
+
+.final-sign {
+    margin-top: 32px;
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.11em;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding:
+        60px 0
+        45px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    text-align: center;
+}
+
+.footer-quote {
+    max-width: 750px;
+
+    margin: auto;
+
+    color:
+        #c8d0dc;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            1.1rem,
+            2.4vw,
+            1.55rem
+        );
+
+    line-height: 1.6;
+}
+
+.footer-sign {
+    margin-top: 23px;
+
+    color: #d5b66e;
+
+    font-size: 0.77rem;
+
+    line-height: 1.7;
+}
+
+.footer-location {
+    margin-top: 30px;
+
+    color:
+        rgba(255,255,255,0.21);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .page {
+        width: min(92%, 520px);
+    }
+
+    .topbar {
+        top: 12px;
+
+        width: 92%;
+    }
+
+    .brand {
+        font-size: 0.61rem;
+    }
+
+    .back-button {
+        padding:
+            9px 13px;
+
+        font-size: 0.67rem;
+    }
+
+    .hero {
+        padding:
+            145px 0
+            100px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(
+                3.8rem,
+                18vw,
+                6.5rem
+            );
+    }
+
+    .hero-meta {
+        flex-wrap: wrap;
+
+        gap: 12px 20px;
+    }
+
+    .scroll-hint {
+        display: none;
+    }
+
+    .section {
+        padding:
+            85px 0;
+    }
+
+    .dialogues {
+        grid-template-columns: 1fr;
+    }
+
+    .dialogue {
+        min-height: 165px;
+
+        padding:
+            28px;
+    }
+
+    .message {
+        border-radius: 23px;
+    }
+
+    .final-section {
+        padding:
+            100px 0
+            120px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .hero h1 {
+        font-size: 3.65rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .dialogue-text {
+        font-size: 1.2rem;
+    }
+
+    .science-strip {
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration:
+            0.001ms !important;
+    }
+}
+
+</style></head><body><canvas id="particleCanvas"></canvas>
+
+<div
+    class="cursor-glow"
+    id="cursorGlow">
+</div><!-- =====================================================
+     NAV
+===================================================== --><nav class="topbar"><div class="brand">
+
+    <span class="brand-dot"></span>
+
+    Class 10th I
+
+</div>
+
+<a
+    href="index.html"
+    class="back-button">
+
+    ← Back to Home
+
+</a>
+
+</nav><main class="page"><!-- =====================================================
+     HERO
+===================================================== --><section class="hero"><div class="hero-content">
+
+    <div class="eyebrow">
+        A tribute from 10th I
+    </div>
+
+    <h1>
+        Ms. <span>Ariba</span><br>
+        Ansari
+    </h1>
+
+    <div class="hero-role">
+        Biology & Chemistry
+    </div>
+
+    <p class="hero-description">
+        Strict when we needed it, caring when we least
+        expected it, and somehow always able to tell
+        when someone had mentally disappeared into
+        Lala Land.
+    </p>
+
+    <div class="hero-line"></div>
+
+    <div class="hero-meta">
+
+        <span>
+            Science
+        </span>
+
+        <span>
+            ·
+        </span>
+
+        <span>
+            Class 10th I
+        </span>
+
+        <span>
+            ·
+        </span>
+
+        <span>
+            Unforgettable
+        </span>
+
+    </div>
+
+</div>
+
+
+<div class="scroll-hint">
+
+    <div class="scroll-line"></div>
+
+    Continue the story
+
+</div>
+
+</section><!-- =====================================================
+     DIALOGUES
+===================================================== --><section class="section"><div class="section-intro reveal">
+
+    <div class="section-label">
+        01 / Things we will remember
+    </div>
+
+    <h2 class="section-title">
+        The quotes that
+        <span>became memories.</span>
+    </h2>
+
+    <p class="section-copy">
+        Every classroom has its own language.
+        These are a few sentences that instantly
+        take 10th I back to the classroom.
+    </p>
+
+</div>
+
+
+<div class="dialogue-wrap reveal">
+
+    <div class="dialogues">
+
+        <article class="dialogue">
+
+            <div class="dialogue-index">
+                01 / Lala Land alert
+            </div>
+
+            <div class="dialogue-text">
+                “Jaldi wapas aao apne lala land se.”
+            </div>
+
+        </article>
+
+
+        <article class="dialogue">
+
+            <div class="dialogue-index">
+                02 / Classroom silence
+            </div>
+
+            <div class="dialogue-text">
+                “Shut up!”
+            </div>
+
+        </article>
+
+
+        <article class="dialogue">
+
+            <div class="dialogue-index">
+                03 / The observation
+            </div>
+
+            <div class="dialogue-text">
+                “Aayush ki shaqual yaar nhi aa rahi.”
+            </div>
+
+        </article>
+
+
+        <article class="dialogue">
+
+            <div class="dialogue-index">
+                04 / Identity check
+            </div>
+
+            <div class="dialogue-text">
+                “Tum kaun ho.”
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+
+<div class="science-strip reveal">
+
+    <div class="science-orb"></div>
+
+    <div>
+        Biology taught us about life.
+        Chemistry taught us about reactions.
+        You somehow taught us both — while also
+        detecting when our attention had evaporated.
+    </div>
+
+</div>
+
+</section><!-- =====================================================
+     HEARTFELT MESSAGE
+===================================================== --><section class="section"><div class="section-intro reveal">
+
+    <div class="section-label">
+        02 / What we really mean
+    </div>
+
+    <h2 class="section-title">
+        Behind every
+        <span>roast</span> was care.
+    </h2>
+
+</div>
+
+
+<div class="message reveal">
+
+    <div class="message-label">
+        A message from Class 10th I
+    </div>
+
+    <h2>
+        To the teacher who
+        never let us stay in
+        <span>Lala Land.</span>
+    </h2>
+
+    <p>
+        Strict, loving, and the ultimate roaster of
+        10th I! Thank you for bringing us back from
+        'lala land' to focus on science. We secretly
+        love the daily roasts as much as we love your
+        classes.
+    </p>
+
+</div>
+
+</section><!-- =====================================================
+     STORY SECTION
+===================================================== --><section class="section"><div class="section-intro reveal">
+
+    <div class="section-label">
+        03 / More than a subject
+    </div>
+
+    <h2 class="section-title">
+        Some lessons
+        <span>stay.</span>
+    </h2>
+
+    <p class="section-copy">
+        Years from now, we probably won't remember
+        every reaction, equation, diagram or definition.
+        But we will remember the people who stood in
+        front of the classroom and made those moments
+        ours.
+    </p>
+
+</div>
+
+</section><!-- =====================================================
+     FINAL EMOTIONAL REVEAL
+===================================================== --><section class="final-section reveal"><div class="final-small">
+    04 / The final verdict
+</div>
+
+<h2>
+    You didn't just teach us.
+    <br>
+    You became part of
+    <span>our story.</span>
+</h2>
+
+<div class="final-sign">
+    — With love, respect & a little bit of fear<br>
+    Class 10th I
+</div>
+
+</section><!-- =====================================================
+     FOOTER
+===================================================== --><footer><div class="footer-quote">
+    “A good teacher can inspire hope, ignite the
+    imagination, and instill a love of learning.”
+</div>
+
+<div class="footer-sign">
+    With deepest respect and gratitude,<br>
+    Class 10th I
+</div>
+
+<div class="footer-location">
+    Army Public School · Lal Bahadur Shastri Marg
+</div>
+
+</footer></main><script>
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(
+                (entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        (element) => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow =
+    document.getElementById(
+        "cursorGlow"
+    );
+
+
+if (
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches
+) {
+
+    window.addEventListener(
+        "pointermove",
+        (event) => {
+
+            cursorGlow.style.left =
+                `${event.clientX}px`;
+
+            cursorGlow.style.top =
+                `${event.clientY}px`;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+} else {
+
+    cursorGlow.style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   PARTICLE SYSTEM
+   Lightweight canvas implementation
+========================================================= */
+
+const canvas =
+    document.getElementById(
+        "particleCanvas"
+    );
+
+const ctx =
+    canvas.getContext("2d", {
+        alpha: true
+    });
+
+let particles = [];
+
+let canvasWidth = 0;
+let canvasHeight = 0;
+
+let pixelRatio =
+    Math.min(
+        window.devicePixelRatio || 1,
+        1.5
+    );
+
+
+function resizeCanvas() {
+
+    pixelRatio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
+
+    canvasWidth =
+        window.innerWidth;
+
+    canvasHeight =
+        window.innerHeight;
+
+    canvas.width =
+        canvasWidth *
+        pixelRatio;
+
+    canvas.height =
+        canvasHeight *
+        pixelRatio;
+
+    canvas.style.width =
+        `${canvasWidth}px`;
+
+    canvas.style.height =
+        `${canvasHeight}px`;
+
+    ctx.setTransform(
+        pixelRatio,
+        0,
+        0,
+        pixelRatio,
+        0,
+        0
+    );
+
+    createParticles();
+
+}
+
+
+function createParticles() {
+
+    particles = [];
+
+    const isMobile =
+        window.innerWidth < 700;
+
+    const amount =
+        isMobile
+            ? 32
+            : 58;
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        particles.push({
+
+            x:
+                Math.random() *
+                canvasWidth,
+
+            y:
+                Math.random() *
+                canvasHeight,
+
+            size:
+                Math.random() *
+                1.25 +
+                0.25,
+
+            speed:
+                Math.random() *
+                0.18 +
+                0.035,
+
+            drift:
+                (Math.random() - 0.5) *
+                0.12,
+
+            opacity:
+                Math.random() *
+                0.32 +
+                0.06
+
+        });
+
+    }
+
+}
+
+
+function animateParticles() {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
+    );
+
+
+    for (
+        let i = 0;
+        i < particles.length;
+        i++
+    ) {
+
+        const p =
+            particles[i];
+
+        p.y -= p.speed;
+
+        p.x += p.drift;
+
+
+        if (
+            p.y <
+            -5
+        ) {
+
+            p.y =
+                canvasHeight + 5;
+
+        }
+
+
+        if (
+            p.x <
+            -5
+        ) {
+
+            p.x =
+                canvasWidth + 5;
+
+        }
+
+
+        if (
+            p.x >
+            canvasWidth + 5
+        ) {
+
+            p.x = -5;
+
+        }
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            `rgba(232,189,98,${p.opacity})`;
+
+        ctx.fill();
+
+    }
+
+
+    requestAnimationFrame(
+        animateParticles
+    );
+
+}
+
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas,
+    {
+        passive: true
+    }
+);
+
+animateParticles();
+
+
+/* =========================================================
+   MODERATE TEACHERS' DAY CONFETTI
+========================================================= */
+
+function launchCelebration() {
+
+    if (
+        typeof confetti !==
+        "function"
+    ) {
+        return;
+    }
+
+
+    const defaults = {
+
+        spread: 58,
+
+        startVelocity: 25,
+
+        gravity: 0.85,
+
+        ticks: 220,
+
+        scalar: 0.72
+
+    };
+
+
+    confetti({
+
+        ...defaults,
+
+        particleCount: 55,
+
+        origin: {
+            x: 0.08,
+            y: 0.42
+        }
+
+    });
+
+
+    confetti({
+
+        ...defaults,
+
+        particleCount: 55,
+
+        origin: {
+            x: 0.92,
+            y: 0.42
+        }
+
+    });
+
+
+    setTimeout(() => {
+
+        confetti({
+
+            ...defaults,
+
+            particleCount: 35,
+
+            spread: 70,
+
+            startVelocity: 20,
+
+            origin: {
+                x: 0.5,
+                y: 0.28
+            }
+
+        });
+
+    }, 250);
+
+}
+
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            launchCelebration,
+            700
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLICK CELEBRATION
+   Small interaction without making the page laggy
+========================================================= */
+
+document
+    .querySelectorAll(".dialogue")
+    .forEach(
+        (dialogue) => {
+
+            dialogue.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        typeof confetti !==
+                        "function"
+                    ) {
+                        return;
+                    }
+
+                    confetti({
+
+                        particleCount: 22,
+
+                        spread: 45,
+
+                        startVelocity: 17,
+
+                        gravity: 1,
+
+                        scalar: 0.6,
+
+                        origin: {
+                            x: 0.5,
+                            y: 0.55
+                        }
+
+                    });
+
+                }
+            );
+
+        }
+    );
+
+</script></body>
+</html>
