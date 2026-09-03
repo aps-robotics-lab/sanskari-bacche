@@ -1,2975 +1,2521 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#040b15">
-<meta name="description" content="A Teachers' Day tribute from Class 10th I — Army Public School, Lal Bahadur Shastri Marg.">
-<title>Happy Teachers' Day — Class 10th I</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="theme-color" content="#050b16">
+<meta name="description" content="Happy Teachers' Day — Class 10th I, Army Public School, Lal Bahadur Shastri Marg">
+
+<title>Happy Teachers' Day — Class 10th I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script><style>
-:root{
-  --bg:#030811;
-  --bg2:#071321;
-  --panel:rgba(255,255,255,.055);
-  --panel2:rgba(255,255,255,.025);
-  --line:rgba(255,255,255,.11);
-  --gold:#e7bd63;
-  --gold2:#ffe4a0;
-  --text:#f6f3eb;
-  --muted:#9da8b5;
-  --soft:#657180;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
 
-*{box-sizing:border-box;margin:0;padding:0}
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-html{
-  scroll-behavior:smooth;
-  background:var(--bg);
-}
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
-body{
-  min-height:100vh;
-  overflow-x:hidden;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 15% 15%,rgba(35,75,110,.16),transparent 28%),
-    radial-gradient(circle at 85% 65%,rgba(196,147,53,.07),transparent 25%),
-    linear-gradient(135deg,#02060d,#071321,#030912,#071321);
-  background-size:180% 180%;
-  animation:bgMove 24s ease-in-out infinite alternate;
-  font-family:"DM Sans",sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@keyframes bgMove{
-  from{background-position:0 0}
-  to{background-position:100% 100%}
+html {
+    scroll-behavior: smooth;
 }
 
-body.locked{overflow:hidden}
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
 
-::selection{
-  background:var(--gold);
-  color:#06101a;
-}
+    background:
+        radial-gradient(
+            circle at 12% 15%,
+            rgba(46, 88, 145, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 87% 60%,
+            rgba(203, 153, 55, 0.08),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #030811 0%,
+            #071222 35%,
+            #09182b 65%,
+            #040b15 100%
+        );
 
-button,a{font:inherit}
-button{cursor:pointer}
+    background-size: 180% 180%;
+    animation: atmosphere 22s ease-in-out infinite alternate;
 
-a{
-  color:inherit;
-  text-decoration:none;
+    color: #f4f5f7;
+    font-family: "DM Sans", sans-serif;
 }
 
-#particles{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  opacity:.62;
-}
+@keyframes atmosphere {
+    0% {
+        background-position: 0% 20%;
+    }
 
-.noise{
-  position:fixed;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-}
+    50% {
+        background-position: 100% 70%;
+    }
 
-.ambient{
-  position:fixed;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
+    100% {
+        background-position: 20% 100%;
+    }
 }
 
-.ambient:before,
-.ambient:after{
-  content:"";
-  position:absolute;
-  border-radius:50%;
-  filter:blur(100px);
-}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
 
-.ambient:before{
-  width:320px;
-  height:320px;
-  left:-180px;
-  top:20%;
-  background:rgba(231,189,99,.12);
-  animation:orb1 18s ease-in-out infinite alternate;
-}
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        );
 
-.ambient:after{
-  width:420px;
-  height:420px;
-  right:-240px;
-  bottom:10%;
-  background:rgba(29,83,128,.14);
-  animation:orb2 22s ease-in-out infinite alternate;
-}
+    background-size: 70px 70px;
 
-@keyframes orb1{
-  to{transform:translate(220px,100px)}
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 85%
+    );
 }
 
-@keyframes orb2{
-  to{transform:translate(-170px,-100px)}
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.page{
-  position:relative;
-  z-index:2;
+button,
+select {
+    font: inherit;
 }
 
-.container{
-  width:min(1160px,calc(100% - 40px));
-  margin:auto;
-}
 
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  color:var(--gold2);
-  font-size:.65rem;
-  font-weight:700;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-}
+/* =========================================================
+   PARTICLE CANVAS
+========================================================= */
 
-.eyebrow:before{
-  content:"";
-  width:25px;
-  height:1px;
-  background:var(--gold);
-  box-shadow:0 0 14px rgba(231,189,99,.6);
+#particleCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.65;
 }
 
-.reveal{
-  opacity:0;
-  transform:translateY(42px);
-  transition:opacity 1s var(--ease),transform 1s var(--ease);
-}
 
-.reveal.visible{
-  opacity:1;
-  transform:none;
-}
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
 
-/* LOADER */
+.cursor-glow {
+    position: fixed;
 
-.loader{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:grid;
-  place-items:center;
-  background:#02060d;
-  transition:opacity .9s var(--ease),visibility .9s;
-}
+    width: 260px;
+    height: 260px;
 
-.loader.done{
-  opacity:0;
-  visibility:hidden;
-}
+    border-radius: 50%;
 
-.loader-inner{text-align:center}
+    pointer-events: none;
+    z-index: 2;
 
-.loader-orbit{
-  width:62px;
-  height:62px;
-  border:1px solid rgba(231,189,99,.22);
-  border-radius:50%;
-  position:relative;
-  margin:auto auto 22px;
-  animation:spin 3s linear infinite;
-}
+    background: radial-gradient(
+        circle,
+        rgba(232,189,98,0.075),
+        transparent 68%
+    );
 
-.loader-orbit:after{
-  content:"";
-  position:absolute;
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--gold);
-  box-shadow:0 0 25px var(--gold);
-  top:-4px;
-  left:50%;
+    transform: translate(-50%, -50%);
 }
 
-@keyframes spin{to{transform:rotate(360deg)}}
 
-.loader-text{
-  color:var(--gold2);
-  font-size:.62rem;
-  letter-spacing:.3em;
-  text-transform:uppercase;
-}
+/* =========================================================
+   PAGE
+========================================================= */
 
-/* NAV */
+.page {
+    position: relative;
+    z-index: 3;
 
-.nav{
-  position:fixed;
-  z-index:20;
-  top:0;
-  left:0;
-  right:0;
-  padding:20px 0;
-  transition:background .4s ease,border .4s ease;
+    width: min(1180px, 91%);
+    margin: auto;
 }
 
-.nav.scrolled{
-  background:rgba(3,8,17,.76);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
 
-.nav-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
+/* =========================================================
+   TOP NAV
+========================================================= */
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+.topbar {
+    position: fixed;
+    top: 22px;
+    left: 50%;
 
-.brand-mark{
-  width:34px;
-  height:34px;
-  border:1px solid rgba(231,189,99,.4);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--gold);
-  font-family:"Playfair Display",serif;
-  font-size:.8rem;
-}
+    transform: translateX(-50%);
 
-.brand-text{
-  font-size:.63rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.72);
-}
+    width: min(1120px, 88%);
 
-.nav-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.sound-button,
-.menu-button{
-  width:42px;
-  height:42px;
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.035);
-  color:var(--gold2);
-  display:grid;
-  place-items:center;
-  transition:.35s var(--ease);
-}
+    padding: 11px 14px 11px 18px;
 
-.sound-button:hover,
-.menu-button:hover{
-  border-color:rgba(231,189,99,.4);
-  background:rgba(231,189,99,.08);
-}
+    border: 1px solid rgba(255,255,255,0.09);
 
-.sound-bars{
-  display:flex;
-  gap:2px;
-  align-items:center;
-  height:14px;
-}
+    background: rgba(6,15,28,0.58);
 
-.sound-bars i{
-  display:block;
-  width:2px;
-  height:6px;
-  background:var(--gold);
-}
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-.sound-button.playing .sound-bars i:nth-child(1){animation:bar .7s infinite alternate}
-.sound-button.playing .sound-bars i:nth-child(2){animation:bar .55s .15s infinite alternate}
-.sound-button.playing .sound-bars i:nth-child(3){animation:bar .8s .1s infinite alternate}
-.sound-button.playing .sound-bars i:nth-child(4){animation:bar .6s .2s infinite alternate}
+    border-radius: 100px;
 
-@keyframes bar{
-  to{height:14px}
+    z-index: 20;
 }
 
-/* HOME */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
 
-.hero{
-  min-height:100svh;
-  display:flex;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
-}
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 
-.hero-grid{
-  position:absolute;
-  inset:0;
-  opacity:.04;
-  background-image:
-    linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
-  background-size:90px 90px;
-  mask-image:linear-gradient(to bottom,#000,transparent 82%);
+    color: rgba(255,255,255,0.72);
 }
 
-.hero-glow{
-  position:absolute;
-  width:min(760px,100vw);
-  height:min(760px,100vw);
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(231,189,99,.09),transparent 65%);
-}
+.brand-dot {
+    width: 7px;
+    height: 7px;
 
-.hero-content{
-  position:relative;
-  z-index:3;
-  padding:130px 0 75px;
-}
+    border-radius: 50%;
 
-.hero-kicker{
-  margin-bottom:27px;
-}
+    background: #e8bd62;
 
-.hero h1{
-  max-width:1050px;
-  font-family:"Playfair Display",serif;
-  font-weight:600;
-  font-size:clamp(4.2rem,10.5vw,9.7rem);
-  line-height:.82;
-  letter-spacing:-.065em;
+    box-shadow:
+        0 0 12px rgba(232,189,98,0.7);
 }
 
-.hero h1 span{
-  display:block;
-  color:var(--gold);
-  text-shadow:0 0 65px rgba(231,189,99,.15);
+.nav-label {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
 }
 
-.hero-subtitle{
-  max-width:800px;
-  margin-top:38px;
-  font-size:clamp(1rem,2vw,1.3rem);
-  line-height:1.7;
-  color:#d9dee5;
-}
 
-.hero-description{
-  max-width:700px;
-  margin-top:15px;
-  color:var(--muted);
-  line-height:1.85;
-}
+/* =========================================================
+   HERO
+========================================================= */
 
-.hero-bottom{
-  margin-top:75px;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:30px;
-}
+.hero {
+    min-height: 100vh;
 
-.hero-note{
-  max-width:330px;
-  color:rgba(255,255,255,.38);
-  font-size:.65rem;
-  line-height:1.8;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
+    display: flex;
+    align-items: center;
 
-.scroll-link{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:var(--gold);
-  font-size:.62rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
+    padding: 150px 0 90px;
 
-.scroll-ring{
-  width:46px;
-  height:46px;
-  border:1px solid rgba(231,189,99,.3);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
+    position: relative;
 }
 
-.scroll-ring span{
-  width:7px;
-  height:7px;
-  border-right:1px solid var(--gold);
-  border-bottom:1px solid var(--gold);
-  transform:rotate(45deg) translate(-2px,-2px);
-  animation:down 1.5s ease-in-out infinite;
+.hero-content {
+    max-width: 950px;
 }
 
-@keyframes down{
-  0%,100%{opacity:.25;transform:rotate(45deg) translate(-5px,-5px)}
-  50%{opacity:1;transform:rotate(45deg) translate(2px,2px)}
-}
+.hero-kicker {
+    display: flex;
+    align-items: center;
+    gap: 13px;
 
-/* STORY */
+    color: #d5b66e;
 
-.story{
-  padding:120px 0 160px;
-}
+    font-size: 0.72rem;
+    font-weight: 600;
 
-.story-text{
-  max-width:950px;
-  margin:auto;
-  text-align:center;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2.7rem,6vw,6rem);
-  line-height:1.02;
-  letter-spacing:-.045em;
-  color:rgba(255,255,255,.2);
-}
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
 
-.story-text span{color:var(--text)}
-.story-text em{color:var(--gold);font-style:normal}
+    margin-bottom: 28px;
 
-/* SECTION */
+    opacity: 0;
 
-.section{
-  padding:125px 0;
+    animation:
+        revealUp 1s 0.15s ease forwards;
 }
 
-.section-heading{
-  max-width:760px;
-  margin-bottom:60px;
-}
+.hero-kicker::before {
+    content: "";
 
-.section-heading h2{
-  margin-top:17px;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2.7rem,6vw,5.3rem);
-  line-height:.98;
-  letter-spacing:-.045em;
+    width: 38px;
+    height: 1px;
+
+    background: #d5b66e;
 }
 
-.section-heading h2 span{color:var(--gold)}
+.hero h1 {
+    font-family: "Playfair Display", serif;
 
-.section-heading p{
-  max-width:650px;
-  margin-top:24px;
-  color:var(--muted);
-  line-height:1.85;
-}
+    font-size: clamp(
+        4.2rem,
+        11vw,
+        9.5rem
+    );
 
-/* FEATURE */
+    line-height: 0.88;
 
-.feature{
-  position:relative;
-  padding:clamp(30px,6vw,75px);
-  overflow:hidden;
-  border:1px solid var(--line);
-  background:
-    linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.02)),
-    rgba(4,13,24,.56);
-  backdrop-filter:blur(18px);
-  transition:.65s var(--ease);
-}
+    font-weight: 600;
 
-.feature:after{
-  content:"SS";
-  position:absolute;
-  right:-30px;
-  bottom:-70px;
-  color:rgba(231,189,99,.035);
-  font-family:"Playfair Display",serif;
-  font-size:18rem;
-  line-height:1;
-}
+    letter-spacing: -0.055em;
 
-.feature:hover{
-  transform:translateY(-7px);
-  border-color:rgba(231,189,99,.28);
-  box-shadow:0 30px 90px rgba(0,0,0,.3),0 0 60px rgba(231,189,99,.07);
-}
+    opacity: 0;
 
-.feature-top,
-.feature-main,
-.feature-bottom{
-  position:relative;
-  z-index:2;
+    animation:
+        revealUp 1s 0.28s ease forwards;
 }
 
-.feature-top{
-  display:flex;
-  justify-content:space-between;
-}
+.hero h1 .gold {
+    color: #e8bd62;
 
-.feature-index{
-  color:rgba(255,255,255,.3);
-  font-size:.62rem;
-  letter-spacing:.2em;
+    text-shadow:
+        0 0 45px rgba(232,189,98,0.14);
 }
 
-.avatar{
-  width:82px;
-  height:82px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(231,189,99,.35);
-  background:rgba(231,189,99,.05);
-  color:var(--gold2);
-  font-family:"Playfair Display",serif;
-  font-size:1.5rem;
-  box-shadow:0 0 35px rgba(231,189,99,.05);
-}
+.hero-subtitle {
+    max-width: 720px;
 
-.feature-main{
-  max-width:880px;
-  margin-top:75px;
-}
+    margin-top: 38px;
 
-.role{
-  color:var(--gold);
-  font-size:.66rem;
-  font-weight:700;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-}
+    color: #dce2eb;
 
-.feature h3{
-  margin-top:13px;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(3rem,6vw,6.2rem);
-  line-height:.95;
-  letter-spacing:-.055em;
-}
+    font-size: clamp(
+        1rem,
+        2vw,
+        1.3rem
+    );
 
-.feature-message{
-  max-width:800px;
-  margin-top:30px;
-  color:#bdc5cf;
-  line-height:1.9;
-}
+    line-height: 1.7;
 
-.feature-bottom{
-  margin-top:55px;
-  padding-top:23px;
-  border-top:1px solid rgba(255,255,255,.07);
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:rgba(255,255,255,.37);
-  font-size:.64rem;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-}
+    opacity: 0;
 
-.feature-bottom strong{
-  color:var(--gold2);
+    animation:
+        revealUp 1s 0.45s ease forwards;
 }
 
-/* TEACHER NAVIGATION */
+.hero-description {
+    max-width: 670px;
 
-.teacher-index-section{
-  padding:80px 0 140px;
-}
+    margin-top: 18px;
 
-.chapter-list{
-  border-top:1px solid rgba(255,255,255,.08);
-}
+    color: #8f9bae;
 
-.chapter{
-  position:relative;
-  display:grid;
-  grid-template-columns:100px 1fr auto;
-  align-items:center;
-  gap:25px;
-  padding:28px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  transition:.45s var(--ease);
-}
+    font-size: 0.95rem;
 
-.chapter:before{
-  content:"";
-  position:absolute;
-  left:-20px;
-  right:-20px;
-  top:0;
-  bottom:0;
-  opacity:0;
-  background:rgba(231,189,99,.035);
-  transition:.45s ease;
-}
+    line-height: 1.85;
 
-.chapter:hover:before{
-  opacity:1;
-}
+    opacity: 0;
 
-.chapter-number,
-.chapter-subject,
-.chapter-name{
-  position:relative;
-  z-index:2;
+    animation:
+        revealUp 1s 0.6s ease forwards;
 }
 
-.chapter-number{
-  color:rgba(255,255,255,.28);
-  font-size:.65rem;
-  letter-spacing:.2em;
-}
+.hero-bottom {
+    display: flex;
+    align-items: center;
+    gap: 25px;
 
-.chapter-name{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(1.7rem,3.5vw,3.2rem);
-}
+    margin-top: 45px;
 
-.chapter-subject{
-  color:var(--gold);
-  font-size:.62rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
+    opacity: 0;
 
-.chapter-arrow{
-  position:relative;
-  z-index:2;
-  width:40px;
-  height:40px;
-  border:1px solid rgba(255,255,255,.1);
-  display:grid;
-  place-items:center;
-  color:var(--gold);
-  transition:.4s var(--ease);
+    animation:
+        revealUp 1s 0.75s ease forwards;
 }
 
-.chapter:hover .chapter-arrow{
-  transform:translateX(6px);
-  border-color:rgba(231,189,99,.4);
-}
+.explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
 
-/* TEACHER PAGES */
+    padding: 13px 20px;
 
-.teacher-page{
-  display:none;
-  min-height:100vh;
-  padding:140px 0 100px;
-}
+    border-radius: 100px;
 
-.teacher-page.active{
-  display:block;
-  animation:pageIn .8s var(--ease);
-}
+    border: 1px solid rgba(232,189,98,0.35);
 
-@keyframes pageIn{
-  from{opacity:0;transform:translateY(25px)}
-  to{opacity:1;transform:none}
-}
+    color: #f1d58f;
 
-.back-home{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:55px;
-  color:rgba(255,255,255,.48);
-  font-size:.64rem;
-  letter-spacing:.17em;
-  text-transform:uppercase;
-  transition:.3s ease;
+    background: rgba(232,189,98,0.055);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.back-home:hover{color:var(--gold)}
+.explore:hover {
+    transform: translateY(-3px);
 
-.teacher-hero{
-  position:relative;
-  min-height:65vh;
-  display:flex;
-  align-items:center;
-  padding:45px 0 80px;
-}
+    background: rgba(232,189,98,0.11);
 
-.subject-symbol{
-  position:absolute;
-  right:0;
-  top:50%;
-  transform:translateY(-50%);
-  color:rgba(231,189,99,.035);
-  font-family:"Playfair Display",serif;
-  font-size:clamp(14rem,30vw,30rem);
-  line-height:.7;
-  pointer-events:none;
+    box-shadow:
+        0 10px 35px rgba(232,189,98,0.09);
 }
 
-.teacher-page-number{
-  color:rgba(255,255,255,.28);
-  font-size:.64rem;
-  letter-spacing:.22em;
+.explore span {
+    font-size: 1.1rem;
 }
 
-.teacher-page h1{
-  max-width:920px;
-  margin-top:25px;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(4rem,10vw,9rem);
-  line-height:.83;
-  letter-spacing:-.065em;
-}
+.hero-note {
+    color: rgba(255,255,255,0.32);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.1em;
 
-.teacher-page h1 span{
-  color:var(--gold);
+    text-transform: uppercase;
 }
 
-.page-subject{
-  margin-top:30px;
-  color:var(--gold2);
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.2em;
-  text-transform:uppercase;
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 
-.page-description{
-  max-width:690px;
-  margin-top:25px;
-  color:var(--muted);
-  font-size:1.02rem;
-  line-height:1.9;
+/* =========================================================
+   SECTION HEADERS
+========================================================= */
+
+.section {
+    padding: 110px 0;
 }
+
+.section-intro {
+    max-width: 700px;
 
-.dialogue-section{
-  padding:90px 0;
+    margin-bottom: 55px;
 }
 
-.dialogue-box{
-  position:relative;
-  padding:clamp(35px,6vw,75px);
-  border:1px solid rgba(231,189,99,.17);
-  background:rgba(231,189,99,.025);
-  overflow:hidden;
+.section-index {
+    color: #d5b66e;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
 }
+
+.section-title {
+    margin-top: 14px;
 
-.dialogue-box:before{
-  content:"“";
-  position:absolute;
-  top:-60px;
-  left:20px;
-  color:rgba(231,189,99,.08);
-  font-family:"Playfair Display",serif;
-  font-size:17rem;
-  line-height:1;
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        2.7rem,
+        6vw,
+        5rem
+    );
+
+    line-height: 1;
+
+    letter-spacing: -0.035em;
 }
+
+.section-description {
+    margin-top: 20px;
 
-.dialogue-label{
-  position:relative;
-  color:var(--gold);
-  font-size:.62rem;
-  letter-spacing:.22em;
-  text-transform:uppercase;
+    color: #8f9bae;
+
+    line-height: 1.8;
+
+    max-width: 620px;
 }
 
-.dialogue-main{
-  position:relative;
-  max-width:850px;
-  margin-top:25px;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2.2rem,5vw,5rem);
-  line-height:1.05;
-  letter-spacing:-.04em;
+
+/* =========================================================
+   TEACHERS
+========================================================= */
+
+.teacher-list {
+    border-top: 1px solid rgba(255,255,255,0.09);
 }
+
+.teacher {
+    position: relative;
 
-.dialogue-caption{
-  position:relative;
-  margin-top:24px;
-  color:rgba(255,255,255,.35);
-  font-size:.65rem;
-  letter-spacing:.13em;
-  text-transform:uppercase;
+    display: grid;
+
+    grid-template-columns: 90px 1fr auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    min-height: 145px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+
+    transition:
+        padding 0.45s ease,
+        background 0.45s ease;
 }
+
+.teacher::before {
+    content: "";
+
+    position: absolute;
+
+    left: -30px;
+    right: -30px;
 
-.personality{
-  padding:120px 0;
+    top: 12px;
+    bottom: 12px;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(232,189,98,0.07),
+            transparent 45%
+        );
+
+    opacity: 0;
+
+    transform: scaleX(0.96);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
-.personality-grid{
-  display:grid;
-  grid-template-columns:1fr 1.4fr;
-  gap:80px;
-  align-items:start;
+.teacher:hover {
+    padding-left: 15px;
 }
 
-.personality-title{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2.6rem,5vw,5rem);
-  line-height:1;
+.teacher:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
 }
 
-.personality-title span{color:var(--gold)}
+.teacher-number {
+    position: relative;
 
-.personality-copy{
-  color:var(--muted);
-  line-height:1.9;
-  font-size:1rem;
-}
+    color: rgba(255,255,255,0.28);
 
-.traits{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:30px;
+    font-family: "Manrope", sans-serif;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.15em;
 }
 
-.trait{
-  padding:10px 13px;
-  border:1px solid rgba(255,255,255,.09);
-  color:rgba(255,255,255,.65);
-  background:rgba(255,255,255,.025);
-  font-size:.65rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
+.teacher-info {
+    position: relative;
 }
+
+.teacher-name {
+    font-family: "Playfair Display", serif;
 
-/* NCERT */
+    font-size: clamp(
+        1.65rem,
+        3vw,
+        2.45rem
+    );
 
-.ncert-section{
-  padding:100px 0;
+    color: #f1f2f4;
+
+    transition: color 0.3s ease;
 }
 
-.ncert-card{
-  display:grid;
-  grid-template-columns:.7fr 1.3fr;
-  gap:60px;
-  padding:50px;
-  border:1px solid var(--line);
-  background:var(--panel);
-  backdrop-filter:blur(16px);
+.teacher:hover .teacher-name {
+    color: #f0d38d;
 }
+
+.teacher-subject {
+    margin-top: 6px;
+
+    color: #778397;
+
+    font-size: 0.82rem;
 
-.ncert-label{
-  color:var(--gold);
-  font-size:.62rem;
-  letter-spacing:.2em;
-  text-transform:uppercase;
+    letter-spacing: 0.03em;
 }
+
+.teacher-action {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: rgba(255,255,255,0.42);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.12em;
 
-.ncert-card h2{
-  margin-top:12px;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2rem,4vw,3.7rem);
-  line-height:1;
+    text-transform: uppercase;
 }
 
-.ncert-content{
-  color:var(--muted);
-  line-height:1.85;
+.teacher-arrow {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    color: #d5b66e;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        color 0.35s ease;
 }
+
+.teacher:hover .teacher-arrow {
+    transform: rotate(-45deg);
 
-.ncert-content strong{
-  color:var(--gold2);
-  font-weight:600;
+    background: #e8bd62;
+
+    color: #071222;
 }
+
+
+/* =========================================================
+   REPORT CARD SECTION
+========================================================= */
 
-/* REPORT */
+.report-section {
+    position: relative;
 
-.impact{
-  padding:130px 0 150px;
+    padding: 150px 0 120px;
 }
 
-.impact-head{
-  max-width:720px;
-  margin-bottom:55px;
+.report-heading {
+    max-width: 650px;
+
+    margin-bottom: 55px;
 }
+
+.report-pretitle {
+    color: #d5b66e;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.22em;
 
-.impact-head h2{
-  margin-top:16px;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2.8rem,6vw,5.5rem);
-  line-height:.96;
-  letter-spacing:-.045em;
+    text-transform: uppercase;
 }
 
-.impact-head h2 span{color:var(--gold)}
+.report-heading h2 {
+    margin-top: 15px;
 
-.report{
-  padding:clamp(25px,6vw,65px);
-  border:1px solid rgba(231,189,99,.2);
-  background:
-    linear-gradient(135deg,rgba(231,189,99,.045),rgba(255,255,255,.025)),
-    rgba(3,10,19,.7);
-  position:relative;
-  overflow:hidden;
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        2.8rem,
+        6vw,
+        5.5rem
+    );
+
+    line-height: 0.98;
+
+    letter-spacing: -0.04em;
 }
+
+.report-heading p {
+    margin-top: 22px;
+
+    color: #8995a8;
 
-.report:after{
-  content:"10th I";
-  position:absolute;
-  right:-30px;
-  bottom:-70px;
-  color:rgba(231,189,99,.025);
-  font-family:"Space Grotesk",sans-serif;
-  font-size:12rem;
-  font-weight:700;
-  line-height:1;
+    line-height: 1.8;
 }
 
-.report-top{
-  position:relative;
-  z-index:2;
-  display:flex;
-  justify-content:space-between;
-  gap:25px;
-  padding-bottom:30px;
-  border-bottom:1px solid rgba(255,255,255,.07);
+
+/* =========================================================
+   SELECTOR
+========================================================= */
+
+.report-selector {
+    position: relative;
+
+    max-width: 650px;
+
+    margin-bottom: 35px;
 }
+
+.selector-label {
+    display: block;
+
+    margin-bottom: 11px;
+
+    color: rgba(255,255,255,0.4);
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.18em;
 
-.report-code{
-  color:rgba(255,255,255,.38);
-  font-size:.62rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  line-height:1.8;
+    text-transform: uppercase;
 }
 
-.report-title{
-  margin-top:10px;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(2rem,5vw,4.3rem);
-  letter-spacing:-.06em;
+.select-wrap {
+    position: relative;
 }
 
-.report-title span{color:var(--gold)}
+select {
+    appearance: none;
+    -webkit-appearance: none;
 
-.report-select-wrap{
-  position:relative;
-  z-index:3;
-  margin:38px 0;
-}
+    width: 100%;
+
+    padding: 18px 50px 18px 20px;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.045);
+
+    color: #edf0f5;
+
+    outline: none;
+
+    cursor: pointer;
 
-.report-select-label{
-  display:block;
-  margin-bottom:10px;
-  color:var(--gold);
-  font-size:.62rem;
-  font-weight:700;
-  letter-spacing:.2em;
-  text-transform:uppercase;
+    backdrop-filter: blur(14px);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
+select:hover,
+select:focus {
+    border-color: rgba(232,189,98,0.45);
 
-.select-wrap{
-  position:relative;
+    box-shadow:
+        0 0 35px rgba(232,189,98,0.06);
 }
 
-.select-wrap:after{
-  content:"↓";
-  position:absolute;
-  right:18px;
-  top:50%;
-  transform:translateY(-50%);
-  color:var(--gold);
-  pointer-events:none;
+select option {
+    background: #0a1729;
+    color: white;
 }
+
+.select-arrow {
+    position: absolute;
+
+    right: 20px;
+    top: 50%;
 
-.report-select{
-  width:100%;
-  padding:18px 50px 18px 18px;
-  color:var(--text);
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.12);
-  outline:none;
-  appearance:none;
+    transform: translateY(-50%);
+
+    color: #d5b66e;
+
+    pointer-events: none;
 }
+
+
+/* =========================================================
+   REPORT PANEL
+========================================================= */
+
+.report-panel {
+    position: relative;
 
-.report-select option{
-  background:#081321;
+    max-width: 900px;
+
+    min-height: 560px;
+
+    padding: clamp(
+        28px,
+        5vw,
+        55px
+    );
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.025)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.24);
+
+    transition:
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
 }
 
-.report-empty{
-  position:relative;
-  z-index:2;
-  padding:30px 0;
-  text-align:center;
-  color:rgba(255,255,255,.3);
-  font-family:"Playfair Display",serif;
-  font-size:clamp(1.4rem,3vw,2.3rem);
+.report-panel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    right: -180px;
+    top: -190px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.11),
+            transparent 68%
+        );
+
+    pointer-events: none;
 }
 
-.report-empty span{color:var(--gold)}
+.report-panel.active {
+    border-color: rgba(232,189,98,0.25);
 
-.report-content{
-  position:relative;
-  z-index:2;
-  display:none;
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.27),
+        0 0 60px rgba(232,189,98,0.045);
 }
+
+.report-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
 
-.report-content.show{
-  display:block;
-  animation:reportIn .8s var(--ease);
+    padding-bottom: 28px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.09);
 }
+
+.report-type {
+    color: #d5b66e;
+
+    font-size: 0.66rem;
+
+    letter-spacing: 0.18em;
 
-@keyframes reportIn{
-  from{opacity:0;transform:translateY(18px)}
-  to{opacity:1;transform:none}
+    text-transform: uppercase;
 }
 
-.report-person{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  margin-bottom:35px;
+.report-class {
+    margin-top: 8px;
+
+    color: rgba(255,255,255,0.32);
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.1em;
 }
+
+.report-status {
+    color: rgba(255,255,255,0.3);
+
+    font-size: 0.62rem;
 
-.report-avatar{
-  width:64px;
-  height:64px;
-  flex:0 0 auto;
-  border:1px solid rgba(231,189,99,.35);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--gold2);
-  font-family:"Playfair Display",serif;
-  background:rgba(231,189,99,.05);
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
 }
+
+.report-name {
+    margin-top: 35px;
+
+    font-family: "Playfair Display", serif;
+
+    color: #f0d28c;
 
-.report-person h3{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(1.8rem,4vw,3rem);
-  line-height:1;
+    font-size: clamp(
+        2rem,
+        5vw,
+        3.7rem
+    );
+
+    line-height: 1;
 }
+
+.report-subject {
+    margin-top: 10px;
 
-.report-person p{
-  margin-top:6px;
-  color:var(--gold);
-  font-size:.62rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
+    color: #8995a8;
+
+    font-size: 0.88rem;
 }
+
+
+/* =========================================================
+   REPORT METRICS
+========================================================= */
 
-.scores{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0 55px;
+.metrics {
+    display: grid;
+
+    grid-template-columns: repeat(
+        2,
+        minmax(0,1fr)
+    );
+
+    gap: 18px 45px;
+
+    margin-top: 42px;
 }
 
-.score{
-  padding:17px 0;
-  border-bottom:1px solid rgba(255,255,255,.07);
+.metric {
+    min-width: 0;
 }
+
+.metric-top {
+    display: flex;
 
-.score-top{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:#d6dbe1;
-  font-size:.8rem;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 9px;
 }
 
-.score-value{
-  color:var(--gold2);
-  font-weight:600;
+.metric-name {
+    color: #b9c2d0;
+
+    font-size: 0.8rem;
 }
+
+.metric-score {
+    color: #e8bd62;
+
+    font-size: 0.75rem;
 
-.score-track{
-  height:2px;
-  margin-top:10px;
-  background:rgba(255,255,255,.07);
-  overflow:hidden;
+    font-weight: 600;
 }
 
-.score-fill{
-  width:0;
-  height:100%;
-  background:linear-gradient(90deg,rgba(231,189,99,.25),var(--gold));
-  box-shadow:0 0 13px rgba(231,189,99,.5);
-  transition:width 1.2s .15s var(--ease);
+.metric-track {
+    height: 3px;
+
+    background: rgba(255,255,255,0.08);
+
+    overflow: hidden;
+
+    border-radius: 10px;
 }
+
+.metric-fill {
+    width: 0;
 
-.verdict{
-  margin-top:48px;
-  padding:32px;
-  border:1px solid rgba(231,189,99,.14);
-  background:rgba(231,189,99,.03);
-  text-align:center;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(232,189,98,0.5),
+            #e8bd62
+        );
+
+    border-radius: inherit;
+
+    transition:
+        width 1.1s cubic-bezier(.2,.8,.2,1);
 }
+
+
+/* =========================================================
+   FINAL RESULT
+========================================================= */
 
-.verdict-label{
-  color:rgba(255,255,255,.38);
-  font-size:.6rem;
-  letter-spacing:.22em;
-  text-transform:uppercase;
+.final-result {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 25px;
+
+    margin-top: 50px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid rgba(255,255,255,0.09);
 }
+
+.final-label {
+    color: rgba(255,255,255,0.32);
+
+    font-size: 0.64rem;
 
-.verdict-title{
-  margin-top:10px;
-  color:var(--gold2);
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2rem,5vw,4.2rem);
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
 }
+
+.final-word {
+    margin-top: 8px;
+
+    font-family: "Manrope", sans-serif;
+
+    color: #f2d591;
 
-.verdict-message{
-  max-width:650px;
-  margin:14px auto 0;
-  color:var(--muted);
-  line-height:1.8;
+    font-size: clamp(
+        1.8rem,
+        5vw,
+        3rem
+    );
+
+    font-weight: 800;
+
+    letter-spacing: -0.05em;
 }
+
+.final-mark {
+    color: rgba(255,255,255,0.25);
+
+    font-size: 0.72rem;
+
+    text-align: right;
 
-/* FINAL */
+    max-width: 250px;
 
-.final{
-  padding:120px 0 160px;
-  text-align:center;
+    line-height: 1.6;
 }
 
-.final-rule{
-  width:min(800px,100%);
-  height:1px;
-  margin:0 auto 55px;
-  background:linear-gradient(90deg,transparent,rgba(231,189,99,.5),transparent);
+
+/* =========================================================
+   REPORT REMARK
+========================================================= */
+
+.report-remark {
+    margin-top: 35px;
+
+    color: #aab4c3;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        1.05rem,
+        2vw,
+        1.35rem
+    );
+
+    line-height: 1.6;
 }
 
-.final h2{
-  max-width:950px;
-  margin:20px auto 0;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2.7rem,6vw,5.8rem);
-  line-height:1.03;
-  letter-spacing:-.045em;
+.report-remark span {
+    color: #e8bd62;
 }
+
+
+/* =========================================================
+   FINAL EMOTIONAL REVEAL
+========================================================= */
+
+.closing {
+    position: relative;
 
-.final h2 span{color:var(--gold)}
+    padding: 140px 0 160px;
 
-.final-copy{
-  max-width:650px;
-  margin:30px auto 0;
-  color:var(--muted);
-  line-height:1.85;
+    text-align: center;
 }
 
-.last-button{
-  margin-top:38px;
-  padding:14px 24px;
-  color:var(--gold2);
-  border:1px solid rgba(231,189,99,.28);
-  background:rgba(231,189,99,.035);
-  transition:.35s var(--ease);
+.closing::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 500px;
+    height: 500px;
+
+    transform: translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.065),
+            transparent 70%
+        );
+
+    pointer-events: none;
 }
+
+.closing-small {
+    position: relative;
+
+    color: #d5b66e;
 
-.last-button:hover{
-  transform:translateY(-4px);
-  background:rgba(231,189,99,.08);
-  box-shadow:0 18px 45px rgba(231,189,99,.09);
+    font-size: 0.68rem;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
 }
+
+.closing h2 {
+    position: relative;
+
+    max-width: 850px;
 
-.final-secret{
-  max-height:0;
-  overflow:hidden;
-  opacity:0;
-  transition:max-height 1s var(--ease),opacity .6s ease,margin .7s ease;
+    margin: 22px auto 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        2.8rem,
+        7vw,
+        6.5rem
+    );
+
+    line-height: 0.98;
+
+    letter-spacing: -0.045em;
 }
 
-.final-secret.open{
-  max-height:350px;
-  opacity:1;
-  margin-top:30px;
+.closing h2 span {
+    color: #e8bd62;
 }
+
+.closing-signature {
+    position: relative;
 
-.final-secret p{
-  max-width:650px;
-  margin:auto;
-  color:#d9dde3;
-  font-family:"Playfair Display",serif;
-  font-size:1.3rem;
-  line-height:1.7;
+    margin-top: 35px;
+
+    color: rgba(255,255,255,0.4);
+
+    font-size: 0.8rem;
+
+    letter-spacing: 0.1em;
 }
+
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
-footer{
-  border-top:1px solid rgba(255,255,255,.07);
-  padding:28px 0;
-  color:rgba(255,255,255,.3);
-  font-size:.62rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+footer {
+    padding: 60px 0 45px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    text-align: center;
 }
+
+.footer-quote {
+    max-width: 750px;
+
+    margin: auto;
+
+    color: #c8d0dc;
 
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        1.15rem,
+        2.5vw,
+        1.65rem
+    );
+
+    line-height: 1.6;
 }
 
-/* RESPONSIVE */
+.footer-sign {
+    margin-top: 25px;
 
-@media(max-width:850px){
-  .container{width:min(100% - 28px,680px)}
+    color: #d5b66e;
 
-  .section{padding:90px 0}
+    font-size: 0.78rem;
 
-  .hero-content{padding:110px 0 60px}
+    line-height: 1.7;
+}
 
-  .hero h1{font-size:clamp(3.8rem,17vw,7rem)}
+.footer-location {
+    margin-top: 35px;
 
-  .hero-bottom{margin-top:55px}
+    color: rgba(255,255,255,0.22);
 
-  .feature{padding:35px 25px}
+    font-size: 0.65rem;
 
-  .feature-main{margin-top:50px}
+    letter-spacing: 0.13em;
 
-  .teacher-hero{min-height:auto}
+    text-transform: uppercase;
+}
 
-  .subject-symbol{
-    opacity:.7;
-    right:-100px;
-  }
 
-  .personality-grid,
-  .ncert-card{
-    grid-template-columns:1fr;
-    gap:35px;
-  }
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-  .ncert-card{padding:30px}
+.reveal {
+    opacity: 0;
 
-  .scores{grid-template-columns:1fr}
+    transform: translateY(30px);
 
-  .report-top{
-    flex-direction:column;
-  }
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(.2,.8,.2,1);
+}
 
-  .chapter{
-    grid-template-columns:65px 1fr 40px;
-    gap:12px;
-  }
+.reveal.visible {
+    opacity: 1;
 
-  .chapter-subject{display:none}
+    transform: translateY(0);
 }
+
 
-@media(max-width:520px){
-  .container{width:calc(100% - 24px)}
+/* =========================================================
+   MOBILE
+========================================================= */
 
-  .brand-text{display:none}
+@media (max-width: 760px) {
 
-  .hero h1{
-    font-size:clamp(3.6rem,19vw,6.2rem);
-  }
+    .page {
+        width: min(92%, 520px);
+    }
 
-  .hero-subtitle{font-size:.96rem}
+    .topbar {
+        top: 12px;
+        width: 92%;
+    }
 
-  .hero-description{font-size:.87rem}
+    .nav-label {
+        display: none;
+    }
 
-  .hero-bottom{
-    align-items:center;
-  }
+    .hero {
+        padding-top: 145px;
+    }
 
-  .hero-note{
-    max-width:190px;
-    font-size:.57rem;
-  }
+    .hero h1 {
+        font-size: clamp(
+            4rem,
+            18vw,
+            6.5rem
+        );
+    }
 
-  .scroll-link{
-    flex-direction:column;
-    gap:7px;
-  }
+    .hero-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+    }
 
-  .feature{
-    padding:28px 20px;
-  }
+    .section {
+        padding: 80px 0;
+    }
 
-  .avatar{
-    width:65px;
-    height:65px;
-    font-size:1.2rem;
-  }
+    .teacher {
+        grid-template-columns: 42px 1fr auto;
 
-  .feature h3{
-    font-size:2.9rem;
-  }
+        gap: 12px;
 
-  .feature-message{
-    font-size:.9rem;
-  }
+        min-height: 125px;
+    }
 
-  .feature-bottom{
-    flex-direction:column;
-  }
+    .teacher-action span {
+        display: none;
+    }
 
-  .teacher-page{
-    padding-top:120px;
-  }
+    .teacher-arrow {
+        width: 38px;
+        height: 38px;
+    }
 
-  .teacher-page h1{
-    font-size:clamp(3.6rem,18vw,6rem);
-  }
+    .teacher-name {
+        font-size: 1.45rem;
+    }
 
-  .dialogue-main{
-    font-size:2.2rem;
-  }
+    .report-section {
+        padding: 90px 0;
+    }
 
-  .dialogue-box{
-    padding:30px 22px;
-  }
+    .metrics {
+        grid-template-columns: 1fr;
 
-  .personality{
-    padding:85px 0;
-  }
+        gap: 18px;
+    }
 
-  .ncert-section{
-    padding:70px 0;
-  }
+    .report-panel {
+        border-radius: 22px;
 
-  .report{
-    padding:25px 18px;
-  }
+        min-height: auto;
+    }
 
-  .verdict{
-    padding:25px 15px;
-  }
+    .final-result {
+        align-items: flex-start;
 
-  .final{
-    padding:90px 0 110px;
-  }
+        flex-direction: column;
+    }
 
-  .footer-inner{
-    flex-direction:column;
-  }
+    .final-mark {
+        text-align: left;
+    }
+
+    .closing {
+        padding: 100px 0 120px;
+    }
 }
+
+@media (max-width: 420px) {
+
+    .brand {
+        font-size: 0.62rem;
+    }
 
-@media(prefers-reduced-motion:reduce){
-  *,
-  *:before,
-  *:after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-    scroll-behavior:auto!important;
-  }
+    .hero h1 {
+        font-size: 3.75rem;
+    }
 
-  #particles{display:none}
+    .teacher {
+        grid-template-columns: 30px 1fr auto;
+    }
+
+    .teacher-number {
+        font-size: 0.62rem;
+    }
+
+    .teacher-subject {
+        font-size: 0.75rem;
+    }
 }
-</style></head><body><div class="loader" id="loader">
-  <div class="loader-inner">
-    <div class="loader-orbit"></div>
-    <div class="loader-text">A tribute is being prepared</div>
-  </div>
-</div><canvas id="particles"></canvas>
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<canvas id="particleCanvas"></canvas>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
 
-<div class="noise"></div>
-<div class="ambient"></div><!-- MUSIC
-     Put your music file in the same folder and name it:
-     teachers-day-music.mp3
---><audio id="bgMusic" loop preload="auto">
-  <source src="teachers-day-music.mp3" type="audio/mpeg">
-</audio><nav class="nav" id="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="#home" data-home>
-      <div class="brand-mark">10</div>
-      <div class="brand-text">Class 10th I · 2026–27</div>
-    </a><div class="nav-actions">
-  <button class="sound-button" id="soundButton" aria-label="Toggle music">
-    <span class="sound-bars">
-      <i></i><i></i><i></i><i></i>
-    </span>
-  </button>
-</div>
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
 
-  </div>
-</nav><main class="page"><!-- =========================================================
-     HOME
-========================================================= --><div id="homeView">  <section class="hero" id="home">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div><div class="container">
-  <div class="hero-content">
+<nav class="topbar">
 
-    <div class="hero-kicker reveal">
-      <span class="eyebrow">A tribute from Class 10th I</span>
+    <div class="brand">
+        <span class="brand-dot"></span>
+        Class 10th I
     </div>
 
-    <h1 class="reveal">
-      Happy
-      <span>Teachers' Day.</span>
-    </h1>
-
-    <p class="hero-subtitle reveal">
-      To the guiding lights of Army Public School, Lal Bahadur Shastri Marg.
-    </p>
-
-    <p class="hero-description reveal">
-      Thank you for your endless patience, your dedication, and for inspiring
-      us to be better every single day. We might not say it enough, but we
-      appreciate everything you do for us.
-    </p>
-
-    <div class="hero-bottom reveal">
-      <div class="hero-note">
-        For the people behind every lesson.
-        For the people who made the lessons matter.
-      </div>
-
-      <a href="#story" class="scroll-link">
-        <span>Begin</span>
-        <div class="scroll-ring"><span></span></div>
-      </a>
+    <div class="nav-label">
+        Army Public School · Lal Bahadur Shastri Marg
     </div>
 
-  </div>
-</div>
+</nav>
 
-  </section>  <section class="story" id="story">
-    <div class="container">
-      <p class="story-text reveal">
-        Some lessons are written in <span>books.</span><br>
-        Some are written in <em>us.</em>
-      </p>
-    </div>
-  </section>  <section class="section" id="class-teacher">
-    <div class="container">  <div class="section-heading reveal">
-    <span class="eyebrow">The one who anchors our classroom</span>
 
-    <h2>
-      A teacher who became<br>
-      <span>our constant.</span>
-    </h2>
+<main class="page">
 
-    <p>
-      Every class has someone who quietly holds everything together.
-      For 10th I, that person is Mrs. Shonali Saha.
-    </p>
-  </div>
 
-  <article class="feature reveal">
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <div class="feature-top">
-      <div class="feature-index">01 / CLASS TEACHER</div>
-      <div class="avatar">SS</div>
-    </div>
+<section class="hero">
 
-    <div class="feature-main">
-      <div class="role">Class Teacher & English</div>
+    <div class="hero-content">
 
-      <h3>Mrs. Shonali Saha</h3>
-
-      <p class="feature-message">
-        Managing the daily energy and chaos of 10th I while teaching us
-        the beauty of the English language is no small feat! Thank you for
-        being our anchor, our guide, and for bringing stories to life with
-        such passion. We are incredibly lucky and proud to have you as our
-        class teacher this year. Happy Teachers' Day!
-      </p>
-    </div>
-
-    <div class="feature-bottom">
-      <span>Lesson beyond the textbook</span>
-      <strong>Patience · Guidance · Stories</strong>
-    </div>
-
-  </article>
-
-</div>
-
-  </section>  <section class="teacher-index-section" id="teachers">
-    <div class="container">  <div class="section-heading reveal">
-    <span class="eyebrow">The chapters that shaped us</span>
-
-    <h2>
-      Different subjects.<br>
-      <span>One lasting impact.</span>
-    </h2>
-
-    <p>
-      Six teachers. Six personalities. Six completely different ways
-      of making a classroom unforgettable.
-    </p>
-  </div>
-
-  <div class="chapter-list">
-
-    <a class="chapter reveal" href="#teacher-shonali">
-      <span class="chapter-number">01</span>
-      <span class="chapter-name">Mrs. Shonali Saha</span>
-      <span class="chapter-subject">English · Class Teacher</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-
-    <a class="chapter reveal" href="#teacher-ritesh">
-      <span class="chapter-number">02</span>
-      <span class="chapter-name">Mr. Ritesh Tiwari</span>
-      <span class="chapter-subject">Mathematics</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-
-    <a class="chapter reveal" href="#teacher-shalini">
-      <span class="chapter-number">03</span>
-      <span class="chapter-name">Mrs. Shalini Sinha</span>
-      <span class="chapter-subject">Social Science</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-
-    <a class="chapter reveal" href="#teacher-ajay">
-      <span class="chapter-number">04</span>
-      <span class="chapter-name">Mr. Ajay Trivedi</span>
-      <span class="chapter-subject">Hindi</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-
-    <a class="chapter reveal" href="#teacher-ariba">
-      <span class="chapter-number">05</span>
-      <span class="chapter-name">Ms. Ariba Ansari</span>
-      <span class="chapter-subject">Biology · Chemistry</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-
-    <a class="chapter reveal" href="#teacher-himanshu">
-      <span class="chapter-number">06</span>
-      <span class="chapter-name">Mr. Himanshu</span>
-      <span class="chapter-subject">Physics</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-
-  </div>
-
-</div>
-
-  </section>  <!-- HOME REPORT -->  <section class="impact" id="report">
-    <div class="container">  <div class="impact-head reveal">
-    <span class="eyebrow">One final assessment</span>
-
-    <h2>
-      You graded us all year.<br>
-      <span>Now it's our turn.</span>
-    </h2>
-  </div>
-
-  <div class="report reveal">
-
-    <div class="report-top">
-      <div>
-        <div class="eyebrow">Teacher Impact Report</div>
-        <div class="report-title">
-          10th I <span>/ 2026–27</span>
+        <div class="hero-kicker">
+            A tribute from Class 10th I
         </div>
-      </div>
 
-      <div class="report-code">
-        Evaluation type<br>
-        Student appreciation<br>
-        Status: priceless
-      </div>
-    </div>
+        <h1>
+            Happy<br>
+            <span class="gold">Teachers'</span><br>
+            Day!
+        </h1>
 
-    <div class="report-select-wrap">
-      <label class="report-select-label" for="reportSelect">
-        Select your name
-      </label>
+        <p class="hero-subtitle">
+            To the guiding lights of Army Public School,
+            Lal Bahadur Shastri Marg.
+        </p>
 
-      <div class="select-wrap">
-        <select class="report-select" id="reportSelect">
-          <option value="">Choose a teacher...</option>
-          <option value="shonali">Mrs. Shonali Saha</option>
-          <option value="ritesh">Mr. Ritesh Tiwari</option>
-          <option value="shalini">Mrs. Shalini Sinha</option>
-          <option value="ajay">Mr. Ajay Trivedi</option>
-          <option value="ariba">Ms. Ariba Ansari</option>
-          <option value="himanshu">Mr. Himanshu</option>
-        </select>
-      </div>
-    </div>
+        <p class="hero-description">
+            Thank you for your endless patience, dedication,
+            and for inspiring us. We might not say it enough,
+            but we appreciate everything you do for us.
+        </p>
 
-    <div class="report-empty" id="reportEmpty">
-      Choose a name.<br>
-      <span>Your report is waiting.</span>
-    </div>
+        <div class="hero-bottom">
 
-    <div class="report-content" id="reportContent">
+            <a href="#teachers" class="explore">
+                Meet your teachers
+                <span>↓</span>
+            </a>
 
-      <div class="report-person">
-        <div class="report-avatar" id="reportAvatar">SS</div>
+            <div class="hero-note">
+                Six teachers · One unforgettable class
+            </div>
 
-        <div>
-          <h3 id="reportName"></h3>
-          <p id="reportSubject"></p>
         </div>
-      </div>
-
-      <div class="scores" id="scores"></div>
-
-      <div class="verdict">
-        <div class="verdict-label">Final verdict</div>
-
-        <div class="verdict-title" id="verdictTitle"></div>
-
-        <p class="verdict-message" id="verdictMessage"></p>
-      </div>
 
     </div>
 
-  </div>
-</div>
+</section>
 
-  </section>  <section class="final">
-    <div class="container">  <div class="final-rule reveal"></div>
 
-  <div class="reveal">
-    <span class="eyebrow">Before we say goodbye</span>
-  </div>
+<!-- =====================================================
+     TEACHERS
+===================================================== -->
 
-  <h2 class="reveal">
-    Some formulas we'll forget.<br>
-    Some chapters we'll outgrow.<br>
-    <span>But the people who taught us—</span><br>
-    we'll remember.
-  </h2>
+<section class="section" id="teachers">
 
-  <p class="final-copy reveal">
-    A good teacher can inspire hope, ignite the imagination,
-    and instill a love of learning.
-  </p>
+    <div class="section-intro reveal">
 
-  <button class="last-button reveal" id="lastButton">
-    One Last Thing
-  </button>
+        <div class="section-index">
+            01 / The people behind the lessons
+        </div>
 
-  <div class="final-secret" id="finalSecret">
-    <p>
-      We may forget a formula, a definition, or even a chapter someday.
-      But we will remember the people who patiently stood beside us
-      while we learned them.
-      <br><br>
-      <span style="color:var(--gold2)">
-        Thank you for being part of our story.
-      </span>
-    </p>
-  </div>
+        <h2 class="section-title">
+            More than<br>just subjects.
+        </h2>
 
-</div>
+        <p class="section-description">
+            Every chapter we studied came with a voice,
+            a story, a warning, a laugh, or a memory.
+            These are the people who made 10th I what it was.
+        </p>
 
-  </section></div><!-- =========================================================
-     TEACHER CHAPTERS
-========================================================= --><!-- SHONALI --><section class="teacher-page" id="teacher-shonali" data-teacher="shonali">
-  <div class="container"><a class="back-home" href="#teachers">← Back to our teachers</a>
-
-<div class="teacher-hero">
-  <div>
-    <div class="teacher-page-number">CHAPTER 01 / THE STORYTELLER</div>
-
-    <h1>
-      Mrs. Shonali<br>
-      <span>Saha.</span>
-    </h1>
-
-    <div class="page-subject">Class Teacher · English</div>
-
-    <p class="page-description">
-      The sweetest voice in the middle of our chaos.
-      A storyteller who could turn a lesson into a world,
-      and a teacher who somehow kept believing in us even
-      when we weren't particularly easy to believe in.
-    </p>
-  </div>
-
-  <div class="subject-symbol">Aa</div>
-</div>
-
-<div class="dialogue-section">
-  <div class="dialogue-box reveal">
-    <div class="dialogue-label">Commonly heard in 10th I</div>
-
-    <div class="dialogue-main">
-      “Gadhe hai sabke sab.”
     </div>
 
-    <div class="dialogue-caption">
-      Followed, sooner or later, by the question: “Samajh mein aaya?”
-    </div>
-  </div>
-</div>
 
-<div class="personality">
-  <div class="personality-grid">
+    <div class="teacher-list">
 
-    <div class="reveal">
-      <div class="eyebrow">What we see</div>
 
-      <h2 class="personality-title">
-        Sweet.<br>
-        <span>Motivational.</span><br>
-        A storyteller.
-      </h2>
-    </div>
+        <!-- SHONALI -->
 
-    <div class="reveal">
-      <p class="personality-copy">
-        Behind the “bunch of donkeys” is someone who genuinely wants
-        every student to understand, improve and believe that they can
-        do better. You didn't just teach English to us. You gave stories
-        a voice and made the classroom feel like somewhere we could grow.
-      </p>
+        <a href="shonali.html" class="teacher reveal">
 
-      <div class="traits">
-        <span class="trait">Sweetest</span>
-        <span class="trait">Storyteller</span>
-        <span class="trait">Motivational</span>
-        <span class="trait">Our Anchor</span>
-      </div>
-    </div>
+            <div class="teacher-number">
+                01
+            </div>
 
-  </div>
-</div>
+            <div class="teacher-info">
 
-<div class="ncert-section">
-  <div class="ncert-card reveal">
-    <div>
-      <div class="ncert-label">Beyond First Flight</div>
-      <h2>Stories<br>stay.</h2>
-    </div>
+                <div class="teacher-name">
+                    Mrs. Shonali Saha
+                </div>
 
-    <div class="ncert-content">
-      English taught us vocabulary, literature and expression.
-      But the most important lesson was that <strong>stories can change
-      the way we see people, situations and ourselves.</strong>
-      <br><br>
-      From the worlds of <strong>First Flight</strong> to the characters
-      we encountered in literature, you reminded us that a chapter
-      isn't just something to finish before an exam.
-    </div>
-  </div>
-</div>
+                <div class="teacher-subject">
+                    English · Class Teacher
+                </div>
 
-<TeacherReportInline teacher="shonali"></TeacherReportInline>
+            </div>
 
-  </div>
-</section><!-- RITESH --><section class="teacher-page" id="teacher-ritesh" data-teacher="ritesh">
-  <div class="container"><a class="back-home" href="#teachers">← Back to our teachers</a>
+            <div class="teacher-action">
 
-<div class="teacher-hero">
-  <div>
-    <div class="teacher-page-number">CHAPTER 02 / THE PROBLEM SOLVER</div>
+                <span>Enter story</span>
 
-    <h1>
-      Mr. Ritesh<br>
-      <span>Tiwari.</span>
-    </h1>
+                <div class="teacher-arrow">
+                    ↗
+                </div>
 
-    <div class="page-subject">Mathematics</div>
+            </div>
 
-    <p class="page-description">
-      Cool enough to make mathematics feel manageable,
-      hardworking enough to never let us escape a problem
-      without understanding it.
-    </p>
-  </div>
+        </a>
 
-  <div class="subject-symbol">π</div>
-</div>
 
-<div class="dialogue-section">
-  <div class="dialogue-box reveal">
-    <div class="dialogue-label">The Ritesh Sir collection</div>
+        <!-- RITESH -->
 
-    <div class="dialogue-main">
-      “Daal bhaat khao aur so jao.”
-    </div>
+        <a href="ritesh.html" class="teacher reveal">
 
-    <div class="dialogue-caption">
-      And somehow the next sentence could still be about boards.
-    </div>
-  </div>
-</div>
+            <div class="teacher-number">
+                02
+            </div>
 
-<div class="personality">
-  <div class="personality-grid">
+            <div class="teacher-info">
 
-    <div class="reveal">
-      <div class="eyebrow">What we see</div>
+                <div class="teacher-name">
+                    Mr. Ritesh Tiwari
+                </div>
 
-      <h2 class="personality-title">
-        Cool.<br>
-        <span>Hardworking.</span><br>
-        Relentless.
-      </h2>
-    </div>
+                <div class="teacher-subject">
+                    Mathematics
+                </div>
 
-    <div class="reveal">
-      <p class="personality-copy">
-        You could joke with us one moment and remind us about boards
-        the next. From checking those five questions to reminding us
-        that our future isn't going to calculate itself, you pushed
-        us to take the subject seriously without making every class
-        feel heavy.
-      </p>
+            </div>
 
-      <div class="traits">
-        <span class="trait">Cool</span>
-        <span class="trait">Hardworking</span>
-        <span class="trait">Problem Solver</span>
-        <span class="trait">Board Watch</span>
-      </div>
-    </div>
+            <div class="teacher-action">
 
-  </div>
-</div>
+                <span>Enter story</span>
 
-<div class="ncert-section">
-  <div class="ncert-card reveal">
-    <div>
-      <div class="ncert-label">NCERT Mathematics</div>
-      <h2>There is<br>always a way.</h2>
-    </div>
+                <div class="teacher-arrow">
+                    ↗
+                </div>
 
-    <div class="ncert-content">
-      From <strong>Real Numbers</strong> and <strong>Triangles</strong>
-      to <strong>Probability</strong>, mathematics often gives us a
-      problem before giving us an answer.
-      <br><br>
-      You taught us the more important part:
-      <strong>don't panic when the answer isn't obvious. Work through it.</strong>
-    </div>
-  </div>
-</div>
+            </div>
 
-<TeacherReportInline teacher="ritesh"></TeacherReportInline>
+        </a>
 
-  </div>
-</section><!-- SHALINI --><section class="teacher-page" id="teacher-shalini" data-teacher="shalini">
-  <div class="container"><a class="back-home" href="#teachers">← Back to our teachers</a>
 
-<div class="teacher-hero">
-  <div>
-    <div class="teacher-page-number">CHAPTER 03 / THE CONNECTION</div>
+        <!-- SHALINI -->
 
-    <h1>
-      Mrs. Shalini<br>
-      <span>Sinha.</span>
-    </h1>
+        <a href="shalini.html" class="teacher reveal">
 
-    <div class="page-subject">Social Science</div>
+            <div class="teacher-number">
+                03
+            </div>
 
-    <p class="page-description">
-      Imaginative enough to turn history into a story,
-      and observant enough to notice whether the class was
-      actually listening.
-    </p>
-  </div>
+            <div class="teacher-info">
 
-  <div class="subject-symbol">∞</div>
-</div>
+                <div class="teacher-name">
+                    Mrs. Shalini Sinha
+                </div>
 
-<div class="dialogue-section">
-  <div class="dialogue-box reveal">
-    <div class="dialogue-label">Connection check</div>
+                <div class="teacher-subject">
+                    Social Science
+                </div>
 
-    <div class="dialogue-main">
-      “Kya tum mujhse connect kar pa rahe ho?”
-    </div>
+            </div>
 
-    <div class="dialogue-caption">
-      Yes, Ma'am. We were. Even when the bottle was apparently more interesting.
-    </div>
-  </div>
-</div>
+            <div class="teacher-action">
 
-<div class="personality">
-  <div class="personality-grid">
+                <span>Enter story</span>
 
-    <div class="reveal">
-      <div class="eyebrow">What we see</div>
+                <div class="teacher-arrow">
+                    ↗
+                </div>
 
-      <h2 class="personality-title">
-        Imaginative.<br>
-        <span>Curious.</span><br>
-        A storyteller.
-      </h2>
-    </div>
+            </div>
 
-    <div class="reveal">
-      <p class="personality-copy">
-        You made Social Science feel less like memorising information
-        and more like understanding people, places and the reasons
-        behind the world around us. You didn't just ask whether we
-        understood the chapter—you asked whether we were actually
-        connected to it.
-      </p>
+        </a>
 
-      <div class="traits">
-        <span class="trait">Imaginative</span>
-        <span class="trait">Storyteller</span>
-        <span class="trait">Observant</span>
-        <span class="trait">Connection Builder</span>
-      </div>
+
+        <!-- AJAY -->
+
+        <a href="ajay.html" class="teacher reveal">
+
+            <div class="teacher-number">
+                04
+            </div>
+
+            <div class="teacher-info">
+
+                <div class="teacher-name">
+                    Mr. Ajay Trivedi
+                </div>
+
+                <div class="teacher-subject">
+                    Hindi · Sparsh
+                </div>
+
+            </div>
+
+            <div class="teacher-action">
+
+                <span>Enter story</span>
+
+                <div class="teacher-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- ARIBA -->
+
+        <a href="ariba.html" class="teacher reveal">
+
+            <div class="teacher-number">
+                05
+            </div>
+
+            <div class="teacher-info">
+
+                <div class="teacher-name">
+                    Ms. Ariba Ansari
+                </div>
+
+                <div class="teacher-subject">
+                    Biology · Chemistry
+                </div>
+
+            </div>
+
+            <div class="teacher-action">
+
+                <span>Enter story</span>
+
+                <div class="teacher-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- HIMANSHU -->
+
+        <a href="himanshu.html" class="teacher reveal">
+
+            <div class="teacher-number">
+                06
+            </div>
+
+            <div class="teacher-info">
+
+                <div class="teacher-name">
+                    Mr. Himanshu
+                </div>
+
+                <div class="teacher-subject">
+                    Physics
+                </div>
+
+            </div>
+
+            <div class="teacher-action">
+
+                <span>Enter story</span>
+
+                <div class="teacher-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+        </a>
+
     </div>
 
-  </div>
-</div>
+</section>
 
-<div class="ncert-section">
-  <div class="ncert-card reveal">
-    <div>
-      <div class="ncert-label">NCERT Social Science</div>
-      <h2>History is<br>people.</h2>
+
+<!-- =====================================================
+     REPORT CARD
+===================================================== -->
+
+<section class="report-section" id="report">
+
+    <div class="report-heading reveal">
+
+        <div class="report-pretitle">
+            02 / One last thing
+        </div>
+
+        <h2>
+            We couldn't<br>
+            give you marks.
+        </h2>
+
+        <p>
+            So we made our own report card.
+            Select a teacher and see what 10th I
+            really thinks about them.
+        </p>
+
     </div>
 
-    <div class="ncert-content">
-      Chapters like <strong>Nationalism in India</strong>,
-      <strong>Power Sharing</strong> and <strong>Resources and Development</strong>
-      aren't just names to remember.
-      <br><br>
-      They are stories about how people live, decide, struggle,
-      build and change. <strong>You made those stories feel closer to us.</strong>
-    </div>
-  </div>
-</div>
 
-<TeacherReportInline teacher="shalini"></TeacherReportInline>
+    <div class="report-selector reveal">
 
-  </div>
-</section><!-- AJAY --><section class="teacher-page" id="teacher-ajay" data-teacher="ajay">
-  <div class="container"><a class="back-home" href="#teachers">← Back to our teachers</a>
+        <label
+            class="selector-label"
+            for="teacherSelect"
+        >
+            Select your teacher
+        </label>
 
-<div class="teacher-hero">
-  <div>
-    <div class="teacher-page-number">CHAPTER 04 / THE LANGUAGE OF US</div>
+        <div class="select-wrap">
 
-    <h1>
-      Mr. Ajay<br>
-      <span>Trivedi.</span>
-    </h1>
+            <select id="teacherSelect">
 
-    <div class="page-subject">Hindi · स्पर्श · संचयन</div>
+                <option value="shonali">
+                    Mrs. Shonali Saha
+                </option>
 
-    <p class="page-description">
-      Slightly strict, genuinely connected and somehow capable of
-      making an ordinary classroom exchange sound like part of a
-      story we'd remember.
-    </p>
-  </div>
+                <option value="ritesh">
+                    Mr. Ritesh Tiwari
+                </option>
 
-  <div class="subject-symbol">अ</div>
-</div>
+                <option value="shalini">
+                    Mrs. Shalini Sinha
+                </option>
 
-<div class="dialogue-section">
-  <div class="dialogue-box reveal">
-    <div class="dialogue-label">The classroom dictionary</div>
+                <option value="ajay">
+                    Mr. Ajay Trivedi
+                </option>
 
-    <div class="dialogue-main">
-      “Devi bataiye... mat karo...?”
-    </div>
+                <option value="ariba">
+                    Ms. Ariba Ansari
+                </option>
 
-    <div class="dialogue-caption">
-      Featuring: Didi. Bhaisahab. And whatever name the moment required.
-    </div>
-  </div>
-</div>
+                <option value="himanshu">
+                    Mr. Himanshu
+                </option>
 
-<div class="personality">
-  <div class="personality-grid">
+            </select>
 
-    <div class="reveal">
-      <div class="eyebrow">What we see</div>
+            <div class="select-arrow">
+                ↓
+            </div>
 
-      <h2 class="personality-title">
-        Connected.<br>
-        <span>Funny.</span><br>
-        Just strict enough.
-      </h2>
+        </div>
+
     </div>
 
-    <div class="reveal">
-      <p class="personality-copy">
-        You connect with students in a way that makes the classroom
-        feel less distant. There is a little strictness when we need it,
-        plenty of humour when we least expect it, and a way of explaining
-        Hindi that reminds us that language carries memories, culture
-        and emotion.
-      </p>
 
-      <div class="traits">
-        <span class="trait">Student Connected</span>
-        <span class="trait">Funny</span>
-        <span class="trait">Strict</span>
-        <span class="trait">Literary</span>
-      </div>
+    <div class="report-panel reveal" id="reportPanel">
+
+        <div class="report-top">
+
+            <div>
+
+                <div class="report-type">
+                    Teacher Report / 10th I
+                </div>
+
+                <div class="report-class">
+                    Army Public School · Lal Bahadur Shastri Marg
+                </div>
+
+            </div>
+
+            <div class="report-status">
+                Final evaluation
+            </div>
+
+        </div>
+
+
+        <div class="report-name" id="reportName">
+            Mrs. Shonali Saha
+        </div>
+
+        <div class="report-subject" id="reportSubject">
+            English · Class Teacher
+        </div>
+
+
+        <div class="metrics" id="metrics">
+
+            <!-- JS fills this -->
+
+        </div>
+
+
+        <div class="final-result">
+
+            <div>
+
+                <div class="final-label">
+                    Overall result
+                </div>
+
+                <div
+                    class="final-word"
+                    id="finalWord"
+                >
+                    INCOMPARABLE
+                </div>
+
+            </div>
+
+            <div
+                class="final-mark"
+                id="finalMark"
+            >
+                Some teachers cannot be measured
+                in marks.
+            </div>
+
+        </div>
+
+
+        <div
+            class="report-remark"
+            id="reportRemark"
+        >
+            “The person who made English,
+            stories and 10th I feel a little more
+            like home.”
+        </div>
+
     </div>
 
-  </div>
-</div>
+</section>
 
-<div class="ncert-section">
-  <div class="ncert-card reveal">
-    <div>
-      <div class="ncert-label">स्पर्श · संचयन</div>
-      <h2>शब्दों से<br>आगे.</h2>
+
+<!-- =====================================================
+     CLOSING
+===================================================== -->
+
+<section class="closing reveal">
+
+    <div class="closing-small">
+        03 / The final verdict
     </div>
 
-    <div class="ncert-content">
-      From the poems and prose of <strong>स्पर्श</strong> to the
-      stories of <strong>संचयन</strong>, Hindi gave us more than
-      vocabulary.
-      <br><br>
-      It gave us voices, emotions and perspectives.
-      <strong>You helped us stay connected to that world.</strong>
-    </div>
-  </div>
-</div>
+    <h2>
+        You didn't just teach us.
+        <br>
+        You became part of
+        <span>our story.</span>
+    </h2>
 
-<TeacherReportInline teacher="ajay"></TeacherReportInline>
-
-  </div>
-</section><!-- ARIBA --><section class="teacher-page" id="teacher-ariba" data-teacher="ariba">
-  <div class="container"><a class="back-home" href="#teachers">← Back to our teachers</a>
-
-<div class="teacher-hero">
-  <div>
-    <div class="teacher-page-number">CHAPTER 05 / THE ROASTER</div>
-
-    <h1>
-      Ms. Ariba<br>
-      <span>Ansari.</span>
-    </h1>
-
-    <div class="page-subject">Biology · Chemistry</div>
-
-    <p class="page-description">
-      Strict when she needs to be. Loving when we need it.
-      And somehow able to roast someone in almost every sentence.
-    </p>
-  </div>
-
-  <div class="subject-symbol">DNA</div>
-</div>
-
-<div class="dialogue-section">
-  <div class="dialogue-box reveal">
-    <div class="dialogue-label">Ariba Ma'am's unofficial soundtrack</div>
-
-    <div class="dialogue-main">
-      “Jaldi wapas aao apne Lala Land se.”
+    <div class="closing-signature">
+        — Class 10th I
     </div>
 
-    <div class="dialogue-caption">
-      Other certified classics include: “Shut up.” · “Tum kaun ho?” · and the legendary roasts.
-    </div>
-  </div>
-</div>
+</section>
 
-<div class="personality">
-  <div class="personality-grid">
 
-    <div class="reveal">
-      <div class="eyebrow">What we see</div>
-
-      <h2 class="personality-title">
-        Strict.<br>
-        <span>Loving.</span><br>
-        Absolutely ruthless.
-      </h2>
-    </div>
-
-    <div class="reveal">
-      <p class="personality-copy">
-        Your roasting has practically become a classroom language of
-        its own. But underneath every “shut up” and every trip back from
-        Lala Land is someone who wants us to pay attention, understand
-        the science and do better.
-        <br><br>
-        You make strictness feel strangely affectionate.
-      </p>
-
-      <div class="traits">
-        <span class="trait">Strict</span>
-        <span class="trait">Loving</span>
-        <span class="trait">Roaster</span>
-        <span class="trait">Science Brain</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="ncert-section">
-  <div class="ncert-card reveal">
-    <div>
-      <div class="ncert-label">Biology · Chemistry</div>
-      <h2>Life is<br>chemistry.</h2>
-    </div>
-
-    <div class="ncert-content">
-      From <strong>Life Processes</strong> and <strong>Control and Coordination</strong>
-      to <strong>Chemical Reactions and Equations</strong>, science
-      can look complicated before it clicks.
-      <br><br>
-      You made that journey feel like discovery—and occasionally
-      reminded us that <strong>Lala Land is not a valid scientific location.</strong>
-    </div>
-  </div>
-</div>
-
-<TeacherReportInline teacher="ariba"></TeacherReportInline>
-
-  </div>
-</section><!-- HIMANSHU --><section class="teacher-page" id="teacher-himanshu" data-teacher="himanshu">
-  <div class="container"><a class="back-home" href="#teachers">← Back to our teachers</a>
-
-<div class="teacher-hero">
-  <div>
-    <div class="teacher-page-number">CHAPTER 06 / THE STORY BEHIND THE FORMULA</div>
-
-    <h1>
-      Mr.<br>
-      <span>Himanshu.</span>
-    </h1>
-
-    <div class="page-subject">Physics</div>
-
-    <p class="page-description">
-      Calm. Focused. Patient enough to explain the idea behind
-      the formula instead of simply asking us to remember it.
-    </p>
-  </div>
-
-  <div class="subject-symbol">λ</div>
-</div>
-
-<div class="dialogue-section">
-  <div class="dialogue-box reveal">
-    <div class="dialogue-label">Attention requested</div>
-
-    <div class="dialogue-main">
-      “Idhar dhyan de beta.”
-    </div>
-
-    <div class="dialogue-caption">
-      Followed by: “Baccha sun lo.” And occasionally a reminder about games.
-    </div>
-  </div>
-</div>
-
-<div class="personality">
-  <div class="personality-grid">
-
-    <div class="reveal">
-      <div class="eyebrow">What we see</div>
-
-      <h2 class="personality-title">
-        Calm.<br>
-        <span>Focused.</span><br>
-        A storyteller.
-      </h2>
-    </div>
-
-    <div class="reveal">
-      <p class="personality-copy">
-        You have a calm way of teaching that makes difficult ideas
-        feel less intimidating. Instead of leaving formulas floating
-        on a page, you connect them to stories, situations and things
-        we can actually imagine.
-        <br><br>
-        And yes, we heard the occasional reminder that maybe
-        studying should happen before the games.
-      </p>
-
-      <div class="traits">
-        <span class="trait">Calm</span>
-        <span class="trait">Focused</span>
-        <span class="trait">Storyteller</span>
-        <span class="trait">Concept First</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="ncert-section">
-  <div class="ncert-card reveal">
-    <div>
-      <div class="ncert-label">NCERT Physics</div>
-      <h2>Make the<br>formula move.</h2>
-    </div>
-
-    <div class="ncert-content">
-      From <strong>Light – Reflection and Refraction</strong>
-      to <strong>Electricity</strong> and the <strong>Laws of Motion</strong>,
-      physics becomes easier when we can imagine what is happening.
-      <br><br>
-      You connected the equation to the story behind it.
-      <strong>That is the part we will carry beyond the exam.</strong>
-    </div>
-  </div>
-</div>
-
-<TeacherReportInline teacher="himanshu"></TeacherReportInline>
-
-  </div>
-</section><!-- =========================================================
+<!-- =====================================================
      FOOTER
-========================================================= --><footer>
-  <div class="container footer-inner">
-    <span>For our teachers, with gratitude.</span>
-    <span>Class 10th I · Batch of 2026–27</span>
-  </div>
-</footer></main><script>
-/* ============================================================
-   TEACHER DATA
-============================================================ */
+===================================================== -->
+
+<footer>
+
+    <div class="footer-quote">
+        “A good teacher can inspire hope, ignite the imagination,
+        and instill a love of learning.”
+    </div>
+
+    <div class="footer-sign">
+        With deepest respect and gratitude,<br>
+        Class 10th I
+    </div>
+
+    <div class="footer-location">
+        Army Public School · Lal Bahadur Shastri Marg
+    </div>
+
+</footer>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   TEACHER REPORT DATA
+========================================================= */
 
 const teacherData = {
 
-  shonali:{
-    name:"Mrs. Shonali Saha",
-    subject:"Class Teacher & English",
-    initials:"SS",
-    verdict:"Irreplaceable",
-    message:"For being our anchor, our storyteller, and the person who kept believing in us.",
-    scores:[
-      ["Patience","∞ / 10",100],
-      ["Storytelling","11 / 10",100],
-      ["Motivation","10 / 10",100],
-      ["Handling 10th I","∞ / 10",100],
-      ["Kindness","11 / 10",100],
-      ["Making Us Think","10 / 10",100]
-    ]
-  },
+    shonali: {
 
-  ritesh:{
-    name:"Mr. Ritesh Tiwari",
-    subject:"Mathematics",
-    initials:"RT",
-    verdict:"Problem Solver Extraordinaire",
-    message:"For making difficult problems feel solvable and reminding us that boards are, in fact, watching.",
-    scores:[
-      ["Problem Solving","10 / 10",100],
-      ["Hard Work","11 / 10",100],
-      ["Concept Clarity","10 / 10",100],
-      ["Formula Survival","∞ / 10",100],
-      ["Board Preparation","10 / 10",100],
-      ["Coolness","11 / 10",100]
-    ]
-  },
+        name: "Mrs. Shonali Saha",
 
-  shalini:{
-    name:"Mrs. Shalini Sinha",
-    subject:"Social Science",
-    initials:"SS",
-    verdict:"Connection Established",
-    message:"For turning chapters into stories and making us look at the world differently.",
-    scores:[
-      ["Storytelling","11 / 10",100],
-      ["Imagination","∞ / 10",100],
-      ["Connection","10 / 10",100],
-      ["History Comes Alive","11 / 10",100],
-      ["Geography Adventures","10 / 10",100],
-      ["Classroom Awareness","∞ / 10",100]
-    ]
-  },
+        subject: "English · Class Teacher",
 
-  ajay:{
-    name:"Mr. Ajay Trivedi",
-    subject:"Hindi · स्पर्श · संचयन",
-    initials:"AT",
-    verdict:"शब्दों में अमर",
-    message:"For connecting with us, making us laugh, and reminding us that language carries feeling.",
-    scores:[
-      ["Student Connection","11 / 10",100],
-      ["हास्य","10 / 10",100],
-      ["साहित्य प्रेम","11 / 10",100],
-      ["Strictness","10 / 10",100],
-      ["Life Lessons","∞ / 10",100],
-      ["देवी-बताइए Energy","∞ / 10",100]
-    ]
-  },
+        metrics: [
+            ["Storytelling", 99],
+            ["Motivation", 100],
+            ["Patience", 98],
+            ["Chaos Management", 100]
+        ],
 
-  ariba:{
-    name:"Ms. Ariba Ansari",
-    subject:"Biology & Chemistry",
-    initials:"AA",
-    verdict:"Scientifically Unforgettable",
-    message:"For every roast, every correction, and every moment that showed you cared more than you let us admit.",
-    scores:[
-      ["Roasting Ability","∞ / 10",100],
-      ["Concept Clarity","10 / 10",100],
-      ["Strictness","11 / 10",100],
-      ["Loving Underneath","∞ / 10",100],
-      ["Scientific Curiosity","10 / 10",100],
-      ["Lala Land Recovery","11 / 10",100]
-    ]
-  },
+        final: "INCOMPARABLE",
 
-  himanshu:{
-    name:"Mr. Himanshu",
-    subject:"Physics",
-    initials:"H",
-    verdict:"Concepts That Stay",
-    message:"For turning formulas into stories and helping difficult ideas finally click.",
-    scores:[
-      ["Calmness","10 / 10",100],
-      ["Focus","11 / 10",100],
-      ["Storytelling","10 / 10",100],
-      ["Concept Clarity","11 / 10",100],
-      ["Physics Intuition","∞ / 10",100],
-      ["Games Warning","10 / 10",100]
-    ]
-  }
+        mark:
+            "Some teachers cannot be measured in marks.",
+
+        remark:
+            "“The person who made English, stories and 10th I feel a little more like home.”"
+    },
+
+
+    ritesh: {
+
+        name: "Mr. Ritesh Tiwari",
+
+        subject: "Mathematics",
+
+        metrics: [
+            ["Mathematics", 100],
+            ["Board Motivation", 100],
+            ["Hard Work", 99],
+            ["Unexpected Comedy", 98]
+        ],
+
+        final: "LEGENDARY",
+
+        mark:
+            "Strict on the outside. Invested in our future on the inside.",
+
+        remark:
+            "“Five questions, board preparation and somehow... a lot of memories.”"
+    },
+
+
+    shalini: {
+
+        name: "Mrs. Shalini Sinha",
+
+        subject: "Social Science",
+
+        metrics: [
+            ["Storytelling", 100],
+            ["Student Connection", 99],
+            ["Making History Alive", 100],
+            ["Classroom Energy", 98]
+        ],
+
+        final: "UNFORGETTABLE",
+
+        mark:
+            "Because chapters become memories when someone makes them come alive.",
+
+        remark:
+            "“Somehow, history stopped feeling like history and started feeling like a story.”"
+    },
+
+
+    ajay: {
+
+        name: "Mr. Ajay Trivedi",
+
+        subject: "Hindi · Sparsh",
+
+        metrics: [
+            ["Student Connection", 100],
+            ["Humour", 98],
+            ["Life Lessons", 99],
+            ["Discipline", 100]
+        ],
+
+        final: "INCOMPARABLE",
+
+        mark:
+            "A little strict. A lot caring. Completely unforgettable.",
+
+        remark:
+            "“Some lessons were written in Sparsh. Others were written by you.”"
+    },
+
+
+    ariba: {
+
+        name: "Ms. Ariba Ansari",
+
+        subject: "Biology · Chemistry",
+
+        metrics: [
+            ["Science", 100],
+            ["Focus Recovery", 99],
+            ["Roasting", 100],
+            ["Lala Land Detection", 100]
+        ],
+
+        final: "ICONIC",
+
+        mark:
+            "For bringing 10th I back to Earth, one roast at a time.",
+
+        remark:
+            "“Strict, loving, and somehow always aware when someone had left for Lala Land.”"
+    },
+
+
+    himanshu: {
+
+        name: "Mr. Himanshu",
+
+        subject: "Physics",
+
+        metrics: [
+            ["Concept Clarity", 100],
+            ["Calmness", 99],
+            ["Storytelling", 98],
+            ["Focus Recovery", 97]
+        ],
+
+        final: "UNFORGETTABLE",
+
+        mark:
+            "Complex physics became easier when you told us the story behind it.",
+
+        remark:
+            "“Idhar dhyan de beta — and somehow, the lesson stayed with us.”"
+    }
+
 };
 
 
-/* ============================================================
-   INLINE REPORT COMPONENT
-   Custom HTML element keeps every teacher chapter self-contained.
-============================================================ */
+/* =========================================================
+   REPORT CARD
+========================================================= */
 
-class TeacherReportInline extends HTMLElement{
+const teacherSelect =
+    document.getElementById("teacherSelect");
 
-  connectedCallback(){
+const reportPanel =
+    document.getElementById("reportPanel");
 
-    const teacher=this.getAttribute("teacher");
-    const data=teacherData[teacher];
+const reportName =
+    document.getElementById("reportName");
 
-    if(!data)return;
+const reportSubject =
+    document.getElementById("reportSubject");
 
-    this.innerHTML=`
-      <section class="impact">
-        <div class="impact-head reveal">
-          <span class="eyebrow">Your personal assessment</span>
-          <h2>
-            We know you graded us.<br>
-            <span>Here's ours.</span>
-          </h2>
-        </div>
+const metrics =
+    document.getElementById("metrics");
 
-        <div class="report reveal">
+const finalWord =
+    document.getElementById("finalWord");
 
-          <div class="report-top">
-            <div>
-              <div class="eyebrow">Teacher Impact Report</div>
-              <div class="report-title">
-                ${data.name}
-              </div>
-            </div>
+const finalMark =
+    document.getElementById("finalMark");
 
-            <div class="report-code">
-              Class 10th I<br>
-              2026–27<br>
-              Final assessment
-            </div>
-          </div>
-
-          <div class="report-content show">
-            <div class="report-person">
-              <div class="report-avatar">${data.initials}</div>
-              <div>
-                <h3>${data.name}</h3>
-                <p>${data.subject}</p>
-              </div>
-            </div>
-
-            <div class="scores">
-              ${data.scores.map(score=>`
-                <div class="score">
-                  <div class="score-top">
-                    <span>${score[0]}</span>
-                    <span class="score-value">${score[1]}</span>
-                  </div>
-                  <div class="score-track">
-                    <div class="score-fill" data-width="${score[2]}"></div>
-                  </div>
-                </div>
-              `).join("")}
-            </div>
-
-            <div class="verdict">
-              <div class="verdict-label">Final verdict</div>
-              <div class="verdict-title">${data.verdict}</div>
-              <p class="verdict-message">${data.message}</p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    `;
-
-    requestAnimationFrame(()=>{
-      this.querySelectorAll(".score-fill").forEach(fill=>{
-        fill.style.width=fill.dataset.width+"%";
-      });
-    });
-  }
-}
-
-customElements.define("teacherreportinline",TeacherReportInline);
+const reportRemark =
+    document.getElementById("reportRemark");
 
 
-/* ============================================================
-   LOADER
-============================================================ */
+function renderReport(key) {
 
-window.addEventListener("load",()=>{
+    const teacher = teacherData[key];
 
-  setTimeout(()=>{
-    document.getElementById("loader").classList.add("done");
-    document.body.classList.remove("locked");
+    reportPanel.classList.remove("active");
 
-    revealInitial();
+    setTimeout(() => {
 
-    attemptMusic();
+        reportName.textContent =
+            teacher.name;
 
-    openingConfetti();
+        reportSubject.textContent =
+            teacher.subject;
 
-  },850);
+        finalWord.textContent =
+            teacher.final;
 
-});
+        finalMark.textContent =
+            teacher.mark;
+
+        reportRemark.textContent =
+            teacher.remark;
 
 
-/* ============================================================
-   MUSIC
-============================================================ */
+        metrics.innerHTML = "";
 
-const music=document.getElementById("bgMusic");
-const soundButton=document.getElementById("soundButton");
 
-let musicStarted=false;
+        teacher.metrics.forEach(
+            ([label, score]) => {
 
-function attemptMusic(){
+                const metric =
+                    document.createElement("div");
 
-  music.volume=.35;
+                metric.className =
+                    "metric";
 
-  const promise=music.play();
+                metric.innerHTML = `
 
-  if(promise!==undefined){
+                    <div class="metric-top">
 
-    promise.then(()=>{
-      musicStarted=true;
-      soundButton.classList.add("playing");
-    }).catch(()=>{
-      /*
-        Browser autoplay policy prevented audible autoplay.
-        First user interaction will attempt playback.
-      */
-    });
+                        <div class="metric-name">
+                            ${label}
+                        </div>
 
-  }
-}
+                        <div class="metric-score">
+                            ${score}%
+                        </div>
 
-function startMusic(){
+                    </div>
 
-  if(musicStarted)return;
+                    <div class="metric-track">
 
-  music.volume=.35;
+                        <div
+                            class="metric-fill"
+                            data-score="${score}"
+                        ></div>
 
-  music.play().then(()=>{
-    musicStarted=true;
-    soundButton.classList.add("playing");
-  }).catch(()=>{});
+                    </div>
+                `;
+
+                metrics.appendChild(metric);
+
+            }
+        );
+
+
+        requestAnimationFrame(() => {
+
+            reportPanel.classList.add("active");
+
+            document
+                .querySelectorAll(".metric-fill")
+                .forEach(bar => {
+
+                    const score =
+                        bar.dataset.score;
+
+                    setTimeout(() => {
+
+                        bar.style.width =
+                            `${score}%`;
+
+                    }, 80);
+
+                });
+
+        });
+
+    }, 180);
 
 }
 
-soundButton.addEventListener("click",()=>{
 
-  if(music.paused){
+teacherSelect.addEventListener(
+    "change",
+    () => {
 
-    startMusic();
-
-  }else{
-
-    music.pause();
-    soundButton.classList.remove("playing");
-
-  }
-
-});
-
-["pointerdown","touchstart","keydown"].forEach(event=>{
-
-  document.addEventListener(event,startMusic,{once:true,passive:true});
-
-});
-
-
-/* ============================================================
-   OPENING CONFETTI
-============================================================ */
-
-function openingConfetti(){
-
-  if(typeof confetti!=="function")return;
-
-  const end=Date.now()+1200;
-
-  function frame(){
-
-    confetti({
-      particleCount:3,
-      angle:60,
-      spread:50,
-      origin:{x:0,y:.7},
-      colors:["#e7bd63","#ffe4a0","#ffffff"],
-      gravity:1.15,
-      scalar:.7
-    });
-
-    confetti({
-      particleCount:3,
-      angle:120,
-      spread:50,
-      origin:{x:1,y:.7},
-      colors:["#e7bd63","#ffe4a0","#ffffff"],
-      gravity:1.15,
-      scalar:.7
-    });
-
-    if(Date.now()<end)requestAnimationFrame(frame);
-
-  }
-
-  frame();
-}
-
-
-/* ============================================================
-   REVEAL
-============================================================ */
-
-let revealObserver=new IntersectionObserver((entries,observer)=>{
-
-  entries.forEach(entry=>{
-
-    if(entry.isIntersecting){
-
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+        renderReport(
+            teacherSelect.value
+        );
 
     }
+);
 
-  });
 
-},{
-  threshold:.12,
-  rootMargin:"0px 0px -40px 0px"
-});
+/* =========================================================
+   INITIAL REPORT
+========================================================= */
 
-function observeReveals(){
+renderReport("shonali");
 
-  document.querySelectorAll(".reveal").forEach(el=>{
 
-    if(!el.classList.contains("visible")){
-      revealObserver.observe(el);
-    }
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-  });
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow =
+    document.getElementById(
+        "cursorGlow"
+    );
+
+
+if (window.matchMedia(
+    "(pointer:fine)"
+).matches) {
+
+    window.addEventListener(
+        "pointermove",
+        event => {
+
+            cursorGlow.style.left =
+                `${event.clientX}px`;
+
+            cursorGlow.style.top =
+                `${event.clientY}px`;
+
+        }
+    );
+
+} else {
+
+    cursorGlow.style.display =
+        "none";
 
 }
 
-function revealInitial(){
 
-  document.querySelectorAll("#homeView .reveal").forEach((el,index)=>{
-
-    setTimeout(()=>{
-      el.classList.add("visible");
-    },index*120);
-
-  });
-
-}
-
-observeReveals();
-
-
-/* ============================================================
-   HOME REPORT
-============================================================ */
-
-const reportSelect=document.getElementById("reportSelect");
-const reportEmpty=document.getElementById("reportEmpty");
-const reportContent=document.getElementById("reportContent");
-
-reportSelect.addEventListener("change",()=>{
-
-  const key=reportSelect.value;
-
-  if(!key){
-
-    reportEmpty.style.display="block";
-    reportContent.classList.remove("show");
-    return;
-
-  }
-
-  const data=teacherData[key];
-
-  document.getElementById("reportAvatar").textContent=data.initials;
-  document.getElementById("reportName").textContent=data.name;
-  document.getElementById("reportSubject").textContent=data.subject;
-  document.getElementById("verdictTitle").textContent=data.verdict;
-  document.getElementById("verdictMessage").textContent=data.message;
-
-  const scores=document.getElementById("scores");
-
-  scores.innerHTML=data.scores.map(score=>`
-
-    <div class="score">
-      <div class="score-top">
-        <span>${score[0]}</span>
-        <span class="score-value">${score[1]}</span>
-      </div>
-
-      <div class="score-track">
-        <div class="score-fill" data-width="${score[2]}"></div>
-      </div>
-    </div>
-
-  `).join("");
-
-  reportEmpty.style.display="none";
-
-  reportContent.classList.remove("show");
-
-  void reportContent.offsetWidth;
-
-  reportContent.classList.add("show");
-
-  setTimeout(()=>{
-
-    document.querySelectorAll("#reportContent .score-fill").forEach(fill=>{
-      fill.style.width=fill.dataset.width+"%";
-    });
-
-  },120);
-
-  if(typeof confetti==="function"){
-
-    confetti({
-      particleCount:80,
-      spread:70,
-      startVelocity:28,
-      origin:{x:.2,y:.7},
-      colors:["#e7bd63","#ffe4a0","#ffffff"],
-      scalar:.75
-    });
-
-    confetti({
-      particleCount:80,
-      spread:70,
-      startVelocity:28,
-      origin:{x:.8,y:.7},
-      colors:["#e7bd63","#ffe4a0","#ffffff"],
-      scalar:.75
-    });
-
-  }
-
-});
-
-
-/* ============================================================
-   FINAL BUTTON
-============================================================ */
-
-const lastButton=document.getElementById("lastButton");
-const finalSecret=document.getElementById("finalSecret");
-
-lastButton.addEventListener("click",()=>{
-
-  const open=finalSecret.classList.toggle("open");
-
-  lastButton.textContent=open
-    ?"Thank You, Teachers"
-    :"One Last Thing";
-
-  if(open && typeof confetti==="function"){
-
-    confetti({
-      particleCount:120,
-      spread:85,
-      startVelocity:28,
-      origin:{x:.5,y:.72},
-      colors:["#e7bd63","#ffe4a0","#ffffff"],
-      scalar:.8
-    });
-
-  }
-
-});
-
-
-/* ============================================================
-   ROUTER
-   Teacher chapters behave like dedicated pages while remaining
-   in the same HTML document.
-============================================================ */
-
-const homeView=document.getElementById("homeView");
-const teacherPages=document.querySelectorAll(".teacher-page");
-
-function showRoute(){
-
-  let hash=window.location.hash || "#home";
-
-  const teacher=document.querySelector(hash);
-
-  if(hash.startsWith("#teacher-") && teacher){
-
-    homeView.style.display="none";
-
-    teacherPages.forEach(page=>{
-      page.classList.remove("active");
-    });
-
-    teacher.classList.add("active");
-
-    window.scrollTo({
-      top:0,
-      behavior:"auto"
-    });
-
-    observeReveals();
-
-  }else{
-
-    homeView.style.display="block";
-
-    teacherPages.forEach(page=>{
-      page.classList.remove("active");
-    });
-
-    if(hash==="#teachers"){
-
-      setTimeout(()=>{
-        document.getElementById("teachers")?.scrollIntoView({
-          behavior:"smooth"
-        });
-      },30);
-
-    }else if(hash==="#report"){
-
-      setTimeout(()=>{
-        document.getElementById("report")?.scrollIntoView({
-          behavior:"smooth"
-        });
-      },30);
-
-    }else if(hash==="#story"){
-
-      setTimeout(()=>{
-        document.getElementById("story")?.scrollIntoView({
-          behavior:"smooth"
-        });
-      },30);
-
-    }else if(hash==="#class-teacher"){
-
-      setTimeout(()=>{
-        document.getElementById("class-teacher")?.scrollIntoView({
-          behavior:"smooth"
-        });
-      },30);
-
-    }else{
-
-      window.scrollTo({
-        top:0,
-        behavior:"auto"
-      });
-
-    }
-
-    observeReveals();
-
-  }
-
-}
-
-window.addEventListener("hashchange",showRoute);
-
-document.querySelectorAll("[data-home]").forEach(link=>{
-  link.addEventListener("click",()=>{
-    if(location.hash==="#home"){
-      window.scrollTo({top:0,behavior:"smooth"});
-    }
-  });
-});
-
-
-/* ============================================================
-   NAVIGATION CLICK HANDLING
-============================================================ */
-
-document.querySelectorAll(".back-home").forEach(link=>{
-
-  link.addEventListener("click",()=>{
-
-    setTimeout(()=>{
-      showRoute();
-    },20);
-
-  });
-
-});
-
-
-/* ============================================================
-   NAV BACKGROUND
-============================================================ */
-
-const nav=document.getElementById("nav");
-
-window.addEventListener("scroll",()=>{
-
-  nav.classList.toggle("scrolled",window.scrollY>40);
-
-},{passive:true});
-
-
-/* ============================================================
+/* =========================================================
    PARTICLES
-============================================================ */
+========================================================= */
 
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
+const canvas =
+    document.getElementById(
+        "particleCanvas"
+    );
 
-let W=window.innerWidth;
-let H=window.innerHeight;
-let particles=[];
+const ctx =
+    canvas.getContext("2d");
 
-function resize(){
+let particles = [];
 
-  W=window.innerWidth;
-  H=window.innerHeight;
+let width;
+let height;
 
-  const dpr=Math.min(window.devicePixelRatio||1,2);
 
-  canvas.width=W*dpr;
-  canvas.height=H*dpr;
+function resizeCanvas() {
 
-  canvas.style.width=W+"px";
-  canvas.style.height=H+"px";
+    width =
+        canvas.width =
+        window.innerWidth *
+        devicePixelRatio;
 
-  ctx.setTransform(dpr,0,0,dpr,0,0);
+    height =
+        canvas.height =
+        window.innerHeight *
+        devicePixelRatio;
 
-  createParticles();
+    canvas.style.width =
+        `${window.innerWidth}px`;
 
-}
+    canvas.style.height =
+        `${window.innerHeight}px`;
 
-function createParticles(){
+    ctx.setTransform(
+        devicePixelRatio,
+        0,
+        0,
+        devicePixelRatio,
+        0,
+        0
+    );
 
-  const count=W<600?42:82;
-
-  particles=Array.from({length:count},()=>({
-
-    x:Math.random()*W,
-    y:Math.random()*H,
-    r:Math.random()*1.5+.25,
-    vx:(Math.random()-.5)*.13,
-    vy:(Math.random()-.5)*.13,
-    alpha:Math.random()*.45+.06,
-    phase:Math.random()*Math.PI*2
-
-  }));
-
-}
-
-function animateParticles(time){
-
-  ctx.clearRect(0,0,W,H);
-
-  particles.forEach(p=>{
-
-    p.x+=p.vx;
-    p.y+=p.vy;
-
-    if(p.x<-10)p.x=W+10;
-    if(p.x>W+10)p.x=-10;
-    if(p.y<-10)p.y=H+10;
-    if(p.y>H+10)p.y=-10;
-
-    const pulse=Math.sin(time*.0007+p.phase)*.12;
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-
-    ctx.fillStyle=
-      `rgba(231,189,99,${Math.max(.025,p.alpha+pulse)})`;
-
-    ctx.fill();
-
-  });
-
-  requestAnimationFrame(animateParticles);
+    createParticles();
 
 }
 
-window.addEventListener("resize",resize);
 
-resize();
-requestAnimationFrame(animateParticles);
+function createParticles() {
 
+    particles = [];
 
-/* ============================================================
-   POINTER LIGHT ON GLASS
-============================================================ */
+    const amount =
+        window.innerWidth < 700
+            ? 35
+            : 65;
 
-document.addEventListener("pointermove",event=>{
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
 
-  if(window.matchMedia("(pointer:coarse)").matches)return;
+        particles.push({
 
-  const cards=document.querySelectorAll(
-    ".feature,.dialogue-box,.ncert-card,.report"
-  );
+            x:
+                Math.random() *
+                window.innerWidth,
 
-  cards.forEach(card=>{
+            y:
+                Math.random() *
+                window.innerHeight,
 
-    const rect=card.getBoundingClientRect();
+            radius:
+                Math.random() *
+                1.4 +
+                0.25,
 
-    if(
-      event.clientX>=rect.left &&
-      event.clientX<=rect.right &&
-      event.clientY>=rect.top &&
-      event.clientY<=rect.bottom
-    ){
+            speed:
+                Math.random() *
+                0.25 +
+                0.04,
 
-      const x=event.clientX-rect.left;
-      const y=event.clientY-rect.top;
+            drift:
+                (Math.random() - 0.5) *
+                0.16,
 
-      card.style.background=`
-        radial-gradient(
-          circle at ${x}px ${y}px,
-          rgba(231,189,99,.07),
-          rgba(255,255,255,.045) 32%,
-          rgba(255,255,255,.025) 75%
-        )
-      `;
+            opacity:
+                Math.random() *
+                0.35 +
+                0.08
 
-    }else{
-
-      card.style.background="";
+        });
 
     }
 
-  });
-
-});
-
-
-/* ============================================================
-   INITIAL ROUTE
-============================================================ */
-
-if(!location.hash){
-  history.replaceState(null,"","#home");
 }
 
-showRoute();
 
-</script></body>
+function animateParticles() {
+
+    ctx.clearRect(
+        0,
+        0,
+        window.innerWidth,
+        window.innerHeight
+    );
+
+
+    particles.forEach(p => {
+
+        p.y -= p.speed;
+
+        p.x += p.drift;
+
+
+        if (p.y < -5) {
+
+            p.y =
+                window.innerHeight +
+                5;
+
+        }
+
+
+        if (p.x < -5) {
+
+            p.x =
+                window.innerWidth +
+                5;
+
+        }
+
+
+        if (
+            p.x >
+            window.innerWidth +
+            5
+        ) {
+
+            p.x = -5;
+
+        }
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            `rgba(232,189,98,${p.opacity})`;
+
+        ctx.fill();
+
+    });
+
+
+    requestAnimationFrame(
+        animateParticles
+    );
+
+}
+
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+animateParticles();
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        if (
+            typeof confetti !==
+            "function"
+        ) {
+            return;
+        }
+
+
+        setTimeout(() => {
+
+            confetti({
+
+                particleCount: 45,
+
+                spread: 55,
+
+                startVelocity: 24,
+
+                gravity: 0.8,
+
+                scalar: 0.75,
+
+                origin: {
+                    x: 0.12,
+                    y: 0.45
+                }
+
+            });
+
+
+            confetti({
+
+                particleCount: 45,
+
+                spread: 55,
+
+                startVelocity: 24,
+
+                gravity: 0.8,
+
+                scalar: 0.75,
+
+                origin: {
+                    x: 0.88,
+                    y: 0.45
+                }
+
+            });
+
+        }, 900);
+
+    }
+);
+
+
+/* =========================================================
+   REPORT CARD SELECTOR CONFETTI
+========================================================= */
+
+let previousTeacher =
+    teacherSelect.value;
+
+
+teacherSelect.addEventListener(
+    "change",
+    () => {
+
+        if (
+            typeof confetti !==
+            "function"
+        ) {
+            return;
+        }
+
+
+        const selected =
+            teacherSelect.value;
+
+
+        if (
+            selected ===
+            previousTeacher
+        ) {
+            return;
+        }
+
+
+        previousTeacher =
+            selected;
+
+
+        confetti({
+
+            particleCount: 28,
+
+            spread: 45,
+
+            startVelocity: 18,
+
+            gravity: 1,
+
+            scalar: 0.65,
+
+            origin: {
+                x: 0.5,
+                y: 0.55
+            }
+
+        });
+
+    }
+);
+
+</script>
+
+</body>
 </html>
