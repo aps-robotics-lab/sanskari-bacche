@@ -4,17 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050b16">
-
-<meta
-    name="description"
-    content="Happy Teachers' Day — Class 10th I, Army Public School, Lal Bahadur Shastri Marg"
->
+<meta name="description" content="Happy Teachers' Day — Class 10th I, Army Public School, Lal Bahadur Shastri Marg">
 
 <title>Happy Teachers' Day — Class 10th I</title>
 
-<!-- =====================================================
+<!-- =========================================================
      FONTS
-===================================================== -->
+========================================================= -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,13 +20,14 @@
     rel="stylesheet"
 >
 
-<!-- =====================================================
+<!-- =========================================================
      CONFETTI
-===================================================== -->
+========================================================= -->
 
 <script
-    src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js">
-</script>
+    src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
+    defer
+></script>
 
 <style>
 
@@ -52,15 +49,21 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 
+    color: #f4f5f7;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
     background:
         radial-gradient(
             circle at 12% 15%,
-            rgba(46, 88, 145, 0.20),
-            transparent 30%
+            rgba(42, 82, 140, 0.20),
+            transparent 31%
         ),
         radial-gradient(
-            circle at 87% 60%,
-            rgba(203, 153, 55, 0.08),
+            circle at 87% 58%,
+            rgba(203, 153, 55, 0.075),
             transparent 28%
         ),
         linear-gradient(
@@ -71,44 +74,20 @@ body {
             #040b15 100%
         );
 
-    background-size: 180% 180%;
+    background-size:
+        180% 180%;
 
     animation:
-        atmosphere 22s ease-in-out infinite alternate;
+        atmosphere 24s ease-in-out infinite alternate;
 
-    color: #f4f5f7;
-
-    font-family:
-        "DM Sans",
-        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
-
-@keyframes atmosphere {
-
-    0% {
-        background-position: 0% 20%;
-    }
-
-    50% {
-        background-position: 100% 70%;
-    }
-
-    100% {
-        background-position: 20% 100%;
-    }
-}
-
-
-/* =========================================================
-   BACKGROUND GRID
-========================================================= */
 
 body::before {
-
     content: "";
 
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
@@ -132,14 +111,31 @@ body::before {
         linear-gradient(
             to bottom,
             black,
-            transparent 85%
+            transparent 88%
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 88%
         );
 }
 
+@keyframes atmosphere {
 
-/* =========================================================
-   GENERAL
-========================================================= */
+    0% {
+        background-position: 0% 20%;
+    }
+
+    50% {
+        background-position: 70% 60%;
+    }
+
+    100% {
+        background-position: 20% 100%;
+    }
+}
 
 a {
     color: inherit;
@@ -153,7 +149,7 @@ select {
 
 
 /* =========================================================
-   PARTICLE CANVAS
+   PARTICLES
 ========================================================= */
 
 #particleCanvas {
@@ -169,7 +165,9 @@ select {
 
     z-index: 1;
 
-    opacity: 0.72;
+    opacity: 0.58;
+
+    contain: strict;
 }
 
 
@@ -181,8 +179,8 @@ select {
 
     position: fixed;
 
-    width: 280px;
-    height: 280px;
+    width: 240px;
+    height: 240px;
 
     border-radius: 50%;
 
@@ -193,19 +191,20 @@ select {
     background:
         radial-gradient(
             circle,
-            rgba(232,189,98,0.085),
+            rgba(232,189,98,0.065),
             transparent 68%
         );
 
     transform:
-        translate(-50%, -50%);
+        translate3d(-50%, -50%, 0);
 
-    filter: blur(2px);
+    will-change:
+        transform;
 }
 
 
 /* =========================================================
-   PAGE
+   MAIN PAGE
 ========================================================= */
 
 .page {
@@ -214,9 +213,11 @@ select {
 
     z-index: 3;
 
-    width: min(1180px, 91%);
+    width:
+        min(1180px, 91%);
 
-    margin: auto;
+    margin:
+        auto;
 }
 
 
@@ -232,42 +233,44 @@ select {
     left: 50%;
 
     transform:
-        translateX(-50%);
+        translate3d(-50%, 0, 0);
 
-    width: min(1120px, 88%);
+    width:
+        min(1120px, 88%);
 
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: center;
+    align-items:
+        center;
 
     padding:
-        11px
-        14px
-        11px
-        18px;
+        11px 14px 11px 18px;
 
     border:
-        1px solid
-        rgba(255,255,255,0.09);
+        1px solid rgba(255,255,255,0.09);
 
     background:
-        rgba(6,15,28,0.58);
+        rgba(6,15,28,0.72);
 
     backdrop-filter:
-        blur(18px);
+        blur(16px);
 
     -webkit-backdrop-filter:
-        blur(18px);
+        blur(16px);
 
-    border-radius: 100px;
+    border-radius:
+        100px;
 
     z-index: 20;
 
     box-shadow:
-        0 12px 40px
-        rgba(0,0,0,0.12);
+        0 10px 40px rgba(0,0,0,0.12);
+
+    will-change:
+        transform;
 }
 
 .brand {
@@ -280,9 +283,11 @@ select {
 
     font-size: 0.72rem;
 
-    letter-spacing: 0.16em;
+    letter-spacing:
+        0.16em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
     color:
         rgba(255,255,255,0.72);
@@ -293,30 +298,16 @@ select {
     width: 7px;
     height: 7px;
 
+    flex: 0 0 auto;
+
     border-radius: 50%;
 
-    background: #e8bd62;
+    background:
+        #e8bd62;
 
     box-shadow:
         0 0 12px
-        rgba(232,189,98,0.7);
-
-    animation:
-        pulseDot 2.4s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-
-    0%,
-    100% {
-        opacity: 0.65;
-        transform: scale(0.9);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.25);
-    }
+        rgba(232,189,98,0.65);
 }
 
 .nav-label {
@@ -324,9 +315,11 @@ select {
     color:
         rgba(255,255,255,0.35);
 
-    font-size: 0.7rem;
+    font-size:
+        0.7rem;
 
-    letter-spacing: 0.12em;
+    letter-spacing:
+        0.12em;
 }
 
 
@@ -336,102 +329,80 @@ select {
 
 .hero {
 
-    min-height: 100vh;
+    min-height:
+        100vh;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
     padding:
-        150px
-        0
-        90px;
+        150px 0 90px;
 
-    position: relative;
-}
-
-.hero::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    right: -180px;
-    top: 20%;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(232,189,98,0.045),
-            transparent 70%
-        );
-
-    animation:
-        heroOrb 10s ease-in-out infinite;
-
-    pointer-events: none;
-}
-
-@keyframes heroOrb {
-
-    0%,
-    100% {
-        transform:
-            translate3d(0,0,0)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            translate3d(-35px,30px,0)
-            scale(1.12);
-    }
+    position:
+        relative;
 }
 
 .hero-content {
-    max-width: 950px;
+
+    max-width:
+        950px;
 }
 
 .hero-kicker {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 13px;
+    gap:
+        13px;
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
-    font-size: 0.72rem;
+    font-size:
+        0.72rem;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    letter-spacing: 0.2em;
+    letter-spacing:
+        0.2em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
-    margin-bottom: 28px;
+    margin-bottom:
+        28px;
 
-    opacity: 0;
+    opacity:
+        0;
 
     animation:
-        revealUp 1s 0.15s ease forwards;
+        revealUp 0.9s 0.12s ease forwards;
 }
 
 .hero-kicker::before {
 
-    content: "";
+    content:
+        "";
 
-    width: 38px;
+    width:
+        38px;
 
-    height: 1px;
+    height:
+        1px;
 
-    background: #d5b66e;
+    flex:
+        0 0 auto;
+
+    background:
+        #d5b66e;
 }
 
 .hero h1 {
@@ -447,53 +418,42 @@ select {
             9.5rem
         );
 
-    line-height: 0.88;
+    line-height:
+        0.88;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    letter-spacing: -0.055em;
+    letter-spacing:
+        -0.055em;
 
-    opacity: 0;
+    opacity:
+        0;
 
     animation:
-        revealUp 1s 0.28s ease forwards;
+        revealUp 0.95s 0.22s ease forwards;
 }
 
 .hero h1 .gold {
 
-    color: #e8bd62;
+    color:
+        #e8bd62;
 
     text-shadow:
         0 0 45px
-        rgba(232,189,98,0.14);
-
-    animation:
-        goldBreath 4s ease-in-out infinite;
-}
-
-@keyframes goldBreath {
-
-    0%,
-    100% {
-        text-shadow:
-            0 0 35px
-            rgba(232,189,98,0.08);
-    }
-
-    50% {
-        text-shadow:
-            0 0 65px
-            rgba(232,189,98,0.20);
-    }
+        rgba(232,189,98,0.13);
 }
 
 .hero-subtitle {
 
-    max-width: 720px;
+    max-width:
+        720px;
 
-    margin-top: 38px;
+    margin-top:
+        38px;
 
-    color: #dce2eb;
+    color:
+        #dce2eb;
 
     font-size:
         clamp(
@@ -502,81 +462,98 @@ select {
             1.3rem
         );
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 
-    opacity: 0;
+    opacity:
+        0;
 
     animation:
-        revealUp 1s 0.45s ease forwards;
+        revealUp 0.9s 0.38s ease forwards;
 }
 
 .hero-description {
 
-    max-width: 670px;
+    max-width:
+        670px;
 
-    margin-top: 18px;
+    margin-top:
+        18px;
 
-    color: #8f9bae;
+    color:
+        #8f9bae;
 
-    font-size: 0.95rem;
+    font-size:
+        0.95rem;
 
-    line-height: 1.85;
+    line-height:
+        1.85;
 
-    opacity: 0;
+    opacity:
+        0;
 
     animation:
-        revealUp 1s 0.6s ease forwards;
+        revealUp 0.9s 0.52s ease forwards;
 }
 
 .hero-bottom {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 25px;
+    gap:
+        25px;
 
-    margin-top: 45px;
+    margin-top:
+        45px;
 
-    opacity: 0;
+    opacity:
+        0;
 
     animation:
-        revealUp 1s 0.75s ease forwards;
+        revealUp 0.9s 0.66s ease forwards;
 }
 
 .explore {
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 12px;
+    gap:
+        12px;
 
     padding:
-        13px
-        20px;
+        13px 20px;
 
-    border-radius: 100px;
+    border-radius:
+        100px;
 
     border:
         1px solid
         rgba(232,189,98,0.35);
 
-    color: #f1d58f;
+    color:
+        #f1d58f;
 
     background:
         rgba(232,189,98,0.055);
 
     transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.28s ease,
+        background 0.28s ease,
+        box-shadow 0.28s ease;
 }
 
 .explore:hover {
 
     transform:
-        translateY(-3px);
+        translate3d(0,-3px,0);
 
     background:
         rgba(232,189,98,0.11);
@@ -588,22 +565,17 @@ select {
 
 .explore span {
 
-    font-size: 1.1rem;
+    font-size:
+        1.1rem;
 
-    animation:
-        arrowBounce 1.8s ease-in-out infinite;
+    transition:
+        transform 0.28s ease;
 }
 
-@keyframes arrowBounce {
+.explore:hover span {
 
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(4px);
-    }
+    transform:
+        translateY(3px);
 }
 
 .hero-note {
@@ -611,66 +583,55 @@ select {
     color:
         rgba(255,255,255,0.32);
 
-    font-size: 0.7rem;
+    font-size:
+        0.7rem;
 
-    letter-spacing: 0.1em;
+    letter-spacing:
+        0.1em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 
 /* =========================================================
-   REVEAL
-========================================================= */
-
-@keyframes revealUp {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(28px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0);
-    }
-}
-
-
-/* =========================================================
-   SECTION
+   INTRO / SECTIONS
 ========================================================= */
 
 .section {
 
     padding:
-        110px
-        0;
+        110px 0;
 }
 
 .section-intro {
 
-    max-width: 700px;
+    max-width:
+        700px;
 
-    margin-bottom: 55px;
+    margin-bottom:
+        55px;
 }
 
 .section-index {
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
-    font-size: 0.68rem;
+    font-size:
+        0.68rem;
 
-    letter-spacing: 0.22em;
+    letter-spacing:
+        0.22em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .section-title {
 
-    margin-top: 14px;
+    margin-top:
+        14px;
 
     font-family:
         "Playfair Display",
@@ -683,25 +644,31 @@ select {
             5rem
         );
 
-    line-height: 1;
+    line-height:
+        1;
 
-    letter-spacing: -0.035em;
+    letter-spacing:
+        -0.035em;
 }
 
 .section-description {
 
-    margin-top: 20px;
+    margin-top:
+        20px;
 
-    color: #8f9bae;
+    color:
+        #8f9bae;
 
-    line-height: 1.8;
+    line-height:
+        1.8;
 
-    max-width: 620px;
+    max-width:
+        620px;
 }
 
 
 /* =========================================================
-   TEACHERS
+   TEACHER LIST
 ========================================================= */
 
 .teacher-list {
@@ -713,43 +680,54 @@ select {
 
 .teacher {
 
-    position: relative;
+    position:
+        relative;
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        90px
-        1fr
-        auto;
+        90px 1fr auto;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 25px;
+    gap:
+        25px;
 
-    min-height: 145px;
+    min-height:
+        145px;
 
     border-bottom:
         1px solid
         rgba(255,255,255,0.09);
 
     transition:
-        padding 0.45s ease,
-        background 0.45s ease;
+        padding 0.35s ease;
 }
 
 .teacher::before {
 
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    left: -30px;
-    right: -30px;
+    left:
+        -30px;
 
-    top: 12px;
-    bottom: 12px;
+    right:
+        -30px;
 
-    border-radius: 20px;
+    top:
+        12px;
+
+    bottom:
+        12px;
+
+    border-radius:
+        20px;
 
     background:
         radial-gradient(
@@ -758,24 +736,27 @@ select {
             transparent 45%
         );
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
         scaleX(0.96);
 
     transition:
-        opacity 0.4s ease,
-        transform 0.4s ease;
+        opacity 0.35s ease,
+        transform 0.35s ease;
 }
 
 .teacher:hover {
 
-    padding-left: 15px;
+    padding-left:
+        15px;
 }
 
 .teacher:hover::before {
 
-    opacity: 1;
+    opacity:
+        1;
 
     transform:
         scaleX(1);
@@ -783,7 +764,8 @@ select {
 
 .teacher-number {
 
-    position: relative;
+    position:
+        relative;
 
     color:
         rgba(255,255,255,0.28);
@@ -792,14 +774,17 @@ select {
         "Manrope",
         sans-serif;
 
-    font-size: 0.72rem;
+    font-size:
+        0.72rem;
 
-    letter-spacing: 0.15em;
+    letter-spacing:
+        0.15em;
 }
 
 .teacher-info {
 
-    position: relative;
+    position:
+        relative;
 }
 
 .teacher-name {
@@ -815,69 +800,89 @@ select {
             2.45rem
         );
 
-    color: #f1f2f4;
+    color:
+        #f1f2f4;
 
     transition:
-        color 0.3s ease;
+        color 0.25s ease;
 }
 
 .teacher:hover .teacher-name {
 
-    color: #f0d38d;
+    color:
+        #f0d38d;
 }
 
 .teacher-subject {
 
-    margin-top: 6px;
+    margin-top:
+        6px;
 
-    color: #778397;
+    color:
+        #778397;
 
-    font-size: 0.82rem;
+    font-size:
+        0.82rem;
 
-    letter-spacing: 0.03em;
+    letter-spacing:
+        0.03em;
 }
 
 .teacher-action {
 
-    position: relative;
+    position:
+        relative;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 12px;
+    gap:
+        12px;
 
     color:
         rgba(255,255,255,0.42);
 
-    font-size: 0.7rem;
+    font-size:
+        0.7rem;
 
-    letter-spacing: 0.12em;
+    letter-spacing:
+        0.12em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .teacher-arrow {
 
-    width: 42px;
-    height: 42px;
+    width:
+        42px;
 
-    border-radius: 50%;
+    height:
+        42px;
 
-    display: grid;
+    border-radius:
+        50%;
 
-    place-items: center;
+    display:
+        grid;
+
+    place-items:
+        center;
 
     border:
         1px solid
         rgba(255,255,255,0.12);
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
     transition:
-        transform 0.35s ease,
-        background 0.35s ease,
-        color 0.35s ease;
+        transform 0.32s ease,
+        background 0.32s ease,
+        color 0.32s ease;
 }
 
 .teacher:hover .teacher-arrow {
@@ -885,9 +890,11 @@ select {
     transform:
         rotate(-45deg);
 
-    background: #e8bd62;
+    background:
+        #e8bd62;
 
-    color: #071222;
+    color:
+        #071222;
 }
 
 
@@ -897,35 +904,41 @@ select {
 
 .report-section {
 
-    position: relative;
+    position:
+        relative;
 
     padding:
-        150px
-        0
-        120px;
+        150px 0 120px;
 }
 
 .report-heading {
 
-    max-width: 650px;
+    max-width:
+        650px;
 
-    margin-bottom: 55px;
+    margin-bottom:
+        55px;
 }
 
 .report-pretitle {
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
-    font-size: 0.7rem;
+    font-size:
+        0.7rem;
 
-    letter-spacing: 0.22em;
+    letter-spacing:
+        0.22em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .report-heading h2 {
 
-    margin-top: 15px;
+    margin-top:
+        15px;
 
     font-family:
         "Playfair Display",
@@ -938,70 +951,85 @@ select {
             5.5rem
         );
 
-    line-height: 0.98;
+    line-height:
+        0.98;
 
-    letter-spacing: -0.04em;
+    letter-spacing:
+        -0.04em;
 }
 
 .report-heading p {
 
-    margin-top: 22px;
+    margin-top:
+        22px;
 
-    color: #8995a8;
+    color:
+        #8995a8;
 
-    line-height: 1.8;
+    line-height:
+        1.8;
 }
 
 
 /* =========================================================
-   SELECTOR
+   SELECT
 ========================================================= */
 
 .report-selector {
 
-    position: relative;
+    position:
+        relative;
 
-    max-width: 650px;
+    max-width:
+        650px;
 
-    margin-bottom: 35px;
+    margin-bottom:
+        35px;
 }
 
 .selector-label {
 
-    display: block;
+    display:
+        block;
 
-    margin-bottom: 11px;
+    margin-bottom:
+        11px;
 
     color:
         rgba(255,255,255,0.4);
 
-    font-size: 0.68rem;
+    font-size:
+        0.68rem;
 
-    letter-spacing: 0.18em;
+    letter-spacing:
+        0.18em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .select-wrap {
 
-    position: relative;
+    position:
+        relative;
 }
 
 select {
 
-    appearance: none;
+    appearance:
+        none;
 
-    -webkit-appearance: none;
+    -webkit-appearance:
+        none;
 
-    width: 100%;
+    width:
+        100%;
 
     padding:
-        18px
-        50px
-        18px
-        20px;
+        18px 50px 18px 20px;
 
-    border-radius: 16px;
+    border-radius:
+        16px;
 
     border:
         1px solid
@@ -1010,18 +1038,18 @@ select {
     background:
         rgba(255,255,255,0.045);
 
-    color: #edf0f5;
+    color:
+        #edf0f5;
 
-    outline: none;
+    outline:
+        none;
 
-    cursor: pointer;
-
-    backdrop-filter:
-        blur(14px);
+    cursor:
+        pointer;
 
     transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 select:hover,
@@ -1031,31 +1059,38 @@ select:focus {
         rgba(232,189,98,0.45);
 
     box-shadow:
-        0 0 35px
-        rgba(232,189,98,0.06);
+        0 0 30px
+        rgba(232,189,98,0.055);
 }
 
 select option {
 
-    background: #0a1729;
+    background:
+        #0a1729;
 
-    color: white;
+    color:
+        white;
 }
 
 .select-arrow {
 
-    position: absolute;
+    position:
+        absolute;
 
-    right: 20px;
+    right:
+        20px;
 
-    top: 50%;
+    top:
+        50%;
 
     transform:
         translateY(-50%);
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 
@@ -1065,11 +1100,14 @@ select option {
 
 .report-panel {
 
-    position: relative;
+    position:
+        relative;
 
-    max-width: 900px;
+    max-width:
+        900px;
 
-    min-height: 560px;
+    min-height:
+        560px;
 
     padding:
         clamp(
@@ -1078,7 +1116,8 @@ select option {
             55px
         );
 
-    border-radius: 30px;
+    border-radius:
+        30px;
 
     border:
         1px solid
@@ -1092,59 +1131,55 @@ select option {
         );
 
     backdrop-filter:
-        blur(18px);
+        blur(15px);
 
     -webkit-backdrop-filter:
-        blur(18px);
+        blur(15px);
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     box-shadow:
-        0 30px 100px
-        rgba(0,0,0,0.24);
+        0 30px 90px
+        rgba(0,0,0,0.22);
 
     transition:
-        border-color 0.5s ease,
-        box-shadow 0.5s ease;
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
 .report-panel::before {
 
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    width: 400px;
-    height: 400px;
+    width:
+        400px;
 
-    right: -180px;
-    top: -190px;
+    height:
+        400px;
 
-    border-radius: 50%;
+    right:
+        -180px;
+
+    top:
+        -190px;
+
+    border-radius:
+        50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(232,189,98,0.11),
+            rgba(232,189,98,0.10),
             transparent 68%
         );
 
-    pointer-events: none;
-
-    animation:
-        reportOrb 7s ease-in-out infinite;
-}
-
-@keyframes reportOrb {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.16);
-    }
+    pointer-events:
+        none;
 }
 
 .report-panel.active {
@@ -1153,23 +1188,28 @@ select option {
         rgba(232,189,98,0.25);
 
     box-shadow:
-        0 35px 100px
-        rgba(0,0,0,0.27),
-        0 0 60px
-        rgba(232,189,98,0.045);
+        0 35px 90px
+        rgba(0,0,0,0.25),
+        0 0 55px
+        rgba(232,189,98,0.04);
 }
 
 .report-top {
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: flex-start;
+    align-items:
+        flex-start;
 
-    gap: 20px;
+    gap:
+        20px;
 
-    padding-bottom: 28px;
+    padding-bottom:
+        28px;
 
     border-bottom:
         1px solid
@@ -1178,25 +1218,32 @@ select option {
 
 .report-type {
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
-    font-size: 0.66rem;
+    font-size:
+        0.66rem;
 
-    letter-spacing: 0.18em;
+    letter-spacing:
+        0.18em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .report-class {
 
-    margin-top: 8px;
+    margin-top:
+        8px;
 
     color:
         rgba(255,255,255,0.32);
 
-    font-size: 0.68rem;
+    font-size:
+        0.68rem;
 
-    letter-spacing: 0.1em;
+    letter-spacing:
+        0.1em;
 }
 
 .report-status {
@@ -1204,22 +1251,27 @@ select option {
     color:
         rgba(255,255,255,0.3);
 
-    font-size: 0.62rem;
+    font-size:
+        0.62rem;
 
-    letter-spacing: 0.15em;
+    letter-spacing:
+        0.15em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .report-name {
 
-    margin-top: 35px;
+    margin-top:
+        35px;
 
     font-family:
         "Playfair Display",
         serif;
 
-    color: #f0d28c;
+    color:
+        #f0d28c;
 
     font-size:
         clamp(
@@ -1228,16 +1280,20 @@ select option {
             3.7rem
         );
 
-    line-height: 1;
+    line-height:
+        1;
 }
 
 .report-subject {
 
-    margin-top: 10px;
+    margin-top:
+        10px;
 
-    color: #8995a8;
+    color:
+        #8995a8;
 
-    font-size: 0.88rem;
+    font-size:
+        0.88rem;
 }
 
 
@@ -1247,68 +1303,83 @@ select option {
 
 .metrics {
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
+        repeat(2,minmax(0,1fr));
 
-    gap: 18px 45px;
+    gap:
+        18px 45px;
 
-    margin-top: 42px;
+    margin-top:
+        42px;
 }
 
 .metric {
 
-    min-width: 0;
+    min-width:
+        0;
 }
 
 .metric-top {
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    gap: 15px;
+    gap:
+        15px;
 
-    margin-bottom: 9px;
+    margin-bottom:
+        9px;
 }
 
 .metric-name {
 
-    color: #b9c2d0;
+    color:
+        #b9c2d0;
 
-    font-size: 0.8rem;
+    font-size:
+        0.8rem;
 }
 
 .metric-score {
 
-    color: #e8bd62;
+    color:
+        #e8bd62;
 
-    font-size: 0.75rem;
+    font-size:
+        0.75rem;
 
-    font-weight: 600;
+    font-weight:
+        600;
 }
 
 .metric-track {
 
-    height: 3px;
+    height:
+        3px;
 
     background:
         rgba(255,255,255,0.08);
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 }
 
 .metric-fill {
 
-    width: 0;
+    width:
+        0;
 
-    height: 100%;
+    height:
+        100%;
 
     background:
         linear-gradient(
@@ -1317,11 +1388,11 @@ select option {
             #e8bd62
         );
 
-    border-radius: inherit;
+    border-radius:
+        inherit;
 
     transition:
-        width
-        1.1s
+        width 0.95s
         cubic-bezier(.2,.8,.2,1);
 }
 
@@ -1332,17 +1403,23 @@ select option {
 
 .final-result {
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: flex-end;
+    align-items:
+        flex-end;
 
-    gap: 25px;
+    gap:
+        25px;
 
-    margin-top: 50px;
+    margin-top:
+        50px;
 
-    padding-top: 30px;
+    padding-top:
+        30px;
 
     border-top:
         1px solid
@@ -1354,22 +1431,27 @@ select option {
     color:
         rgba(255,255,255,0.32);
 
-    font-size: 0.64rem;
+    font-size:
+        0.64rem;
 
-    letter-spacing: 0.18em;
+    letter-spacing:
+        0.18em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .final-word {
 
-    margin-top: 8px;
+    margin-top:
+        8px;
 
     font-family:
         "Manrope",
         sans-serif;
 
-    color: #f2d591;
+    color:
+        #f2d591;
 
     font-size:
         clamp(
@@ -1378,9 +1460,11 @@ select option {
             3rem
         );
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    letter-spacing: -0.05em;
+    letter-spacing:
+        -0.05em;
 }
 
 .final-mark {
@@ -1388,20 +1472,26 @@ select option {
     color:
         rgba(255,255,255,0.25);
 
-    font-size: 0.72rem;
+    font-size:
+        0.72rem;
 
-    text-align: right;
+    text-align:
+        right;
 
-    max-width: 250px;
+    max-width:
+        250px;
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 }
 
 .report-remark {
 
-    margin-top: 35px;
+    margin-top:
+        35px;
 
-    color: #aab4c3;
+    color:
+        #aab4c3;
 
     font-family:
         "Playfair Display",
@@ -1414,12 +1504,14 @@ select option {
             1.35rem
         );
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 }
 
 .report-remark span {
 
-    color: #e8bd62;
+    color:
+        #e8bd62;
 }
 
 
@@ -1429,87 +1521,81 @@ select option {
 
 .closing {
 
-    position: relative;
+    position:
+        relative;
 
     padding:
-        140px
-        0
-        90px;
+        140px 0 160px;
 
-    text-align: center;
+    text-align:
+        center;
 }
 
 .closing::before {
 
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    left: 50%;
-    top: 50%;
+    left:
+        50%;
 
-    width: 500px;
-    height: 500px;
+    top:
+        50%;
+
+    width:
+        min(500px, 90vw);
+
+    height:
+        min(500px, 90vw);
 
     transform:
-        translate(-50%,-50%);
+        translate3d(-50%,-50%,0);
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(232,189,98,0.065),
+            rgba(232,189,98,0.055),
             transparent 70%
         );
 
-    pointer-events: none;
-
-    animation:
-        closingGlow 6s ease-in-out infinite;
-}
-
-@keyframes closingGlow {
-
-    0%,
-    100% {
-        opacity: 0.55;
-        transform:
-            translate(-50%,-50%)
-            scale(0.95);
-    }
-
-    50% {
-        opacity: 1;
-        transform:
-            translate(-50%,-50%)
-            scale(1.08);
-    }
+    pointer-events:
+        none;
 }
 
 .closing-small {
 
-    position: relative;
+    position:
+        relative;
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
-    font-size: 0.68rem;
+    font-size:
+        0.68rem;
 
-    letter-spacing: 0.22em;
+    letter-spacing:
+        0.22em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 .closing h2 {
 
-    position: relative;
+    position:
+        relative;
 
-    max-width: 850px;
+    max-width:
+        850px;
 
     margin:
-        22px
-        auto
-        0;
+        22px auto 0;
 
     font-family:
         "Playfair Display",
@@ -1522,360 +1608,35 @@ select option {
             6.5rem
         );
 
-    line-height: 0.98;
+    line-height:
+        0.98;
 
-    letter-spacing: -0.045em;
+    letter-spacing:
+        -0.045em;
 }
 
 .closing h2 span {
 
-    color: #e8bd62;
-
-    text-shadow:
-        0 0 45px
-        rgba(232,189,98,0.13);
+    color:
+        #e8bd62;
 }
 
 .closing-signature {
 
-    position: relative;
+    position:
+        relative;
 
-    margin-top: 35px;
+    margin-top:
+        35px;
 
     color:
         rgba(255,255,255,0.4);
 
-    font-size: 0.8rem;
-
-    letter-spacing: 0.1em;
-}
-
-
-/* =========================================================
-   MESSAGE BUTTON
-========================================================= */
-
-.message-button-wrap {
-
-    position: relative;
-
-    z-index: 5;
-
-    display: flex;
-
-    justify-content: center;
-
-    margin-top: 45px;
-}
-
-.message-button {
-
-    position: relative;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 13px;
-
-    min-width: 250px;
-
-    padding:
-        15px
-        24px;
-
-    border-radius: 100px;
-
-    border:
-        1px solid
-        rgba(232,189,98,0.42);
-
-    background:
-        rgba(232,189,98,0.065);
-
-    color: #f0d38d;
-
-    cursor: pointer;
-
-    letter-spacing: 0.08em;
-
-    font-size: 0.72rem;
-
-    text-transform: uppercase;
-
-    transition:
-        transform 0.35s ease,
-        background 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-}
-
-.message-button::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -5px;
-
-    border-radius: inherit;
-
-    border:
-        1px solid
-        rgba(232,189,98,0.08);
-
-    opacity: 0;
-
-    transition:
-        opacity 0.35s ease,
-        transform 0.35s ease;
-}
-
-.message-button:hover {
-
-    transform:
-        translateY(-4px);
-
-    background:
-        rgba(232,189,98,0.12);
-
-    border-color:
-        rgba(232,189,98,0.65);
-
-    box-shadow:
-        0 14px 45px
-        rgba(232,189,98,0.13);
-}
-
-.message-button:hover::before {
-
-    opacity: 1;
-
-    transform: scale(1.04);
-}
-
-.message-button-icon {
-
-    font-size: 1rem;
-
-    transition:
-        transform 0.35s ease;
-}
-
-.message-button:hover
-.message-button-icon {
-
-    transform:
-        translateY(3px);
-}
-
-
-/* =========================================================
-   CLASS MESSAGE
-========================================================= */
-
-.class-message {
-
-    position: relative;
-
-    max-width: 780px;
-
-    margin:
-        0
-        auto;
-
-    max-height: 0;
-
-    overflow: hidden;
-
-    opacity: 0;
-
-    transform:
-        translateY(20px)
-        scale(0.98);
-
-    transition:
-        max-height 0.9s cubic-bezier(.2,.8,.2,1),
-        opacity 0.55s ease,
-        transform 0.7s cubic-bezier(.2,.8,.2,1),
-        margin-top 0.8s ease;
-}
-
-.class-message.open {
-
-    max-height: 650px;
-
-    margin-top: 42px;
-
-    opacity: 1;
-
-    transform:
-        translateY(0)
-        scale(1);
-}
-
-.class-message-inner {
-
-    position: relative;
-
-    padding:
-        clamp(
-            30px,
-            6vw,
-            60px
-        );
-
-    border:
-        1px solid
-        rgba(232,189,98,0.20);
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.065),
-            rgba(255,255,255,0.025)
-        );
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,0.22);
-
-    overflow: hidden;
-}
-
-.class-message-inner::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 280px;
-    height: 280px;
-
-    right: -120px;
-    top: -130px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(232,189,98,0.13),
-            transparent 70%
-        );
-
-    pointer-events: none;
-}
-
-.class-message-inner::after {
-
-    content: "10TH I";
-
-    position: absolute;
-
-    right: 28px;
-    bottom: 18px;
-
-    color:
-        rgba(255,255,255,0.025);
-
-    font-family:
-        "Manrope",
-        sans-serif;
-
-    font-weight: 800;
-
-    font-size: 4rem;
-
-    letter-spacing: -0.08em;
-
-    pointer-events: none;
-}
-
-.message-label {
-
-    color: #d5b66e;
-
-    font-size: 0.65rem;
-
-    letter-spacing: 0.2em;
-
-    text-transform: uppercase;
-}
-
-.message-title {
-
-    margin-top: 18px;
-
-    font-family:
-        "Playfair Display",
-        serif;
-
     font-size:
-        clamp(
-            2rem,
-            5vw,
-            3.7rem
-        );
+        0.8rem;
 
-    line-height: 1;
-
-    color: #f3f4f6;
-}
-
-.message-text {
-
-    position: relative;
-
-    margin-top: 28px;
-
-    max-width: 650px;
-
-    color: #aeb8c7;
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size:
-        clamp(
-            1.05rem,
-            2.4vw,
-            1.4rem
-        );
-
-    line-height: 1.8;
-}
-
-.message-text strong {
-
-    color: #f0d38d;
-
-    font-weight: 600;
-}
-
-.message-sign {
-
-    margin-top: 30px;
-
-    color:
-        rgba(255,255,255,0.38);
-
-    font-size: 0.72rem;
-
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
+    letter-spacing:
+        0.1em;
 }
 
 
@@ -1886,24 +1647,26 @@ select option {
 footer {
 
     padding:
-        60px
-        0
-        45px;
+        60px 0 45px;
 
     border-top:
         1px solid
         rgba(255,255,255,0.08);
 
-    text-align: center;
+    text-align:
+        center;
 }
 
 .footer-quote {
 
-    max-width: 750px;
+    max-width:
+        750px;
 
-    margin: auto;
+    margin:
+        auto;
 
-    color: #c8d0dc;
+    color:
+        #c8d0dc;
 
     font-family:
         "Playfair Display",
@@ -1916,32 +1679,41 @@ footer {
             1.65rem
         );
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 }
 
 .footer-sign {
 
-    margin-top: 25px;
+    margin-top:
+        25px;
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
-    font-size: 0.78rem;
+    font-size:
+        0.78rem;
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 }
 
 .footer-location {
 
-    margin-top: 35px;
+    margin-top:
+        35px;
 
     color:
         rgba(255,255,255,0.22);
 
-    font-size: 0.65rem;
+    font-size:
+        0.65rem;
 
-    letter-spacing: 0.13em;
+    letter-spacing:
+        0.13em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 
@@ -1951,24 +1723,32 @@ footer {
 
 .reveal {
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
-        translateY(30px);
+        translate3d(0,30px,0);
 
     transition:
-        opacity 0.9s ease,
-        transform
-        0.9s
+        opacity 0.75s ease,
+        transform 0.75s
         cubic-bezier(.2,.8,.2,1);
+
+    will-change:
+        opacity,
+        transform;
 }
 
 .reveal.visible {
 
-    opacity: 1;
+    opacity:
+        1;
 
     transform:
-        translateY(0);
+        translate3d(0,0,0);
+
+    will-change:
+        auto;
 }
 
 
@@ -1976,32 +1756,43 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 760px) {
+@media (max-width:760px) {
+
+    body {
+        background-size:
+            240% 240%;
+    }
 
     .page {
 
         width:
-            min(
-                92%,
-                520px
-            );
+            min(92%,520px);
     }
 
     .topbar {
 
-        top: 12px;
+        top:
+            12px;
 
-        width: 92%;
+        width:
+            92%;
+
+        backdrop-filter:
+            blur(12px);
+
+        -webkit-backdrop-filter:
+            blur(12px);
     }
 
     .nav-label {
-
-        display: none;
+        display:
+            none;
     }
 
     .hero {
 
-        padding-top: 145px;
+        padding-top:
+            145px;
     }
 
     .hero h1 {
@@ -2016,99 +1807,103 @@ footer {
 
     .hero-bottom {
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        gap: 17px;
+        gap:
+            17px;
     }
 
     .section {
 
         padding:
-            80px
-            0;
+            80px 0;
     }
 
     .teacher {
 
         grid-template-columns:
-            42px
-            1fr
-            auto;
+            42px 1fr auto;
 
-        gap: 12px;
+        gap:
+            12px;
 
-        min-height: 125px;
+        min-height:
+            125px;
     }
 
     .teacher-action span {
-
-        display: none;
+        display:
+            none;
     }
 
     .teacher-arrow {
 
-        width: 38px;
-        height: 38px;
+        width:
+            38px;
+
+        height:
+            38px;
     }
 
     .teacher-name {
 
-        font-size: 1.45rem;
+        font-size:
+            1.45rem;
     }
 
     .report-section {
 
         padding:
-            90px
-            0;
-    }
-
-    .metrics {
-
-        grid-template-columns: 1fr;
-
-        gap: 18px;
+            90px 0;
     }
 
     .report-panel {
 
-        border-radius: 22px;
+        min-height:
+            auto;
 
-        min-height: auto;
+        border-radius:
+            22px;
+
+        backdrop-filter:
+            blur(11px);
+
+        -webkit-backdrop-filter:
+            blur(11px);
+    }
+
+    .metrics {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
     }
 
     .final-result {
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
 
-        flex-direction: column;
+        flex-direction:
+            column;
     }
 
     .final-mark {
 
-        text-align: left;
+        text-align:
+            left;
     }
 
     .closing {
 
         padding:
-            100px
-            0
-            70px;
-    }
-
-    .class-message-inner {
-
-        border-radius: 22px;
-    }
-
-    .message-button {
-
-        width: 100%;
-
-        max-width: 320px;
+            100px 0 120px;
     }
 }
 
@@ -2117,44 +1912,57 @@ footer {
    SMALL PHONES
 ========================================================= */
 
-@media (max-width: 420px) {
+@media (max-width:420px) {
 
     .brand {
 
-        font-size: 0.62rem;
+        font-size:
+            0.62rem;
     }
 
     .hero h1 {
 
-        font-size: 3.75rem;
+        font-size:
+            3.75rem;
     }
 
     .teacher {
 
         grid-template-columns:
-            30px
-            1fr
-            auto;
+            30px 1fr auto;
     }
 
     .teacher-number {
 
-        font-size: 0.62rem;
+        font-size:
+            0.62rem;
     }
 
     .teacher-subject {
 
-        font-size: 0.75rem;
+        font-size:
+            0.75rem;
     }
 
-    .message-title {
+    .report-panel {
 
-        font-size: 2rem;
+        padding:
+            24px 20px;
     }
 
-    .message-text {
+    .report-top {
 
-        font-size: 1.02rem;
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+    }
+
+    .report-status {
+
+        display:
+            none;
     }
 }
 
@@ -2169,15 +1977,24 @@ footer {
     *::before,
     *::after {
 
-        animation-duration: 0.01ms !important;
+        animation-duration:
+            0.01ms !important;
 
         animation-iteration-count:
             1 !important;
 
-        scroll-behavior: auto !important;
-
         transition-duration:
             0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+
+    #particleCanvas,
+    .cursor-glow {
+
+        display:
+            none;
     }
 }
 
@@ -2188,19 +2005,19 @@ footer {
 <body>
 
 <!-- =====================================================
-     BACKGROUND PARTICLES
+     PARTICLES
 ===================================================== -->
 
 <canvas id="particleCanvas"></canvas>
 
 <div
     class="cursor-glow"
-    id="cursorGlow">
-</div>
+    id="cursorGlow"
+></div>
 
 
 <!-- =====================================================
-     TOP BAR
+     NAVIGATION
 ===================================================== -->
 
 <nav class="topbar">
@@ -2215,7 +2032,8 @@ footer {
 
     <div class="nav-label">
 
-        Army Public School · Lal Bahadur Shastri Marg
+        Army Public School ·
+        Lal Bahadur Shastri Marg
 
     </div>
 
@@ -2263,9 +2081,10 @@ footer {
 
         <p class="hero-description">
 
-            Thank you for your endless patience, dedication,
-            and for inspiring us. We might not say it enough,
-            but we appreciate everything you do for us.
+            Thank you for your endless patience,
+            dedication, and for inspiring us.
+            We might not say it enough, but we
+            appreciate everything you do for us.
 
         </p>
 
@@ -2286,7 +2105,8 @@ footer {
 
             <div class="hero-note">
 
-                Six teachers · One unforgettable class
+                Six teachers ·
+                One unforgettable class
 
             </div>
 
@@ -2310,7 +2130,8 @@ footer {
 
         <div class="section-index">
 
-            01 / The people behind the lessons
+            01 /
+            The people behind the lessons
 
         </div>
 
@@ -2325,9 +2146,12 @@ footer {
 
         <p class="section-description">
 
-            Every chapter we studied came with a voice,
-            a story, a warning, a laugh, or a memory.
-            These are the people who made 10th I what it was.
+            Every chapter we studied came with
+            a voice, a story, a warning, a laugh,
+            or a memory.
+
+            These are the people who made
+            10th I what it was.
 
         </p>
 
@@ -2336,10 +2160,6 @@ footer {
 
     <div class="teacher-list">
 
-
-        <!-- =================================================
-             SHONALI
-        ================================================== -->
 
         <a
             href="shonali.html"
@@ -2350,24 +2170,17 @@ footer {
                 01
             </div>
 
-
             <div class="teacher-info">
 
                 <div class="teacher-name">
-
                     Mrs. Shonali Saha
-
                 </div>
 
-
                 <div class="teacher-subject">
-
                     English · Class Teacher
-
                 </div>
 
             </div>
-
 
             <div class="teacher-action">
 
@@ -2383,10 +2196,6 @@ footer {
 
         </a>
 
-
-        <!-- =================================================
-             RITESH
-        ================================================== -->
 
         <a
             href="ritesh.html"
@@ -2397,24 +2206,17 @@ footer {
                 02
             </div>
 
-
             <div class="teacher-info">
 
                 <div class="teacher-name">
-
                     Mr. Ritesh Tiwari
-
                 </div>
 
-
                 <div class="teacher-subject">
-
                     Mathematics
-
                 </div>
 
             </div>
-
 
             <div class="teacher-action">
 
@@ -2430,10 +2232,6 @@ footer {
 
         </a>
 
-
-        <!-- =================================================
-             SHALINI
-        ================================================== -->
 
         <a
             href="shalini.html"
@@ -2444,24 +2242,17 @@ footer {
                 03
             </div>
 
-
             <div class="teacher-info">
 
                 <div class="teacher-name">
-
                     Mrs. Shalini Sinha
-
                 </div>
 
-
                 <div class="teacher-subject">
-
                     Social Science
-
                 </div>
 
             </div>
-
 
             <div class="teacher-action">
 
@@ -2477,10 +2268,6 @@ footer {
 
         </a>
 
-
-        <!-- =================================================
-             AJAY
-        ================================================== -->
 
         <a
             href="ajay.html"
@@ -2491,24 +2278,17 @@ footer {
                 04
             </div>
 
-
             <div class="teacher-info">
 
                 <div class="teacher-name">
-
                     Mr. Ajay Trivedi
-
                 </div>
 
-
                 <div class="teacher-subject">
-
                     Hindi · Sparsh
-
                 </div>
 
             </div>
-
 
             <div class="teacher-action">
 
@@ -2524,10 +2304,6 @@ footer {
 
         </a>
 
-
-        <!-- =================================================
-             ARIBA
-        ================================================== -->
 
         <a
             href="ariba.html"
@@ -2538,24 +2314,17 @@ footer {
                 05
             </div>
 
-
             <div class="teacher-info">
 
                 <div class="teacher-name">
-
                     Ms. Ariba Ansari
-
                 </div>
 
-
                 <div class="teacher-subject">
-
                     Biology · Chemistry
-
                 </div>
 
             </div>
-
 
             <div class="teacher-action">
 
@@ -2572,10 +2341,6 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             HIMANSHU
-        ================================================== -->
-
         <a
             href="himanshu.html"
             class="teacher reveal"
@@ -2585,24 +2350,17 @@ footer {
                 06
             </div>
 
-
             <div class="teacher-info">
 
                 <div class="teacher-name">
-
                     Mr. Himanshu
-
                 </div>
 
-
                 <div class="teacher-subject">
-
                     Physics
-
                 </div>
 
             </div>
-
 
             <div class="teacher-action">
 
@@ -2652,15 +2410,13 @@ footer {
         <p>
 
             So we made our own report card.
-            Select a teacher and see what 10th I
-            really thinks about them.
+            Select a teacher and see what
+            10th I really thinks about them.
 
         </p>
 
     </div>
 
-
-    <!-- SELECTOR -->
 
     <div class="report-selector reveal">
 
@@ -2714,8 +2470,6 @@ footer {
     </div>
 
 
-    <!-- REPORT -->
-
     <div
         class="report-panel reveal"
         id="reportPanel"
@@ -2726,25 +2480,19 @@ footer {
             <div>
 
                 <div class="report-type">
-
                     Teacher Report / 10th I
-
                 </div>
 
-
                 <div class="report-class">
-
-                    Army Public School · Lal Bahadur Shastri Marg
-
+                    Army Public School ·
+                    Lal Bahadur Shastri Marg
                 </div>
 
             </div>
 
 
             <div class="report-status">
-
                 Final evaluation
-
             </div>
 
         </div>
@@ -2754,9 +2502,7 @@ footer {
             class="report-name"
             id="reportName"
         >
-
             Mrs. Shonali Saha
-
         </div>
 
 
@@ -2764,20 +2510,14 @@ footer {
             class="report-subject"
             id="reportSubject"
         >
-
             English · Class Teacher
-
         </div>
 
 
         <div
             class="metrics"
             id="metrics"
-        >
-
-            <!-- Generated by JavaScript -->
-
-        </div>
+        ></div>
 
 
         <div class="final-result">
@@ -2785,19 +2525,14 @@ footer {
             <div>
 
                 <div class="final-label">
-
                     Overall result
-
                 </div>
-
 
                 <div
                     class="final-word"
                     id="finalWord"
                 >
-
                     INCOMPARABLE
-
                 </div>
 
             </div>
@@ -2807,10 +2542,8 @@ footer {
                 class="final-mark"
                 id="finalMark"
             >
-
                 Some teachers cannot be measured
                 in marks.
-
             </div>
 
         </div>
@@ -2820,11 +2553,9 @@ footer {
             class="report-remark"
             id="reportRemark"
         >
-
             “The person who made English,
-            stories and 10th I feel a little more
-            like home.”
-
+            stories and 10th I feel a little
+            more like home.”
         </div>
 
     </div>
@@ -2833,7 +2564,7 @@ footer {
 
 
 <!-- =====================================================
-     FINAL EMOTIONAL SECTION
+     CLOSING
 ===================================================== -->
 
 <section class="closing reveal">
@@ -2848,10 +2579,14 @@ footer {
     <h2>
 
         You didn't just teach us.
+
         <br>
 
         You became part of
-        <span>our story.</span>
+
+        <span>
+            our story.
+        </span>
 
     </h2>
 
@@ -2859,98 +2594,6 @@ footer {
     <div class="closing-signature">
 
         — Class 10th I
-
-    </div>
-
-
-    <!-- CENTERED BUTTON -->
-
-    <div class="message-button-wrap">
-
-        <button
-            class="message-button"
-            id="messageButton"
-            type="button"
-        >
-
-            <span>
-                A message from Class 10th I
-            </span>
-
-            <span
-                class="message-button-icon"
-                id="messageIcon"
-            >
-                ↓
-            </span>
-
-        </button>
-
-    </div>
-
-
-    <!-- MESSAGE REVEAL -->
-
-    <div
-        class="class-message"
-        id="classMessage"
-    >
-
-        <div class="class-message-inner">
-
-            <div class="message-label">
-
-                A few words from all of us
-
-            </div>
-
-
-            <div class="message-title">
-
-                To our teachers,
-
-            </div>
-
-
-            <div class="message-text">
-
-                You entered our classroom as teachers,
-                but somewhere between the lessons,
-                the questions, the warnings, the jokes,
-                the stories and the countless
-                <strong>
-                    “Sir/Ma'am, one last doubt”
-                </strong>
-                moments, you became part of our everyday life.
-
-                <br><br>
-
-                We may forget a formula.
-                We may forget a chapter.
-                We may even forget what homework
-                was given on a particular day.
-
-                <br><br>
-
-                But we will remember the people who
-                stood in front of us and believed that
-                we could become better than we were yesterday.
-
-                <br><br>
-
-                Thank you for teaching us far beyond
-                the textbooks.
-
-            </div>
-
-
-            <div class="message-sign">
-
-                With love, respect & gratitude · Class 10th I
-
-            </div>
-
-        </div>
 
     </div>
 
@@ -2965,7 +2608,8 @@ footer {
 
     <div class="footer-quote">
 
-        “A good teacher can inspire hope, ignite the imagination,
+        “A good teacher can inspire hope,
+        ignite the imagination,
         and instill a love of learning.”
 
     </div>
@@ -2974,7 +2618,9 @@ footer {
     <div class="footer-sign">
 
         With deepest respect and gratitude,
+
         <br>
+
         Class 10th I
 
     </div>
@@ -2982,7 +2628,8 @@ footer {
 
     <div class="footer-location">
 
-        Army Public School · Lal Bahadur Shastri Marg
+        Army Public School ·
+        Lal Bahadur Shastri Marg
 
     </div>
 
@@ -3009,10 +2656,15 @@ const teacherData = {
             "English · Class Teacher",
 
         metrics: [
+
             ["Storytelling", 99],
+
             ["Motivation", 100],
+
             ["Patience", 98],
+
             ["Chaos Management", 100]
+
         ],
 
         final:
@@ -3023,6 +2675,7 @@ const teacherData = {
 
         remark:
             "“The person who made English, stories and 10th I feel a little more like home.”"
+
     },
 
 
@@ -3035,10 +2688,15 @@ const teacherData = {
             "Mathematics",
 
         metrics: [
+
             ["Mathematics", 100],
+
             ["Board Motivation", 100],
+
             ["Hard Work", 99],
+
             ["Unexpected Comedy", 98]
+
         ],
 
         final:
@@ -3049,6 +2707,7 @@ const teacherData = {
 
         remark:
             "“Five questions, board preparation and somehow... a lot of memories.”"
+
     },
 
 
@@ -3061,10 +2720,15 @@ const teacherData = {
             "Social Science",
 
         metrics: [
+
             ["Storytelling", 100],
+
             ["Student Connection", 99],
+
             ["Making History Alive", 100],
+
             ["Classroom Energy", 98]
+
         ],
 
         final:
@@ -3075,6 +2739,7 @@ const teacherData = {
 
         remark:
             "“Somehow, history stopped feeling like history and started feeling like a story.”"
+
     },
 
 
@@ -3087,10 +2752,15 @@ const teacherData = {
             "Hindi · Sparsh",
 
         metrics: [
+
             ["Student Connection", 100],
+
             ["Humour", 98],
+
             ["Life Lessons", 99],
+
             ["Discipline", 100]
+
         ],
 
         final:
@@ -3101,6 +2771,7 @@ const teacherData = {
 
         remark:
             "“Some lessons were written in Sparsh. Others were written by you.”"
+
     },
 
 
@@ -3113,10 +2784,15 @@ const teacherData = {
             "Biology · Chemistry",
 
         metrics: [
+
             ["Science", 100],
+
             ["Focus Recovery", 99],
+
             ["Roasting", 100],
+
             ["Lala Land Detection", 100]
+
         ],
 
         final:
@@ -3127,6 +2803,7 @@ const teacherData = {
 
         remark:
             "“Strict, loving, and somehow always aware when someone had left for Lala Land.”"
+
     },
 
 
@@ -3139,10 +2816,15 @@ const teacherData = {
             "Physics",
 
         metrics: [
+
             ["Concept Clarity", 100],
+
             ["Calmness", 99],
+
             ["Storytelling", 98],
+
             ["Focus Recovery", 97]
+
         ],
 
         final:
@@ -3153,13 +2835,14 @@ const teacherData = {
 
         remark:
             "“Idhar dhyan de beta — and somehow, the lesson stayed with us.”"
+
     }
 
 };
 
 
 /* =========================================================
-   REPORT ELEMENTS
+   ELEMENTS
 ========================================================= */
 
 const teacherSelect =
@@ -3204,128 +2887,116 @@ const reportRemark =
 
 
 /* =========================================================
-   RENDER REPORT
+   REPORT RENDER
 ========================================================= */
+
+let reportTimer = null;
+
 
 function renderReport(key) {
 
     const teacher =
         teacherData[key];
 
+    if (!teacher) return;
+
+
     reportPanel.classList.remove(
         "active"
     );
 
 
-    setTimeout(() => {
-
-        reportName.textContent =
-            teacher.name;
-
-        reportSubject.textContent =
-            teacher.subject;
-
-        finalWord.textContent =
-            teacher.final;
-
-        finalMark.textContent =
-            teacher.mark;
-
-        reportRemark.textContent =
-            teacher.remark;
+    clearTimeout(
+        reportTimer
+    );
 
 
-        metrics.innerHTML = "";
+    reportTimer =
+        setTimeout(() => {
+
+            reportName.textContent =
+                teacher.name;
+
+            reportSubject.textContent =
+                teacher.subject;
+
+            finalWord.textContent =
+                teacher.final;
+
+            finalMark.textContent =
+                teacher.mark;
+
+            reportRemark.textContent =
+                teacher.remark;
 
 
-        teacher.metrics.forEach(
-            ([label, score]) => {
+            metrics.innerHTML =
+                teacher.metrics.map(
+                    ([label, score]) => `
 
-                const metric =
-                    document.createElement(
-                        "div"
-                    );
+                    <div class="metric">
 
-                metric.className =
-                    "metric";
+                        <div class="metric-top">
 
+                            <div class="metric-name">
+                                ${label}
+                            </div>
 
-                metric.innerHTML = `
+                            <div class="metric-score">
+                                ${score}%
+                            </div>
 
-                    <div class="metric-top">
-
-                        <div class="metric-name">
-                            ${label}
                         </div>
 
-                        <div class="metric-score">
-                            ${score}%
+                        <div class="metric-track">
+
+                            <div
+                                class="metric-fill"
+                                data-score="${score}"
+                            ></div>
+
                         </div>
 
                     </div>
 
-                    <div class="metric-track">
+                `
+                ).join("");
 
-                        <div
-                            class="metric-fill"
-                            data-score="${score}"
-                        ></div>
-
-                    </div>
-
-                `;
-
-
-                metrics.appendChild(
-                    metric
-                );
-
-            }
-        );
-
-
-        requestAnimationFrame(() => {
 
             reportPanel.classList.add(
                 "active"
             );
 
 
-            document
-                .querySelectorAll(
-                    ".metric-fill"
-                )
-                .forEach(bar => {
+            requestAnimationFrame(() => {
 
-                    const score =
-                        bar.dataset.score;
+                const bars =
+                    document.querySelectorAll(
+                        ".metric-fill"
+                    );
 
+                bars.forEach(
+                    (bar, index) => {
 
-                    setTimeout(() => {
+                        setTimeout(() => {
 
-                        bar.style.width =
-                            `${score}%`;
+                            bar.style.width =
+                                `${bar.dataset.score}%`;
 
-                    }, 80);
+                        }, index * 45);
 
-                });
+                    }
+                );
 
-        });
+            });
 
-    }, 180);
+        }, 140);
 
 }
 
 
 /* =========================================================
-   INITIAL REPORT
-========================================================= */
-
-renderReport("shonali");
-
-
-/* =========================================================
-   REPORT SELECTOR
+   REPORT SELECT
 ========================================================= */
 
 let previousTeacher =
@@ -3336,25 +3007,22 @@ teacherSelect.addEventListener(
     "change",
     () => {
 
-        renderReport(
-            teacherSelect.value
-        );
-
-
         const selected =
             teacherSelect.value;
 
+        renderReport(
+            selected
+        );
+
 
         if (
-            selected !==
-            previousTeacher
+            selected !== previousTeacher
         ) {
+
+            launchSmallCelebration();
 
             previousTeacher =
                 selected;
-
-
-            reportCelebration();
 
         }
 
@@ -3363,45 +3031,64 @@ teacherSelect.addEventListener(
 
 
 /* =========================================================
+   INITIAL REPORT
+========================================================= */
+
+renderReport(
+    teacherSelect.value
+);
+
+
+/* =========================================================
    SCROLL REVEAL
 ========================================================= */
 
-const observer =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: 0.12
-        }
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
     );
 
 
-document
-    .querySelectorAll(
-        ".reveal"
-    )
-    .forEach(
+if (
+    "IntersectionObserver"
+    in window
+) {
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.08,
+
+                rootMargin:
+                    "0px 0px -40px 0px"
+            }
+        );
+
+
+    revealElements.forEach(
         element => {
 
             observer.observe(
@@ -3410,6 +3097,20 @@ document
 
         }
     );
+
+} else {
+
+    revealElements.forEach(
+        element => {
+
+            element.classList.add(
+                "visible"
+            );
+
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -3422,24 +3123,69 @@ const cursorGlow =
     );
 
 
-if (
+const finePointer =
     window.matchMedia(
         "(pointer:fine)"
-    ).matches
+    );
+
+
+if (
+    finePointer.matches
 ) {
+
+    let glowX =
+        window.innerWidth / 2;
+
+    let glowY =
+        window.innerHeight / 2;
+
+    let targetX =
+        glowX;
+
+    let targetY =
+        glowY;
+
 
     window.addEventListener(
         "pointermove",
         event => {
 
-            cursorGlow.style.left =
-                `${event.clientX}px`;
+            targetX =
+                event.clientX;
 
-            cursorGlow.style.top =
-                `${event.clientY}px`;
+            targetY =
+                event.clientY;
 
+        },
+        {
+            passive: true
         }
     );
+
+
+    function updateGlow() {
+
+        glowX +=
+            (targetX - glowX) *
+            0.14;
+
+        glowY +=
+            (targetY - glowY) *
+            0.14;
+
+
+        cursorGlow.style.transform =
+            `translate3d(${glowX}px, ${glowY}px, 0) translate3d(-50%, -50%, 0)`;
+
+
+        requestAnimationFrame(
+            updateGlow
+        );
+
+    }
+
+
+    updateGlow();
 
 } else {
 
@@ -3450,7 +3196,7 @@ if (
 
 
 /* =========================================================
-   PARTICLE SYSTEM
+   PERFORMANCE PARTICLE ENGINE
 ========================================================= */
 
 const canvas =
@@ -3459,49 +3205,92 @@ const canvas =
     );
 
 const ctx =
-    canvas.getContext("2d");
+    canvas.getContext(
+        "2d",
+        {
+            alpha: true
+        }
+    );
+
 
 let particles = [];
 
-let width;
+let canvasWidth = 0;
 
-let height;
+let canvasHeight = 0;
+
+let pixelRatio = 1;
+
+let particleAnimation =
+    null;
+
+let lastParticleFrame =
+    0;
+
+let particlesPaused =
+    false;
+
+
+/*
+    The important optimization:
+
+    Instead of using the complete devicePixelRatio,
+    we cap it at 1.5.
+
+    This prevents a high-density phone screen
+    from turning the canvas into an unnecessarily
+    huge rendering surface.
+*/
 
 
 function resizeCanvas() {
 
-    const dpr =
-        Math.min(
-            window.devicePixelRatio || 1,
-            2
-        );
-
-
-    width =
+    const viewportWidth =
         window.innerWidth;
 
-    height =
+    const viewportHeight =
         window.innerHeight;
 
 
+    pixelRatio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
+
+
+    canvasWidth =
+        viewportWidth;
+
+    canvasHeight =
+        viewportHeight;
+
+
     canvas.width =
-        width * dpr;
+        Math.floor(
+            viewportWidth *
+            pixelRatio
+        );
 
     canvas.height =
-        height * dpr;
+        Math.floor(
+            viewportHeight *
+            pixelRatio
+        );
+
 
     canvas.style.width =
-        `${width}px`;
+        `${viewportWidth}px`;
 
     canvas.style.height =
-        `${height}px`;
+        `${viewportHeight}px`;
 
 
     ctx.setTransform(
-        dpr,
+        pixelRatio,
         0,
         0,
-        dpr,
+        pixelRatio,
         0,
         0
     );
@@ -3517,10 +3306,35 @@ function createParticles() {
     particles = [];
 
 
-    const amount =
-        window.innerWidth < 700
-            ? 42
-            : 78;
+    /*
+       Fewer particles on mobile,
+       but each particle is slightly
+       more visible.
+
+       This looks richer than having
+       hundreds of tiny dots.
+    */
+
+    let amount;
+
+
+    if (
+        window.innerWidth < 480
+    ) {
+
+        amount = 24;
+
+    } else if (
+        window.innerWidth < 800
+    ) {
+
+        amount = 34;
+
+    } else {
+
+        amount = 52;
+
+    }
 
 
     for (
@@ -3533,30 +3347,30 @@ function createParticles() {
 
             x:
                 Math.random() *
-                width,
+                canvasWidth,
 
             y:
                 Math.random() *
-                height,
+                canvasHeight,
 
             radius:
                 Math.random() *
-                1.4 +
+                1.15 +
                 0.25,
 
             speed:
                 Math.random() *
-                0.25 +
-                0.04,
+                0.18 +
+                0.035,
 
             drift:
                 (Math.random() - 0.5) *
-                0.16,
+                0.08,
 
             opacity:
                 Math.random() *
-                0.35 +
-                0.08
+                0.30 +
+                0.07
 
         });
 
@@ -3565,286 +3379,347 @@ function createParticles() {
 }
 
 
-function animateParticles() {
+/*
+    Run the particle engine at approximately
+    30 FPS instead of forcing it to redraw
+    every possible display frame.
+*/
+
+function animateParticles(
+    timestamp
+) {
+
+    if (
+        particlesPaused
+    ) {
+
+        particleAnimation =
+            requestAnimationFrame(
+                animateParticles
+            );
+
+        return;
+
+    }
+
+
+    if (
+        timestamp -
+        lastParticleFrame <
+        32
+    ) {
+
+        particleAnimation =
+            requestAnimationFrame(
+                animateParticles
+            );
+
+        return;
+
+    }
+
+
+    lastParticleFrame =
+        timestamp;
+
 
     ctx.clearRect(
         0,
         0,
-        width,
-        height
+        canvasWidth,
+        canvasHeight
     );
 
 
-    particles.forEach(
-        particle => {
+    for (
+        let i = 0;
+        i < particles.length;
+        i++
+    ) {
 
-            particle.y -=
-                particle.speed;
-
-            particle.x +=
-                particle.drift;
-
-
-            if (
-                particle.y <
-                -5
-            ) {
-
-                particle.y =
-                    height + 5;
-
-            }
+        const p =
+            particles[i];
 
 
-            if (
-                particle.x <
-                -5
-            ) {
+        p.y -=
+            p.speed;
 
-                particle.x =
-                    width + 5;
-
-            }
+        p.x +=
+            p.drift;
 
 
-            if (
-                particle.x >
-                width + 5
-            ) {
+        if (
+            p.y <
+            -6
+        ) {
 
-                particle.x =
-                    -5;
-
-            }
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                particle.x,
-                particle.y,
-                particle.radius,
-                0,
-                Math.PI * 2
-            );
-
-
-            ctx.fillStyle =
-                `rgba(
-                    232,
-                    189,
-                    98,
-                    ${particle.opacity}
-                )`;
-
-
-            ctx.fill();
+            p.y =
+                canvasHeight +
+                6;
 
         }
-    );
 
 
-    requestAnimationFrame(
-        animateParticles
-    );
+        if (
+            p.x <
+            -6
+        ) {
+
+            p.x =
+                canvasWidth +
+                6;
+
+        }
+
+
+        if (
+            p.x >
+            canvasWidth +
+            6
+        ) {
+
+            p.x =
+                -6;
+
+        }
+
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.radius,
+            0,
+            Math.PI * 2
+        );
+
+
+        ctx.fillStyle =
+            `rgba(232,189,98,${p.opacity})`;
+
+
+        ctx.fill();
+
+    }
+
+
+    particleAnimation =
+        requestAnimationFrame(
+            animateParticles
+        );
 
 }
 
+
+/* =========================================================
+   PAUSE PARTICLES WHEN TAB IS HIDDEN
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        particlesPaused =
+            document.hidden;
+
+    }
+);
+
+
+/* =========================================================
+   PARTICLE START
+========================================================= */
 
 resizeCanvas();
 
 
+let resizeTimer;
+
+
 window.addEventListener(
     "resize",
-    resizeCanvas
+    () => {
+
+        clearTimeout(
+            resizeTimer
+        );
+
+
+        resizeTimer =
+            setTimeout(
+                resizeCanvas,
+                150
+            );
+
+    },
+    {
+        passive: true
+    }
 );
 
 
-animateParticles();
+particleAnimation =
+    requestAnimationFrame(
+        animateParticles
+    );
 
 
 /* =========================================================
-   MODERATE TEACHERS' DAY CONFETTI
+   CONFETTI
 ========================================================= */
 
-function celebrateTeachersDay() {
+function launchOpeningCelebration() {
 
     if (
         typeof confetti !==
         "function"
     ) {
+
         return;
+
     }
 
 
-    const colors = [
+    /*
+       Moderate celebration.
 
-        "#e8bd62",
-        "#f5d98b",
-        "#ffffff",
-        "#d8dee8",
-        "#c79b45"
+       Two side bursts + a small
+       center shower.
 
-    ];
-
-
-    const duration =
-        1800;
+       Total quantity is intentionally
+       controlled so it feels celebratory
+       rather than noisy.
+    */
 
 
-    const end =
-        Date.now() +
-        duration;
+    confetti({
+
+        particleCount:
+            32,
+
+        spread:
+            55,
+
+        startVelocity:
+            27,
+
+        gravity:
+            0.9,
+
+        scalar:
+            0.72,
+
+        ticks:
+            170,
+
+        origin: {
+            x: 0.08,
+            y: 0.46
+        }
+
+    });
 
 
-    function frame() {
+    confetti({
 
-        /* LEFT POPPER */
+        particleCount:
+            32,
 
-        confetti({
+        spread:
+            55,
 
-            particleCount: 7,
+        startVelocity:
+            27,
 
-            angle: 58,
+        gravity:
+            0.9,
 
-            spread: 52,
+        scalar:
+            0.72,
 
-            startVelocity: 38,
+        ticks:
+            170,
 
-            gravity: 0.95,
+        origin: {
+            x: 0.92,
+            y: 0.46
+        }
 
-            ticks: 180,
-
-            scalar: 0.85,
-
-            drift: 0.15,
-
-            origin: {
-                x: 0.02,
-                y: 0.55
-            },
-
-            colors
-
-        });
+    });
 
 
-        /* RIGHT POPPER */
-
-        confetti({
-
-            particleCount: 7,
-
-            angle: 122,
-
-            spread: 52,
-
-            startVelocity: 38,
-
-            gravity: 0.95,
-
-            ticks: 180,
-
-            scalar: 0.85,
-
-            drift: -0.15,
-
-            origin: {
-                x: 0.98,
-                y: 0.55
-            },
-
-            colors
-
-        });
-
-
-        /* CENTER BURST */
+    setTimeout(() => {
 
         confetti({
 
-            particleCount: 5,
+            particleCount:
+                24,
 
-            angle: 90,
+            spread:
+                75,
 
-            spread: 65,
+            startVelocity:
+                20,
 
-            startVelocity: 28,
+            gravity:
+                1,
 
-            gravity: 1,
+            scalar:
+                0.62,
 
-            ticks: 170,
-
-            scalar: 0.7,
+            ticks:
+                150,
 
             origin: {
                 x: 0.5,
-                y: 0.72
-            },
-
-            colors
+                y: 0.42
+            }
 
         });
 
-
-        if (
-            Date.now() <
-            end
-        ) {
-
-            requestAnimationFrame(
-                frame
-            );
-
-        }
-
-    }
-
-
-    frame();
+    }, 180);
 
 }
 
 
-/* =========================================================
-   REPORT CARD CELEBRATION
-========================================================= */
-
-function reportCelebration() {
+function launchSmallCelebration() {
 
     if (
         typeof confetti !==
         "function"
     ) {
+
         return;
+
     }
 
 
     confetti({
 
-        particleCount: 55,
+        particleCount:
+            24,
 
-        spread: 70,
+        spread:
+            48,
 
-        startVelocity: 25,
+        startVelocity:
+            17,
 
-        gravity: 0.9,
+        gravity:
+            1.05,
 
-        scalar: 0.72,
+        scalar:
+            0.58,
 
-        ticks: 170,
+        ticks:
+            125,
 
         origin: {
             x: 0.5,
-            y: 0.62
-        },
-
-        colors: [
-            "#e8bd62",
-            "#ffffff",
-            "#f5d98b"
-        ]
+            y: 0.58
+        }
 
     });
 
@@ -3852,139 +3727,44 @@ function reportCelebration() {
 
 
 /* =========================================================
-   MESSAGE REVEAL
-========================================================= */
-
-const messageButton =
-    document.getElementById(
-        "messageButton"
-    );
-
-const classMessage =
-    document.getElementById(
-        "classMessage"
-    );
-
-const messageIcon =
-    document.getElementById(
-        "messageIcon"
-    );
-
-
-messageButton.addEventListener(
-    "click",
-    () => {
-
-        const isOpen =
-            classMessage.classList.contains(
-                "open"
-            );
-
-
-        if (!isOpen) {
-
-            classMessage.classList.add(
-                "open"
-            );
-
-
-            messageIcon.textContent =
-                "↑";
-
-
-            messageButton
-                .querySelector("span")
-                .textContent =
-                "Hide message";
-
-
-            setTimeout(
-                () => {
-
-                    classMessage.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-
-                },
-                250
-            );
-
-
-            /* EMOTIONAL REVEAL BURST */
-
-            if (
-                typeof confetti ===
-                "function"
-            ) {
-
-                confetti({
-
-                    particleCount: 65,
-
-                    spread: 78,
-
-                    startVelocity: 27,
-
-                    gravity: 0.82,
-
-                    scalar: 0.78,
-
-                    ticks: 190,
-
-                    origin: {
-                        x: 0.5,
-                        y: 0.55
-                    },
-
-                    colors: [
-                        "#e8bd62",
-                        "#f5d98b",
-                        "#ffffff"
-                    ]
-
-                });
-
-            }
-
-        } else {
-
-            classMessage.classList.remove(
-                "open"
-            );
-
-
-            messageIcon.textContent =
-                "↓";
-
-
-            messageButton
-                .querySelector("span")
-                .textContent =
-                "A message from Class 10th I";
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PAGE LOAD CELEBRATION
+   OPENING CELEBRATION
 ========================================================= */
 
 window.addEventListener(
     "load",
     () => {
 
+        /*
+           Delay slightly so the page can paint first.
+           This avoids competing with initial rendering.
+        */
+
         setTimeout(
-            () => {
-
-                celebrateTeachersDay();
-
-            },
-            700
+            launchOpeningCelebration,
+            850
         );
+
+    }
+);
+
+
+/* =========================================================
+   CLEANUP
+========================================================= */
+
+window.addEventListener(
+    "pagehide",
+    () => {
+
+        if (
+            particleAnimation
+        ) {
+
+            cancelAnimationFrame(
+                particleAnimation
+            );
+
+        }
 
     }
 );
