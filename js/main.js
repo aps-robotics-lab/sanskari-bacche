@@ -3,25 +3,33 @@
    Class 10th I
    Army Public School, Lal Bahadur Shastri Marg
 
-   PERFORMANCE-FIRST VERSION
+   PERFORMANCE-FIRST / SILKY VERSION
 
-   Included:
+   INCLUDED
    ✓ Scroll reveal
    ✓ Smooth anchor scrolling
-   ✓ Report card support on index.html
-   ✓ Moderate confetti celebration
-   ✓ Button / link interactions
+   ✓ Report card on index.html
+   ✓ Teacher report switching
+   ✓ Moderate page-load confetti
+   ✓ Moderate report-card confetti
+   ✓ Message reveal support
    ✓ Back-to-home support
    ✓ Mobile optimization
    ✓ Reduced-motion support
+   ✓ Hidden-tab protection
+   ✓ Race-safe report rendering
+   ✓ No particle canvas
+   ✓ No cursor-following animation
+   ✓ No continuous requestAnimationFrame
+   ✓ No heavy parallax
+   ✓ No unnecessary mouse calculations
 
-   Intentionally NOT included:
-   ✗ Particle canvas
-   ✗ Particle animation
-   ✗ Cursor-following glow
-   ✗ Continuous requestAnimationFrame loops
-   ✗ Heavy parallax
-   ✗ Continuous mouse calculations
+   INTENTIONALLY REMOVED
+   ✗ Particle system
+   ✗ Particle canvas animation
+   ✗ Cursor glow tracking
+   ✗ Continuous animation loops
+   ✗ Heavy JS hover effects
 ========================================================= */
 
 (() => {
@@ -30,23 +38,39 @@
 
 
     /* =====================================================
-       DEVICE DETECTION
+       GLOBAL STATE
     ===================================================== */
+
+    const root =
+        document.documentElement;
+
+    const body =
+        document.body;
 
     const isMobile =
         window.matchMedia(
             "(max-width: 700px)"
         ).matches;
 
-
     const prefersReducedMotion =
         window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches;
 
+    let pageIsVisible =
+        !document.hidden;
+
+    let confettiTimerA = null;
+    let confettiTimerB = null;
+
+    let reportRenderTimer = null;
+    let reportAnimationTimer = null;
+
+    let reportRenderVersion = 0;
+
 
     /* =====================================================
-       PERFORMANCE CSS
+       PERFORMANCE STYLES
     ===================================================== */
 
     function addPerformanceStyles() {
@@ -63,6 +87,7 @@
         const style =
             document.createElement("style");
 
+
         style.id =
             "td-performance-styles";
 
@@ -70,31 +95,30 @@
         style.textContent = `
 
             /*
-             * Browser-friendly animation hints.
+             * Keep the browser compositor focused
+             * on the properties that are actually animated.
              */
 
             .reveal {
-                will-change: opacity, transform;
+                will-change:
+                    opacity,
+                    transform;
             }
 
 
             /*
-             * Remove the old particle/cursor systems
-             * if remnants exist in an HTML file.
+             * Remove legacy particle/cursor elements
+             * without needing to edit every old HTML file.
              */
 
-            #particleCanvas {
-                display: none !important;
-            }
-
-
+            #particleCanvas,
             .cursor-glow {
                 display: none !important;
             }
 
 
             /*
-             * Keep transitions short and smooth.
+             * Prevent mobile tap flash.
              */
 
             .teacher,
@@ -108,31 +132,29 @@
 
 
             /*
-             * Mobile devices don't need expensive
-             * backdrop blur everywhere.
-             *
-             * The glass appearance remains.
+             * The report card uses opacity/transform
+             * during teacher switching.
              */
 
-            @media (max-width: 700px) {
-
-                .topbar,
-                .report-panel,
-                .select-wrap,
-                .glass,
-                .glass-card {
-                    backdrop-filter:
-                        blur(10px);
-
-                    -webkit-backdrop-filter:
-                        blur(10px);
-                }
-
+            #reportPanel {
+                will-change:
+                    opacity,
+                    transform;
             }
 
 
             /*
-             * Accessibility.
+             * Don't keep will-change on everything.
+             * It consumes memory.
+             */
+
+            .reveal.visible {
+                will-change: auto;
+            }
+
+
+            /*
+             * Accessibility / reduced motion.
              */
 
             @media (prefers-reduced-motion: reduce) {
@@ -152,6 +174,33 @@
 
                     scroll-behavior:
                         auto !important;
+
+                }
+
+            }
+
+
+            /*
+             * Smaller blur on mobile.
+             *
+             * This does NOT remove the glass effect.
+             * It simply reduces GPU work.
+             */
+
+            @media (max-width: 700px) {
+
+                .topbar,
+                .report-panel,
+                .select-wrap,
+                .glass,
+                .glass-card {
+
+                    backdrop-filter:
+                        blur(10px);
+
+                    -webkit-backdrop-filter:
+                        blur(10px);
+
                 }
 
             }
@@ -162,15 +211,86 @@
         document.head.appendChild(
             style
         );
+
+    }
+
+
+    /* =====================================================
+       LEGACY EFFECT CLEANUP
+    ===================================================== */
+
+    function disableLegacyEffects() {
+
+        /*
+         * Particle canvas
+         */
+
+        const canvas =
+            document.getElementById(
+                "particleCanvas"
+            );
+
+
+        if (canvas) {
+
+            /*
+             * Shrinking the backing buffer to 1x1
+             * prevents an old script from consuming
+             * a large canvas buffer if it somehow still runs.
+             */
+
+            try {
+
+                canvas.width = 1;
+                canvas.height = 1;
+
+            } catch (error) {
+                /* Safe to ignore. */
+            }
+
+
+            canvas.style.display =
+                "none";
+
+        }
+
+
+        /*
+         * Cursor glow
+         */
+
+        const cursorGlow =
+            document.getElementById(
+                "cursorGlow"
+            );
+
+
+        if (cursorGlow) {
+
+            cursorGlow.style.display =
+                "none";
+
+        }
+
+
+        /*
+         * Remove legacy canvas references from
+         * pointer events where possible.
+         */
+
+        body.classList.add(
+            "td-performance-mode"
+        );
+
     }
 
 
     /* =====================================================
        SCROLL REVEAL
        
-       Uses IntersectionObserver.
+       IntersectionObserver only.
        No scroll event.
-       No animation loop.
+       No requestAnimationFrame.
     ===================================================== */
 
     function initReveal() {
@@ -187,8 +307,8 @@
 
 
         /*
-         * If the user prefers reduced motion,
-         * simply show everything.
+         * Reduced-motion users should see
+         * everything immediately.
          */
 
         if (
@@ -202,6 +322,9 @@
                     element.classList.add(
                         "visible"
                     );
+
+                    element.style.willChange =
+                        "auto";
 
                 }
             );
@@ -230,8 +353,8 @@
 
 
                             /*
-                             * Stop observing after
-                             * the animation has happened.
+                             * Once revealed, it never
+                             * needs observation again.
                              */
 
                             observer.unobserve(
@@ -246,7 +369,7 @@
                     threshold: 0.08,
 
                     rootMargin:
-                        "0px 0px -35px 0px"
+                        "0px 0px -40px 0px"
                 }
             );
 
@@ -254,9 +377,35 @@
         elements.forEach(
             element => {
 
-                observer.observe(
-                    element
-                );
+                /*
+                 * Elements already visible when
+                 * the page loads shouldn't wait.
+                 */
+
+                const rect =
+                    element.getBoundingClientRect();
+
+
+                if (
+                    rect.top <
+                    window.innerHeight * 0.92
+                ) {
+
+                    element.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        element
+                    );
+
+                } else {
+
+                    observer.observe(
+                        element
+                    );
+
+                }
 
             }
         );
@@ -265,7 +414,7 @@
 
 
     /* =====================================================
-       SMOOTH ANCHOR LINKS
+       SMOOTH ANCHOR SCROLLING
     ===================================================== */
 
     function initSmoothAnchors() {
@@ -302,10 +451,26 @@
                         }
 
 
-                        const target =
-                            document.querySelector(
-                                href
-                            );
+                        let target = null;
+
+
+                        try {
+
+                            target =
+                                document.querySelector(
+                                    href
+                                );
+
+                        } catch (error) {
+
+                            /*
+                             * Invalid selector.
+                             * Let browser handle it normally.
+                             */
+
+                            return;
+
+                        }
 
 
                         if (!target) {
@@ -313,22 +478,19 @@
                         }
 
 
-                        /*
-                         * Let the browser handle
-                         * normal scrolling when motion
-                         * reduction is enabled.
-                         */
-
                         event.preventDefault();
 
 
                         target.scrollIntoView({
+
                             behavior:
                                 prefersReducedMotion
                                     ? "auto"
                                     : "smooth",
 
-                            block: "start"
+                            block:
+                                "start"
+
                         });
 
                     }
@@ -341,156 +503,189 @@
 
 
     /* =====================================================
-       MODERATE CONFETTI
-       
-       One celebration per page.
-       No particle canvas.
+       CONFETTI AVAILABILITY
     ===================================================== */
 
-    function launchPageConfetti() {
+    function canUseConfetti() {
 
         if (
             prefersReducedMotion
         ) {
-            return;
+            return false;
         }
 
 
         if (
-            typeof window.confetti !==
-            "function"
+            !pageIsVisible
         ) {
-            return;
+            return false;
         }
 
 
-        /*
-         * Wait until the page has rendered.
-         * This prevents confetti from competing with
-         * initial page rendering.
-         */
-
-        window.setTimeout(
-            () => {
-
-                /*
-                 * First burst.
-                 */
-
-                window.confetti({
-
-                    particleCount:
-                        isMobile
-                            ? 28
-                            : 42,
-
-                    spread:
-                        isMobile
-                            ? 55
-                            : 65,
-
-                    startVelocity:
-                        isMobile
-                            ? 18
-                            : 23,
-
-                    gravity: 0.85,
-
-                    scalar:
-                        isMobile
-                            ? 0.62
-                            : 0.72,
-
-                    ticks:
-                        isMobile
-                            ? 105
-                            : 125,
-
-                    origin: {
-                        x: 0.15,
-                        y: 0.45
-                    }
-
-                });
-
-
-                /*
-                 * Second burst.
-                 *
-                 * Slight delay creates the feeling
-                 * of a celebration rather than one
-                 * huge explosion.
-                 */
-
-                window.setTimeout(
-                    () => {
-
-                        window.confetti({
-
-                            particleCount:
-                                isMobile
-                                    ? 28
-                                    : 42,
-
-                            spread:
-                                isMobile
-                                    ? 55
-                                    : 65,
-
-                            startVelocity:
-                                isMobile
-                                    ? 18
-                                    : 23,
-
-                            gravity: 0.85,
-
-                            scalar:
-                                isMobile
-                                    ? 0.62
-                                    : 0.72,
-
-                            ticks:
-                                isMobile
-                                    ? 105
-                                    : 125,
-
-                            origin: {
-                                x: 0.85,
-                                y: 0.45
-                            }
-
-                        });
-
-                    },
-                    140
-                );
-
-
-            },
-            850
+        return (
+            typeof window.confetti ===
+            "function"
         );
 
     }
 
 
     /* =====================================================
-       SMALL INTERACTION CONFETTI
+       MODERATE PAGE CONFETTI
        
-       Used only when the report-card teacher changes.
+       Two sides.
+       Moderate quantity.
+       Short lifetime.
+       No continuous animation.
     ===================================================== */
 
-    function smallConfetti() {
+    function launchPageConfetti() {
 
         if (
-            prefersReducedMotion
+            !canUseConfetti()
         ) {
             return;
         }
 
 
+        /*
+         * Avoid stacking timers.
+         */
+
+        clearTimeout(
+            confettiTimerA
+        );
+
+        clearTimeout(
+            confettiTimerB
+        );
+
+
+        /*
+         * Give the browser time to finish
+         * the first visual paint.
+         */
+
+        confettiTimerA =
+            window.setTimeout(
+                () => {
+
+                    if (
+                        !canUseConfetti()
+                    ) {
+                        return;
+                    }
+
+
+                    window.confetti({
+
+                        particleCount:
+                            isMobile
+                                ? 34
+                                : 48,
+
+                        spread:
+                            isMobile
+                                ? 58
+                                : 68,
+
+                        startVelocity:
+                            isMobile
+                                ? 18
+                                : 23,
+
+                        gravity: 0.88,
+
+                        scalar:
+                            isMobile
+                                ? 0.62
+                                : 0.72,
+
+                        ticks:
+                            isMobile
+                                ? 95
+                                : 115,
+
+                        origin: {
+                            x: 0.10,
+                            y: 0.46
+                        }
+
+                    });
+
+                },
+                900
+            );
+
+
+        /*
+         * Second side.
+         */
+
+        confettiTimerB =
+            window.setTimeout(
+                () => {
+
+                    if (
+                        !canUseConfetti()
+                    ) {
+                        return;
+                    }
+
+
+                    window.confetti({
+
+                        particleCount:
+                            isMobile
+                                ? 34
+                                : 48,
+
+                        spread:
+                            isMobile
+                                ? 58
+                                : 68,
+
+                        startVelocity:
+                            isMobile
+                                ? 18
+                                : 23,
+
+                        gravity: 0.88,
+
+                        scalar:
+                            isMobile
+                                ? 0.62
+                                : 0.72,
+
+                        ticks:
+                            isMobile
+                                ? 95
+                                : 115,
+
+                        origin: {
+                            x: 0.90,
+                            y: 0.46
+                        }
+
+                    });
+
+                },
+                1050
+            );
+
+    }
+
+
+    /* =====================================================
+       SMALL CONFETTI
+       
+       Used for report-card changes.
+    ===================================================== */
+
+    function launchSmallConfetti() {
+
         if (
-            typeof window.confetti !==
-            "function"
+            !canUseConfetti()
         ) {
             return;
         }
@@ -500,12 +695,15 @@
 
             particleCount:
                 isMobile
-                    ? 14
-                    : 22,
+                    ? 16
+                    : 24,
 
-            spread: 45,
+            spread: 46,
 
-            startVelocity: 16,
+            startVelocity:
+                isMobile
+                    ? 15
+                    : 18,
 
             gravity: 0.95,
 
@@ -516,11 +714,11 @@
 
             ticks:
                 isMobile
-                    ? 85
-                    : 100,
+                    ? 78
+                    : 92,
 
             origin: {
-                x: 0.5,
+                x: 0.50,
                 y: 0.55
             }
 
@@ -530,13 +728,421 @@
 
 
     /* =====================================================
-       REPORT CARD
-       
-       Compatible with your existing index.html.
+       REPORT CARD DATA
+    ===================================================== */
 
-       IMPORTANT:
-       This function does NOTHING on teacher pages.
-       Therefore one main.js can safely be used everywhere.
+    const teacherData = {
+
+        shonali: {
+
+            name:
+                "Mrs. Shonali Saha",
+
+            subject:
+                "English · Class Teacher",
+
+            metrics: [
+
+                [
+                    "Storytelling",
+                    99
+                ],
+
+                [
+                    "Motivation",
+                    100
+                ],
+
+                [
+                    "Patience",
+                    98
+                ],
+
+                [
+                    "Chaos Management",
+                    100
+                ]
+
+            ],
+
+            final:
+                "INCOMPARABLE",
+
+            mark:
+                "Some teachers cannot be measured in marks.",
+
+            remark:
+                "“The person who made English, stories and 10th I feel a little more like home.”"
+
+        },
+
+
+        ritesh: {
+
+            name:
+                "Mr. Ritesh Tiwari",
+
+            subject:
+                "Mathematics",
+
+            metrics: [
+
+                [
+                    "Mathematics",
+                    100
+                ],
+
+                [
+                    "Board Motivation",
+                    100
+                ],
+
+                [
+                    "Hard Work",
+                    99
+                ],
+
+                [
+                    "Unexpected Comedy",
+                    98
+                ]
+
+            ],
+
+            final:
+                "LEGENDARY",
+
+            mark:
+                "Strict on the outside. Invested in our future on the inside.",
+
+            remark:
+                "“Five questions, board preparation and somehow... a lot of memories.”"
+
+        },
+
+
+        shalini: {
+
+            name:
+                "Mrs. Shalini Sinha",
+
+            subject:
+                "Social Science",
+
+            metrics: [
+
+                [
+                    "Storytelling",
+                    100
+                ],
+
+                [
+                    "Student Connection",
+                    99
+                ],
+
+                [
+                    "Making History Alive",
+                    100
+                ],
+
+                [
+                    "Classroom Energy",
+                    98
+                ]
+
+            ],
+
+            final:
+                "UNFORGETTABLE",
+
+            mark:
+                "Because chapters become memories when someone makes them come alive.",
+
+            remark:
+                "“Somehow, history stopped feeling like history and started feeling like a story.”"
+
+        },
+
+
+        ajay: {
+
+            name:
+                "Mr. Ajay Trivedi",
+
+            subject:
+                "Hindi · Sparsh",
+
+            metrics: [
+
+                [
+                    "Student Connection",
+                    100
+                ],
+
+                [
+                    "Humour",
+                    98
+                ],
+
+                [
+                    "Life Lessons",
+                    99
+                ],
+
+                [
+                    "Discipline",
+                    100
+                ]
+
+            ],
+
+            final:
+                "INCOMPARABLE",
+
+            mark:
+                "A little strict. A lot caring. Completely unforgettable.",
+
+            remark:
+                "“Some lessons were written in Sparsh. Others were written by you.”"
+
+        },
+
+
+        ariba: {
+
+            name:
+                "Ms. Ariba Ansari",
+
+            subject:
+                "Biology · Chemistry",
+
+            metrics: [
+
+                [
+                    "Science",
+                    100
+                ],
+
+                [
+                    "Focus Recovery",
+                    99
+                ],
+
+                [
+                    "Roasting",
+                    100
+                ],
+
+                [
+                    "Lala Land Detection",
+                    100
+                ]
+
+            ],
+
+            final:
+                "ICONIC",
+
+            mark:
+                "For bringing 10th I back to Earth, one roast at a time.",
+
+            remark:
+                "“Strict, loving, and somehow always aware when someone had left for Lala Land.”"
+
+        },
+
+
+        himanshu: {
+
+            name:
+                "Mr. Himanshu",
+
+            subject:
+                "Physics",
+
+            metrics: [
+
+                [
+                    "Concept Clarity",
+                    100
+                ],
+
+                [
+                    "Calmness",
+                    99
+                ],
+
+                [
+                    "Storytelling",
+                    98
+                ],
+
+                [
+                    "Focus Recovery",
+                    97
+                ]
+
+            ],
+
+            final:
+                "UNFORGETTABLE",
+
+            mark:
+                "Complex physics became easier when you told us the story behind it.",
+
+            remark:
+                "“Idhar dhyan de beta — and somehow, the lesson stayed with us.”"
+
+        }
+
+    };
+
+
+    /* =====================================================
+       SCORE SANITIZATION
+    ===================================================== */
+
+    function clampScore(
+        value
+    ) {
+
+        const number =
+            Number(value);
+
+
+        if (
+            !Number.isFinite(number)
+        ) {
+            return 0;
+        }
+
+
+        return Math.min(
+            100,
+            Math.max(
+                0,
+                number
+            )
+        );
+
+    }
+
+
+    /* =====================================================
+       CREATE METRIC
+    ===================================================== */
+
+    function createMetric(
+        label,
+        score
+    ) {
+
+        const metric =
+            document.createElement(
+                "div"
+            );
+
+
+        metric.className =
+            "metric";
+
+
+        const safeScore =
+            clampScore(
+                score
+            );
+
+
+        /*
+         * Build DOM using textContent
+         * rather than injecting arbitrary content.
+         */
+
+        const top =
+            document.createElement(
+                "div"
+            );
+
+        top.className =
+            "metric-top";
+
+
+        const name =
+            document.createElement(
+                "div"
+            );
+
+        name.className =
+            "metric-name";
+
+        name.textContent =
+            label;
+
+
+        const scoreElement =
+            document.createElement(
+                "div"
+            );
+
+        scoreElement.className =
+            "metric-score";
+
+        scoreElement.textContent =
+            `${safeScore}%`;
+
+
+        top.appendChild(
+            name
+        );
+
+        top.appendChild(
+            scoreElement
+        );
+
+
+        const track =
+            document.createElement(
+                "div"
+            );
+
+        track.className =
+            "metric-track";
+
+
+        const fill =
+            document.createElement(
+                "div"
+            );
+
+        fill.className =
+            "metric-fill";
+
+        fill.dataset.score =
+            String(safeScore);
+
+
+        track.appendChild(
+            fill
+        );
+
+
+        metric.appendChild(
+            top
+        );
+
+        metric.appendChild(
+            track
+        );
+
+
+        return metric;
+
+    }
+
+
+    /* =====================================================
+       REPORT CARD
     ===================================================== */
 
     function initReportCard() {
@@ -548,7 +1154,8 @@
 
 
         /*
-         * No report card on this page.
+         * Teacher pages don't have this element.
+         * Therefore this function exits immediately.
          */
 
         if (!select) {
@@ -561,36 +1168,30 @@
                 "reportPanel"
             );
 
-
         const reportName =
             document.getElementById(
                 "reportName"
             );
-
 
         const reportSubject =
             document.getElementById(
                 "reportSubject"
             );
 
-
         const metrics =
             document.getElementById(
                 "metrics"
             );
-
 
         const finalWord =
             document.getElementById(
                 "finalWord"
             );
 
-
         const finalMark =
             document.getElementById(
                 "finalMark"
             );
-
 
         const reportRemark =
             document.getElementById(
@@ -599,8 +1200,7 @@
 
 
         /*
-         * If the report HTML is incomplete,
-         * don't throw errors.
+         * Fail safely if markup is incomplete.
          */
 
         if (
@@ -618,279 +1218,8 @@
             );
 
             return;
+
         }
-
-
-        /* =================================================
-           TEACHER DATA
-        ================================================= */
-
-        const teacherData = {
-
-            shonali: {
-
-                name:
-                    "Mrs. Shonali Saha",
-
-                subject:
-                    "English · Class Teacher",
-
-                metrics: [
-
-                    [
-                        "Storytelling",
-                        99
-                    ],
-
-                    [
-                        "Motivation",
-                        100
-                    ],
-
-                    [
-                        "Patience",
-                        98
-                    ],
-
-                    [
-                        "Chaos Management",
-                        100
-                    ]
-
-                ],
-
-                final:
-                    "INCOMPARABLE",
-
-                mark:
-                    "Some teachers cannot be measured in marks.",
-
-                remark:
-                    "“The person who made English, stories and 10th I feel a little more like home.”"
-
-            },
-
-
-            ritesh: {
-
-                name:
-                    "Mr. Ritesh Tiwari",
-
-                subject:
-                    "Mathematics",
-
-                metrics: [
-
-                    [
-                        "Mathematics",
-                        100
-                    ],
-
-                    [
-                        "Board Motivation",
-                        100
-                    ],
-
-                    [
-                        "Hard Work",
-                        99
-                    ],
-
-                    [
-                        "Unexpected Comedy",
-                        98
-                    ]
-
-                ],
-
-                final:
-                    "LEGENDARY",
-
-                mark:
-                    "Strict on the outside. Invested in our future on the inside.",
-
-                remark:
-                    "“Five questions, board preparation and somehow... a lot of memories.”"
-
-            },
-
-
-            shalini: {
-
-                name:
-                    "Mrs. Shalini Sinha",
-
-                subject:
-                    "Social Science",
-
-                metrics: [
-
-                    [
-                        "Storytelling",
-                        100
-                    ],
-
-                    [
-                        "Student Connection",
-                        99
-                    ],
-
-                    [
-                        "Making History Alive",
-                        100
-                    ],
-
-                    [
-                        "Classroom Energy",
-                        98
-                    ]
-
-                ],
-
-                final:
-                    "UNFORGETTABLE",
-
-                mark:
-                    "Because chapters become memories when someone makes them come alive.",
-
-                remark:
-                    "“Somehow, history stopped feeling like history and started feeling like a story.”"
-
-            },
-
-
-            ajay: {
-
-                name:
-                    "Mr. Ajay Trivedi",
-
-                subject:
-                    "Hindi · Sparsh",
-
-                metrics: [
-
-                    [
-                        "Student Connection",
-                        100
-                    ],
-
-                    [
-                        "Humour",
-                        98
-                    ],
-
-                    [
-                        "Life Lessons",
-                        99
-                    ],
-
-                    [
-                        "Discipline",
-                        100
-                    ]
-
-                ],
-
-                final:
-                    "INCOMPARABLE",
-
-                mark:
-                    "A little strict. A lot caring. Completely unforgettable.",
-
-                remark:
-                    "“Some lessons were written in Sparsh. Others were written by you.”"
-
-            },
-
-
-            ariba: {
-
-                name:
-                    "Ms. Ariba Ansari",
-
-                subject:
-                    "Biology · Chemistry",
-
-                metrics: [
-
-                    [
-                        "Science",
-                        100
-                    ],
-
-                    [
-                        "Focus Recovery",
-                        99
-                    ],
-
-                    [
-                        "Roasting",
-                        100
-                    ],
-
-                    [
-                        "Lala Land Detection",
-                        100
-                    ]
-
-                ],
-
-                final:
-                    "ICONIC",
-
-                mark:
-                    "For bringing 10th I back to Earth, one roast at a time.",
-
-                remark:
-                    "“Strict, loving, and somehow always aware when someone had left for Lala Land.”"
-
-            },
-
-
-            himanshu: {
-
-                name:
-                    "Mr. Himanshu",
-
-                subject:
-                    "Physics",
-
-                metrics: [
-
-                    [
-                        "Concept Clarity",
-                        100
-                    ],
-
-                    [
-                        "Calmness",
-                        99
-                    ],
-
-                    [
-                        "Storytelling",
-                        98
-                    ],
-
-                    [
-                        "Focus Recovery",
-                        97
-                    ]
-
-                ],
-
-                final:
-                    "UNFORGETTABLE",
-
-                mark:
-                    "Complex physics became easier when you told us the story behind it.",
-
-                remark:
-                    "“Idhar dhyan de beta — and somehow, the lesson stayed with us.”"
-
-            }
-
-        };
 
 
         /* =================================================
@@ -912,9 +1241,28 @@
 
 
             /*
-             * Fade the old content slightly.
-             * CSS transition handles the animation.
+             * Every render gets a unique version.
+             *
+             * If the user changes:
+             *
+             * Shonali → Ajay → Ariba
+             *
+             * quickly, an older delayed render can
+             * no longer overwrite the latest one.
              */
+
+            const version =
+                ++reportRenderVersion;
+
+
+            clearTimeout(
+                reportRenderTimer
+            );
+
+            clearTimeout(
+                reportAnimationTimer
+            );
+
 
             if (animate) {
 
@@ -923,156 +1271,136 @@
 
                 reportPanel.style.transform =
                     "translateY(5px)";
+
             }
 
 
-            /*
-             * Small delay is enough.
-             * No requestAnimationFrame loop.
-             */
+            reportRenderTimer =
+                window.setTimeout(
+                    () => {
 
-            window.setTimeout(
-                () => {
+                        /*
+                         * Ignore obsolete render.
+                         */
 
-                    reportName.textContent =
-                        teacher.name;
-
-
-                    reportSubject.textContent =
-                        teacher.subject;
-
-
-                    finalWord.textContent =
-                        teacher.final;
-
-
-                    finalMark.textContent =
-                        teacher.mark;
-
-
-                    reportRemark.textContent =
-                        teacher.remark;
-
-
-                    /*
-                     * Rebuild metrics.
-                     */
-
-                    metrics.innerHTML = "";
-
-
-                    teacher.metrics.forEach(
-                        ([label, score]) => {
-
-                            const metric =
-                                document.createElement(
-                                    "div"
-                                );
-
-
-                            metric.className =
-                                "metric";
-
-
-                            metric.innerHTML = `
-
-                                <div class="metric-top">
-
-                                    <div class="metric-name">
-                                        ${label}
-                                    </div>
-
-                                    <div class="metric-score">
-                                        ${score}%
-                                    </div>
-
-                                </div>
-
-                                <div class="metric-track">
-
-                                    <div
-                                        class="metric-fill"
-                                        data-score="${score}"
-                                    ></div>
-
-                                </div>
-
-                            `;
-
-
-                            metrics.appendChild(
-                                metric
-                            );
-
+                        if (
+                            version !==
+                            reportRenderVersion
+                        ) {
+                            return;
                         }
-                    );
 
 
-                    /*
-                     * Trigger the CSS width transition.
-                     */
-
-                    window.setTimeout(
-                        () => {
-
-                            reportPanel.style.opacity =
-                                "";
-
-                            reportPanel.style.transform =
-                                "";
+                        reportName.textContent =
+                            teacher.name;
 
 
-                            reportPanel.classList.add(
-                                "active"
-                            );
+                        reportSubject.textContent =
+                            teacher.subject;
 
 
-                            const bars =
-                                metrics.querySelectorAll(
-                                    ".metric-fill"
+                        finalWord.textContent =
+                            teacher.final;
+
+
+                        finalMark.textContent =
+                            teacher.mark;
+
+
+                        reportRemark.textContent =
+                            teacher.remark;
+
+
+                        /*
+                         * Efficient DOM replacement.
+                         */
+
+                        const fragment =
+                            document.createDocumentFragment();
+
+
+                        teacher.metrics.forEach(
+                            ([label, score]) => {
+
+                                fragment.appendChild(
+                                    createMetric(
+                                        label,
+                                        score
+                                    )
                                 );
 
+                            }
+                        );
 
-                            bars.forEach(
-                                bar => {
 
-                                    const score =
-                                        clampScore(
-                                            Number(
-                                                bar.dataset.score
-                                            )
+                        metrics.replaceChildren(
+                            fragment
+                        );
+
+
+                        /*
+                         * Let the browser commit the
+                         * DOM update before transitioning.
+                         */
+
+                        reportAnimationTimer =
+                            window.setTimeout(
+                                () => {
+
+                                    if (
+                                        version !==
+                                        reportRenderVersion
+                                    ) {
+                                        return;
+                                    }
+
+
+                                    reportPanel.style.opacity =
+                                        "";
+
+                                    reportPanel.style.transform =
+                                        "";
+
+
+                                    reportPanel.classList.add(
+                                        "active"
+                                    );
+
+
+                                    const bars =
+                                        metrics.querySelectorAll(
+                                            ".metric-fill"
                                         );
 
 
-                                    bar.style.width =
-                                        `${score}%`;
+                                    bars.forEach(
+                                        bar => {
 
-                                }
+                                            const score =
+                                                clampScore(
+                                                    bar.dataset.score
+                                                );
+
+
+                                            bar.style.width =
+                                                `${score}%`;
+
+                                        }
+                                    );
+
+
+                                },
+                                animate
+                                    ? 25
+                                    : 0
                             );
 
-                        },
-                        35
-                    );
 
-
-                },
-                animate ? 110 : 0
-            );
-
-        }
-
-
-        function clampScore(
-            score
-        ) {
-
-            return Math.min(
-                100,
-                Math.max(
-                    0,
-                    score
-                )
-            );
+                    },
+                    animate
+                        ? 90
+                        : 0
+                );
 
         }
 
@@ -1081,9 +1409,32 @@
            INITIAL REPORT
         ================================================= */
 
+        const initialKey =
+            teacherData[
+                select.value
+            ]
+                ? select.value
+                : "shonali";
+
+
+        /*
+         * Keep the select synchronized if the
+         * HTML happens to have an invalid value.
+         */
+
+        if (
+            select.value !==
+            initialKey
+        ) {
+
+            select.value =
+                initialKey;
+
+        }
+
+
         renderReport(
-            select.value ||
-            "shonali",
+            initialKey,
             false
         );
 
@@ -1096,18 +1447,24 @@
             "change",
             () => {
 
+                const selected =
+                    select.value;
+
+
+                if (
+                    !teacherData[selected]
+                ) {
+                    return;
+                }
+
+
                 renderReport(
-                    select.value,
+                    selected,
                     true
                 );
 
 
-                /*
-                 * One tiny celebration.
-                 * Much lighter than the page-load burst.
-                 */
-
-                smallConfetti();
+                launchSmallConfetti();
 
             }
         );
@@ -1116,59 +1473,151 @@
 
 
     /* =====================================================
-       BUTTON / LINK MICRO INTERACTIONS
+       MESSAGE REVEAL SYSTEM
        
-       No JS animation.
-       CSS handles the visual effect.
+       Supports different versions of the HTML.
+
+       The current website can use any of these:
+
+       #messageButton
+       .message-button
+       [data-message-button]
+
+       And:
+
+       #classMessage
+       .class-message
+       [data-class-message]
     ===================================================== */
 
-    function initButtons() {
+    function initMessageReveal() {
 
-        const elements =
-            document.querySelectorAll(
-                ".explore, .teacher, button, .back-home"
+        const button =
+            document.getElementById(
+                "messageButton"
+            ) ||
+            document.querySelector(
+                ".message-button"
+            ) ||
+            document.querySelector(
+                "[data-message-button]"
             );
 
 
-        if (!elements.length) {
+        const message =
+            document.getElementById(
+                "classMessage"
+            ) ||
+            document.querySelector(
+                ".class-message"
+            ) ||
+            document.querySelector(
+                "[data-class-message]"
+            );
+
+
+        /*
+         * If this page doesn't contain the
+         * message interaction, do nothing.
+         */
+
+        if (
+            !button ||
+            !message
+        ) {
             return;
         }
 
 
         /*
-         * On touch screens, don't attach hover listeners.
+         * Start hidden only if it has the
+         * expected hidden class.
+         *
+         * We don't force display:none because
+         * that could break an existing design.
          */
 
-        if (isMobile) {
-            return;
-        }
+        button.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    message.classList.contains(
+                        "visible"
+                    ) ||
+                    message.classList.contains(
+                        "show"
+                    ) ||
+                    message.classList.contains(
+                        "active"
+                    );
 
 
-        elements.forEach(
-            element => {
+                if (isOpen) {
+                    return;
+                }
 
-                element.addEventListener(
-                    "mouseenter",
-                    () => {
 
-                        element.classList.add(
-                            "is-hovering"
-                        );
-
-                    }
+                message.classList.add(
+                    "visible",
+                    "show",
+                    "active"
                 );
 
 
-                element.addEventListener(
-                    "mouseleave",
-                    () => {
-
-                        element.classList.remove(
-                            "is-hovering"
-                        );
-
-                    }
+                button.classList.add(
+                    "used"
                 );
+
+
+                /*
+                 * Accessibility.
+                 */
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+
+                /*
+                 * Small celebration only.
+                 */
+
+                launchSmallConfetti();
+
+
+                /*
+                 * Move focus to the message
+                 * when possible.
+                 */
+
+                if (
+                    !prefersReducedMotion
+                ) {
+
+                    window.setTimeout(
+                        () => {
+
+                            try {
+
+                                message.scrollIntoView({
+                                    behavior:
+                                        "smooth",
+
+                                    block:
+                                        "center"
+                                });
+
+                            } catch (error) {
+                                /* Ignore. */
+                            }
+
+                        },
+                        80
+                    );
+
+                }
 
             }
         );
@@ -1177,16 +1626,91 @@
 
 
     /* =====================================================
-       BACK BUTTON
-       
-       Teacher pages already use:
-       <a href="index.html">
-       
-       Nothing special is needed, but this adds a tiny
-       safety check for broken links.
+       TEACHER PAGE DETECTION
     ===================================================== */
 
-    function checkInternalLinks() {
+    function getCurrentPage() {
+
+        const path =
+            window.location.pathname
+                .split("/")
+                .pop()
+                .toLowerCase();
+
+
+        if (
+            !path ||
+            path === "index.html"
+        ) {
+            return "index";
+        }
+
+
+        return path.replace(
+            ".html",
+            ""
+        );
+
+    }
+
+
+    /* =====================================================
+       BACK-TO-HOME SAFETY
+       
+       We don't add click handlers.
+       Normal <a href="index.html"> navigation
+       is faster and more reliable.
+    ===================================================== */
+
+    function initBackHome() {
+
+        const backButtons =
+            document.querySelectorAll(
+                '.back-home, [data-back-home]'
+            );
+
+
+        if (!backButtons.length) {
+            return;
+        }
+
+
+        backButtons.forEach(
+            button => {
+
+                /*
+                 * Accessibility enhancement only.
+                 */
+
+                if (
+                    button.tagName ===
+                    "A"
+                ) {
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Back to Home"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       INTERNAL HTML LINKS
+       
+       No network requests.
+       No fetch.
+       No validation loop.
+       
+       The browser handles these naturally.
+    ===================================================== */
+
+    function prepareInternalLinks() {
 
         const links =
             document.querySelectorAll(
@@ -1194,25 +1718,33 @@
             );
 
 
+        if (!links.length) {
+            return;
+        }
+
+
         links.forEach(
             link => {
 
-                const href =
-                    link.getAttribute(
-                        "href"
-                    );
+                /*
+                 * Avoid opening teacher pages
+                 * in a new tab.
+                 */
 
-
-                if (!href) {
+                if (
+                    link.hasAttribute(
+                        "target"
+                    )
+                ) {
                     return;
                 }
 
 
                 /*
-                 * We deliberately do NOT fetch the files.
-                 * That would create unnecessary network work.
+                 * Nothing else is needed.
                  *
-                 * The browser will handle navigation normally.
+                 * Keeping navigation native is
+                 * one of the performance optimizations.
                  */
 
             }
@@ -1222,31 +1754,173 @@
 
 
     /* =====================================================
-       STOP UNNECESSARY OLD CANVAS
+       VISIBILITY MANAGEMENT
        
-       If the previous index.html still contains the canvas,
-       we hide it. This prevents the old visual from appearing.
+       Prevents delayed effects from firing
+       after the user leaves the tab.
     ===================================================== */
 
-    function disableOldCanvas() {
+    function initVisibilityHandling() {
 
-        const canvas =
-            document.getElementById(
-                "particleCanvas"
+        document.addEventListener(
+            "visibilitychange",
+            () => {
+
+                pageIsVisible =
+                    !document.hidden;
+
+
+                if (
+                    !pageIsVisible
+                ) {
+
+                    /*
+                     * Cancel page confetti
+                     * that hasn't started yet.
+                     */
+
+                    clearTimeout(
+                        confettiTimerA
+                    );
+
+                    clearTimeout(
+                        confettiTimerB
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MEMORY / TIMER CLEANUP
+    ===================================================== */
+
+    function cleanupTimers() {
+
+        window.addEventListener(
+            "pagehide",
+            () => {
+
+                clearTimeout(
+                    confettiTimerA
+                );
+
+                clearTimeout(
+                    confettiTimerB
+                );
+
+                clearTimeout(
+                    reportRenderTimer
+                );
+
+                clearTimeout(
+                    reportAnimationTimer
+                );
+
+            },
+            {
+                once: true
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       IMAGE PERFORMANCE
+       
+       Only adds lazy loading to images that
+       don't already specify a loading strategy.
+       
+       Hero/first-view images remain untouched.
+    ===================================================== */
+
+    function optimizeImages() {
+
+        const images =
+            document.querySelectorAll(
+                "img"
             );
 
 
-        if (!canvas) {
+        if (!images.length) {
             return;
         }
 
 
-        canvas.width = 1;
-        canvas.height = 1;
+        images.forEach(
+            image => {
+
+                /*
+                 * Don't override an explicit
+                 * developer decision.
+                 */
+
+                if (
+                    image.hasAttribute(
+                        "loading"
+                    )
+                ) {
+                    return;
+                }
 
 
-        canvas.style.display =
-            "none";
+                const rect =
+                    image.getBoundingClientRect();
+
+
+                /*
+                 * Images currently near the
+                 * viewport should load normally.
+                 */
+
+                if (
+                    rect.top <
+                    window.innerHeight * 1.2
+                ) {
+                    return;
+                }
+
+
+                image.loading =
+                    "lazy";
+
+
+                image.decoding =
+                    "async";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MOBILE GLASS OPTIMIZATION
+       
+       Only activates when the device is mobile.
+    ===================================================== */
+
+    function optimizeMobileGlass() {
+
+        if (!isMobile) {
+            return;
+        }
+
+
+        /*
+         * Don't rewrite the entire stylesheet.
+         * Add one lightweight class so CSS can
+         * selectively reduce expensive effects.
+         */
+
+        root.classList.add(
+            "td-mobile"
+        );
 
     }
 
@@ -1257,9 +1931,18 @@
 
     function init() {
 
+        /*
+         * First: make sure old systems are disabled.
+         */
+
         addPerformanceStyles();
 
-        disableOldCanvas();
+        disableLegacyEffects();
+
+
+        /*
+         * Core interactions.
+         */
 
         initReveal();
 
@@ -1267,14 +1950,36 @@
 
         initReportCard();
 
-        initButtons();
+        initMessageReveal();
 
-        checkInternalLinks();
+        initBackHome();
+
+        prepareInternalLinks();
 
 
         /*
-         * Confetti happens last so it doesn't compete
-         * with initial layout/rendering.
+         * Performance.
+         */
+
+        optimizeImages();
+
+        optimizeMobileGlass();
+
+
+        /*
+         * Tab visibility / cleanup.
+         */
+
+        initVisibilityHandling();
+
+        cleanupTimers();
+
+
+        /*
+         * Celebration LAST.
+         *
+         * This prevents confetti from competing
+         * with the initial layout.
          */
 
         launchPageConfetti();
@@ -1283,7 +1988,7 @@
 
 
     /* =====================================================
-       START ONCE
+       START
     ===================================================== */
 
     if (
@@ -1304,5 +2009,6 @@
         init();
 
     }
+
 
 })();
