@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b16">
+<meta name="description" content="A Teachers' Day tribute to Mr. Ajay Trivedi from Class 10th I, Army Public School, Lal Bahadur Shastri Marg.">
+
+<title>Mr. Ajay Trivedi — Class 10th I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    color: #f5f6f8;
+
+    font-family: "DM Sans", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(48, 92, 150, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 35%,
+            rgba(225, 181, 84, 0.075),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 45% 90%,
+            rgba(56, 83, 130, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #030811 0%,
+            #071322 35%,
+            #09182b 65%,
+            #040a13 100%
+        );
+
+    background-size: 180% 180%;
+
+    animation:
+        atmosphere 24s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphere {
+
+    0% {
+        background-position: 0% 20%;
+    }
+
+    50% {
+        background-position: 100% 60%;
+    }
+
+    100% {
+        background-position: 20% 100%;
+    }
+}
+
+
+/* =========================================================
+   AMBIENT GRID
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 88%
+        );
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+#particleCanvas {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    opacity: 0.68;
+}
+
+
+/* =========================================================
+   CURSOR LIGHT
+========================================================= */
+
+.cursor-glow {
+    position: fixed;
+
+    width: 290px;
+    height: 290px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.075),
+            transparent 68%
+        );
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(1120px, 90%);
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   TOP NAV
+========================================================= */
+
+.topbar {
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: min(1080px, 90%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        10px
+        11px
+        10px
+        15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    background:
+        rgba(5,13,25,0.64);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    border-radius: 100px;
+
+    z-index: 50;
+
+    box-shadow:
+        0 15px 60px
+        rgba(0,0,0,0.18);
+}
+
+.home-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        10px
+        16px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.25);
+
+    border-radius: 100px;
+
+    color: #e8c879;
+
+    background:
+        rgba(232,189,98,0.055);
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.07em;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.home-button:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(232,189,98,0.12);
+
+    box-shadow:
+        0 10px 30px
+        rgba(232,189,98,0.10);
+}
+
+.home-arrow {
+    font-size: 1rem;
+
+    transition:
+        transform .3s ease;
+}
+
+.home-button:hover .home-arrow {
+    transform:
+        translateX(-3px);
+}
+
+.nav-title {
+    color:
+        rgba(255,255,255,0.40);
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    padding:
+        150px
+        0
+        100px;
+}
+
+.hero-content {
+    max-width: 920px;
+}
+
+.eyebrow {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+
+    color: #d5b66e;
+
+    font-size: 0.68rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        0.9s
+        0.1s
+        ease
+        forwards;
+}
+
+.eyebrow::before {
+    content: "";
+
+    width: 38px;
+
+    height: 1px;
+
+    background:
+        #d5b66e;
+
+    box-shadow:
+        0 0 14px
+        rgba(232,189,98,0.35);
+}
+
+.hero h1 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(3.8rem, 9vw, 8.4rem);
+
+    line-height: .91;
+
+    letter-spacing:
+        -0.055em;
+
+    font-weight: 600;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        1s
+        0.25s
+        ease
+        forwards;
+}
+
+.gold {
+    color: #e8bd62;
+
+    text-shadow:
+        0 0 50px
+        rgba(232,189,98,0.13);
+}
+
+.hero-subtitle {
+    margin-top: 34px;
+
+    color: #cbd3df;
+
+    font-size:
+        clamp(1rem, 2vw, 1.28rem);
+
+    line-height: 1.75;
+
+    max-width: 690px;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        1s
+        .42s
+        ease
+        forwards;
+}
+
+.hero-description {
+    margin-top: 16px;
+
+    max-width: 640px;
+
+    color: #8995a8;
+
+    font-size: .93rem;
+
+    line-height: 1.85;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        1s
+        .58s
+        ease
+        forwards;
+}
+
+.hero-bottom {
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
+
+    margin-top: 40px;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        1s
+        .72s
+        ease
+        forwards;
+}
+
+.scroll-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+        13px
+        19px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.30);
+
+    border-radius: 100px;
+
+    color: #f0d38d;
+
+    background:
+        rgba(232,189,98,0.055);
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.scroll-button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(232,189,98,0.11);
+
+    box-shadow:
+        0 12px 40px
+        rgba(232,189,98,0.09);
+}
+
+.scroll-button span {
+    font-size: 1.1rem;
+}
+
+.hero-note {
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size:
+        .67rem;
+
+    letter-spacing:
+        .12em;
+
+    text-transform:
+        uppercase;
+}
+
+@keyframes revealUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   GOLD ORBIT
+========================================================= */
+
+.hero-orbit {
+    position: absolute;
+
+    right: -100px;
+    bottom: 8%;
+
+    width: 360px;
+    height: 360px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.08);
+
+    border-radius: 50%;
+
+    opacity: .55;
+
+    animation:
+        orbitRotate
+        24s
+        linear
+        infinite;
+}
+
+.hero-orbit::before,
+.hero-orbit::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(232,189,98,0.08);
+}
+
+.hero-orbit::after {
+    inset: 75px;
+
+    border-style: solid;
+
+    border-color:
+        rgba(232,189,98,0.11);
+}
+
+@keyframes orbitRotate {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+    padding:
+        120px
+        0;
+}
+
+.section-header {
+    max-width: 730px;
+
+    margin-bottom: 50px;
+}
+
+.section-number {
+    color: #d5b66e;
+
+    font-size: .66rem;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+}
+
+.section-title {
+    margin-top: 15px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(2.7rem, 6vw, 5rem);
+
+    line-height: .98;
+
+    letter-spacing:
+        -.04em;
+}
+
+.section-description {
+    margin-top: 20px;
+
+    color: #8995a8;
+
+    line-height: 1.8;
+
+    max-width: 650px;
+}
+
+
+/* =========================================================
+   DIALOGUES
+========================================================= */
+
+.dialogue-stage {
+    position: relative;
+
+    padding:
+        clamp(25px, 5vw, 52px);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.095);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.062),
+            rgba(255,255,255,0.018)
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.22);
+}
+
+.dialogue-stage::before {
+    content: "";
+
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    right: -180px;
+    top: -190px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.12),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+.dialogue-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+.dialogue-label {
+    color: #d5b66e;
+
+    font-size: .65rem;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+}
+
+.dialogue-small {
+    margin-top: 8px;
+
+    color:
+        rgba(255,255,255,0.32);
+
+    font-size: .68rem;
+}
+
+.dialogue-mark {
+    color:
+        rgba(255,255,255,0.23);
+
+    font-size: .62rem;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+}
+
+.quote-list {
+    display: grid;
+
+    gap: 0;
+
+    margin-top: 4px;
+}
+
+.quote-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        60px 1fr;
+
+    gap: 18px;
+
+    padding:
+        30px
+        0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.065);
+
+    transition:
+        padding-left .35s ease;
+}
+
+.quote-item:last-child {
+    border-bottom: none;
+
+    padding-bottom: 8px;
+}
+
+.quote-item::before {
+    content: "“";
+
+    position: absolute;
+
+    left: 0;
+    top: 22px;
+
+    color:
+        rgba(232,189,98,0.24);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 3rem;
+
+    line-height: 1;
+}
+
+.quote-number {
+    padding-top: 5px;
+
+    color:
+        rgba(255,255,255,0.25);
+
+    font-size: .64rem;
+
+    letter-spacing: .13em;
+}
+
+.quote-text {
+    color: #eef0f3;
+
+    font-size:
+        clamp(1.05rem, 2vw, 1.4rem);
+
+    line-height: 1.55;
+
+    font-weight: 500;
+
+    transition:
+        color .3s ease;
+}
+
+.quote-item:hover {
+    padding-left: 8px;
+}
+
+.quote-item:hover .quote-text {
+    color: #f0d38d;
+}
+
+
+/* =========================================================
+   HINDI QUOTE
+========================================================= */
+
+.hindi-section {
+    padding-top: 25px;
+}
+
+.hindi-card {
+    position: relative;
+
+    padding:
+        clamp(30px, 5vw, 65px);
+
+    border:
+        1px solid
+        rgba(232,189,98,0.16);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(232,189,98,0.075),
+            rgba(255,255,255,0.025)
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.18);
+}
+
+.hindi-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -100px;
+    bottom: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.12),
+            transparent 68%
+        );
+}
+
+.hindi-tag {
+    color: #d5b66e;
+
+    font-size: .65rem;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+}
+
+.hindi-poem {
+    position: relative;
+
+    margin-top: 28px;
+
+    max-width: 790px;
+
+    font-family:
+        "Noto Sans Devanagari",
+        sans-serif;
+
+    color: #f2f3f5;
+
+    font-size:
+        clamp(1.35rem, 3vw, 2rem);
+
+    line-height: 1.9;
+
+    font-weight: 500;
+}
+
+.hindi-author {
+    position: relative;
+
+    margin-top: 25px;
+
+    color: #d8b96e;
+
+    font-size: .72rem;
+
+    letter-spacing: .13em;
+
+    text-transform: uppercase;
+}
+
+.hindi-author::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 28px;
+
+    height: 1px;
+
+    margin-right: 10px;
+
+    vertical-align: middle;
+
+    background:
+        rgba(232,189,98,0.55);
+}
+
+
+/* =========================================================
+   SECOND POEM
+========================================================= */
+
+.wish-card {
+    margin-top: 22px;
+
+    position: relative;
+
+    padding:
+        clamp(25px, 4vw, 45px);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 26px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.wish-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(232,189,98,0.18);
+
+    box-shadow:
+        0 20px 65px
+        rgba(0,0,0,0.18);
+}
+
+.wish-poem {
+    font-family:
+        "Noto Sans Devanagari",
+        sans-serif;
+
+    color: #dfe3e9;
+
+    font-size:
+        clamp(1.05rem, 2.2vw, 1.45rem);
+
+    line-height: 1.9;
+}
+
+.wish-author {
+    margin-top: 17px;
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: .68rem;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message-section {
+    padding:
+        135px
+        0
+        115px;
+}
+
+.message-wrap {
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.message-label {
+    color: #d5b66e;
+
+    font-size: .66rem;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+}
+
+.message-title {
+    margin-top: 18px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(2.6rem, 6vw, 5.4rem);
+
+    line-height: 1;
+
+    letter-spacing:
+        -.045em;
+}
+
+.message-title span {
+    color: #e8bd62;
+}
+
+.message-text {
+    max-width: 730px;
+
+    margin:
+        30px
+        auto
+        0;
+
+    color: #a4afbf;
+
+    font-size:
+        clamp(1rem, 2vw, 1.16rem);
+
+    line-height: 1.9;
+}
+
+.message-line {
+    margin-top: 28px;
+
+    color:
+        rgba(255,255,255,0.72);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(1.05rem, 2.2vw, 1.35rem);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   EMOTIONAL BUTTON
+========================================================= */
+
+.reveal-message {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 38px;
+
+    padding:
+        15px
+        23px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.34);
+
+    border-radius: 100px;
+
+    background:
+        rgba(232,189,98,0.06);
+
+    color: #f0d38d;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.reveal-message:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(232,189,98,0.12);
+
+    box-shadow:
+        0 15px 45px
+        rgba(232,189,98,0.10);
+}
+
+.reveal-message .button-icon {
+    transition:
+        transform .4s ease;
+}
+
+.reveal-message:hover .button-icon {
+    transform:
+        rotate(90deg);
+}
+
+
+/* =========================================================
+   HIDDEN MESSAGE
+========================================================= */
+
+.hidden-message {
+    max-width: 760px;
+
+    margin:
+        25px
+        auto
+        0;
+
+    padding:
+        0 25px;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        max-height .8s ease,
+        opacity .5s ease,
+        transform .5s ease,
+        padding .5s ease;
+}
+
+.hidden-message.open {
+    max-height: 500px;
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    padding:
+        25px;
+}
+
+.hidden-message-inner {
+    padding:
+        28px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.13);
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    backdrop-filter:
+        blur(14px);
+}
+
+.hidden-message p {
+    color: #e4e7eb;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(1.15rem, 2.5vw, 1.55rem);
+
+    line-height: 1.7;
+}
+
+.hidden-message-sign {
+    margin-top: 18px;
+
+    color: #d5b66e;
+
+    font-size: .7rem;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section {
+    position: relative;
+
+    padding:
+        100px
+        0
+        150px;
+
+    text-align: center;
+}
+
+.final-glow {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 550px;
+    height: 550px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.06),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+.final-small {
+    position: relative;
+
+    color: #d5b66e;
+
+    font-size: .66rem;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+}
+
+.final-heading {
+    position: relative;
+
+    max-width: 900px;
+
+    margin:
+        22px
+        auto
+        0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(2.8rem, 7vw, 6.5rem);
+
+    line-height: .98;
+
+    letter-spacing:
+        -.045em;
+}
+
+.final-heading span {
+    color: #e8bd62;
+}
+
+.final-sign {
+    position: relative;
+
+    margin-top: 32px;
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: .75rem;
+
+    letter-spacing: .11em;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding:
+        60px
+        0
+        45px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    text-align: center;
+}
+
+.footer-quote {
+    max-width: 760px;
+
+    margin: auto;
+
+    color: #c9d0da;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(1.15rem, 2.5vw, 1.6rem);
+
+    line-height: 1.6;
+}
+
+.footer-sign {
+    margin-top: 24px;
+
+    color: #d5b66e;
+
+    font-size: .76rem;
+
+    line-height: 1.8;
+}
+
+.footer-location {
+    margin-top: 32px;
+
+    color:
+        rgba(255,255,255,0.22);
+
+    font-size: .62rem;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .page {
+        width: 92%;
+    }
+
+    .topbar {
+        top: 12px;
+
+        width: 92%;
+
+        padding-left: 10px;
+    }
+
+    .home-button {
+        padding:
+            9px
+            13px;
+
+        font-size: .65rem;
+    }
+
+    .nav-title {
+        display: none;
+    }
+
+    .hero {
+        padding:
+            145px
+            0
+            80px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(3.6rem, 17vw, 6.3rem);
+    }
+
+    .hero-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 16px;
+    }
+
+    .hero-orbit {
+        width: 240px;
+        height: 240px;
+
+        right: -130px;
+
+        bottom: 6%;
+    }
+
+    .section {
+        padding:
+            85px
+            0;
+    }
+
+    .dialogue-stage,
+    .hindi-card {
+        border-radius: 22px;
+    }
+
+    .quote-item {
+        grid-template-columns:
+            40px 1fr;
+
+        gap: 10px;
+
+        padding:
+            26px
+            0;
+    }
+
+    .quote-item::before {
+        top: 18px;
+
+        font-size: 2.5rem;
+    }
+
+    .message-section {
+        padding:
+            90px
+            0
+            80px;
+    }
+
+    .final-section {
+        padding:
+            80px
+            0
+            110px;
+    }
+
+    .final-glow {
+        width: 360px;
+        height: 360px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .hero h1 {
+        font-size: 3.55rem;
+    }
+
+    .hero-subtitle {
+        font-size: .95rem;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+    }
+
+    .hindi-poem {
+        font-size: 1.1rem;
+
+        line-height: 1.85;
+    }
+
+    .wish-poem {
+        font-size: 1rem;
+    }
+
+    .hidden-message {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+
+    #particleCanvas,
+    .cursor-glow {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     EFFECT LAYERS
+===================================================== -->
+
+<canvas id="particleCanvas"></canvas>
+
+<div
+    class="cursor-glow"
+    id="cursorGlow">
+</div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="topbar">
+
+    <a
+        href="index.html"
+        class="home-button"
+        aria-label="Back to Home"
+    >
+
+        <span class="home-arrow">←</span>
+
+        <span>
+            Back to Home
+        </span>
+
+    </a>
+
+    <div class="nav-title">
+        Class 10th I · Teachers' Day
+    </div>
+
+</nav>
+
+
+<main class="page">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            The Hindi classroom
+        </div>
+
+        <h1>
+            Mr. Ajay<br>
+            <span class="gold">Trivedi.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Hindi · Sparsh
+        </p>
+
+        <p class="hero-description">
+            A little strict, always connected, and somehow
+            able to turn an ordinary Hindi period into a
+            collection of stories we would remember.
+        </p>
+
+        <div class="hero-bottom">
+
+            <a
+                href="#dialogues"
+                class="scroll-button"
+            >
+                Enter the story
+                <span>↓</span>
+            </a>
+
+            <div class="hero-note">
+                A tribute from 10th I
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-orbit"></div>
+
+</section>
+
+
+<!-- =====================================================
+     ICONIC DIALOGUES
+===================================================== -->
+
+<section
+    class="section"
+    id="dialogues"
+>
+
+    <div class="section-header reveal">
+
+        <div class="section-number">
+            01 / Things we will remember
+        </div>
+
+        <h2 class="section-title">
+            The dialogues<br>
+            that became memories.
+        </h2>
+
+        <p class="section-description">
+            Every teacher leaves behind lessons.
+            Some leave behind sentences that the class
+            can repeat perfectly years later.
+        </p>
+
+    </div>
+
+
+    <div class="dialogue-stage reveal">
+
+        <div class="dialogue-top">
+
+            <div>
+
+                <div class="dialogue-label">
+                    Iconic Dialogues
+                </div>
+
+                <div class="dialogue-small">
+                    Mr. Ajay Trivedi · Hindi
+                </div>
+
+            </div>
+
+            <div class="dialogue-mark">
+                10th I archive
+            </div>
+
+        </div>
+
+
+        <div class="quote-list">
+
+
+            <div class="quote-item">
+
+                <div class="quote-number">
+                    01
+                </div>
+
+                <div class="quote-text">
+                    “Devi bataiye mat karo..?”
+                </div>
+
+            </div>
+
+
+            <div class="quote-item">
+
+                <div class="quote-number">
+                    02
+                </div>
+
+                <div class="quote-text">
+                    “Didi aur bhaisahab.”
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     POETRY
+===================================================== -->
+
+<section class="section hindi-section">
+
+    <div class="section-header reveal">
+
+        <div class="section-number">
+            02 / From the class
+        </div>
+
+        <h2 class="section-title">
+            Some lessons<br>
+            become poetry.
+        </h2>
+
+        <p class="section-description">
+            Hindi was never only about chapters and answers.
+            Sometimes, the feelings we couldn't say directly
+            found their way into words.
+        </p>
+
+    </div>
+
+
+    <!-- SWASTIT POEM -->
+
+    <div class="hindi-card reveal">
+
+        <div class="hindi-tag">
+            A few words from 10th I
+        </div>
+
+        <div class="hindi-poem">
+
+            Vo humein aage badhna sikhate hai,<br>
+            Hame hamari manzil tak pahunchate hai<br>
+            Vo jinhe ham apne doosri maat pita kehte hai<br>
+            Vo hamare Teacher<br>
+            Kehlate hai
+
+        </div>
+
+        <div class="hindi-author">
+            Swastit Tiwari
+        </div>
+
+    </div>
+
+
+    <!-- AARSH WISH -->
+
+    <div class="wish-card reveal">
+
+        <div class="wish-poem">
+
+            “ज्ञान की ज्योति से राह दिखाते हैं आप,<br>
+            हर शब्द को सुंदर बनाते हैं आप।<br>
+            शिक्षक दिवस की हार्दिक शुभकामनाएँ! ”
+
+        </div>
+
+        <div class="wish-author">
+            Aarsh Sukla
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HEARTFELT MESSAGE
+===================================================== -->
+
+<section class="message-section">
+
+    <div class="message-wrap reveal">
+
+        <div class="message-label">
+            03 / What we really wanted to say
+        </div>
+
+        <h2 class="message-title">
+            Strict sometimes.<br>
+            <span>Unforgettable always.</span>
+        </h2>
+
+        <p class="message-text">
+            Thank you for connecting with us so effortlessly.
+            Your Hindi classes were never just about completing
+            a chapter. They were a mixture of discipline,
+            humour, conversations, and little moments that
+            made the classroom feel alive.
+        </p>
+
+        <p class="message-line">
+            You taught us words from books,
+            but you also gave us lessons beyond them.
+        </p>
+
+
+        <button
+            class="reveal-message"
+            id="messageButton"
+            type="button"
+        >
+
+            <span>
+                A message from Class 10th I
+            </span>
+
+            <span
+                class="button-icon"
+                id="buttonIcon"
+            >
+                +
+            </span>
+
+        </button>
+
+
+        <div
+            class="hidden-message"
+            id="hiddenMessage"
+            aria-hidden="true"
+        >
+
+            <div class="hidden-message-inner">
+
+                <p>
+                    Sir, years from now we may not remember
+                    every answer we wrote in our notebooks,
+                    but we will remember the teachers who made
+                    those school days feel meaningful.
+                    Thank you for being one of them.
+                </p>
+
+                <div class="hidden-message-sign">
+                    With respect · Class 10th I
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL EMOTIONAL SECTION
+===================================================== -->
+
+<section class="final-section reveal">
+
+    <div class="final-glow"></div>
+
+    <div class="final-small">
+        04 / The final verdict
+    </div>
+
+    <h2 class="final-heading">
+        You didn't just teach us Hindi.
+        <br>
+        You became part of
+        <span>our story.</span>
+    </h2>
+
+    <div class="final-sign">
+        — Class 10th I
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-quote">
+        “A good teacher can inspire hope, ignite the imagination,
+        and instill a love of learning.”
+    </div>
+
+    <div class="footer-sign">
+        With deepest respect and gratitude,<br>
+        Class 10th I
+    </div>
+
+    <div class="footer-location">
+        Army Public School · Lal Bahadur Shastri Marg
+    </div>
+
+</footer>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow =
+    document.getElementById("cursorGlow");
+
+if (
+    window.matchMedia("(pointer:fine)").matches
+) {
+
+    window.addEventListener(
+        "pointermove",
+        event => {
+
+            cursorGlow.style.left =
+                `${event.clientX}px`;
+
+            cursorGlow.style.top =
+                `${event.clientY}px`;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+} else {
+
+    cursorGlow.style.display = "none";
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+/* =========================================================
+   MESSAGE REVEAL
+========================================================= */
+
+const messageButton =
+    document.getElementById(
+        "messageButton"
+    );
+
+const hiddenMessage =
+    document.getElementById(
+        "hiddenMessage"
+    );
+
+const buttonIcon =
+    document.getElementById(
+        "buttonIcon"
+    );
+
+
+let messageOpened = false;
+
+
+messageButton.addEventListener(
+    "click",
+    () => {
+
+        messageOpened =
+            !messageOpened;
+
+
+        hiddenMessage.classList.toggle(
+            "open",
+            messageOpened
+        );
+
+
+        hiddenMessage.setAttribute(
+            "aria-hidden",
+            String(!messageOpened)
+        );
+
+
+        buttonIcon.textContent =
+            messageOpened
+                ? "×"
+                : "+";
+
+
+        if (
+            messageOpened &&
+            typeof confetti === "function"
+        ) {
+
+            celebrateMessage();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MODERATE CELEBRATION
+========================================================= */
+
+function celebrateMessage() {
+
+    const common = {
+
+        particleCount: 30,
+
+        spread: 55,
+
+        startVelocity: 23,
+
+        gravity: 0.85,
+
+        scalar: 0.72,
+
+        ticks: 170,
+
+        origin: {
+            y: 0.60
+        }
+
+    };
+
+
+    confetti({
+
+        ...common,
+
+        origin: {
+            x: 0.25,
+            y: 0.62
+        }
+
+    });
+
+
+    confetti({
+
+        ...common,
+
+        origin: {
+            x: 0.75,
+            y: 0.62
+        }
+
+    });
+
+
+    setTimeout(() => {
+
+        confetti({
+
+            particleCount: 22,
+
+            spread: 70,
+
+            startVelocity: 19,
+
+            gravity: 0.9,
+
+            scalar: 0.68,
+
+            origin: {
+                x: 0.5,
+                y: 0.55
+            }
+
+        });
+
+    }, 180);
+
+}
+
+
+/* =========================================================
+   PARTICLE SYSTEM
+   Lightweight canvas implementation
+========================================================= */
+
+const canvas =
+    document.getElementById(
+        "particleCanvas"
+    );
+
+const ctx =
+    canvas.getContext("2d", {
+        alpha: true
+    });
+
+
+let particles = [];
+
+let canvasWidth = 0;
+let canvasHeight = 0;
+
+let pixelRatio =
+    Math.min(
+        window.devicePixelRatio || 1,
+        1.5
+    );
+
+
+function resizeCanvas() {
+
+    pixelRatio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
+
+
+    canvasWidth =
+        window.innerWidth;
+
+    canvasHeight =
+        window.innerHeight;
+
+
+    canvas.width =
+        Math.floor(
+            canvasWidth *
+            pixelRatio
+        );
+
+    canvas.height =
+        Math.floor(
+            canvasHeight *
+            pixelRatio
+        );
+
+
+    canvas.style.width =
+        `${canvasWidth}px`;
+
+    canvas.style.height =
+        `${canvasHeight}px`;
+
+
+    ctx.setTransform(
+        pixelRatio,
+        0,
+        0,
+        pixelRatio,
+        0,
+        0
+    );
+
+
+    createParticles();
+
+}
+
+
+function createParticles() {
+
+    particles.length = 0;
+
+
+    const amount =
+        window.innerWidth < 600
+            ? 28
+            : 48;
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        particles.push({
+
+            x:
+                Math.random() *
+                canvasWidth,
+
+            y:
+                Math.random() *
+                canvasHeight,
+
+            radius:
+                Math.random() *
+                1.25 +
+                .25,
+
+            speed:
+                Math.random() *
+                .20 +
+                .035,
+
+            drift:
+                (Math.random() - .5) *
+                .10,
+
+            opacity:
+                Math.random() *
+                .28 +
+                .06,
+
+            phase:
+                Math.random() *
+                Math.PI *
+                2
+
+        });
+
+    }
+
+}
+
+
+let animationFrame = 0;
+
+
+function animateParticles(time) {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
+    );
+
+
+    particles.forEach(
+        particle => {
+
+            particle.y -=
+                particle.speed;
+
+            particle.x +=
+                particle.drift;
+
+
+            particle.x +=
+                Math.sin(
+                    time * .0003 +
+                    particle.phase
+                ) * .012;
+
+
+            if (
+                particle.y <
+                -5
+            ) {
+
+                particle.y =
+                    canvasHeight + 5;
+
+                particle.x =
+                    Math.random() *
+                    canvasWidth;
+
+            }
+
+
+            if (
+                particle.x <
+                -5
+            ) {
+
+                particle.x =
+                    canvasWidth + 5;
+
+            }
+
+
+            if (
+                particle.x >
+                canvasWidth + 5
+            ) {
+
+                particle.x = -5;
+
+            }
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                particle.x,
+                particle.y,
+                particle.radius,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fillStyle =
+                `rgba(
+                    232,
+                    189,
+                    98,
+                    ${particle.opacity}
+                )`;
+
+
+            ctx.fill();
+
+        }
+    );
+
+
+    animationFrame =
+        requestAnimationFrame(
+            animateParticles
+        );
+
+}
+
+
+/* =========================================================
+   INITIALISE PARTICLES
+========================================================= */
+
+if (
+    !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+) {
+
+    resizeCanvas();
+
+    window.addEventListener(
+        "resize",
+        resizeCanvas,
+        {
+            passive: true
+        }
+    );
+
+    animationFrame =
+        requestAnimationFrame(
+            animateParticles
+        );
+
+}
+
+
+/* =========================================================
+   LOAD CELEBRATION
+   Moderate amount — not excessive
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        if (
+            typeof confetti !==
+            "function"
+        ) {
+            return;
+        }
+
+
+        setTimeout(() => {
+
+            confetti({
+
+                particleCount: 55,
+
+                spread: 68,
+
+                startVelocity: 25,
+
+                gravity: 0.85,
+
+                scalar: 0.76,
+
+                ticks: 190,
+
+                origin: {
+                    x: 0.14,
+                    y: 0.42
+                }
+
+            });
+
+
+            confetti({
+
+                particleCount: 55,
+
+                spread: 68,
+
+                startVelocity: 25,
+
+                gravity: 0.85,
+
+                scalar: 0.76,
+
+                ticks: 190,
+
+                origin: {
+                    x: 0.86,
+                    y: 0.42
+                }
+
+            });
+
+
+        }, 700);
+
+    }
+);
+
+
+/* =========================================================
+   CLEANUP
+========================================================= */
+
+window.addEventListener(
+    "pagehide",
+    () => {
+
+        if (animationFrame) {
+
+            cancelAnimationFrame(
+                animationFrame
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
