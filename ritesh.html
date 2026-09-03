@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b16">
+<meta name="description" content="A Teachers' Day tribute to Mr. Ritesh Tiwari from Class 10th I.">
+
+<title>Mr. Ritesh Tiwari — Class 10th I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    color: #f4f5f7;
+
+    font-family: "DM Sans", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(44, 83, 140, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(232, 189, 98, 0.075),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #030811 0%,
+            #071222 38%,
+            #09182b 65%,
+            #040b15 100%
+        );
+
+    background-size: 180% 180%;
+
+    animation:
+        atmosphere 24s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphere {
+    0% {
+        background-position: 0% 20%;
+    }
+
+    50% {
+        background-position: 100% 70%;
+    }
+
+    100% {
+        background-position: 20% 100%;
+    }
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+#particleCanvas {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    opacity: 0.58;
+}
+
+
+/* =========================================================
+   CURSOR LIGHT
+========================================================= */
+
+.cursor-glow {
+    position: fixed;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.075),
+            transparent 68%
+        );
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(1120px, 91%);
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(1100px, 90%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 12px 10px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    border-radius: 100px;
+
+    background:
+        rgba(6,15,28,0.60);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    z-index: 50;
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color:
+        rgba(255,255,255,0.72);
+
+    font-size: 0.70rem;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+.brand-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #e8bd62;
+
+    box-shadow:
+        0 0 12px
+        rgba(232,189,98,0.75);
+}
+
+.back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 16px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.28);
+
+    border-radius: 100px;
+
+    color: #e8c979;
+
+    background:
+        rgba(232,189,98,0.055);
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.back-button:hover {
+    transform: translateX(-3px);
+
+    background:
+        rgba(232,189,98,0.12);
+
+    box-shadow:
+        0 8px 30px
+        rgba(232,189,98,0.10);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.teacher-hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        150px 0
+        100px;
+
+    position: relative;
+}
+
+.hero-content {
+    max-width: 950px;
+}
+
+.eyebrow {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 28px;
+
+    color: #d5b66e;
+
+    font-size: 0.70rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        revealUp .9s .1s ease forwards;
+}
+
+.eyebrow::before {
+    content: "";
+
+    width: 40px;
+    height: 1px;
+
+    background: #d5b66e;
+}
+
+.teacher-hero h1 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(4rem, 10vw, 9rem);
+
+    line-height: .88;
+
+    letter-spacing: -.055em;
+
+    font-weight: 600;
+
+    opacity: 0;
+
+    animation:
+        revealUp 1s .25s ease forwards;
+}
+
+.teacher-hero h1 span {
+    color: #e8bd62;
+
+    text-shadow:
+        0 0 50px
+        rgba(232,189,98,0.13);
+}
+
+.subject {
+    margin-top: 34px;
+
+    color: #d9dfe8;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.3rem);
+
+    letter-spacing: .01em;
+
+    opacity: 0;
+
+    animation:
+        revealUp .9s .42s ease forwards;
+}
+
+.hero-intro {
+    max-width: 690px;
+
+    margin-top: 18px;
+
+    color: #8e9aac;
+
+    font-size: .96rem;
+
+    line-height: 1.85;
+
+    opacity: 0;
+
+    animation:
+        revealUp .9s .58s ease forwards;
+}
+
+.hero-scroll {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 42px;
+
+    color:
+        rgba(255,255,255,.34);
+
+    font-size: .68rem;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        revealUp .9s .72s ease forwards;
+}
+
+.hero-scroll span {
+    color: #e8bd62;
+
+    font-size: 1.1rem;
+
+    animation:
+        floatArrow 1.8s ease-in-out infinite;
+}
+
+@keyframes floatArrow {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+@keyframes revealUp {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+    padding: 115px 0;
+}
+
+.section-number {
+    color: #d5b66e;
+
+    font-size: .67rem;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+}
+
+.section-title {
+    margin-top: 15px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(2.8rem, 6vw, 5.2rem);
+
+    line-height: .98;
+
+    letter-spacing: -.04em;
+}
+
+.section-description {
+    max-width: 620px;
+
+    margin-top: 20px;
+
+    color: #8995a8;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   DIALOGUES
+========================================================= */
+
+.dialogues {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+    gap: 18px;
+
+    margin-top: 55px;
+}
+
+.dialogue {
+    position: relative;
+
+    min-height: 180px;
+
+    padding: 32px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.025)
+        );
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        border-color .45s ease,
+        box-shadow .45s ease;
+}
+
+.dialogue::before {
+    content: "“";
+
+    position: absolute;
+
+    top: -20px;
+    right: 20px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 9rem;
+
+    line-height: 1;
+
+    color:
+        rgba(232,189,98,0.07);
+
+    pointer-events: none;
+}
+
+.dialogue:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(232,189,98,0.28);
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,.25),
+        0 0 35px
+        rgba(232,189,98,.045);
+}
+
+.dialogue-text {
+    position: relative;
+
+    z-index: 2;
+
+    color: #eceff3;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(1.15rem, 2.5vw, 1.65rem);
+
+    line-height: 1.35;
+}
+
+.dialogue-index {
+    position: absolute;
+
+    top: 22px;
+    left: 25px;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: .63rem;
+
+    letter-spacing: .15em;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message-section {
+    padding:
+        100px 0
+        150px;
+}
+
+.message-wrap {
+    position: relative;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding:
+        clamp(30px, 6vw, 75px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.23);
+}
+
+.message-wrap::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: -230px;
+    right: -180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,.10),
+            transparent 70%
+        );
+}
+
+.message-label {
+    position: relative;
+
+    color: #d5b66e;
+
+    font-size: .68rem;
+
+    letter-spacing: .20em;
+
+    text-transform: uppercase;
+}
+
+.message {
+    position: relative;
+
+    margin-top: 30px;
+
+    color: #dce1e8;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(1.4rem, 3vw, 2.25rem);
+
+    line-height: 1.55;
+
+    letter-spacing: -.015em;
+}
+
+.message strong {
+    color: #e8bd62;
+
+    font-weight: 600;
+}
+
+.signature {
+    position: relative;
+
+    margin-top: 35px;
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: .75rem;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+.closing {
+    position: relative;
+
+    padding:
+        130px 0
+        155px;
+
+    text-align: center;
+}
+
+.closing::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 500px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,.065),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+.closing-small {
+    position: relative;
+
+    color: #d5b66e;
+
+    font-size: .67rem;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+}
+
+.closing h2 {
+    position: relative;
+
+    max-width: 900px;
+
+    margin: 23px auto 0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(2.8rem, 7vw, 6.3rem);
+
+    line-height: .98;
+
+    letter-spacing: -.045em;
+}
+
+.closing h2 span {
+    color: #e8bd62;
+}
+
+.closing-sign {
+    position: relative;
+
+    margin-top: 35px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: .78rem;
+
+    letter-spacing: .12em;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding:
+        65px 0
+        45px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    text-align: center;
+}
+
+.footer-quote {
+    max-width: 760px;
+
+    margin: auto;
+
+    color: #c8d0dc;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(1.1rem, 2.5vw, 1.55rem);
+
+    line-height: 1.6;
+}
+
+.footer-sign {
+    margin-top: 24px;
+
+    color: #d5b66e;
+
+    font-size: .76rem;
+
+    line-height: 1.7;
+}
+
+.footer-school {
+    margin-top: 32px;
+
+    color:
+        rgba(255,255,255,.22);
+
+    font-size: .63rem;
+
+    letter-spacing: .13em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(32px);
+
+    transition:
+        opacity .85s ease,
+        transform .85s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+
+    .page {
+        width: min(92%, 520px);
+    }
+
+    .topbar {
+        top: 12px;
+        width: 92%;
+    }
+
+    .teacher-hero {
+        padding-top: 145px;
+    }
+
+    .teacher-hero h1 {
+        font-size:
+            clamp(3.7rem, 17vw, 6rem);
+    }
+
+    .section {
+        padding: 85px 0;
+    }
+
+    .dialogues {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .dialogue {
+        min-height: 160px;
+
+        padding: 27px;
+    }
+
+    .message-section {
+        padding:
+            80px 0
+            110px;
+    }
+
+    .message-wrap {
+        border-radius: 22px;
+    }
+
+    .closing {
+        padding:
+            100px 0
+            120px;
+    }
+
+    .closing::before {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .brand {
+        font-size: .59rem;
+    }
+
+    .back-button {
+        padding:
+            8px 12px;
+
+        font-size: .64rem;
+    }
+
+    .teacher-hero h1 {
+        font-size: 3.55rem;
+    }
+
+    .dialogue-text {
+        font-size: 1.15rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div
+    class="cursor-glow"
+    id="cursorGlow">
+</div>
+
+
+<nav class="topbar">
+
+    <div class="brand">
+        <span class="brand-dot"></span>
+        Class 10th I
+    </div>
+
+    <a
+        href="index.html"
+        class="back-button"
+    >
+        ← Back to Home
+    </a>
+
+</nav>
+
+
+<main class="page">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="teacher-hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            02 / Mathematics
+        </div>
+
+        <h1>
+            Mr.<br>
+            <span>Ritesh</span><br>
+            Tiwari
+        </h1>
+
+        <div class="subject">
+            Mathematics · The Board-Battle Specialist
+        </div>
+
+        <p class="hero-intro">
+            Behind every warning about boards, every question
+            we were told to solve, and every moment of classroom
+            chaos was a teacher who genuinely wanted us to do
+            better than we thought we could.
+        </p>
+
+        <a
+            href="#dialogues"
+            class="hero-scroll"
+        >
+            Discover the memories
+            <span>↓</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ICONIC DIALOGUES
+===================================================== -->
+
+<section
+    class="section"
+    id="dialogues"
+>
+
+    <div class="reveal">
+
+        <div class="section-number">
+            01 / The legendary lines
+        </div>
+
+        <h2 class="section-title">
+            Things we'll<br>
+            never forget.
+        </h2>
+
+        <p class="section-description">
+            Some teachers leave us with formulas.
+            Some leave us with stories.
+            You somehow managed to leave us with both —
+            and a collection of dialogues that 10th I
+            could probably recite forever.
+        </p>
+
+    </div>
+
+
+    <div class="dialogues">
+
+
+        <article class="dialogue reveal">
+
+            <div class="dialogue-index">
+                01
+            </div>
+
+            <div class="dialogue-text">
+                “Daal bhat khao aur so jao.”
+            </div>
+
+        </article>
+
+
+        <article class="dialogue reveal">
+
+            <div class="dialogue-index">
+                02
+            </div>
+
+            <div class="dialogue-text">
+                “Five question aur study are check karo.”
+            </div>
+
+        </article>
+
+
+        <article class="dialogue reveal">
+
+            <div class="dialogue-index">
+                03
+            </div>
+
+            <div class="dialogue-text">
+                “Beta Board ki aur dekho nahin to maar ke dikha denge.”
+            </div>
+
+        </article>
+
+
+        <article class="dialogue reveal">
+
+            <div class="dialogue-index">
+                04
+            </div>
+
+            <div class="dialogue-text">
+                “Chup ho jao nahi toh mar mar ke gaal suja dege.”
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HEARTFELT MESSAGE
+===================================================== -->
+
+<section class="message-section">
+
+    <div class="message-wrap reveal">
+
+        <div class="message-label">
+            02 / From 10th I
+        </div>
+
+        <p class="message">
+            To our <strong>cool, hardworking math genius!</strong>
+            Behind the strict warnings is a teacher who
+            genuinely cares about our boards and our future.
+            Thank you for making math bearable and for all
+            the unforgettable classroom moments.
+        </p>
+
+        <div class="signature">
+            — With gratitude, Class 10th I
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CLOSING
+===================================================== -->
+
+<section class="closing reveal">
+
+    <div class="closing-small">
+        03 / Our final answer
+    </div>
+
+    <h2>
+        You taught us more<br>
+        than <span>mathematics.</span>
+    </h2>
+
+    <div class="closing-sign">
+        And somehow, we'll remember the lessons beyond the classroom.
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-quote">
+        “A good teacher can inspire hope, ignite the imagination,
+        and instill a love of learning.”
+    </div>
+
+    <div class="footer-sign">
+        With deepest respect and gratitude,<br>
+        Class 10th I
+    </div>
+
+    <div class="footer-school">
+        Army Public School · Lal Bahadur Shastri Marg
+    </div>
+
+</footer>
+
+</main>
+
+
+<script>
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                entry.target.classList.add(
+                    "visible"
+                );
+
+                observer.unobserve(
+                    entry.target
+                );
+
+            });
+
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow =
+    document.getElementById(
+        "cursorGlow"
+    );
+
+
+if (
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches
+) {
+
+    let mouseX = -300;
+    let mouseY = -300;
+
+    let glowX = mouseX;
+    let glowY = mouseY;
+
+    window.addEventListener(
+        "pointermove",
+        event => {
+
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    function animateGlow() {
+
+        glowX +=
+            (mouseX - glowX) * 0.08;
+
+        glowY +=
+            (mouseY - glowY) * 0.08;
+
+        cursorGlow.style.left =
+            glowX + "px";
+
+        cursorGlow.style.top =
+            glowY + "px";
+
+        requestAnimationFrame(
+            animateGlow
+        );
+
+    }
+
+    animateGlow();
+
+} else {
+
+    cursorGlow.style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   LIGHTWEIGHT PARTICLE SYSTEM
+========================================================= */
+
+const canvas =
+    document.getElementById(
+        "particleCanvas"
+    );
+
+const ctx =
+    canvas.getContext(
+        "2d",
+        {
+            alpha: true
+        }
+    );
+
+let particles = [];
+
+let canvasWidth = 0;
+let canvasHeight = 0;
+
+let animationFrame;
+
+
+function resizeCanvas() {
+
+    const dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
+
+    canvasWidth =
+        window.innerWidth;
+
+    canvasHeight =
+        window.innerHeight;
+
+    canvas.width =
+        canvasWidth * dpr;
+
+    canvas.height =
+        canvasHeight * dpr;
+
+    canvas.style.width =
+        canvasWidth + "px";
+
+    canvas.style.height =
+        canvasHeight + "px";
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    createParticles();
+
+}
+
+
+function createParticles() {
+
+    const mobile =
+        window.innerWidth < 700;
+
+    const count =
+        mobile ? 30 : 52;
+
+    particles =
+        Array.from(
+            {
+                length: count
+            },
+            () => ({
+
+                x:
+                    Math.random() *
+                    canvasWidth,
+
+                y:
+                    Math.random() *
+                    canvasHeight,
+
+                size:
+                    Math.random() *
+                    1.2 +
+                    .25,
+
+                speed:
+                    Math.random() *
+                    .18 +
+                    .035,
+
+                drift:
+                    (Math.random() - .5) *
+                    .12,
+
+                alpha:
+                    Math.random() *
+                    .25 +
+                    .06
+
+            })
+        );
+
+}
+
+
+function animateParticles() {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
+    );
+
+
+    for (
+        let i = 0;
+        i < particles.length;
+        i++
+    ) {
+
+        const p =
+            particles[i];
+
+        p.y -= p.speed;
+
+        p.x += p.drift;
+
+
+        if (p.y < -5) {
+
+            p.y =
+                canvasHeight + 5;
+
+            p.x =
+                Math.random() *
+                canvasWidth;
+
+        }
+
+
+        if (p.x < -5) {
+            p.x = canvasWidth + 5;
+        }
+
+        if (p.x > canvasWidth + 5) {
+            p.x = -5;
+        }
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            `rgba(232,189,98,${p.alpha})`;
+
+        ctx.fill();
+
+    }
+
+
+    animationFrame =
+        requestAnimationFrame(
+            animateParticles
+        );
+
+}
+
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas,
+    {
+        passive: true
+    }
+);
+
+animateParticles();
+
+
+/* =========================================================
+   MODERATE TEACHERS' DAY CONFETTI
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        if (
+            typeof confetti !==
+            "function"
+        ) {
+            return;
+        }
+
+
+        const colors = [
+            "#e8bd62",
+            "#f5dc9b",
+            "#ffffff",
+            "#9db9d9"
+        ];
+
+
+        setTimeout(() => {
+
+            confetti({
+                particleCount: 65,
+                spread: 65,
+                startVelocity: 25,
+                gravity: .85,
+                scalar: .78,
+                ticks: 180,
+                colors,
+                origin: {
+                    x: .08,
+                    y: .48
+                }
+            });
+
+
+            confetti({
+                particleCount: 65,
+                spread: 65,
+                startVelocity: 25,
+                gravity: .85,
+                scalar: .78,
+                ticks: 180,
+                colors,
+                origin: {
+                    x: .92,
+                    y: .48
+                }
+            });
+
+        }, 650);
+
+    }
+);
+
+
+/* =========================================================
+   CLEANUP ON TAB HIDDEN
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        if (
+            document.hidden
+        ) {
+
+            cancelAnimationFrame(
+                animationFrame
+            );
+
+        } else {
+
+            animateParticles();
+
+        }
+
+    }
+);
+</script>
+
+</body>
+</html>
