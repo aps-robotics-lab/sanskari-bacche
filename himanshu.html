@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b16">
+
+<title>Mr. Himanshu — Class 10th I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    color:#f4f5f7;
+    font-family:"DM Sans",sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(47,92,150,.18),
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 82% 65%,
+            rgba(232,189,98,.075),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #030811 0%,
+            #071222 42%,
+            #09182b 68%,
+            #040b15 100%
+        );
+
+    background-size:180% 180%;
+    animation:atmosphere 24s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphere{
+    0%{
+        background-position:0% 20%;
+    }
+
+    50%{
+        background-position:100% 70%;
+    }
+
+    100%{
+        background-position:20% 100%;
+    }
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.012) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.012) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        #000,
+        transparent 88%
+    );
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+#particleCanvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+    z-index:1;
+
+    opacity:.55;
+}
+
+.cursor-glow{
+    position:fixed;
+
+    width:270px;
+    height:270px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+    z-index:2;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,.075),
+            transparent 68%
+        );
+
+    transform:translate(-50%,-50%);
+}
+
+.page{
+    position:relative;
+    z-index:3;
+
+    width:min(1080px,91%);
+    margin:auto;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.topbar{
+    position:fixed;
+
+    top:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(1080px,90%);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:11px 14px 11px 18px;
+
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:100px;
+
+    background:rgba(6,15,28,.62);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    z-index:20;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:rgba(255,255,255,.72);
+
+    font-size:.7rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+}
+
+.brand-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#e8bd62;
+
+    box-shadow:
+        0 0 13px rgba(232,189,98,.8);
+}
+
+.back{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    color:#d8c07e;
+
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+
+    transition:
+        transform .3s ease,
+        color .3s ease;
+}
+
+.back:hover{
+    color:#fff;
+    transform:translateX(-4px);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    padding:150px 0 105px;
+
+    position:relative;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.kicker{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    color:#d5b66e;
+
+    font-size:.7rem;
+    font-weight:600;
+
+    letter-spacing:.22em;
+    text-transform:uppercase;
+
+    margin-bottom:27px;
+
+    opacity:0;
+
+    animation:
+        revealUp .9s .15s ease forwards;
+}
+
+.kicker::before{
+    content:"";
+
+    width:40px;
+    height:1px;
+
+    background:#d5b66e;
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(
+        3.8rem,
+        10vw,
+        8.3rem
+    );
+
+    line-height:.9;
+
+    letter-spacing:-.055em;
+
+    font-weight:600;
+
+    opacity:0;
+
+    animation:
+        revealUp 1s .28s ease forwards;
+}
+
+.gold{
+    color:#e8bd62;
+
+    text-shadow:
+        0 0 45px rgba(232,189,98,.13);
+}
+
+.subject{
+    margin-top:34px;
+
+    color:#dce2eb;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:clamp(
+        1rem,
+        2vw,
+        1.25rem
+    );
+
+    font-weight:500;
+
+    letter-spacing:.02em;
+
+    opacity:0;
+
+    animation:
+        revealUp 1s .45s ease forwards;
+}
+
+.hero-message{
+    max-width:690px;
+
+    margin-top:19px;
+
+    color:#8f9bae;
+
+    font-size:.96rem;
+
+    line-height:1.85;
+
+    opacity:0;
+
+    animation:
+        revealUp 1s .58s ease forwards;
+}
+
+.hero-action{
+    display:flex;
+    align-items:center;
+    gap:17px;
+
+    margin-top:38px;
+
+    opacity:0;
+
+    animation:
+        revealUp 1s .72s ease forwards;
+}
+
+.scroll-button{
+    display:inline-flex;
+    align-items:center;
+    gap:11px;
+
+    padding:13px 19px;
+
+    border:1px solid rgba(232,189,98,.32);
+    border-radius:100px;
+
+    background:rgba(232,189,98,.045);
+
+    color:#f0d38d;
+
+    font-size:.73rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+
+    transition:.3s ease;
+}
+
+.scroll-button:hover{
+    transform:translateY(-3px);
+
+    background:rgba(232,189,98,.10);
+
+    box-shadow:
+        0 12px 35px rgba(232,189,98,.08);
+}
+
+.hero-note{
+    color:rgba(255,255,255,.28);
+
+    font-size:.67rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+}
+
+@keyframes revealUp{
+    from{
+        opacity:0;
+        transform:translateY(28px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =====================================================
+   PHYSICS ORBIT
+===================================================== */
+
+.physics-mark{
+    position:absolute;
+
+    right:2%;
+    top:50%;
+
+    width:390px;
+    height:390px;
+
+    transform:translateY(-50%);
+
+    opacity:.65;
+
+    pointer-events:none;
+}
+
+.orbit{
+    position:absolute;
+    inset:0;
+
+    border:1px solid rgba(232,189,98,.12);
+
+    border-radius:50%;
+
+    transform:rotate(-20deg);
+}
+
+.orbit:nth-child(2){
+    transform:
+        rotate(55deg)
+        scale(.72);
+}
+
+.orbit:nth-child(3){
+    transform:
+        rotate(-55deg)
+        scale(.72);
+}
+
+.nucleus{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:18px;
+    height:18px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:#e8bd62;
+
+    box-shadow:
+        0 0 25px rgba(232,189,98,.7),
+        0 0 70px rgba(232,189,98,.22);
+
+    animation:pulse 3s ease-in-out infinite;
+}
+
+.electron{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:8px;
+    height:8px;
+
+    margin:-4px;
+
+    border-radius:50%;
+
+    background:#f6dfa4;
+
+    box-shadow:
+        0 0 15px rgba(232,189,98,.8);
+
+    animation:electron 5s linear infinite;
+}
+
+.electron.two{
+    animation-duration:7s;
+    animation-direction:reverse;
+}
+
+@keyframes electron{
+    from{
+        transform:
+            rotate(0deg)
+            translateX(145px)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            rotate(360deg)
+            translateX(145px)
+            rotate(-360deg);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    50%{
+        transform:translate(-50%,-50%) scale(1.2);
+    }
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+    padding:115px 0;
+}
+
+.section-index{
+    color:#d5b66e;
+
+    font-size:.68rem;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+}
+
+.section-title{
+    margin-top:14px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(
+        2.7rem,
+        6vw,
+        5rem
+    );
+
+    line-height:1;
+
+    letter-spacing:-.04em;
+}
+
+.section-description{
+    max-width:650px;
+
+    margin-top:20px;
+
+    color:#8f9bae;
+
+    line-height:1.85;
+}
+
+/* =====================================================
+   DIALOGUES
+===================================================== */
+
+.dialogues{
+    margin-top:55px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:17px;
+}
+
+.dialogue{
+    position:relative;
+
+    min-height:190px;
+
+    display:flex;
+    align-items:flex-end;
+
+    padding:27px;
+
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.022)
+        );
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    overflow:hidden;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+.dialogue::before{
+    content:"“";
+
+    position:absolute;
+
+    top:5px;
+    right:19px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:5rem;
+
+    line-height:1;
+
+    color:rgba(232,189,98,.12);
+}
+
+.dialogue::after{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    left:-80px;
+    bottom:-90px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,.12),
+            transparent 70%
+        );
+
+    transition:.4s ease;
+}
+
+.dialogue:hover{
+    transform:translateY(-7px);
+
+    border-color:rgba(232,189,98,.25);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.22),
+        0 0 35px rgba(232,189,98,.045);
+}
+
+.dialogue:hover::after{
+    transform:scale(1.5);
+}
+
+.dialogue-number{
+    position:absolute;
+
+    top:23px;
+    left:27px;
+
+    color:rgba(255,255,255,.25);
+
+    font-size:.63rem;
+
+    letter-spacing:.15em;
+}
+
+.dialogue-text{
+    position:relative;
+    z-index:2;
+
+    color:#eee9dc;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(
+        1.1rem,
+        2vw,
+        1.35rem
+    );
+
+    line-height:1.45;
+}
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message-section{
+    padding:80px 0 130px;
+}
+
+.message-wrap{
+    position:relative;
+
+    padding:
+        clamp(35px,6vw,70px);
+
+    border-top:1px solid rgba(255,255,255,.10);
+    border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+.message-label{
+    color:#d5b66e;
+
+    font-size:.67rem;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+}
+
+.message{
+    max-width:880px;
+
+    margin-top:25px;
+
+    font-family:"Playfair Display",serif;
+
+    color:#e9ebef;
+
+    font-size:clamp(
+        1.8rem,
+        4vw,
+        3.35rem
+    );
+
+    line-height:1.22;
+
+    letter-spacing:-.025em;
+}
+
+.message em{
+    color:#e8bd62;
+    font-style:normal;
+}
+
+.message-sign{
+    margin-top:30px;
+
+    color:rgba(255,255,255,.35);
+
+    font-size:.75rem;
+
+    letter-spacing:.12em;
+}
+
+/* =====================================================
+   LITTLE PHYSICS STORY
+===================================================== */
+
+.story{
+    padding:90px 0 125px;
+}
+
+.story-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.05fr .95fr;
+
+    gap:25px;
+
+    align-items:stretch;
+}
+
+.story-main,
+.story-side{
+    border:1px solid rgba(255,255,255,.09);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    border-radius:26px;
+}
+
+.story-main{
+    padding:42px;
+}
+
+.story-side{
+    padding:38px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.story-label{
+    color:#d5b66e;
+
+    font-size:.66rem;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+}
+
+.story-main h3{
+    margin-top:17px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(
+        2rem,
+        4vw,
+        3.2rem
+    );
+
+    line-height:1.05;
+}
+
+.story-main p{
+    margin-top:20px;
+
+    color:#909bad;
+
+    line-height:1.85;
+}
+
+.formula{
+    font-family:"Manrope",sans-serif;
+
+    font-size:clamp(
+        2.4rem,
+        5vw,
+        4rem
+    );
+
+    font-weight:800;
+
+    color:#e8bd62;
+
+    letter-spacing:-.06em;
+
+    text-shadow:
+        0 0 30px rgba(232,189,98,.12);
+}
+
+.story-side p{
+    margin-top:16px;
+
+    color:#aeb7c4;
+
+    line-height:1.75;
+}
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.closing{
+    position:relative;
+
+    padding:125px 0 155px;
+
+    text-align:center;
+}
+
+.closing::before{
+    content:"";
+
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,.065),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.closing-small{
+    position:relative;
+
+    color:#d5b66e;
+
+    font-size:.67rem;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+}
+
+.closing h2{
+    position:relative;
+
+    max-width:850px;
+
+    margin:22px auto 0;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(
+        2.7rem,
+        7vw,
+        6.2rem
+    );
+
+    line-height:.99;
+
+    letter-spacing:-.045em;
+}
+
+.closing h2 span{
+    color:#e8bd62;
+}
+
+.closing-sign{
+    position:relative;
+
+    margin-top:32px;
+
+    color:rgba(255,255,255,.38);
+
+    font-size:.78rem;
+
+    letter-spacing:.1em;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:58px 0 45px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+}
+
+.footer-quote{
+    max-width:750px;
+
+    margin:auto;
+
+    color:#c8d0dc;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(
+        1.15rem,
+        2.5vw,
+        1.6rem
+    );
+
+    line-height:1.6;
+}
+
+.footer-sign{
+    margin-top:24px;
+
+    color:#d5b66e;
+
+    font-size:.76rem;
+
+    line-height:1.7;
+}
+
+.footer-location{
+    margin-top:34px;
+
+    color:rgba(255,255,255,.21);
+
+    font-size:.63rem;
+
+    letter-spacing:.13em;
+
+    text-transform:uppercase;
+}
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(28px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:900px){
+
+    .physics-mark{
+        width:300px;
+        height:300px;
+
+        right:-80px;
+
+        opacity:.25;
+    }
+
+    .dialogues{
+        grid-template-columns:1fr;
+    }
+
+    .dialogue{
+        min-height:155px;
+    }
+
+    .story-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+
+    .page{
+        width:min(92%,520px);
+    }
+
+    .topbar{
+        top:12px;
+        width:92%;
+    }
+
+    .brand{
+        font-size:.61rem;
+    }
+
+    .hero{
+        padding-top:145px;
+    }
+
+    .physics-mark{
+        top:35%;
+        right:-120px;
+
+        width:270px;
+        height:270px;
+
+        opacity:.15;
+    }
+
+    .hero h1{
+        font-size:clamp(
+            3.8rem,
+            18vw,
+            6rem
+        );
+    }
+
+    .hero-action{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .section{
+        padding:82px 0;
+    }
+
+    .message-section{
+        padding:65px 0 95px;
+    }
+
+    .story{
+        padding:65px 0 95px;
+    }
+
+    .story-main,
+    .story-side{
+        border-radius:21px;
+        padding:29px;
+    }
+
+    .closing{
+        padding:95px 0 115px;
+    }
+}
+
+@media(max-width:420px){
+
+    .back{
+        font-size:.61rem;
+    }
+
+    .hero h1{
+        font-size:3.65rem;
+    }
+
+    .dialogue{
+        padding:24px;
+    }
+
+    .message{
+        font-size:1.75rem;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div
+    class="cursor-glow"
+    id="cursorGlow">
+</div>
+
+<nav class="topbar">
+
+    <div class="brand">
+        <span class="brand-dot"></span>
+        Class 10th I
+    </div>
+
+    <a
+        href="index.html"
+        class="back">
+        ← Back to Home
+    </a>
+
+</nav>
+
+
+<main class="page">
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="physics-mark" aria-hidden="true">
+
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+
+        <div class="nucleus"></div>
+
+        <div class="electron"></div>
+        <div class="electron two"></div>
+
+    </div>
+
+    <div class="hero-content">
+
+        <div class="kicker">
+            06 / Physics
+        </div>
+
+        <h1>
+            Mr.<br>
+            <span class="gold">Himanshu</span>
+        </h1>
+
+        <div class="subject">
+            Physics · Class 10th I
+        </div>
+
+        <p class="hero-message">
+            Some teachers explain a formula.
+            Some make you understand the idea behind it.
+            And somehow, the lesson becomes a story you remember.
+        </p>
+
+        <div class="hero-action">
+
+            <a
+                href="#dialogues"
+                class="scroll-button">
+                Enter his story
+                <span>↓</span>
+            </a>
+
+            <div class="hero-note">
+                Calm mind · sharp focus · unforgettable lessons
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DIALOGUES
+===================================================== -->
+
+<section
+    class="section"
+    id="dialogues">
+
+    <div class="reveal">
+
+        <div class="section-index">
+            01 / Things we still hear
+        </div>
+
+        <h2 class="section-title">
+            The lines<br>
+            we remember.
+        </h2>
+
+        <p class="section-description">
+            Every classroom has a few sentences that somehow
+            become part of its identity. These are some of yours,
+            Sir.
+        </p>
+
+    </div>
+
+
+    <div class="dialogues">
+
+        <div class="dialogue reveal">
+
+            <div class="dialogue-number">
+                01
+            </div>
+
+            <div class="dialogue-text">
+                “Idar dhyan de beta.”
+            </div>
+
+        </div>
+
+
+        <div class="dialogue reveal">
+
+            <div class="dialogue-number">
+                02
+            </div>
+
+            <div class="dialogue-text">
+                “Baccha sun lo.”
+            </div>
+
+        </div>
+
+
+        <div class="dialogue reveal">
+
+            <div class="dialogue-number">
+                03
+            </div>
+
+            <div class="dialogue-text">
+                “Agli baar games pakha pahle padh lo..”
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MESSAGE
+===================================================== -->
+
+<section class="message-section">
+
+    <div class="message-wrap reveal">
+
+        <div class="message-label">
+            02 / From 10th I
+        </div>
+
+        <div class="message">
+            To the calmest and most focused teacher.
+            Thank you for weaving
+            <em>amazing stories</em>
+            into complex physics concepts
+            and helping us understand them.
+            We promise to pay attention and focus
+            — at least until games period!
+        </div>
+
+        <div class="message-sign">
+            With respect · Class 10th I
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PHYSICS STORY
+===================================================== -->
+
+<section class="story">
+
+    <div class="story-grid">
+
+        <div class="story-main reveal">
+
+            <div class="story-label">
+                03 / What stayed with us
+            </div>
+
+            <h3>
+                Physics became<br>
+                more than formulas.
+            </h3>
+
+            <p>
+                Somewhere between equations, explanations,
+                questions and those quiet moments when you
+                told us to pay attention, we started seeing
+                physics differently.
+            </p>
+
+            <p>
+                You showed us that understanding doesn't
+                always come from memorising a formula.
+                Sometimes it comes from understanding
+                the story behind it.
+            </p>
+
+        </div>
+
+
+        <div class="story-side reveal">
+
+            <div class="formula">
+                F = ma
+            </div>
+
+            <p>
+                A simple equation on paper.
+                A whole universe of ideas behind it.
+            </p>
+
+            <p>
+                Thank you for making us look beyond
+                the equation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CLOSING
+===================================================== -->
+
+<section class="closing reveal">
+
+    <div class="closing-small">
+        04 / Final thought
+    </div>
+
+    <h2>
+        You didn't just teach us
+        <br>
+        <span>Physics.</span>
+        <br>
+        You taught us to understand.
+    </h2>
+
+    <div class="closing-sign">
+        — Class 10th I
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-quote">
+        “A good teacher can inspire hope, ignite the imagination,
+        and instill a love of learning.”
+    </div>
+
+    <div class="footer-sign">
+        With deepest respect and gratitude,<br>
+        Class 10th I
+    </div>
+
+    <div class="footer-location">
+        Army Public School · Lal Bahadur Shastri Marg
+    </div>
+
+</footer>
+
+</main>
+
+
+<script>
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+/* =====================================================
+   CURSOR GLOW
+===================================================== */
+
+const cursorGlow =
+    document.getElementById("cursorGlow");
+
+
+if(
+    window.matchMedia("(pointer:fine)").matches
+){
+
+    window.addEventListener(
+        "pointermove",
+        event => {
+
+            cursorGlow.style.left =
+                event.clientX + "px";
+
+            cursorGlow.style.top =
+                event.clientY + "px";
+
+        },
+        {
+            passive:true
+        }
+    );
+
+}else{
+
+    cursorGlow.style.display="none";
+
+}
+
+
+/* =====================================================
+   LIGHTWEIGHT PARTICLE SYSTEM
+===================================================== */
+
+const canvas =
+    document.getElementById(
+        "particleCanvas"
+    );
+
+const ctx =
+    canvas.getContext("2d",{
+        alpha:true
+    });
+
+let particles=[];
+let width=0;
+let height=0;
+let dpr=1;
+
+
+function resizeCanvas(){
+
+    dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
+
+    width =
+        window.innerWidth;
+
+    height =
+        window.innerHeight;
+
+    canvas.width =
+        width * dpr;
+
+    canvas.height =
+        height * dpr;
+
+    canvas.style.width =
+        width + "px";
+
+    canvas.style.height =
+        height + "px";
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    createParticles();
+}
+
+
+function createParticles(){
+
+    particles=[];
+
+    const amount =
+        width < 600
+            ? 26
+            : 48;
+
+    for(
+        let i=0;
+        i<amount;
+        i++
+    ){
+
+        particles.push({
+
+            x:
+                Math.random()*width,
+
+            y:
+                Math.random()*height,
+
+            r:
+                Math.random()*.9+.25,
+
+            speed:
+                Math.random()*.18+.025,
+
+            drift:
+                (Math.random()-.5)*.08,
+
+            alpha:
+                Math.random()*.25+.07
+
+        });
+
+    }
+
+}
+
+
+function animateParticles(){
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    for(const p of particles){
+
+        p.y -= p.speed;
+        p.x += p.drift;
+
+        if(p.y < -5)
+            p.y=height+5;
+
+        if(p.x < -5)
+            p.x=width+5;
+
+        if(p.x > width+5)
+            p.x=-5;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.r,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+            `rgba(232,189,98,${p.alpha})`;
+
+        ctx.fill();
+
+    }
+
+    requestAnimationFrame(
+        animateParticles
+    );
+}
+
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas,
+    {
+        passive:true
+    }
+);
+
+animateParticles();
+
+
+/* =====================================================
+   MODERATE TEACHERS' DAY CONFETTI
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        if(
+            typeof confetti !== "function"
+        ){
+            return;
+        }
+
+        setTimeout(() => {
+
+            const defaults={
+                particleCount:55,
+                spread:65,
+                startVelocity:27,
+                gravity:.9,
+                scalar:.72
+            };
+
+            confetti({
+                ...defaults,
+                origin:{
+                    x:.14,
+                    y:.48
+                }
+            });
+
+            confetti({
+                ...defaults,
+                origin:{
+                    x:.86,
+                    y:.48
+                }
+            });
+
+        },850);
+
+    }
+);
+</script>
+
+</body>
+</html>
