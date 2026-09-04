@@ -1,10 +1,53 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050b16">
-<meta name="description" content="A Teachers' Day tribute to Ms. Ariba Ansari from Class 10th I."><title>Ms. Ariba Ansari — Class 10th I</title><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script><style>
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#050b16"
+>
+
+<meta
+    name="description"
+    content="A Teachers' Day tribute to Ms. Ariba Ansari from Class 10th I."
+>
+
+<title>Ms. Ariba Ansari — Class 10th I</title>
+
+
+<!-- =========================================================
+     FONTS
+========================================================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- =========================================================
+     CONFETTI
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+
+<style>
 
 /* =========================================================
    RESET
@@ -17,16 +60,19 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {
     min-height: 100vh;
+
     overflow-x: hidden;
 
     color: #f5f6f8;
 
-    font-family: "DM Sans", sans-serif;
+    font-family:
+        "DM Sans",
+        sans-serif;
 
     background:
         radial-gradient(
@@ -50,7 +96,11 @@ body {
     background-size: 180% 180%;
 
     animation:
-        atmosphere 24s ease-in-out infinite alternate;
+        atmosphere
+        24s
+        ease-in-out
+        infinite
+        alternate;
 }
 
 @keyframes atmosphere {
@@ -66,12 +116,14 @@ body {
     100% {
         background-position: 20% 100%;
     }
+
 }
 
 body::before {
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
@@ -89,7 +141,8 @@ body::before {
             transparent 1px
         );
 
-    background-size: 70px 70px;
+    background-size:
+        70px 70px;
 
     mask-image:
         linear-gradient(
@@ -166,7 +219,11 @@ button {
 
     z-index: 3;
 
-    width: min(1120px, 91%);
+    width:
+        min(
+            1120px,
+            91%
+        );
 
     margin: auto;
 }
@@ -185,7 +242,11 @@ button {
     transform:
         translateX(-50%);
 
-    width: min(1080px, 90%);
+    width:
+        min(
+            1080px,
+            90%
+        );
 
     display: flex;
 
@@ -195,7 +256,11 @@ button {
 
     gap: 15px;
 
-    padding: 10px 12px 10px 16px;
+    padding:
+        10px
+        12px
+        10px
+        16px;
 
     border:
         1px solid
@@ -244,7 +309,8 @@ button {
 
     border-radius: 50%;
 
-    background: #e8bd62;
+    background:
+        #e8bd62;
 
     box-shadow:
         0 0 14px
@@ -286,6 +352,7 @@ button {
 }
 
 .back-button:hover {
+
     transform:
         translateY(-2px);
 
@@ -310,7 +377,8 @@ button {
     align-items: center;
 
     padding:
-        150px 0
+        150px
+        0
         90px;
 
     position: relative;
@@ -322,6 +390,102 @@ button {
     max-width: 900px;
 }
 
+
+/* =========================================================
+   TEACHER PHOTO
+========================================================= */
+
+.teacher-photo-wrap {
+    position: relative;
+
+    width: 118px;
+    height: 118px;
+
+    margin-bottom: 30px;
+
+    opacity: 0;
+
+    animation:
+        revealUp
+        0.9s
+        0s
+        ease
+        forwards;
+}
+
+.teacher-photo-glow {
+    position: absolute;
+
+    inset: -18px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,0.18),
+            transparent 68%
+        );
+
+    filter: blur(8px);
+
+    pointer-events: none;
+}
+
+.teacher-photo {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.45);
+
+    box-shadow:
+        0 0 0 6px
+        rgba(232,189,98,0.035),
+
+        0 15px 50px
+        rgba(0,0,0,0.35);
+
+    filter:
+        saturate(0.92)
+        contrast(1.03);
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+.teacher-photo-wrap:hover
+.teacher-photo {
+
+    transform:
+        scale(1.045);
+
+    box-shadow:
+        0 0 0 7px
+        rgba(232,189,98,0.055),
+
+        0 20px 60px
+        rgba(0,0,0,0.45),
+
+        0 0 35px
+        rgba(232,189,98,0.12);
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
 .eyebrow {
     display: flex;
 
@@ -331,7 +495,8 @@ button {
 
     margin-bottom: 28px;
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
     font-size: 0.68rem;
 
@@ -357,10 +522,17 @@ button {
     width: 38px;
     height: 1px;
 
-    background: #d5b66e;
+    background:
+        #d5b66e;
 }
 
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
 .hero h1 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -389,14 +561,22 @@ button {
 }
 
 .hero h1 span {
-    color: #e8bd62;
+
+    color:
+        #e8bd62;
 
     text-shadow:
         0 0 50px
         rgba(232,189,98,0.14);
 }
 
+
+/* =========================================================
+   HERO ROLE
+========================================================= */
+
 .hero-role {
+
     margin-top: 30px;
 
     color:
@@ -427,7 +607,13 @@ button {
         forwards;
 }
 
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
 .hero-description {
+
     max-width: 650px;
 
     margin-top: 17px;
@@ -449,7 +635,13 @@ button {
         forwards;
 }
 
+
+/* =========================================================
+   HERO LINE
+========================================================= */
+
 .hero-line {
+
     width: 100%;
 
     height: 1px;
@@ -466,7 +658,8 @@ button {
 
     transform-origin: left;
 
-    transform: scaleX(0);
+    transform:
+        scaleX(0);
 
     animation:
         lineReveal
@@ -476,7 +669,13 @@ button {
         forwards;
 }
 
+
+/* =========================================================
+   HERO META
+========================================================= */
+
 .hero-meta {
+
     display: flex;
 
     align-items: center;
@@ -505,12 +704,20 @@ button {
 }
 
 .hero-meta span:first-child {
-    color: #d5b66e;
+
+    color:
+        #d5b66e;
 }
+
+
+/* =========================================================
+   HERO ANIMATIONS
+========================================================= */
 
 @keyframes revealUp {
 
     from {
+
         opacity: 0;
 
         transform:
@@ -518,24 +725,29 @@ button {
     }
 
     to {
+
         opacity: 1;
 
         transform:
             translateY(0);
     }
+
 }
 
 @keyframes lineReveal {
 
     from {
+
         transform:
             scaleX(0);
     }
 
     to {
+
         transform:
             scaleX(1);
     }
+
 }
 
 
@@ -544,6 +756,7 @@ button {
 ========================================================= */
 
 .scroll-hint {
+
     position: absolute;
 
     left: 0;
@@ -567,6 +780,7 @@ button {
 }
 
 .scroll-line {
+
     width: 45px;
     height: 1px;
 
@@ -584,6 +798,7 @@ button {
 
     0%,
     100% {
+
         transform:
             scaleX(0.5);
 
@@ -593,11 +808,13 @@ button {
     }
 
     50% {
+
         transform:
             scaleX(1);
 
         opacity: 1;
     }
+
 }
 
 
@@ -606,12 +823,15 @@ button {
 ========================================================= */
 
 .section {
+
     padding:
         115px 0;
 }
 
 .section-label {
-    color: #d5b66e;
+
+    color:
+        #d5b66e;
 
     font-size: 0.67rem;
 
@@ -621,6 +841,7 @@ button {
 }
 
 .section-title {
+
     margin-top: 14px;
 
     max-width: 760px;
@@ -642,16 +863,20 @@ button {
 }
 
 .section-title span {
-    color: #e8bd62;
+
+    color:
+        #e8bd62;
 }
 
 .section-intro {
+
     max-width: 680px;
 
     margin-bottom: 55px;
 }
 
 .section-copy {
+
     margin-top: 20px;
 
     max-width: 650px;
@@ -664,14 +889,14 @@ button {
 
 
 /* =========================================================
-   QUOTES
+   DIALOGUES
 ========================================================= */
 
 .dialogue-wrap {
+
     position: relative;
 
-    padding:
-        1px;
+    padding: 1px;
 
     border-radius: 28px;
 
@@ -685,6 +910,7 @@ button {
 }
 
 .dialogues {
+
     display: grid;
 
     grid-template-columns:
@@ -707,12 +933,12 @@ button {
 }
 
 .dialogue {
+
     position: relative;
 
     min-height: 190px;
 
-    padding:
-        34px;
+    padding: 34px;
 
     display: flex;
 
@@ -735,6 +961,7 @@ button {
 }
 
 .dialogue::before {
+
     content: "“";
 
     position: absolute;
@@ -755,6 +982,7 @@ button {
 }
 
 .dialogue:hover {
+
     background:
         rgba(232,189,98,0.055);
 
@@ -763,6 +991,7 @@ button {
 }
 
 .dialogue-index {
+
     color:
         rgba(255,255,255,0.27);
 
@@ -774,6 +1003,7 @@ button {
 }
 
 .dialogue-text {
+
     position: relative;
 
     max-width: 520px;
@@ -803,6 +1033,7 @@ button {
 ========================================================= */
 
 .science-strip {
+
     display: flex;
 
     align-items: center;
@@ -811,7 +1042,8 @@ button {
 
     margin-top: 30px;
 
-    padding: 18px 20px;
+    padding:
+        18px 20px;
 
     border:
         1px solid
@@ -831,6 +1063,7 @@ button {
 }
 
 .science-orb {
+
     width: 28px;
     height: 28px;
 
@@ -851,6 +1084,7 @@ button {
 
 .science-orb::before,
 .science-orb::after {
+
     content: "";
 
     position: absolute;
@@ -871,6 +1105,7 @@ button {
 }
 
 .science-orb::after {
+
     transform:
         rotate(60deg);
 }
@@ -878,9 +1113,11 @@ button {
 @keyframes orbit {
 
     to {
+
         transform:
             rotate(360deg);
     }
+
 }
 
 
@@ -889,6 +1126,7 @@ button {
 ========================================================= */
 
 .message {
+
     position: relative;
 
     max-width: 900px;
@@ -927,6 +1165,7 @@ button {
 }
 
 .message::before {
+
     content: "";
 
     position: absolute;
@@ -950,9 +1189,11 @@ button {
 }
 
 .message-label {
+
     position: relative;
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
     font-size: 0.65rem;
 
@@ -962,6 +1203,7 @@ button {
 }
 
 .message h2 {
+
     position: relative;
 
     max-width: 800px;
@@ -985,10 +1227,13 @@ button {
 }
 
 .message h2 span {
-    color: #e8bd62;
+
+    color:
+        #e8bd62;
 }
 
 .message p {
+
     position: relative;
 
     max-width: 760px;
@@ -1010,10 +1255,11 @@ button {
 
 
 /* =========================================================
-   FINAL MESSAGE
+   STORY SECTION
 ========================================================= */
 
 .final-section {
+
     padding:
         130px 0
         150px;
@@ -1022,7 +1268,9 @@ button {
 }
 
 .final-small {
-    color: #d5b66e;
+
+    color:
+        #d5b66e;
 
     font-size: 0.66rem;
 
@@ -1032,6 +1280,7 @@ button {
 }
 
 .final-section h2 {
+
     max-width: 850px;
 
     margin:
@@ -1054,7 +1303,9 @@ button {
 }
 
 .final-section h2 span {
-    color: #e8bd62;
+
+    color:
+        #e8bd62;
 
     text-shadow:
         0 0 45px
@@ -1062,6 +1313,7 @@ button {
 }
 
 .final-sign {
+
     margin-top: 32px;
 
     color:
@@ -1078,6 +1330,7 @@ button {
 ========================================================= */
 
 footer {
+
     padding:
         60px 0
         45px;
@@ -1090,6 +1343,7 @@ footer {
 }
 
 .footer-quote {
+
     max-width: 750px;
 
     margin: auto;
@@ -1112,9 +1366,11 @@ footer {
 }
 
 .footer-sign {
+
     margin-top: 23px;
 
-    color: #d5b66e;
+    color:
+        #d5b66e;
 
     font-size: 0.77rem;
 
@@ -1122,6 +1378,7 @@ footer {
 }
 
 .footer-location {
+
     margin-top: 30px;
 
     color:
@@ -1140,6 +1397,7 @@ footer {
 ========================================================= */
 
 .reveal {
+
     opacity: 0;
 
     transform:
@@ -1152,6 +1410,7 @@ footer {
 }
 
 .reveal.visible {
+
     opacity: 1;
 
     transform:
@@ -1166,33 +1425,53 @@ footer {
 @media (max-width: 760px) {
 
     .page {
-        width: min(92%, 520px);
+
+        width:
+            min(
+                92%,
+                520px
+            );
     }
 
     .topbar {
+
         top: 12px;
 
         width: 92%;
     }
 
     .brand {
-        font-size: 0.61rem;
+
+        font-size:
+            0.61rem;
     }
 
     .back-button {
+
         padding:
             9px 13px;
 
-        font-size: 0.67rem;
+        font-size:
+            0.67rem;
     }
 
     .hero {
+
         padding:
             145px 0
             100px;
     }
 
+    .teacher-photo-wrap {
+
+        width: 92px;
+        height: 92px;
+
+        margin-bottom: 25px;
+    }
+
     .hero h1 {
+
         font-size:
             clamp(
                 3.8rem,
@@ -1202,59 +1481,81 @@ footer {
     }
 
     .hero-meta {
+
         flex-wrap: wrap;
 
-        gap: 12px 20px;
+        gap:
+            12px 20px;
     }
 
     .scroll-hint {
+
         display: none;
     }
 
     .section {
+
         padding:
             85px 0;
     }
 
     .dialogues {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
     .dialogue {
-        min-height: 165px;
+
+        min-height:
+            165px;
 
         padding:
             28px;
     }
 
     .message {
-        border-radius: 23px;
+
+        border-radius:
+            23px;
     }
 
     .final-section {
+
         padding:
             100px 0
             120px;
     }
+
 }
+
 
 @media (max-width: 420px) {
 
     .hero h1 {
-        font-size: 3.65rem;
+
+        font-size:
+            3.65rem;
     }
 
     .hero-description {
-        font-size: 0.9rem;
+
+        font-size:
+            0.9rem;
     }
 
     .dialogue-text {
-        font-size: 1.2rem;
+
+        font-size:
+            1.2rem;
     }
 
     .science-strip {
-        align-items: flex-start;
+
+        align-items:
+            flex-start;
     }
+
 }
 
 
@@ -1267,293 +1568,508 @@ footer {
     *,
     *::before,
     *::after {
-        animation-duration: 0.001ms !important;
+
+        animation-duration:
+            0.001ms !important;
 
         animation-iteration-count:
             1 !important;
 
-        scroll-behavior: auto !important;
+        scroll-behavior:
+            auto !important;
 
         transition-duration:
             0.001ms !important;
     }
+
 }
 
-</style></head><body><canvas id="particleCanvas"></canvas>
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     PARTICLES
+========================================================= -->
+
+<canvas id="particleCanvas"></canvas>
+
+
+<!-- =========================================================
+     CURSOR GLOW
+========================================================= -->
 
 <div
     class="cursor-glow"
     id="cursorGlow">
-</div><!-- =====================================================
-     NAV
-===================================================== --><nav class="topbar"><div class="brand">
-
-    <span class="brand-dot"></span>
-
-    Class 10th I
-
 </div>
 
-<a
-    href="index.html"
-    class="back-button">
 
-    ← Back to Home
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-</a>
+<nav class="topbar">
 
-</nav><main class="page"><!-- =====================================================
+    <div class="brand">
+
+        <span class="brand-dot"></span>
+
+        Class 10th I
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back-button"
+    >
+        ← Back to Home
+    </a>
+
+</nav>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="page">
+
+
+<!-- =========================================================
      HERO
-===================================================== --><section class="hero"><div class="hero-content">
+========================================================= -->
 
-    <div class="eyebrow">
-        A tribute from 10th I
+<section class="hero">
+
+    <div class="hero-content">
+
+
+        <!-- TEACHER PHOTO -->
+
+        <div class="teacher-photo-wrap">
+
+            <div class="teacher-photo-glow"></div>
+
+            <img
+                src="Images/ariba-ansari.webp"
+                alt="Ms. Ariba Ansari"
+                class="teacher-photo"
+                loading="eager"
+            >
+
+        </div>
+
+
+        <div class="eyebrow">
+
+            A tribute from 10th I
+
+        </div>
+
+
+        <h1>
+
+            Ms.
+            <span>Ariba</span>
+            <br>
+
+            Ansari
+
+        </h1>
+
+
+        <div class="hero-role">
+
+            Biology & Chemistry
+
+        </div>
+
+
+        <p class="hero-description">
+
+            Strict when we needed it, caring when we least
+            expected it, and somehow always able to tell
+            when someone had mentally disappeared into
+            Lala Land.
+
+        </p>
+
+
+        <div class="hero-line"></div>
+
+
+        <div class="hero-meta">
+
+            <span>
+                Science
+            </span>
+
+            <span>
+                ·
+            </span>
+
+            <span>
+                Class 10th I
+            </span>
+
+            <span>
+                ·
+            </span>
+
+            <span>
+                Unforgettable
+            </span>
+
+        </div>
+
     </div>
 
-    <h1>
-        Ms. <span>Ariba</span><br>
-        Ansari
-    </h1>
 
-    <div class="hero-role">
-        Biology & Chemistry
-    </div>
+    <div class="scroll-hint">
 
-    <p class="hero-description">
-        Strict when we needed it, caring when we least
-        expected it, and somehow always able to tell
-        when someone had mentally disappeared into
-        Lala Land.
-    </p>
+        <div class="scroll-line"></div>
 
-    <div class="hero-line"></div>
-
-    <div class="hero-meta">
-
-        <span>
-            Science
-        </span>
-
-        <span>
-            ·
-        </span>
-
-        <span>
-            Class 10th I
-        </span>
-
-        <span>
-            ·
-        </span>
-
-        <span>
-            Unforgettable
-        </span>
+        Continue the story
 
     </div>
 
-</div>
+</section>
 
 
-<div class="scroll-hint">
-
-    <div class="scroll-line"></div>
-
-    Continue the story
-
-</div>
-
-</section><!-- =====================================================
+<!-- =========================================================
      DIALOGUES
-===================================================== --><section class="section"><div class="section-intro reveal">
+========================================================= -->
 
-    <div class="section-label">
-        01 / Things we will remember
-    </div>
-
-    <h2 class="section-title">
-        The quotes that
-        <span>became memories.</span>
-    </h2>
-
-    <p class="section-copy">
-        Every classroom has its own language.
-        These are a few sentences that instantly
-        take 10th I back to the classroom.
-    </p>
-
-</div>
+<section class="section">
 
 
-<div class="dialogue-wrap reveal">
-
-    <div class="dialogues">
-
-        <article class="dialogue">
-
-            <div class="dialogue-index">
-                01 / Lala Land alert
-            </div>
-
-            <div class="dialogue-text">
-                “Jaldi wapas aao apne lala land se.”
-            </div>
-
-        </article>
+    <div class="section-intro reveal">
 
 
-        <article class="dialogue">
+        <div class="section-label">
 
-            <div class="dialogue-index">
-                02 / Classroom silence
-            </div>
+            01 / Things we will remember
 
-            <div class="dialogue-text">
-                “Shut up!”
-            </div>
-
-        </article>
+        </div>
 
 
-        <article class="dialogue">
+        <h2 class="section-title">
 
-            <div class="dialogue-index">
-                03 / The observation
-            </div>
+            The quotes that
+            <span>
+                became memories.
+            </span>
 
-            <div class="dialogue-text">
-                “Aayush ki shaqual yaar nhi aa rahi.”
-            </div>
-
-        </article>
+        </h2>
 
 
-        <article class="dialogue">
+        <p class="section-copy">
 
-            <div class="dialogue-index">
-                04 / Identity check
-            </div>
+            Every classroom has its own language.
+            These are a few sentences that instantly
+            take 10th I back to the classroom.
 
-            <div class="dialogue-text">
-                “Tum kaun ho.”
-            </div>
-
-        </article>
+        </p>
 
     </div>
 
-</div>
+
+    <div class="dialogue-wrap reveal">
 
 
-<div class="science-strip reveal">
+        <div class="dialogues">
 
-    <div class="science-orb"></div>
 
-    <div>
-        Biology taught us about life.
-        Chemistry taught us about reactions.
-        You somehow taught us both — while also
-        detecting when our attention had evaporated.
+            <article class="dialogue">
+
+                <div class="dialogue-index">
+
+                    01 / Lala Land alert
+
+                </div>
+
+
+                <div class="dialogue-text">
+
+                    “Jaldi wapas aao apne lala land se.”
+
+                </div>
+
+            </article>
+
+
+            <article class="dialogue">
+
+                <div class="dialogue-index">
+
+                    02 / Classroom silence
+
+                </div>
+
+
+                <div class="dialogue-text">
+
+                    “Shut up!”
+
+                </div>
+
+            </article>
+
+
+            <article class="dialogue">
+
+                <div class="dialogue-index">
+
+                    03 / The observation
+
+                </div>
+
+
+                <div class="dialogue-text">
+
+                    “Aayush ki shaqual yaar nhi aa rahi.”
+
+                </div>
+
+            </article>
+
+
+            <article class="dialogue">
+
+                <div class="dialogue-index">
+
+                    04 / Identity check
+
+                </div>
+
+
+                <div class="dialogue-text">
+
+                    “Tum kaun ho.”
+
+                </div>
+
+            </article>
+
+
+        </div>
+
     </div>
 
-</div>
 
-</section><!-- =====================================================
+    <div class="science-strip reveal">
+
+
+        <div class="science-orb"></div>
+
+
+        <div>
+
+            Biology taught us about life.
+            Chemistry taught us about reactions.
+            You somehow taught us both — while also
+            detecting when our attention had evaporated.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
      HEARTFELT MESSAGE
-===================================================== --><section class="section"><div class="section-intro reveal">
+========================================================= -->
 
-    <div class="section-label">
-        02 / What we really mean
+<section class="section">
+
+
+    <div class="section-intro reveal">
+
+
+        <div class="section-label">
+
+            02 / What we really mean
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            Behind every
+            <span>roast</span>
+            was care.
+
+        </h2>
+
     </div>
 
-    <h2 class="section-title">
-        Behind every
-        <span>roast</span> was care.
-    </h2>
 
-</div>
+    <div class="message reveal">
 
 
-<div class="message reveal">
+        <div class="message-label">
 
-    <div class="message-label">
-        A message from Class 10th I
+            A message from Class 10th I
+
+        </div>
+
+
+        <h2>
+
+            To the teacher who
+            never let us stay in
+            <span>
+                Lala Land.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Strict, loving, and the ultimate roaster of
+            10th I! Thank you for bringing us back from
+            'lala land' to focus on science. We secretly
+            love the daily roasts as much as we love your
+            classes.
+
+        </p>
+
     </div>
+
+</section>
+
+
+<!-- =========================================================
+     STORY SECTION
+========================================================= -->
+
+<section class="section">
+
+
+    <div class="section-intro reveal">
+
+
+        <div class="section-label">
+
+            03 / More than a subject
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            Some lessons
+            <span>
+                stay.
+            </span>
+
+        </h2>
+
+
+        <p class="section-copy">
+
+            Years from now, we probably won't remember
+            every reaction, equation, diagram or definition.
+            But we will remember the people who stood in
+            front of the classroom and made those moments
+            ours.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FINAL MESSAGE
+========================================================= -->
+
+<section class="final-section reveal">
+
+
+    <div class="final-small">
+
+        04 / The final verdict
+
+    </div>
+
 
     <h2>
-        To the teacher who
-        never let us stay in
-        <span>Lala Land.</span>
+
+        You didn't just teach us.
+        <br>
+
+        You became part of
+        <span>
+            our story.
+        </span>
+
     </h2>
 
-    <p>
-        Strict, loving, and the ultimate roaster of
-        10th I! Thank you for bringing us back from
-        'lala land' to focus on science. We secretly
-        love the daily roasts as much as we love your
-        classes.
-    </p>
 
-</div>
+    <div class="final-sign">
 
-</section><!-- =====================================================
-     STORY SECTION
-===================================================== --><section class="section"><div class="section-intro reveal">
+        — With love, respect & a little bit of fear
+        <br>
 
-    <div class="section-label">
-        03 / More than a subject
+        Class 10th I
+
     </div>
 
-    <h2 class="section-title">
-        Some lessons
-        <span>stay.</span>
-    </h2>
+</section>
 
-    <p class="section-copy">
-        Years from now, we probably won't remember
-        every reaction, equation, diagram or definition.
-        But we will remember the people who stood in
-        front of the classroom and made those moments
-        ours.
-    </p>
 
-</div>
-
-</section><!-- =====================================================
-     FINAL EMOTIONAL REVEAL
-===================================================== --><section class="final-section reveal"><div class="final-small">
-    04 / The final verdict
-</div>
-
-<h2>
-    You didn't just teach us.
-    <br>
-    You became part of
-    <span>our story.</span>
-</h2>
-
-<div class="final-sign">
-    — With love, respect & a little bit of fear<br>
-    Class 10th I
-</div>
-
-</section><!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== --><footer><div class="footer-quote">
-    “A good teacher can inspire hope, ignite the
-    imagination, and instill a love of learning.”
-</div>
+========================================================= -->
 
-<div class="footer-sign">
-    With deepest respect and gratitude,<br>
-    Class 10th I
-</div>
+<footer>
 
-<div class="footer-location">
-    Army Public School · Lal Bahadur Shastri Marg
-</div>
 
-</footer></main><script>
+    <div class="footer-quote">
+
+        “A good teacher can inspire hope, ignite the
+        imagination, and instill a love of learning.”
+
+    </div>
+
+
+    <div class="footer-sign">
+
+        With deepest respect and gratitude,
+        <br>
+
+        Class 10th I
+
+    </div>
+
+
+    <div class="footer-location">
+
+        Army Public School · Lal Bahadur Shastri Marg
+
+    </div>
+
+</footer>
+
+
+</main>
+
+
+<!-- =========================================================
+     INLINE PAGE INTERACTIONS
+========================================================= -->
+
+<script>
 
 /* =========================================================
    SCROLL REVEAL
@@ -1561,6 +2077,7 @@ footer {
 
 const revealObserver =
     new IntersectionObserver(
+
         (entries) => {
 
             entries.forEach(
@@ -1584,9 +2101,11 @@ const revealObserver =
             );
 
         },
+
         {
             threshold: 0.12
         }
+
     );
 
 
@@ -1620,7 +2139,9 @@ if (
 ) {
 
     window.addEventListener(
+
         "pointermove",
+
         (event) => {
 
             cursorGlow.style.left =
@@ -1630,9 +2151,11 @@ if (
                 `${event.clientY}px`;
 
         },
+
         {
             passive: true
         }
+
     );
 
 } else {
@@ -1645,7 +2168,6 @@ if (
 
 /* =========================================================
    PARTICLE SYSTEM
-   Lightweight canvas implementation
 ========================================================= */
 
 const canvas =
@@ -1654,13 +2176,17 @@ const canvas =
     );
 
 const ctx =
-    canvas.getContext("2d", {
-        alpha: true
-    });
+    canvas.getContext(
+        "2d",
+        {
+            alpha: true
+        }
+    );
 
 let particles = [];
 
 let canvasWidth = 0;
+
 let canvasHeight = 0;
 
 let pixelRatio =
@@ -1724,6 +2250,7 @@ function createParticles() {
             ? 32
             : 58;
 
+
     for (
         let i = 0;
         i < amount;
@@ -1751,7 +2278,10 @@ function createParticles() {
                 0.035,
 
             drift:
-                (Math.random() - 0.5) *
+                (
+                    Math.random() -
+                    0.5
+                ) *
                 0.12,
 
             opacity:
@@ -1785,14 +2315,14 @@ function animateParticles() {
         const p =
             particles[i];
 
+
         p.y -= p.speed;
 
         p.x += p.drift;
 
 
         if (
-            p.y <
-            -5
+            p.y < -5
         ) {
 
             p.y =
@@ -1802,8 +2332,7 @@ function animateParticles() {
 
 
         if (
-            p.x <
-            -5
+            p.x < -5
         ) {
 
             p.x =
@@ -1824,6 +2353,7 @@ function animateParticles() {
 
         ctx.beginPath();
 
+
         ctx.arc(
             p.x,
             p.y,
@@ -1832,8 +2362,15 @@ function animateParticles() {
             Math.PI * 2
         );
 
+
         ctx.fillStyle =
-            `rgba(232,189,98,${p.opacity})`;
+            `rgba(
+                232,
+                189,
+                98,
+                ${p.opacity}
+            )`;
+
 
         ctx.fill();
 
@@ -1849,6 +2386,7 @@ function animateParticles() {
 
 resizeCanvas();
 
+
 window.addEventListener(
     "resize",
     resizeCanvas,
@@ -1857,11 +2395,12 @@ window.addEventListener(
     }
 );
 
+
 animateParticles();
 
 
 /* =========================================================
-   MODERATE TEACHERS' DAY CONFETTI
+   TEACHERS' DAY CONFETTI
 ========================================================= */
 
 function launchCelebration() {
@@ -1870,7 +2409,9 @@ function launchCelebration() {
         typeof confetti !==
         "function"
     ) {
+
         return;
+
     }
 
 
@@ -1896,8 +2437,11 @@ function launchCelebration() {
         particleCount: 55,
 
         origin: {
+
             x: 0.08,
+
             y: 0.42
+
         }
 
     });
@@ -1910,39 +2454,53 @@ function launchCelebration() {
         particleCount: 55,
 
         origin: {
+
             x: 0.92,
+
             y: 0.42
+
         }
 
     });
 
 
-    setTimeout(() => {
+    setTimeout(
 
-        confetti({
+        () => {
 
-            ...defaults,
+            confetti({
 
-            particleCount: 35,
+                ...defaults,
 
-            spread: 70,
+                particleCount: 35,
 
-            startVelocity: 20,
+                spread: 70,
 
-            origin: {
-                x: 0.5,
-                y: 0.28
-            }
+                startVelocity: 20,
 
-        });
+                origin: {
 
-    }, 250);
+                    x: 0.5,
+
+                    y: 0.28
+
+                }
+
+            });
+
+        },
+
+        250
+
+    );
 
 }
 
 
 window.addEventListener(
+
     "load",
+
     () => {
 
         setTimeout(
@@ -1951,29 +2509,35 @@ window.addEventListener(
         );
 
     }
+
 );
 
 
 /* =========================================================
-   CLICK CELEBRATION
-   Small interaction without making the page laggy
+   DIALOGUE CLICK CELEBRATION
 ========================================================= */
 
 document
     .querySelectorAll(".dialogue")
     .forEach(
+
         (dialogue) => {
 
             dialogue.addEventListener(
+
                 "click",
+
                 () => {
 
                     if (
                         typeof confetti !==
                         "function"
                     ) {
+
                         return;
+
                     }
+
 
                     confetti({
 
@@ -1988,20 +2552,36 @@ document
                         scalar: 0.6,
 
                         origin: {
+
                             x: 0.5,
+
                             y: 0.55
+
                         }
 
                     });
 
                 }
+
             );
 
         }
+
     );
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+
+<!-- =========================================================
+     YOUR MAIN.JS
+     
+     Keep this LAST.
+     This is where your Lenis / smooth-scroll
+     system should run.
+========================================================= -->
+
 <script src="js/main.js"></script>
+
+
 </body>
 </html>
