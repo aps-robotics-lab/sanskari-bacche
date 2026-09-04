@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050b16">
+<meta name="description" content="A Teachers' Day tribute to Mr. Himanshu from Class 10th I.">
 
 <title>Mr. Himanshu — Class 10th I</title>
 
@@ -15,6 +16,11 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -52,10 +58,13 @@ body{
         );
 
     background-size:180% 180%;
-    animation:atmosphere 24s ease-in-out infinite alternate;
+
+    animation:
+        atmosphere 24s ease-in-out infinite alternate;
 }
 
 @keyframes atmosphere{
+
     0%{
         background-position:0% 20%;
     }
@@ -71,8 +80,10 @@ body{
 
 body::before{
     content:"";
+
     position:fixed;
     inset:0;
+
     pointer-events:none;
     z-index:0;
 
@@ -89,11 +100,12 @@ body::before{
 
     background-size:70px 70px;
 
-    mask-image:linear-gradient(
-        to bottom,
-        #000,
-        transparent 88%
-    );
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            transparent 88%
+        );
 }
 
 a{
@@ -101,13 +113,15 @@ a{
     text-decoration:none;
 }
 
-button{
-    font:inherit;
-}
+
+/* =========================================================
+   PARTICLES
+========================================================= */
 
 #particleCanvas{
     position:fixed;
     inset:0;
+
     width:100%;
     height:100%;
 
@@ -116,6 +130,11 @@ button{
 
     opacity:.55;
 }
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
 
 .cursor-glow{
     position:fixed;
@@ -138,17 +157,25 @@ button{
     transform:translate(-50%,-50%);
 }
 
+
+/* =========================================================
+   PAGE
+========================================================= */
+
 .page{
     position:relative;
+
     z-index:3;
 
     width:min(1080px,91%);
+
     margin:auto;
 }
 
-/* =====================================================
+
+/* =========================================================
    NAVIGATION
-===================================================== */
+========================================================= */
 
 .topbar{
     position:fixed;
@@ -161,31 +188,41 @@ button{
     width:min(1080px,90%);
 
     display:flex;
+
     align-items:center;
     justify-content:space-between;
 
     padding:11px 14px 11px 18px;
 
-    border:1px solid rgba(255,255,255,.09);
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
     border-radius:100px;
 
-    background:rgba(6,15,28,.62);
+    background:
+        rgba(6,15,28,.62);
 
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
 
-    z-index:20;
+    z-index:50;
 }
 
 .brand{
     display:flex;
+
     align-items:center;
+
     gap:10px;
 
-    color:rgba(255,255,255,.72);
+    color:
+        rgba(255,255,255,.72);
 
     font-size:.7rem;
+
     letter-spacing:.16em;
+
     text-transform:uppercase;
 }
 
@@ -198,18 +235,23 @@ button{
     background:#e8bd62;
 
     box-shadow:
-        0 0 13px rgba(232,189,98,.8);
+        0 0 13px
+        rgba(232,189,98,.8);
 }
 
 .back{
     display:inline-flex;
+
     align-items:center;
+
     gap:9px;
 
     color:#d8c07e;
 
     font-size:.7rem;
+
     letter-spacing:.1em;
+
     text-transform:uppercase;
 
     transition:
@@ -219,39 +261,55 @@ button{
 
 .back:hover{
     color:#fff;
-    transform:translateX(-4px);
+
+    transform:
+        translateX(-4px);
 }
 
-/* =====================================================
+
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero{
     min-height:100vh;
 
     display:flex;
+
     align-items:center;
 
-    padding:150px 0 105px;
-
     position:relative;
+
+    padding:
+        150px 0
+        105px;
 }
 
 .hero-content{
-    max-width:900px;
+    position:relative;
+
+    z-index:8;
+
+    width:62%;
+
+    max-width:690px;
 }
 
 .kicker{
     display:flex;
+
     align-items:center;
+
     gap:13px;
 
     color:#d5b66e;
 
     font-size:.7rem;
+
     font-weight:600;
 
     letter-spacing:.22em;
+
     text-transform:uppercase;
 
     margin-bottom:27px;
@@ -272,15 +330,18 @@ button{
 }
 
 .hero h1{
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size:clamp(
-        3.8rem,
-        10vw,
-        8.3rem
-    );
+    font-size:
+        clamp(
+            3.8rem,
+            10vw,
+            8.3rem
+        );
 
-    line-height:.9;
+    line-height:.88;
 
     letter-spacing:-.055em;
 
@@ -296,7 +357,8 @@ button{
     color:#e8bd62;
 
     text-shadow:
-        0 0 45px rgba(232,189,98,.13);
+        0 0 45px
+        rgba(232,189,98,.13);
 }
 
 .subject{
@@ -306,11 +368,12 @@ button{
 
     font-family:"Manrope",sans-serif;
 
-    font-size:clamp(
-        1rem,
-        2vw,
-        1.25rem
-    );
+    font-size:
+        clamp(
+            1rem,
+            2vw,
+            1.25rem
+        );
 
     font-weight:500;
 
@@ -341,7 +404,9 @@ button{
 
 .hero-action{
     display:flex;
+
     align-items:center;
+
     gap:17px;
 
     margin-top:38px;
@@ -354,83 +419,271 @@ button{
 
 .scroll-button{
     display:inline-flex;
+
     align-items:center;
+
     gap:11px;
 
-    padding:13px 19px;
+    padding:
+        13px 19px;
 
-    border:1px solid rgba(232,189,98,.32);
+    border:
+        1px solid
+        rgba(232,189,98,.32);
+
     border-radius:100px;
 
-    background:rgba(232,189,98,.045);
+    background:
+        rgba(232,189,98,.045);
 
     color:#f0d38d;
 
     font-size:.73rem;
+
     letter-spacing:.09em;
+
     text-transform:uppercase;
 
     transition:.3s ease;
 }
 
 .scroll-button:hover{
-    transform:translateY(-3px);
+    transform:
+        translateY(-3px);
 
-    background:rgba(232,189,98,.10);
+    background:
+        rgba(232,189,98,.10);
 
     box-shadow:
-        0 12px 35px rgba(232,189,98,.08);
+        0 12px 35px
+        rgba(232,189,98,.08);
 }
 
 .hero-note{
-    color:rgba(255,255,255,.28);
+    color:
+        rgba(255,255,255,.28);
 
     font-size:.67rem;
+
     letter-spacing:.1em;
+
     text-transform:uppercase;
 }
 
 @keyframes revealUp{
+
     from{
         opacity:0;
-        transform:translateY(28px);
+
+        transform:
+            translateY(28px);
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
-/* =====================================================
-   PHYSICS ORBIT
-===================================================== */
 
-.physics-mark{
+/* =========================================================
+   TEACHER PHOTO
+========================================================= */
+
+.teacher-photo{
     position:absolute;
 
-    right:2%;
+    z-index:5;
+
+    right:4%;
+
     top:50%;
 
-    width:390px;
-    height:390px;
+    width:330px;
 
-    transform:translateY(-50%);
+    height:450px;
 
-    opacity:.65;
+    transform:
+        translateY(-50%)
+        rotate(2deg);
+
+    padding:8px;
+
+    border:
+        1px solid
+        rgba(232,189,98,.28);
+
+    border-radius:
+        190px 190px 32px 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(232,189,98,.18),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.45),
+
+        0 0 60px
+        rgba(232,189,98,.07);
+
+    overflow:hidden;
+
+    opacity:0;
+
+    animation:
+        photoReveal
+        1.2s
+        .45s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+.teacher-photo::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.16),
+            transparent 25%,
+            transparent 70%,
+            rgba(232,189,98,.08)
+        );
+}
+
+.teacher-photo::after{
+    content:"";
+
+    position:absolute;
+
+    left:10%;
+    right:10%;
+
+    bottom:-40px;
+
+    height:130px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(232,189,98,.22),
+            transparent 70%
+        );
+
+    filter:blur(12px);
 
     pointer-events:none;
 }
 
+.teacher-photo img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    border-radius:
+        182px 182px 25px 25px;
+
+    filter:
+        saturate(.9)
+        contrast(1.04)
+        brightness(.92);
+
+    transition:
+        transform .7s
+        cubic-bezier(.2,.8,.2,1),
+        filter .5s ease;
+}
+
+.teacher-photo:hover img{
+    transform:
+        scale(1.045);
+
+    filter:
+        saturate(1)
+        contrast(1.05)
+        brightness(1);
+}
+
+@keyframes photoReveal{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(-50%)
+            translateX(50px)
+            rotate(5deg)
+            scale(.94);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(-50%)
+            translateX(0)
+            rotate(2deg)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   PHYSICS ORBIT
+========================================================= */
+
+.physics-mark{
+    position:absolute;
+
+    right:-5%;
+
+    top:50%;
+
+    width:470px;
+    height:470px;
+
+    transform:
+        translateY(-50%);
+
+    opacity:.38;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
 .orbit{
     position:absolute;
+
     inset:0;
 
-    border:1px solid rgba(232,189,98,.12);
+    border:
+        1px solid
+        rgba(232,189,98,.12);
 
     border-radius:50%;
 
-    transform:rotate(-20deg);
+    transform:
+        rotate(-20deg);
 }
 
 .orbit:nth-child(2){
@@ -454,17 +707,22 @@ button{
     width:18px;
     height:18px;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius:50%;
 
     background:#e8bd62;
 
     box-shadow:
-        0 0 25px rgba(232,189,98,.7),
-        0 0 70px rgba(232,189,98,.22);
+        0 0 25px
+        rgba(232,189,98,.7),
 
-    animation:pulse 3s ease-in-out infinite;
+        0 0 70px
+        rgba(232,189,98,.22);
+
+    animation:
+        pulse 3s ease-in-out infinite;
 }
 
 .electron{
@@ -483,45 +741,58 @@ button{
     background:#f6dfa4;
 
     box-shadow:
-        0 0 15px rgba(232,189,98,.8);
+        0 0 15px
+        rgba(232,189,98,.8);
 
-    animation:electron 5s linear infinite;
+    animation:
+        electron
+        5s
+        linear
+        infinite;
 }
 
 .electron.two{
     animation-duration:7s;
+
     animation-direction:reverse;
 }
 
 @keyframes electron{
+
     from{
         transform:
             rotate(0deg)
-            translateX(145px)
+            translateX(175px)
             rotate(0deg);
     }
 
     to{
         transform:
             rotate(360deg)
-            translateX(145px)
+            translateX(175px)
             rotate(-360deg);
     }
 }
 
 @keyframes pulse{
+
     0%,100%{
-        transform:translate(-50%,-50%) scale(1);
+        transform:
+            translate(-50%,-50%)
+            scale(1);
     }
 
     50%{
-        transform:translate(-50%,-50%) scale(1.2);
+        transform:
+            translate(-50%,-50%)
+            scale(1.2);
     }
 }
 
-/* =====================================================
+
+/* =========================================================
    SECTION
-===================================================== */
+========================================================= */
 
 .section{
     padding:115px 0;
@@ -540,13 +811,16 @@ button{
 .section-title{
     margin-top:14px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size:clamp(
-        2.7rem,
-        6vw,
-        5rem
-    );
+    font-size:
+        clamp(
+            2.7rem,
+            6vw,
+            5rem
+        );
 
     line-height:1;
 
@@ -563,9 +837,10 @@ button{
     line-height:1.85;
 }
 
-/* =====================================================
+
+/* =========================================================
    DIALOGUES
-===================================================== */
+========================================================= */
 
 .dialogues{
     margin-top:55px;
@@ -573,7 +848,10 @@ button{
     display:grid;
 
     grid-template-columns:
-        repeat(3,minmax(0,1fr));
+        repeat(
+            3,
+            minmax(0,1fr)
+        );
 
     gap:17px;
 }
@@ -584,11 +862,15 @@ button{
     min-height:190px;
 
     display:flex;
+
     align-items:flex-end;
 
     padding:27px;
 
-    border:1px solid rgba(255,255,255,.09);
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
     border-radius:23px;
 
     background:
@@ -604,7 +886,8 @@ button{
     overflow:hidden;
 
     transition:
-        transform .4s cubic-bezier(.2,.8,.2,1),
+        transform .4s
+        cubic-bezier(.2,.8,.2,1),
         border-color .4s ease,
         box-shadow .4s ease;
 }
@@ -617,13 +900,16 @@ button{
     top:5px;
     right:19px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size:5rem;
 
     line-height:1;
 
-    color:rgba(232,189,98,.12);
+    color:
+        rgba(232,189,98,.12);
 }
 
 .dialogue::after{
@@ -650,17 +936,23 @@ button{
 }
 
 .dialogue:hover{
-    transform:translateY(-7px);
+    transform:
+        translateY(-7px);
 
-    border-color:rgba(232,189,98,.25);
+    border-color:
+        rgba(232,189,98,.25);
 
     box-shadow:
-        0 20px 55px rgba(0,0,0,.22),
-        0 0 35px rgba(232,189,98,.045);
+        0 20px 55px
+        rgba(0,0,0,.22),
+
+        0 0 35px
+        rgba(232,189,98,.045);
 }
 
 .dialogue:hover::after{
-    transform:scale(1.5);
+    transform:
+        scale(1.5);
 }
 
 .dialogue-number{
@@ -669,7 +961,8 @@ button{
     top:23px;
     left:27px;
 
-    color:rgba(255,255,255,.25);
+    color:
+        rgba(255,255,255,.25);
 
     font-size:.63rem;
 
@@ -678,37 +971,53 @@ button{
 
 .dialogue-text{
     position:relative;
+
     z-index:2;
 
     color:#eee9dc;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size:clamp(
-        1.1rem,
-        2vw,
-        1.35rem
-    );
+    font-size:
+        clamp(
+            1.1rem,
+            2vw,
+            1.35rem
+        );
 
     line-height:1.45;
 }
 
-/* =====================================================
+
+/* =========================================================
    MESSAGE
-===================================================== */
+========================================================= */
 
 .message-section{
-    padding:80px 0 130px;
+    padding:
+        80px 0
+        130px;
 }
 
 .message-wrap{
     position:relative;
 
     padding:
-        clamp(35px,6vw,70px);
+        clamp(
+            35px,
+            6vw,
+            70px
+        );
 
-    border-top:1px solid rgba(255,255,255,.10);
-    border-bottom:1px solid rgba(255,255,255,.10);
+    border-top:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.10);
 }
 
 .message-label{
@@ -726,15 +1035,18 @@ button{
 
     margin-top:25px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     color:#e9ebef;
 
-    font-size:clamp(
-        1.8rem,
-        4vw,
-        3.35rem
-    );
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            3.35rem
+        );
 
     line-height:1.22;
 
@@ -743,25 +1055,30 @@ button{
 
 .message em{
     color:#e8bd62;
+
     font-style:normal;
 }
 
 .message-sign{
     margin-top:30px;
 
-    color:rgba(255,255,255,.35);
+    color:
+        rgba(255,255,255,.35);
 
     font-size:.75rem;
 
     letter-spacing:.12em;
 }
 
-/* =====================================================
-   LITTLE PHYSICS STORY
-===================================================== */
+
+/* =========================================================
+   PHYSICS STORY
+========================================================= */
 
 .story{
-    padding:90px 0 125px;
+    padding:
+        90px 0
+        125px;
 }
 
 .story-grid{
@@ -777,7 +1094,9 @@ button{
 
 .story-main,
 .story-side{
-    border:1px solid rgba(255,255,255,.09);
+    border:
+        1px solid
+        rgba(255,255,255,.09);
 
     background:
         linear-gradient(
@@ -800,7 +1119,9 @@ button{
     padding:38px;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
 }
 
@@ -817,13 +1138,16 @@ button{
 .story-main h3{
     margin-top:17px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size:clamp(
-        2rem,
-        4vw,
-        3.2rem
-    );
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            3.2rem
+        );
 
     line-height:1.05;
 }
@@ -837,13 +1161,16 @@ button{
 }
 
 .formula{
-    font-family:"Manrope",sans-serif;
+    font-family:
+        "Manrope",
+        sans-serif;
 
-    font-size:clamp(
-        2.4rem,
-        5vw,
-        4rem
-    );
+    font-size:
+        clamp(
+            2.4rem,
+            5vw,
+            4rem
+        );
 
     font-weight:800;
 
@@ -852,7 +1179,8 @@ button{
     letter-spacing:-.06em;
 
     text-shadow:
-        0 0 30px rgba(232,189,98,.12);
+        0 0 30px
+        rgba(232,189,98,.12);
 }
 
 .story-side p{
@@ -863,14 +1191,17 @@ button{
     line-height:1.75;
 }
 
-/* =====================================================
-   FINAL
-===================================================== */
+
+/* =========================================================
+   CLOSING
+========================================================= */
 
 .closing{
     position:relative;
 
-    padding:125px 0 155px;
+    padding:
+        125px 0
+        155px;
 
     text-align:center;
 }
@@ -886,7 +1217,8 @@ button{
     left:50%;
     top:50%;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius:50%;
 
@@ -917,15 +1249,19 @@ button{
 
     max-width:850px;
 
-    margin:22px auto 0;
+    margin:
+        22px auto 0;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size:clamp(
-        2.7rem,
-        7vw,
-        6.2rem
-    );
+    font-size:
+        clamp(
+            2.7rem,
+            7vw,
+            6.2rem
+        );
 
     line-height:.99;
 
@@ -941,21 +1277,27 @@ button{
 
     margin-top:32px;
 
-    color:rgba(255,255,255,.38);
+    color:
+        rgba(255,255,255,.38);
 
     font-size:.78rem;
 
     letter-spacing:.1em;
 }
 
-/* =====================================================
+
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 footer{
-    padding:58px 0 45px;
+    padding:
+        58px 0
+        45px;
 
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
 
     text-align:center;
 }
@@ -967,13 +1309,16 @@ footer{
 
     color:#c8d0dc;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size:clamp(
-        1.15rem,
-        2.5vw,
-        1.6rem
-    );
+    font-size:
+        clamp(
+            1.15rem,
+            2.5vw,
+            1.6rem
+        );
 
     line-height:1.6;
 }
@@ -991,7 +1336,8 @@ footer{
 .footer-location{
     margin-top:34px;
 
-    color:rgba(255,255,255,.21);
+    color:
+        rgba(255,255,255,.21);
 
     font-size:.63rem;
 
@@ -1000,38 +1346,55 @@ footer{
     text-transform:uppercase;
 }
 
-/* =====================================================
+
+/* =========================================================
    REVEAL
-===================================================== */
+========================================================= */
 
 .reveal{
     opacity:0;
 
-    transform:translateY(28px);
+    transform:
+        translateY(28px);
 
     transition:
         opacity .8s ease,
-        transform .8s cubic-bezier(.2,.8,.2,1);
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.visible{
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media(max-width:900px){
 
+    .hero-content{
+        width:65%;
+    }
+
+    .teacher-photo{
+        width:270px;
+        height:370px;
+
+        right:-2%;
+    }
+
     .physics-mark{
-        width:300px;
-        height:300px;
+        width:350px;
+        height:350px;
 
-        right:-80px;
+        right:-90px;
 
-        opacity:.25;
+        opacity:.22;
     }
 
     .dialogues{
@@ -1047,6 +1410,11 @@ footer{
     }
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media(max-width:700px){
 
     .page{
@@ -1055,6 +1423,7 @@ footer{
 
     .topbar{
         top:12px;
+
         width:92%;
     }
 
@@ -1063,54 +1432,142 @@ footer{
     }
 
     .hero{
-        padding-top:145px;
+        min-height:auto;
+
+        padding:
+            145px 0
+            90px;
+
+        display:block;
     }
 
-    .physics-mark{
-        top:35%;
-        right:-120px;
+    .hero-content{
+        width:100%;
 
-        width:270px;
-        height:270px;
-
-        opacity:.15;
+        max-width:none;
     }
 
     .hero h1{
-        font-size:clamp(
-            3.8rem,
-            18vw,
-            6rem
-        );
+        font-size:
+            clamp(
+                3.8rem,
+                18vw,
+                6rem
+            );
+    }
+
+    /*
+       On mobile the photo becomes a controlled
+       visual element underneath the heading.
+    */
+
+    .teacher-photo{
+        position:relative;
+
+        top:auto;
+        right:auto;
+
+        width:
+            min(
+                285px,
+                76vw
+            );
+
+        height:
+            min(
+                365px,
+                97vw
+            );
+
+        margin:
+            55px auto 0;
+
+        transform:
+            rotate(2deg);
+
+        opacity:0;
+
+        animation:
+            mobilePhotoReveal
+            1s
+            .5s
+            cubic-bezier(.2,.8,.2,1)
+            forwards;
+    }
+
+    @keyframes mobilePhotoReveal{
+
+        from{
+            opacity:0;
+
+            transform:
+                translateY(25px)
+                rotate(5deg)
+                scale(.95);
+        }
+
+        to{
+            opacity:1;
+
+            transform:
+                translateY(0)
+                rotate(2deg)
+                scale(1);
+        }
+    }
+
+    .physics-mark{
+        top:27%;
+
+        right:-125px;
+
+        width:300px;
+        height:300px;
+
+        opacity:.12;
     }
 
     .hero-action{
         flex-direction:column;
+
         align-items:flex-start;
     }
 
     .section{
-        padding:82px 0;
+        padding:
+            82px 0;
     }
 
     .message-section{
-        padding:65px 0 95px;
+        padding:
+            65px 0
+            95px;
     }
 
     .story{
-        padding:65px 0 95px;
+        padding:
+            65px 0
+            95px;
     }
 
     .story-main,
     .story-side{
         border-radius:21px;
+
         padding:29px;
     }
 
     .closing{
-        padding:95px 0 115px;
+        padding:
+            95px 0
+            115px;
     }
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media(max-width:420px){
 
@@ -1122,6 +1579,11 @@ footer{
         font-size:3.65rem;
     }
 
+    .teacher-photo{
+        width:250px;
+        height:325px;
+    }
+
     .dialogue{
         padding:24px;
     }
@@ -1131,19 +1593,29 @@ footer{
     }
 }
 
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
 @media(prefers-reduced-motion:reduce){
 
     *,
     *::before,
     *::after{
         animation-duration:.01ms !important;
+
         animation-iteration-count:1 !important;
+
         transition-duration:.01ms !important;
+
         scroll-behavior:auto !important;
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
@@ -1154,17 +1626,28 @@ footer{
     id="cursorGlow">
 </div>
 
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
 <nav class="topbar">
 
     <div class="brand">
+
         <span class="brand-dot"></span>
+
         Class 10th I
+
     </div>
+
 
     <a
         href="index.html"
         class="back">
+
         ← Back to Home
+
     </a>
 
 </nav>
@@ -1172,60 +1655,110 @@ footer{
 
 <main class="page">
 
+
 <!-- =====================================================
      HERO
 ===================================================== -->
 
 <section class="hero">
 
-    <div class="physics-mark" aria-hidden="true">
+
+    <!-- PHYSICS ORBIT -->
+
+    <div
+        class="physics-mark"
+        aria-hidden="true">
 
         <div class="orbit"></div>
+
         <div class="orbit"></div>
+
         <div class="orbit"></div>
 
         <div class="nucleus"></div>
 
         <div class="electron"></div>
+
         <div class="electron two"></div>
 
     </div>
 
+
+    <!-- TEACHER PHOTO -->
+
+    <div class="teacher-photo">
+
+        <img
+            src="Images/file_00000000cd708210ae54707716c1d17c.png"
+            alt="Mr. Himanshu"
+            loading="eager"
+        >
+
+    </div>
+
+
+    <!-- HERO CONTENT -->
+
     <div class="hero-content">
 
+
         <div class="kicker">
+
             06 / Physics
+
         </div>
+
 
         <h1>
+
             Mr.<br>
-            <span class="gold">Himanshu</span>
+
+            <span class="gold">
+                Himanshu
+            </span>
+
         </h1>
 
+
         <div class="subject">
+
             Physics · Class 10th I
+
         </div>
 
+
         <p class="hero-message">
+
             Some teachers explain a formula.
             Some make you understand the idea behind it.
             And somehow, the lesson becomes a story you remember.
+
         </p>
 
+
         <div class="hero-action">
+
 
             <a
                 href="#dialogues"
                 class="scroll-button">
+
                 Enter his story
+
                 <span>↓</span>
+
             </a>
 
+
             <div class="hero-note">
+
                 Calm mind · sharp focus · unforgettable lessons
+
             </div>
 
+
         </div>
+
 
     </div>
 
@@ -1240,27 +1773,40 @@ footer{
     class="section"
     id="dialogues">
 
+
     <div class="reveal">
 
+
         <div class="section-index">
+
             01 / Things we still hear
+
         </div>
 
+
         <h2 class="section-title">
+
             The lines<br>
+
             we remember.
+
         </h2>
 
+
         <p class="section-description">
+
             Every classroom has a few sentences that somehow
             become part of its identity. These are some of yours,
             Sir.
+
         </p>
+
 
     </div>
 
 
     <div class="dialogues">
+
 
         <div class="dialogue reveal">
 
@@ -1269,7 +1815,9 @@ footer{
             </div>
 
             <div class="dialogue-text">
+
                 “Idar dhyan de beta.”
+
             </div>
 
         </div>
@@ -1282,7 +1830,9 @@ footer{
             </div>
 
             <div class="dialogue-text">
+
                 “Baccha sun lo.”
+
             </div>
 
         </div>
@@ -1295,10 +1845,13 @@ footer{
             </div>
 
             <div class="dialogue-text">
+
                 “Agli baar games pakha pahle padh lo..”
+
             </div>
 
         </div>
+
 
     </div>
 
@@ -1311,13 +1864,19 @@ footer{
 
 <section class="message-section">
 
+
     <div class="message-wrap reveal">
 
+
         <div class="message-label">
+
             02 / From 10th I
+
         </div>
 
+
         <div class="message">
+
             To the calmest and most focused teacher.
             Thank you for weaving
             <em>amazing stories</em>
@@ -1325,11 +1884,16 @@ footer{
             and helping us understand them.
             We promise to pay attention and focus
             — at least until games period!
+
         </div>
 
+
         <div class="message-sign">
+
             With respect · Class 10th I
+
         </div>
+
 
     </div>
 
@@ -1342,53 +1906,80 @@ footer{
 
 <section class="story">
 
+
     <div class="story-grid">
+
 
         <div class="story-main reveal">
 
+
             <div class="story-label">
+
                 03 / What stayed with us
+
             </div>
 
+
             <h3>
+
                 Physics became<br>
+
                 more than formulas.
+
             </h3>
 
+
             <p>
+
                 Somewhere between equations, explanations,
                 questions and those quiet moments when you
                 told us to pay attention, we started seeing
                 physics differently.
+
             </p>
 
+
             <p>
+
                 You showed us that understanding doesn't
                 always come from memorising a formula.
                 Sometimes it comes from understanding
                 the story behind it.
+
             </p>
+
 
         </div>
 
 
         <div class="story-side reveal">
 
+
             <div class="formula">
+
                 F = ma
+
             </div>
 
+
             <p>
+
                 A simple equation on paper.
                 A whole universe of ideas behind it.
+
             </p>
+
 
             <p>
+
                 Thank you for making us look beyond
                 the equation.
+
             </p>
 
+
         </div>
+
 
     </div>
 
@@ -1401,21 +1992,35 @@ footer{
 
 <section class="closing reveal">
 
+
     <div class="closing-small">
+
         04 / Final thought
+
     </div>
+
 
     <h2>
+
         You didn't just teach us
+
         <br>
+
         <span>Physics.</span>
+
         <br>
+
         You taught us to understand.
+
     </h2>
 
+
     <div class="closing-sign">
+
         — Class 10th I
+
     </div>
+
 
 </section>
 
@@ -1426,29 +2031,44 @@ footer{
 
 <footer>
 
+
     <div class="footer-quote">
+
         “A good teacher can inspire hope, ignite the imagination,
         and instill a love of learning.”
+
     </div>
+
 
     <div class="footer-sign">
-        With deepest respect and gratitude,<br>
+
+        With deepest respect and gratitude,
+
+        <br>
+
         Class 10th I
+
     </div>
+
 
     <div class="footer-location">
+
         Army Public School · Lal Bahadur Shastri Marg
+
     </div>
 
+
 </footer>
+
 
 </main>
 
 
 <script>
-/* =====================================================
+
+/* =========================================================
    SCROLL REVEAL
-===================================================== */
+========================================================= */
 
 const revealObserver =
     new IntersectionObserver(
@@ -1456,7 +2076,9 @@ const revealObserver =
 
             entries.forEach(entry => {
 
-                if(entry.isIntersecting){
+                if(
+                    entry.isIntersecting
+                ){
 
                     entry.target.classList.add(
                         "visible"
@@ -1472,7 +2094,10 @@ const revealObserver =
 
         },
         {
-            threshold:.12
+            threshold:.12,
+
+            rootMargin:
+                "0px 0px -35px 0px"
         }
     );
 
@@ -1481,32 +2106,45 @@ document
     .querySelectorAll(".reveal")
     .forEach(element => {
 
-        revealObserver.observe(element);
+        revealObserver.observe(
+            element
+        );
 
     });
 
 
-/* =====================================================
+/* =========================================================
    CURSOR GLOW
-===================================================== */
+========================================================= */
 
 const cursorGlow =
-    document.getElementById("cursorGlow");
+    document.getElementById(
+        "cursorGlow"
+    );
 
 
 if(
-    window.matchMedia("(pointer:fine)").matches
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches
 ){
+
+    let mouseX = -300;
+    let mouseY = -300;
+
+    let glowX = -300;
+    let glowY = -300;
+
 
     window.addEventListener(
         "pointermove",
         event => {
 
-            cursorGlow.style.left =
-                event.clientX + "px";
+            mouseX =
+                event.clientX;
 
-            cursorGlow.style.top =
-                event.clientY + "px";
+            mouseY =
+                event.clientY;
 
         },
         {
@@ -1514,16 +2152,43 @@ if(
         }
     );
 
+
+    function animateGlow(){
+
+        glowX +=
+            (mouseX - glowX) * .08;
+
+        glowY +=
+            (mouseY - glowY) * .08;
+
+
+        cursorGlow.style.left =
+            glowX + "px";
+
+        cursorGlow.style.top =
+            glowY + "px";
+
+
+        requestAnimationFrame(
+            animateGlow
+        );
+
+    }
+
+
+    animateGlow();
+
 }else{
 
-    cursorGlow.style.display="none";
+    cursorGlow.style.display =
+        "none";
 
 }
 
 
-/* =====================================================
-   LIGHTWEIGHT PARTICLE SYSTEM
-===================================================== */
+/* =========================================================
+   PARTICLE SYSTEM
+========================================================= */
 
 const canvas =
     document.getElementById(
@@ -1531,15 +2196,26 @@ const canvas =
     );
 
 const ctx =
-    canvas.getContext("2d",{
-        alpha:true
-    });
+    canvas.getContext(
+        "2d",
+        {
+            alpha:true
+        }
+    );
 
-let particles=[];
-let width=0;
-let height=0;
-let dpr=1;
 
+let particles = [];
+
+let width = 0;
+let height = 0;
+let dpr = 1;
+
+let particleAnimation;
+
+
+/* ---------------------------------------------------------
+   RESIZE
+--------------------------------------------------------- */
 
 function resizeCanvas(){
 
@@ -1549,11 +2225,13 @@ function resizeCanvas(){
             1.5
         );
 
+
     width =
         window.innerWidth;
 
     height =
         window.innerHeight;
+
 
     canvas.width =
         width * dpr;
@@ -1561,11 +2239,13 @@ function resizeCanvas(){
     canvas.height =
         height * dpr;
 
+
     canvas.style.width =
         width + "px";
 
     canvas.style.height =
         height + "px";
+
 
     ctx.setTransform(
         dpr,
@@ -1576,44 +2256,61 @@ function resizeCanvas(){
         0
     );
 
+
     createParticles();
+
 }
 
 
+/* ---------------------------------------------------------
+   CREATE PARTICLES
+--------------------------------------------------------- */
+
 function createParticles(){
 
-    particles=[];
+    particles = [];
+
 
     const amount =
         width < 600
             ? 26
             : 48;
 
+
     for(
-        let i=0;
-        i<amount;
+        let i = 0;
+        i < amount;
         i++
     ){
 
         particles.push({
 
             x:
-                Math.random()*width,
+                Math.random() *
+                width,
 
             y:
-                Math.random()*height,
+                Math.random() *
+                height,
 
             r:
-                Math.random()*.9+.25,
+                Math.random() *
+                .9 +
+                .25,
 
             speed:
-                Math.random()*.18+.025,
+                Math.random() *
+                .18 +
+                .025,
 
             drift:
-                (Math.random()-.5)*.08,
+                (Math.random() - .5) *
+                .08,
 
             alpha:
-                Math.random()*.25+.07
+                Math.random() *
+                .25 +
+                .07
 
         });
 
@@ -1621,6 +2318,10 @@ function createParticles(){
 
 }
 
+
+/* ---------------------------------------------------------
+   ANIMATION
+--------------------------------------------------------- */
 
 function animateParticles(){
 
@@ -1631,44 +2332,85 @@ function animateParticles(){
         height
     );
 
-    for(const p of particles){
+
+    for(
+        const p of particles
+    ){
 
         p.y -= p.speed;
+
         p.x += p.drift;
 
-        if(p.y < -5)
-            p.y=height+5;
 
-        if(p.x < -5)
-            p.x=width+5;
+        if(
+            p.y < -5
+        ){
 
-        if(p.x > width+5)
-            p.x=-5;
+            p.y =
+                height + 5;
+
+        }
+
+
+        if(
+            p.x < -5
+        ){
+
+            p.x =
+                width + 5;
+
+        }
+
+
+        if(
+            p.x > width + 5
+        ){
+
+            p.x = -5;
+
+        }
+
 
         ctx.beginPath();
+
 
         ctx.arc(
             p.x,
             p.y,
             p.r,
             0,
-            Math.PI*2
+            Math.PI * 2
         );
 
+
         ctx.fillStyle =
-            `rgba(232,189,98,${p.alpha})`;
+            `rgba(
+                232,
+                189,
+                98,
+                ${p.alpha}
+            )`;
+
 
         ctx.fill();
 
     }
 
-    requestAnimationFrame(
-        animateParticles
-    );
+
+    particleAnimation =
+        requestAnimationFrame(
+            animateParticles
+        );
+
 }
 
 
+/* =========================================================
+   START PARTICLES
+========================================================= */
+
 resizeCanvas();
+
 
 window.addEventListener(
     "resize",
@@ -1678,55 +2420,104 @@ window.addEventListener(
     }
 );
 
+
 animateParticles();
 
 
-/* =====================================================
-   MODERATE TEACHERS' DAY CONFETTI
-===================================================== */
+/* =========================================================
+   CONFETTI
+========================================================= */
 
 window.addEventListener(
     "load",
     () => {
 
         if(
-            typeof confetti !== "function"
+            typeof confetti !==
+            "function"
         ){
+
             return;
+
         }
 
-        setTimeout(() => {
 
-            const defaults={
-                particleCount:55,
-                spread:65,
-                startVelocity:27,
-                gravity:.9,
-                scalar:.72
-            };
+        setTimeout(
+            () => {
 
-            confetti({
-                ...defaults,
-                origin:{
-                    x:.14,
-                    y:.48
-                }
-            });
+                const defaults = {
 
-            confetti({
-                ...defaults,
-                origin:{
-                    x:.86,
-                    y:.48
-                }
-            });
+                    particleCount:55,
 
-        },850);
+                    spread:65,
+
+                    startVelocity:27,
+
+                    gravity:.9,
+
+                    scalar:.72
+
+                };
+
+
+                confetti({
+
+                    ...defaults,
+
+                    origin:{
+                        x:.14,
+                        y:.48
+                    }
+
+                });
+
+
+                confetti({
+
+                    ...defaults,
+
+                    origin:{
+                        x:.86,
+                        y:.48
+                    }
+
+                });
+
+
+            },
+            850
+        );
 
     }
 );
+
+
+/* =========================================================
+   PAUSE PARTICLES WHEN TAB IS HIDDEN
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        if(
+            document.hidden
+        ){
+
+            cancelAnimationFrame(
+                particleAnimation
+            );
+
+        }else{
+
+            animateParticles();
+
+        }
+
+    }
+);
+
 </script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script src="js/main.js"></script>
+
 </body>
 </html>
