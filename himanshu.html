@@ -13,13 +13,14 @@
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
+<!-- Confetti: LOAD ONCE -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
 <style>
 
-/* =========================================================
+/* =====================================================
    RESET
-========================================================= */
+===================================================== */
 
 *{
     margin:0;
@@ -113,10 +114,14 @@ a{
     text-decoration:none;
 }
 
+button{
+    font:inherit;
+}
 
-/* =========================================================
+
+/* =====================================================
    PARTICLES
-========================================================= */
+===================================================== */
 
 #particleCanvas{
     position:fixed;
@@ -126,15 +131,16 @@ a{
     height:100%;
 
     pointer-events:none;
+
     z-index:1;
 
     opacity:.55;
 }
 
 
-/* =========================================================
-   CURSOR GLOW
-========================================================= */
+/* =====================================================
+   CURSOR
+===================================================== */
 
 .cursor-glow{
     position:fixed;
@@ -145,6 +151,7 @@ a{
     border-radius:50%;
 
     pointer-events:none;
+
     z-index:2;
 
     background:
@@ -154,13 +161,14 @@ a{
             transparent 68%
         );
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 }
 
 
-/* =========================================================
+/* =====================================================
    PAGE
-========================================================= */
+===================================================== */
 
 .page{
     position:relative;
@@ -173,9 +181,9 @@ a{
 }
 
 
-/* =========================================================
+/* =====================================================
    NAVIGATION
-========================================================= */
+===================================================== */
 
 .topbar{
     position:fixed;
@@ -192,7 +200,11 @@ a{
     align-items:center;
     justify-content:space-between;
 
-    padding:11px 14px 11px 18px;
+    padding:
+        11px
+        14px
+        11px
+        18px;
 
     border:
         1px solid
@@ -206,7 +218,7 @@ a{
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
 
-    z-index:50;
+    z-index:20;
 }
 
 .brand{
@@ -267,9 +279,9 @@ a{
 }
 
 
-/* =========================================================
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero{
     min-height:100vh;
@@ -281,19 +293,171 @@ a{
     position:relative;
 
     padding:
-        150px 0
+        150px
+        0
         105px;
 }
 
 .hero-content{
     position:relative;
 
-    z-index:8;
+    z-index:4;
 
-    width:62%;
-
-    max-width:690px;
+    max-width:900px;
 }
+
+
+/* =====================================================
+   HERO PHOTO
+===================================================== */
+
+.hero-photo-wrap{
+    position:absolute;
+
+    right:-20px;
+    top:50%;
+
+    width:380px;
+    height:500px;
+
+    transform:
+        translateY(-50%);
+
+    z-index:2;
+
+    pointer-events:none;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-photo-wrap::before{
+    content:"";
+
+    position:absolute;
+
+    width:390px;
+    height:390px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,.11),
+            rgba(232,189,98,.025) 42%,
+            transparent 72%
+        );
+
+    filter:blur(2px);
+
+    animation:
+        photoGlow 5s ease-in-out infinite;
+}
+
+@keyframes photoGlow{
+
+    0%,100%{
+        transform:scale(.96);
+        opacity:.7;
+    }
+
+    50%{
+        transform:scale(1.05);
+        opacity:1;
+    }
+}
+
+.hero-photo{
+    position:relative;
+
+    width:330px;
+    height:430px;
+
+    object-fit:cover;
+
+    object-position:center center;
+
+    border-radius:
+        180px
+        180px
+        28px
+        28px;
+
+    border:
+        1px solid
+        rgba(232,189,98,.28);
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.38),
+
+        0 0 50px
+        rgba(232,189,98,.08);
+
+    filter:
+        saturate(.9)
+        contrast(1.03);
+
+    background:#071222;
+
+    transform:
+        rotate(2deg);
+
+    transition:
+        transform .7s cubic-bezier(.2,.8,.2,1),
+        box-shadow .7s ease;
+}
+
+.hero-photo-wrap:hover .hero-photo{
+    transform:
+        rotate(0deg)
+        translateY(-8px);
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,.45),
+
+        0 0 70px
+        rgba(232,189,98,.12);
+}
+
+.hero-photo-label{
+    position:absolute;
+
+    right:10px;
+    bottom:15px;
+
+    padding:
+        8px
+        13px;
+
+    border:
+        1px solid
+        rgba(232,189,98,.22);
+
+    border-radius:100px;
+
+    background:
+        rgba(4,11,21,.72);
+
+    backdrop-filter:blur(12px);
+
+    color:#d9bd75;
+
+    font-size:.58rem;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+}
+
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
 
 .kicker{
     display:flex;
@@ -341,7 +505,7 @@ a{
             8.3rem
         );
 
-    line-height:.88;
+    line-height:.9;
 
     letter-spacing:-.055em;
 
@@ -366,7 +530,9 @@ a{
 
     color:#dce2eb;
 
-    font-family:"Manrope",sans-serif;
+    font-family:
+        "Manrope",
+        sans-serif;
 
     font-size:
         clamp(
@@ -425,7 +591,8 @@ a{
     gap:11px;
 
     padding:
-        13px 19px;
+        13px
+        19px;
 
     border:
         1px solid
@@ -488,187 +655,27 @@ a{
 }
 
 
-/* =========================================================
-   TEACHER PHOTO
-========================================================= */
-
-.teacher-photo{
-    position:absolute;
-
-    z-index:5;
-
-    right:4%;
-
-    top:50%;
-
-    width:330px;
-
-    height:450px;
-
-    transform:
-        translateY(-50%)
-        rotate(2deg);
-
-    padding:8px;
-
-    border:
-        1px solid
-        rgba(232,189,98,.28);
-
-    border-radius:
-        190px 190px 32px 32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(232,189,98,.18),
-            rgba(255,255,255,.035)
-        );
-
-    box-shadow:
-        0 35px 90px
-        rgba(0,0,0,.45),
-
-        0 0 60px
-        rgba(232,189,98,.07);
-
-    overflow:hidden;
-
-    opacity:0;
-
-    animation:
-        photoReveal
-        1.2s
-        .45s
-        cubic-bezier(.2,.8,.2,1)
-        forwards;
-}
-
-.teacher-photo::before{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:2;
-
-    pointer-events:none;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.16),
-            transparent 25%,
-            transparent 70%,
-            rgba(232,189,98,.08)
-        );
-}
-
-.teacher-photo::after{
-    content:"";
-
-    position:absolute;
-
-    left:10%;
-    right:10%;
-
-    bottom:-40px;
-
-    height:130px;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(232,189,98,.22),
-            transparent 70%
-        );
-
-    filter:blur(12px);
-
-    pointer-events:none;
-}
-
-.teacher-photo img{
-    width:100%;
-    height:100%;
-
-    display:block;
-
-    object-fit:cover;
-
-    object-position:center;
-
-    border-radius:
-        182px 182px 25px 25px;
-
-    filter:
-        saturate(.9)
-        contrast(1.04)
-        brightness(.92);
-
-    transition:
-        transform .7s
-        cubic-bezier(.2,.8,.2,1),
-        filter .5s ease;
-}
-
-.teacher-photo:hover img{
-    transform:
-        scale(1.045);
-
-    filter:
-        saturate(1)
-        contrast(1.05)
-        brightness(1);
-}
-
-@keyframes photoReveal{
-
-    from{
-        opacity:0;
-
-        transform:
-            translateY(-50%)
-            translateX(50px)
-            rotate(5deg)
-            scale(.94);
-    }
-
-    to{
-        opacity:1;
-
-        transform:
-            translateY(-50%)
-            translateX(0)
-            rotate(2deg)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
+/* =====================================================
    PHYSICS ORBIT
-========================================================= */
+===================================================== */
 
 .physics-mark{
     position:absolute;
 
-    right:-5%;
-
+    right:7%;
     top:50%;
 
-    width:470px;
-    height:470px;
+    width:390px;
+    height:390px;
 
     transform:
         translateY(-50%);
 
-    opacity:.38;
+    opacity:.28;
 
     pointer-events:none;
 
-    z-index:2;
+    z-index:1;
 }
 
 .orbit{
@@ -745,10 +752,7 @@ a{
         rgba(232,189,98,.8);
 
     animation:
-        electron
-        5s
-        linear
-        infinite;
+        electron 5s linear infinite;
 }
 
 .electron.two{
@@ -762,14 +766,14 @@ a{
     from{
         transform:
             rotate(0deg)
-            translateX(175px)
+            translateX(145px)
             rotate(0deg);
     }
 
     to{
         transform:
             rotate(360deg)
-            translateX(175px)
+            translateX(145px)
             rotate(-360deg);
     }
 }
@@ -790,12 +794,14 @@ a{
 }
 
 
-/* =========================================================
-   SECTION
-========================================================= */
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 .section{
-    padding:115px 0;
+    padding:
+        115px
+        0;
 }
 
 .section-index{
@@ -838,9 +844,9 @@ a{
 }
 
 
-/* =========================================================
+/* =====================================================
    DIALOGUES
-========================================================= */
+===================================================== */
 
 .dialogues{
     margin-top:55px;
@@ -848,10 +854,7 @@ a{
     display:grid;
 
     grid-template-columns:
-        repeat(
-            3,
-            minmax(0,1fr)
-        );
+        repeat(3,minmax(0,1fr));
 
     gap:17px;
 }
@@ -886,8 +889,7 @@ a{
     overflow:hidden;
 
     transition:
-        transform .4s
-        cubic-bezier(.2,.8,.2,1),
+        transform .4s cubic-bezier(.2,.8,.2,1),
         border-color .4s ease,
         box-shadow .4s ease;
 }
@@ -991,13 +993,14 @@ a{
 }
 
 
-/* =========================================================
+/* =====================================================
    MESSAGE
-========================================================= */
+===================================================== */
 
 .message-section{
     padding:
-        80px 0
+        80px
+        0
         130px;
 }
 
@@ -1071,13 +1074,14 @@ a{
 }
 
 
-/* =========================================================
-   PHYSICS STORY
-========================================================= */
+/* =====================================================
+   STORY
+===================================================== */
 
 .story{
     padding:
-        90px 0
+        90px
+        0
         125px;
 }
 
@@ -1085,7 +1089,8 @@ a{
     display:grid;
 
     grid-template-columns:
-        1.05fr .95fr;
+        1.05fr
+        .95fr;
 
     gap:25px;
 
@@ -1192,15 +1197,16 @@ a{
 }
 
 
-/* =========================================================
+/* =====================================================
    CLOSING
-========================================================= */
+===================================================== */
 
 .closing{
     position:relative;
 
     padding:
-        125px 0
+        125px
+        0
         155px;
 
     text-align:center;
@@ -1250,7 +1256,9 @@ a{
     max-width:850px;
 
     margin:
-        22px auto 0;
+        22px
+        auto
+        0;
 
     font-family:
         "Playfair Display",
@@ -1286,13 +1294,14 @@ a{
 }
 
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer{
     padding:
-        58px 0
+        58px
+        0
         45px;
 
     border-top:
@@ -1347,9 +1356,9 @@ footer{
 }
 
 
-/* =========================================================
+/* =====================================================
    REVEAL
-========================================================= */
+===================================================== */
 
 .reveal{
     opacity:0;
@@ -1359,8 +1368,7 @@ footer{
 
     transition:
         opacity .8s ease,
-        transform .8s
-        cubic-bezier(.2,.8,.2,1);
+        transform .8s cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.visible{
@@ -1371,49 +1379,37 @@ footer{
 }
 
 
-/* =========================================================
+/* =====================================================
    TABLET
-========================================================= */
+===================================================== */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
-    .hero-content{
-        width:65%;
+    .hero-photo-wrap{
+        right:-80px;
+
+        width:320px;
+        height:440px;
     }
 
-    .teacher-photo{
-        width:270px;
-        height:370px;
-
-        right:-2%;
+    .hero-photo{
+        width:280px;
+        height:380px;
     }
 
     .physics-mark{
-        width:350px;
-        height:350px;
-
-        right:-90px;
-
-        opacity:.22;
+        right:-60px;
     }
 
-    .dialogues{
-        grid-template-columns:1fr;
-    }
-
-    .dialogue{
-        min-height:155px;
-    }
-
-    .story-grid{
-        grid-template-columns:1fr;
+    .hero-content{
+        max-width:700px;
     }
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
 @media(max-width:700px){
 
@@ -1435,16 +1431,76 @@ footer{
         min-height:auto;
 
         padding:
-            145px 0
-            90px;
+            145px
+            0
+            80px;
 
         display:block;
     }
 
     .hero-content{
+        max-width:none;
+    }
+
+    /*
+       PHOTO IS NOW PART OF THE HERO FLOW.
+       This prevents overlap on phones.
+    */
+
+    .hero-photo-wrap{
+        position:relative;
+
+        top:auto;
+        right:auto;
+
         width:100%;
 
-        max-width:none;
+        height:auto;
+
+        margin:
+            55px
+            auto
+            5px;
+
+        transform:none;
+
+        order:2;
+    }
+
+    .hero-photo-wrap::before{
+        width:330px;
+        height:330px;
+    }
+
+    .hero-photo{
+        width:min(78vw,310px);
+
+        height:min(100vw,390px);
+
+        border-radius:
+            160px
+            160px
+            24px
+            24px;
+
+        transform:
+            rotate(1deg);
+    }
+
+    .hero-photo-label{
+        right:7%;
+        bottom:12px;
+    }
+
+    .physics-mark{
+        top:30%;
+
+        right:-120px;
+
+        width:270px;
+        height:270px;
+
+        opacity:.10;
     }
 
     .hero h1{
@@ -1456,77 +1512,6 @@ footer{
             );
     }
 
-    /*
-       On mobile the photo becomes a controlled
-       visual element underneath the heading.
-    */
-
-    .teacher-photo{
-        position:relative;
-
-        top:auto;
-        right:auto;
-
-        width:
-            min(
-                285px,
-                76vw
-            );
-
-        height:
-            min(
-                365px,
-                97vw
-            );
-
-        margin:
-            55px auto 0;
-
-        transform:
-            rotate(2deg);
-
-        opacity:0;
-
-        animation:
-            mobilePhotoReveal
-            1s
-            .5s
-            cubic-bezier(.2,.8,.2,1)
-            forwards;
-    }
-
-    @keyframes mobilePhotoReveal{
-
-        from{
-            opacity:0;
-
-            transform:
-                translateY(25px)
-                rotate(5deg)
-                scale(.95);
-        }
-
-        to{
-            opacity:1;
-
-            transform:
-                translateY(0)
-                rotate(2deg)
-                scale(1);
-        }
-    }
-
-    .physics-mark{
-        top:27%;
-
-        right:-125px;
-
-        width:300px;
-        height:300px;
-
-        opacity:.12;
-    }
-
     .hero-action{
         flex-direction:column;
 
@@ -1535,19 +1520,34 @@ footer{
 
     .section{
         padding:
-            82px 0;
+            82px
+            0;
+    }
+
+    .dialogues{
+        grid-template-columns:1fr;
+    }
+
+    .dialogue{
+        min-height:155px;
     }
 
     .message-section{
         padding:
-            65px 0
+            65px
+            0
             95px;
     }
 
     .story{
         padding:
-            65px 0
+            65px
+            0
             95px;
+    }
+
+    .story-grid{
+        grid-template-columns:1fr;
     }
 
     .story-main,
@@ -1559,15 +1559,16 @@ footer{
 
     .closing{
         padding:
-            95px 0
+            95px
+            0
             115px;
     }
 }
 
 
-/* =========================================================
+/* =====================================================
    SMALL MOBILE
-========================================================= */
+===================================================== */
 
 @media(max-width:420px){
 
@@ -1579,9 +1580,9 @@ footer{
         font-size:3.65rem;
     }
 
-    .teacher-photo{
-        width:250px;
-        height:325px;
+    .hero-photo{
+        width:270px;
+        height:350px;
     }
 
     .dialogue{
@@ -1594,9 +1595,9 @@ footer{
 }
 
 
-/* =========================================================
+/* =====================================================
    REDUCED MOTION
-========================================================= */
+===================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1610,6 +1611,11 @@ footer{
         transition-duration:.01ms !important;
 
         scroll-behavior:auto !important;
+    }
+
+    #particleCanvas,
+    .cursor-glow{
+        display:none;
     }
 }
 
@@ -1628,7 +1634,7 @@ footer{
 
 
 <!-- =====================================================
-     NAVIGATION
+     NAV
 ===================================================== -->
 
 <nav class="topbar">
@@ -1663,7 +1669,28 @@ footer{
 <section class="hero">
 
 
-    <!-- PHYSICS ORBIT -->
+    <!-- PHOTO -->
+
+    <div
+        class="hero-photo-wrap"
+        aria-label="Photo of Mr. Himanshu">
+
+        <img
+            src="Images/himanshu.png"
+            alt="Mr. Himanshu"
+            class="hero-photo"
+            loading="eager"
+            decoding="async"
+        >
+
+        <div class="hero-photo-label">
+            Physics · 10th I
+        </div>
+
+    </div>
+
+
+    <!-- PHYSICS BACKGROUND -->
 
     <div
         class="physics-mark"
@@ -1684,23 +1711,9 @@ footer{
     </div>
 
 
-    <!-- TEACHER PHOTO -->
-
-    <div class="teacher-photo">
-
-        <img
-            src="Images/file_00000000cd708210ae54707716c1d17c.png"
-            alt="Mr. Himanshu"
-            loading="eager"
-        >
-
-    </div>
-
-
-    <!-- HERO CONTENT -->
+    <!-- TEXT -->
 
     <div class="hero-content">
-
 
         <div class="kicker">
 
@@ -1738,7 +1751,6 @@ footer{
 
         <div class="hero-action">
 
-
             <a
                 href="#dialogues"
                 class="scroll-button">
@@ -1756,9 +1768,7 @@ footer{
 
             </div>
 
-
         </div>
-
 
     </div>
 
@@ -1775,7 +1785,6 @@ footer{
 
 
     <div class="reveal">
-
 
         <div class="section-index">
 
@@ -1800,7 +1809,6 @@ footer{
             Sir.
 
         </p>
-
 
     </div>
 
@@ -1863,7 +1871,6 @@ footer{
 ===================================================== -->
 
 <section class="message-section">
-
 
     <div class="message-wrap reveal">
 
@@ -2066,12 +2073,13 @@ footer{
 
 <script>
 
-/* =========================================================
+/* =====================================================
    SCROLL REVEAL
-========================================================= */
+===================================================== */
 
 const revealObserver =
     new IntersectionObserver(
+
         entries => {
 
             entries.forEach(entry => {
@@ -2093,12 +2101,14 @@ const revealObserver =
             });
 
         },
+
         {
             threshold:.12,
 
             rootMargin:
-                "0px 0px -35px 0px"
+                "0px 0px -40px 0px"
         }
+
     );
 
 
@@ -2113,9 +2123,9 @@ document
     });
 
 
-/* =========================================================
+/* =====================================================
    CURSOR GLOW
-========================================================= */
+===================================================== */
 
 const cursorGlow =
     document.getElementById(
@@ -2129,11 +2139,11 @@ if(
     ).matches
 ){
 
-    let mouseX = -300;
-    let mouseY = -300;
+    let mouseX=-300;
+    let mouseY=-300;
 
-    let glowX = -300;
-    let glowY = -300;
+    let glowX=mouseX;
+    let glowY=mouseY;
 
 
     window.addEventListener(
@@ -2156,17 +2166,17 @@ if(
     function animateGlow(){
 
         glowX +=
-            (mouseX - glowX) * .08;
+            (mouseX-glowX)*.08;
 
         glowY +=
-            (mouseY - glowY) * .08;
+            (mouseY-glowY)*.08;
 
 
         cursorGlow.style.left =
-            glowX + "px";
+            glowX+"px";
 
         cursorGlow.style.top =
-            glowY + "px";
+            glowY+"px";
 
 
         requestAnimationFrame(
@@ -2180,15 +2190,14 @@ if(
 
 }else{
 
-    cursorGlow.style.display =
-        "none";
+    cursorGlow.style.display="none";
 
 }
 
 
-/* =========================================================
-   PARTICLE SYSTEM
-========================================================= */
+/* =====================================================
+   LIGHTWEIGHT PARTICLES
+===================================================== */
 
 const canvas =
     document.getElementById(
@@ -2204,18 +2213,16 @@ const ctx =
     );
 
 
-let particles = [];
+let particles=[];
 
-let width = 0;
-let height = 0;
-let dpr = 1;
+let width=0;
 
-let particleAnimation;
+let height=0;
 
+let dpr=1;
 
-/* ---------------------------------------------------------
-   RESIZE
---------------------------------------------------------- */
+let animationFrame=0;
+
 
 function resizeCanvas(){
 
@@ -2234,17 +2241,17 @@ function resizeCanvas(){
 
 
     canvas.width =
-        width * dpr;
+        width*dpr;
 
     canvas.height =
-        height * dpr;
+        height*dpr;
 
 
     canvas.style.width =
-        width + "px";
+        width+"px";
 
     canvas.style.height =
-        height + "px";
+        height+"px";
 
 
     ctx.setTransform(
@@ -2262,13 +2269,9 @@ function resizeCanvas(){
 }
 
 
-/* ---------------------------------------------------------
-   CREATE PARTICLES
---------------------------------------------------------- */
-
 function createParticles(){
 
-    particles = [];
+    particles=[];
 
 
     const amount =
@@ -2278,39 +2281,35 @@ function createParticles(){
 
 
     for(
-        let i = 0;
-        i < amount;
+        let i=0;
+        i<amount;
         i++
     ){
 
         particles.push({
 
             x:
-                Math.random() *
-                width,
+                Math.random()*width,
 
             y:
-                Math.random() *
-                height,
+                Math.random()*height,
 
             r:
-                Math.random() *
-                .9 +
-                .25,
+                Math.random()*.9+.25,
 
             speed:
-                Math.random() *
-                .18 +
-                .025,
+                Math.random()*.18+.025,
 
             drift:
-                (Math.random() - .5) *
-                .08,
+                (Math.random()-.5)*.08,
 
             alpha:
-                Math.random() *
-                .25 +
-                .07
+                Math.random()*.25+.07,
+
+            phase:
+                Math.random()*
+                Math.PI*
+                2
 
         });
 
@@ -2319,11 +2318,7 @@ function createParticles(){
 }
 
 
-/* ---------------------------------------------------------
-   ANIMATION
---------------------------------------------------------- */
-
-function animateParticles(){
+function animateParticles(time){
 
     ctx.clearRect(
         0,
@@ -2333,71 +2328,85 @@ function animateParticles(){
     );
 
 
-    for(
-        const p of particles
-    ){
+    particles.forEach(
+        particle => {
 
-        p.y -= p.speed;
-
-        p.x += p.drift;
+            particle.y -=
+                particle.speed;
 
 
-        if(
-            p.y < -5
-        ){
+            particle.x +=
+                particle.drift;
 
-            p.y =
-                height + 5;
+
+            particle.x +=
+                Math.sin(
+                    time*.0003+
+                    particle.phase
+                )*.012;
+
+
+            if(
+                particle.y < -5
+            ){
+
+                particle.y =
+                    height+5;
+
+                particle.x =
+                    Math.random()*width;
+
+            }
+
+
+            if(
+                particle.x < -5
+            ){
+
+                particle.x =
+                    width+5;
+
+            }
+
+
+            if(
+                particle.x >
+                width+5
+            ){
+
+                particle.x=-5;
+
+            }
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                particle.x,
+                particle.y,
+                particle.r,
+                0,
+                Math.PI*2
+            );
+
+
+            ctx.fillStyle =
+                `rgba(
+                    232,
+                    189,
+                    98,
+                    ${particle.alpha}
+                )`;
+
+
+            ctx.fill();
 
         }
+    );
 
 
-        if(
-            p.x < -5
-        ){
-
-            p.x =
-                width + 5;
-
-        }
-
-
-        if(
-            p.x > width + 5
-        ){
-
-            p.x = -5;
-
-        }
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-            p.x,
-            p.y,
-            p.r,
-            0,
-            Math.PI * 2
-        );
-
-
-        ctx.fillStyle =
-            `rgba(
-                232,
-                189,
-                98,
-                ${p.alpha}
-            )`;
-
-
-        ctx.fill();
-
-    }
-
-
-    particleAnimation =
+    animationFrame =
         requestAnimationFrame(
             animateParticles
         );
@@ -2405,28 +2414,39 @@ function animateParticles(){
 }
 
 
-/* =========================================================
-   START PARTICLES
-========================================================= */
+/* =====================================================
+   INITIALISE
+===================================================== */
 
-resizeCanvas();
+if(
+    !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+){
 
-
-window.addEventListener(
-    "resize",
-    resizeCanvas,
-    {
-        passive:true
-    }
-);
+    resizeCanvas();
 
 
-animateParticles();
+    window.addEventListener(
+        "resize",
+        resizeCanvas,
+        {
+            passive:true
+        }
+    );
 
 
-/* =========================================================
-   CONFETTI
-========================================================= */
+    animationFrame =
+        requestAnimationFrame(
+            animateParticles
+        );
+
+}
+
+
+/* =====================================================
+   TEACHERS' DAY CONFETTI
+===================================================== */
 
 window.addEventListener(
     "load",
@@ -2442,20 +2462,33 @@ window.addEventListener(
         }
 
 
+        if(
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        ){
+
+            return;
+
+        }
+
+
         setTimeout(
             () => {
 
-                const defaults = {
+                const defaults={
 
                     particleCount:55,
 
-                    spread:65,
+                    spread:68,
 
-                    startVelocity:27,
+                    startVelocity:25,
 
-                    gravity:.9,
+                    gravity:.85,
 
-                    scalar:.72
+                    scalar:.76,
+
+                    ticks:190
 
                 };
 
@@ -2466,7 +2499,7 @@ window.addEventListener(
 
                     origin:{
                         x:.14,
-                        y:.48
+                        y:.42
                     }
 
                 });
@@ -2478,39 +2511,33 @@ window.addEventListener(
 
                     origin:{
                         x:.86,
-                        y:.48
+                        y:.42
                     }
 
                 });
 
-
             },
-            850
+
+            700
         );
 
     }
 );
 
 
-/* =========================================================
-   PAUSE PARTICLES WHEN TAB IS HIDDEN
-========================================================= */
+/* =====================================================
+   CLEANUP
+===================================================== */
 
-document.addEventListener(
-    "visibilitychange",
+window.addEventListener(
+    "pagehide",
     () => {
 
-        if(
-            document.hidden
-        ){
+        if(animationFrame){
 
             cancelAnimationFrame(
-                particleAnimation
+                animationFrame
             );
-
-        }else{
-
-            animateParticles();
 
         }
 
@@ -2518,6 +2545,15 @@ document.addEventListener(
 );
 
 </script>
+
+
+<!-- =====================================================
+     IMPORTANT:
+     KEEP THIS FILE.
+     It handles the shared smooth-scroll behavior.
+===================================================== -->
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
