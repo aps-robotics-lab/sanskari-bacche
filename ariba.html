@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="theme-color" content="#050b16">
-
-<meta
-    name="description"
-    content="A Teachers' Day tribute to Ms. Ariba Ansari from Class 10th I."
->
+<meta name="description"
+      content="A Teachers' Day tribute to Ms. Ariba Ansari from Class 10th I.">
 
 <title>Ms. Ariba Ansari — Class 10th I</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
 
 <style>
 
@@ -90,11 +82,9 @@ body {
 }
 
 body::before {
-
     content: "";
 
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
@@ -137,7 +127,6 @@ button {
 ========================================================= */
 
 #particleCanvas {
-
     position: fixed;
 
     inset: 0;
@@ -154,11 +143,10 @@ button {
 
 
 /* =========================================================
-   CURSOR GLOW
+   CURSOR
 ========================================================= */
 
 .cursor-glow {
-
     position: fixed;
 
     width: 280px;
@@ -173,7 +161,7 @@ button {
     background:
         radial-gradient(
             circle,
-            rgba(232,189,98,0.07),
+            rgba(232,189,98,0.075),
             transparent 68%
         );
 
@@ -187,23 +175,21 @@ button {
 ========================================================= */
 
 .page {
-
     position: relative;
 
     z-index: 3;
 
-    width: min(1120px, 91%);
+    width: min(1120px, 92%);
 
     margin: auto;
 }
 
 
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
 .topbar {
-
     position: fixed;
 
     top: 20px;
@@ -212,7 +198,7 @@ button {
     transform:
         translateX(-50%);
 
-    width: min(1080px, 90%);
+    width: min(1080px, 92%);
 
     display: flex;
 
@@ -251,7 +237,6 @@ button {
 }
 
 .brand {
-
     display: flex;
 
     align-items: center;
@@ -269,7 +254,6 @@ button {
 }
 
 .brand-dot {
-
     width: 7px;
     height: 7px;
 
@@ -285,7 +269,6 @@ button {
 }
 
 .back-button {
-
     display: inline-flex;
 
     align-items: center;
@@ -293,8 +276,7 @@ button {
     gap: 9px;
 
     padding:
-        10px
-        16px;
+        10px 16px;
 
     border:
         1px solid
@@ -321,7 +303,6 @@ button {
 }
 
 .back-button:hover {
-
     transform:
         translateY(-2px);
 
@@ -336,58 +317,40 @@ button {
 
 /* =========================================================
    HERO
+   ORIGINAL ARIBA HERO PRESERVED
 ========================================================= */
 
 .hero {
-
     min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    position: relative;
-
-    padding:
-        150px
-        0
-        100px;
-}
-
-
-/* =========================================================
-   SHONALI-STYLE EDITORIAL HERO
-========================================================= */
-
-.hero-grid {
-
-    width: 100%;
 
     display: grid;
 
     grid-template-columns:
         minmax(0, 1fr)
-        390px;
+        370px;
 
     align-items: center;
 
-    gap: 80px;
+    gap: 60px;
+
+    position: relative;
+
+    padding:
+        145px 0
+        95px;
 }
 
 .hero-content {
+    position: relative;
 
-    min-width: 0;
+    z-index: 4;
 
-    max-width: 700px;
+    width: 100%;
+
+    max-width: 900px;
 }
 
-
-/* =========================================================
-   CHAPTER LABEL
-========================================================= */
-
 .eyebrow {
-
     display: flex;
 
     align-items: center;
@@ -417,7 +380,6 @@ button {
 }
 
 .eyebrow::before {
-
     content: "";
 
     width: 38px;
@@ -426,13 +388,7 @@ button {
     background: #d5b66e;
 }
 
-
-/* =========================================================
-   HERO TITLE
-========================================================= */
-
 .hero h1 {
-
     font-family:
         "Playfair Display",
         serif;
@@ -441,7 +397,7 @@ button {
         clamp(
             4rem,
             8vw,
-            7.6rem
+            7.7rem
         );
 
     line-height: 0.9;
@@ -461,7 +417,6 @@ button {
 }
 
 .hero h1 span {
-
     color: #e8bd62;
 
     text-shadow:
@@ -469,13 +424,7 @@ button {
         rgba(232,189,98,0.14);
 }
 
-
-/* =========================================================
-   ROLE
-========================================================= */
-
 .hero-role {
-
     margin-top: 30px;
 
     color:
@@ -506,13 +455,7 @@ button {
         forwards;
 }
 
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
 .hero-description {
-
     max-width: 650px;
 
     margin-top: 17px;
@@ -534,13 +477,7 @@ button {
         forwards;
 }
 
-
-/* =========================================================
-   HERO LINE
-========================================================= */
-
 .hero-line {
-
     width: 100%;
 
     height: 1px;
@@ -557,8 +494,7 @@ button {
 
     transform-origin: left;
 
-    transform:
-        scaleX(0);
+    transform: scaleX(0);
 
     animation:
         lineReveal
@@ -568,20 +504,12 @@ button {
         forwards;
 }
 
-
-/* =========================================================
-   META
-========================================================= */
-
 .hero-meta {
-
     display: flex;
 
     align-items: center;
 
-    flex-wrap: wrap;
-
-    gap: 12px 20px;
+    gap: 30px;
 
     margin-top: 24px;
 
@@ -605,94 +533,76 @@ button {
 }
 
 .hero-meta span:first-child {
-
     color: #d5b66e;
 }
 
 
 /* =========================================================
-   TEACHER PHOTO
+   PORTRAIT
+   SAME VISUAL LANGUAGE AS AJAY/SHONALI
 ========================================================= */
 
-.teacher-photo-wrap {
-
+.teacher-portrait {
     position: relative;
-
-    width: 100%;
-
-    max-width: 390px;
 
     justify-self: end;
 
-    opacity: 0;
+    width: 370px;
+    height: 535px;
 
-    transform:
-        translateY(30px);
-
-    animation:
-        photoReveal
-        1.1s
-        0.35s
-        cubic-bezier(.2,.8,.2,1)
-        forwards;
-}
-
-@keyframes photoReveal {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(35px)
-            scale(.97);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   PHOTO FRAME
-========================================================= */
-
-.teacher-photo-frame {
-
-    position: relative;
-
-    aspect-ratio: 4 / 5;
+    border-radius: 34px;
 
     overflow: hidden;
 
-    border-radius: 24px;
-
     border:
         1px solid
-        rgba(232,189,98,0.28);
+        rgba(232,189,98,0.22);
 
     background:
-        #081322;
+        #08111e;
 
     box-shadow:
-        0 35px 90px
-        rgba(0,0,0,0.38),
+        0 35px 100px
+        rgba(0,0,0,0.42),
 
-        0 0 50px
-        rgba(232,189,98,0.06);
+        0 0 70px
+        rgba(232,189,98,0.055);
+
+    transform:
+        rotate(1.2deg);
+
+    opacity: 0;
+
+    animation:
+        portraitReveal
+        1.15s
+        0.35s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+
+    isolation: isolate;
 }
 
+.teacher-portrait::before {
+    content: "";
 
-/* GOLD INNER FRAME */
+    position: absolute;
 
-.teacher-photo-frame::before {
+    inset: 0;
 
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 40%,
+            rgba(3,8,17,0.68) 100%
+        );
+
+    pointer-events: none;
+}
+
+.teacher-portrait::after {
     content: "";
 
     position: absolute;
@@ -701,44 +611,16 @@ button {
 
     border:
         1px solid
-        rgba(255,255,255,0.12);
+        rgba(255,255,255,0.09);
 
-    border-radius: 17px;
-
-    z-index: 2;
-
-    pointer-events: none;
-}
-
-
-/* CINEMATIC GRADIENT */
-
-.teacher-photo-frame::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(3,8,17,0.52),
-            rgba(3,8,17,0.05) 48%,
-            transparent 70%
-        );
-
-    pointer-events: none;
+    border-radius: 27px;
 
     z-index: 3;
+
+    pointer-events: none;
 }
 
-
-/* PHOTO */
-
-.teacher-photo-frame img {
-
+.teacher-portrait img {
     width: 100%;
     height: 100%;
 
@@ -746,203 +628,194 @@ button {
 
     object-fit: cover;
 
-    object-position: center;
+    object-position:
+        center 18%;
 
     filter:
-        saturate(.88)
-        contrast(1.03);
-
-    transform:
-        scale(1.015);
+        saturate(0.88)
+        contrast(1.04);
 
     transition:
-        transform .8s
-        cubic-bezier(.2,.8,.2,1),
-
-        filter .8s ease;
+        transform 0.8s ease;
 }
 
-.teacher-photo-frame:hover img {
-
+.teacher-portrait:hover img {
     transform:
-        scale(1.05);
-
-    filter:
-        saturate(.98)
-        contrast(1.04);
+        scale(1.045);
 }
 
-
-/* =========================================================
-   PHOTO CORNER DETAILS
-========================================================= */
-
-.photo-corner {
-
+.portrait-caption {
     position: absolute;
 
-    width: 30px;
-    height: 30px;
+    left: 27px;
+    right: 27px;
+    bottom: 25px;
 
-    z-index: 5;
-
-    pointer-events: none;
-}
-
-.photo-corner::before,
-.photo-corner::after {
-
-    content: "";
-
-    position: absolute;
-
-    background:
-        rgba(232,189,98,0.7);
-}
-
-.photo-corner.top-left {
-
-    top: 18px;
-    left: 18px;
-}
-
-.photo-corner.top-left::before {
-
-    top: 0;
-    left: 0;
-
-    width: 20px;
-    height: 1px;
-}
-
-.photo-corner.top-left::after {
-
-    top: 0;
-    left: 0;
-
-    width: 1px;
-    height: 20px;
-}
-
-.photo-corner.bottom-right {
-
-    right: 18px;
-    bottom: 18px;
-}
-
-.photo-corner.bottom-right::before {
-
-    right: 0;
-    bottom: 0;
-
-    width: 20px;
-    height: 1px;
-}
-
-.photo-corner.bottom-right::after {
-
-    right: 0;
-    bottom: 0;
-
-    width: 1px;
-    height: 20px;
-}
-
-
-/* =========================================================
-   PHOTO CAPTION
-========================================================= */
-
-.photo-caption {
+    z-index: 4;
 
     display: flex;
 
+    align-items: flex-end;
+
     justify-content: space-between;
 
-    margin-top: 14px;
+    gap: 20px;
+}
 
-    padding:
-        0 4px;
+.portrait-caption strong {
+    display: block;
+
+    font:
+        600
+        1.45rem
+        "Playfair Display",
+        serif;
+}
+
+.portrait-caption small {
+    display: block;
+
+    margin-top: 4px;
 
     color:
-        rgba(255,255,255,0.32);
+        rgba(255,255,255,0.55);
 
-    font-size: 0.62rem;
+    font-size: 0.63rem;
 
     letter-spacing: 0.16em;
 
     text-transform: uppercase;
 }
 
-.photo-caption span:first-child {
+.portrait-mark {
+    width: 42px;
+    height: 42px;
 
-    color: #d5b66e;
+    border-radius: 50%;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.32);
+
+    color:
+        #e8bd62;
+
+    background:
+        rgba(3,8,17,0.48);
+
+    font-size: 0.75rem;
 }
 
+.hero-orbit {
+    position: absolute;
 
-/* =========================================================
-   SCROLL INDICATOR
-========================================================= */
+    right: -85px;
 
-.scroll-hint {
+    bottom: 7%;
+
+    width: 390px;
+    height: 390px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.07);
+
+    border-radius: 50%;
+
+    opacity: 0.55;
+
+    animation:
+        orbitSpin
+        24s
+        linear
+        infinite;
+
+    z-index: -1;
+}
+
+.hero-orbit::before,
+.hero-orbit::after {
+    content: "";
 
     position: absolute;
 
-    left: 0;
+    inset: 25px;
 
-    bottom: 38px;
+    border-radius: 50%;
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    color:
-        rgba(255,255,255,0.25);
-
-    font-size: 0.62rem;
-
-    letter-spacing: 0.17em;
-
-    text-transform: uppercase;
+    border:
+        1px dashed
+        rgba(232,189,98,0.08);
 }
 
-.scroll-line {
+.hero-orbit::after {
+    inset: 75px;
 
-    width: 45px;
-    height: 1px;
+    border-style: solid;
 
-    background:
-        rgba(232,189,98,0.45);
-
-    animation:
-        scrollPulse
-        2s
-        ease-in-out
-        infinite;
+    border-color:
+        rgba(232,189,98,0.11);
 }
 
-@keyframes scrollPulse {
+@keyframes orbitSpin {
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
 
-    0%,
-    100% {
+@keyframes portraitReveal {
+
+    from {
+        opacity: 0;
 
         transform:
-            scaleX(.5);
-
-        transform-origin:
-            left;
-
-        opacity: .35;
+            translateY(35px)
+            rotate(4deg)
+            scale(0.96);
     }
 
-    50% {
+    to {
+        opacity: 1;
 
         transform:
-            scaleX(1);
+            translateY(0)
+            rotate(1.2deg)
+            scale(1);
+    }
+}
 
+@keyframes revealUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(28px);
+    }
+
+    to {
         opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes lineReveal {
+
+    from {
+        transform:
+            scaleX(0);
+    }
+
+    to {
+        transform:
+            scaleX(1);
     }
 }
 
@@ -952,24 +825,21 @@ button {
 ========================================================= */
 
 .section {
-
     padding:
         115px 0;
 }
 
 .section-label {
-
     color: #d5b66e;
 
-    font-size: .67rem;
+    font-size: 0.67rem;
 
-    letter-spacing: .22em;
+    letter-spacing: 0.22em;
 
     text-transform: uppercase;
 }
 
 .section-title {
-
     margin-top: 14px;
 
     max-width: 760px;
@@ -985,25 +855,22 @@ button {
             5.4rem
         );
 
-    line-height: .98;
+    line-height: 0.98;
 
-    letter-spacing: -.045em;
+    letter-spacing: -0.045em;
 }
 
 .section-title span {
-
     color: #e8bd62;
 }
 
 .section-intro {
-
     max-width: 680px;
 
     margin-bottom: 55px;
 }
 
 .section-copy {
-
     margin-top: 20px;
 
     max-width: 650px;
@@ -1016,11 +883,10 @@ button {
 
 
 /* =========================================================
-   DIALOGUES
+   QUOTES
 ========================================================= */
 
 .dialogue-wrap {
-
     position: relative;
 
     padding: 1px;
@@ -1037,14 +903,10 @@ button {
 }
 
 .dialogues {
-
     display: grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
+        repeat(2,minmax(0,1fr));
 
     gap: 1px;
 
@@ -1060,7 +922,6 @@ button {
 }
 
 .dialogue {
-
     position: relative;
 
     min-height: 190px;
@@ -1085,12 +946,11 @@ button {
     cursor: pointer;
 
     transition:
-        transform .4s ease,
-        background .4s ease;
+        transform 0.4s ease,
+        background 0.4s ease;
 }
 
 .dialogue::before {
-
     content: "“";
 
     position: absolute;
@@ -1111,7 +971,6 @@ button {
 }
 
 .dialogue:hover {
-
     background:
         rgba(232,189,98,0.055);
 
@@ -1120,19 +979,17 @@ button {
 }
 
 .dialogue-index {
-
     color:
         rgba(255,255,255,0.27);
 
-    font-size: .62rem;
+    font-size: 0.62rem;
 
-    letter-spacing: .18em;
+    letter-spacing: 0.18em;
 
     text-transform: uppercase;
 }
 
 .dialogue-text {
-
     position: relative;
 
     max-width: 520px;
@@ -1158,11 +1015,10 @@ button {
 
 
 /* =========================================================
-   SCIENCE STRIP
+   SCIENCE
 ========================================================= */
 
 .science-strip {
-
     display: flex;
 
     align-items: center;
@@ -1186,13 +1042,12 @@ button {
     color:
         rgba(255,255,255,0.43);
 
-    font-size: .72rem;
+    font-size: 0.72rem;
 
     line-height: 1.6;
 }
 
 .science-orb {
-
     width: 28px;
     height: 28px;
 
@@ -1213,7 +1068,6 @@ button {
 
 .science-orb::before,
 .science-orb::after {
-
     content: "";
 
     position: absolute;
@@ -1234,15 +1088,12 @@ button {
 }
 
 .science-orb::after {
-
     transform:
         rotate(60deg);
 }
 
 @keyframes orbit {
-
     to {
-
         transform:
             rotate(360deg);
     }
@@ -1254,7 +1105,6 @@ button {
 ========================================================= */
 
 .message {
-
     position: relative;
 
     max-width: 900px;
@@ -1293,7 +1143,6 @@ button {
 }
 
 .message::before {
-
     content: "";
 
     position: absolute;
@@ -1317,20 +1166,18 @@ button {
 }
 
 .message-label {
-
     position: relative;
 
     color: #d5b66e;
 
-    font-size: .65rem;
+    font-size: 0.65rem;
 
-    letter-spacing: .2em;
+    letter-spacing: 0.2em;
 
     text-transform: uppercase;
 }
 
 .message h2 {
-
     position: relative;
 
     max-width: 800px;
@@ -1350,16 +1197,14 @@ button {
 
     line-height: 1.08;
 
-    letter-spacing: -.035em;
+    letter-spacing: -0.035em;
 }
 
 .message h2 span {
-
     color: #e8bd62;
 }
 
 .message p {
-
     position: relative;
 
     max-width: 760px;
@@ -1381,52 +1226,10 @@ button {
 
 
 /* =========================================================
-   STORY SECTION
-========================================================= */
-
-.final-story {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 70px;
-
-    align-items: center;
-}
-
-.story-number {
-
-    color:
-        rgba(232,189,98,.45);
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 7rem;
-
-    line-height: 1;
-}
-
-.story-copy {
-
-    color:
-        #9ba6b6;
-
-    font-size: 1rem;
-
-    line-height: 1.9;
-}
-
-
-/* =========================================================
-   FINAL SECTION
+   FINAL
 ========================================================= */
 
 .final-section {
-
     padding:
         130px 0
         150px;
@@ -1435,18 +1238,16 @@ button {
 }
 
 .final-small {
-
     color: #d5b66e;
 
-    font-size: .66rem;
+    font-size: 0.66rem;
 
-    letter-spacing: .22em;
+    letter-spacing: 0.22em;
 
     text-transform: uppercase;
 }
 
 .final-section h2 {
-
     max-width: 850px;
 
     margin:
@@ -1463,30 +1264,28 @@ button {
             6.4rem
         );
 
-    line-height: .98;
+    line-height: 0.98;
 
-    letter-spacing: -.045em;
+    letter-spacing: -0.045em;
 }
 
 .final-section h2 span {
-
     color: #e8bd62;
 
     text-shadow:
         0 0 45px
-        rgba(232,189,98,.12);
+        rgba(232,189,98,0.12);
 }
 
 .final-sign {
-
     margin-top: 32px;
 
     color:
-        rgba(255,255,255,.38);
+        rgba(255,255,255,0.38);
 
-    font-size: .75rem;
+    font-size: 0.75rem;
 
-    letter-spacing: .11em;
+    letter-spacing: 0.11em;
 }
 
 
@@ -1495,20 +1294,18 @@ button {
 ========================================================= */
 
 footer {
-
     padding:
         60px 0
         45px;
 
     border-top:
         1px solid
-        rgba(255,255,255,.08);
+        rgba(255,255,255,0.08);
 
     text-align: center;
 }
 
 .footer-quote {
-
     max-width: 750px;
 
     margin: auto;
@@ -1531,26 +1328,24 @@ footer {
 }
 
 .footer-sign {
-
     margin-top: 23px;
 
     color: #d5b66e;
 
-    font-size: .77rem;
+    font-size: 0.77rem;
 
     line-height: 1.7;
 }
 
 .footer-location {
-
     margin-top: 30px;
 
     color:
-        rgba(255,255,255,.21);
+        rgba(255,255,255,0.21);
 
-    font-size: .62rem;
+    font-size: 0.62rem;
 
-    letter-spacing: .14em;
+    letter-spacing: 0.14em;
 
     text-transform: uppercase;
 }
@@ -1561,20 +1356,18 @@ footer {
 ========================================================= */
 
 .reveal {
-
     opacity: 0;
 
     transform:
         translateY(30px);
 
     transition:
-        opacity .9s ease,
-        transform .9s
+        opacity 0.9s ease,
+        transform 0.9s
         cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.visible {
-
     opacity: 1;
 
     transform:
@@ -1586,130 +1379,120 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 900px) {
-
-    .hero-grid {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 55px;
-    }
-
-    .teacher-photo-wrap {
-
-        max-width: 430px;
-
-        justify-self: start;
-    }
-
-    .final-story {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 25px;
-    }
-
-    .story-number {
-
-        font-size: 5rem;
-    }
-}
-
-
 @media (max-width: 760px) {
 
     .page {
-
         width:
-            min(92%, 520px);
+            min(92%,520px);
     }
 
     .topbar {
-
         top: 12px;
 
         width: 92%;
     }
 
     .brand {
-
-        font-size: .61rem;
+        font-size: 0.61rem;
     }
 
     .back-button {
-
         padding:
             9px 13px;
 
-        font-size: .67rem;
+        font-size: 0.67rem;
     }
 
     .hero {
+        grid-template-columns: 1fr;
+
+        gap: 42px;
 
         padding:
-            145px 0
-            100px;
+            140px 0
+            85px;
     }
 
     .hero h1 {
-
         font-size:
             clamp(
                 3.8rem,
-                18vw,
+                17vw,
                 6.5rem
             );
     }
 
-    .hero-meta {
+    .teacher-portrait {
+        justify-self: center;
 
+        width:
+            min(86vw,350px);
+
+        height: 465px;
+
+        transform: none;
+
+        animation-name:
+            portraitMobile;
+    }
+
+    .hero-orbit {
+        width: 270px;
+        height: 270px;
+
+        right: -150px;
+    }
+
+    .hero-meta {
         flex-wrap: wrap;
 
         gap:
             12px 20px;
     }
 
-    .scroll-hint {
-
-        display: none;
-    }
-
     .section {
-
         padding:
             85px 0;
     }
 
     .dialogues {
-
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .dialogue {
-
         min-height: 165px;
 
-        padding: 28px;
+        padding:
+            28px;
     }
 
     .message {
-
         border-radius: 23px;
     }
 
     .final-section {
-
         padding:
             100px 0
             120px;
     }
 
-    .teacher-photo-wrap {
+}
 
-        width: min(100%, 350px);
+@keyframes portraitMobile {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            none;
     }
 }
 
@@ -1717,30 +1500,33 @@ footer {
 @media (max-width: 420px) {
 
     .hero h1 {
-
-        font-size: 3.65rem;
+        font-size:
+            3.65rem;
     }
 
     .hero-description {
+        font-size:
+            0.9rem;
+    }
 
-        font-size: .9rem;
+    .teacher-portrait {
+        width:
+            min(88vw,330px);
+
+        height:
+            430px;
     }
 
     .dialogue-text {
-
-        font-size: 1.2rem;
+        font-size:
+            1.2rem;
     }
 
     .science-strip {
-
         align-items:
             flex-start;
     }
 
-    .teacher-photo-frame {
-
-        border-radius: 20px;
-    }
 }
 
 
@@ -1755,7 +1541,7 @@ footer {
     *::after {
 
         animation-duration:
-            .001ms !important;
+            0.001ms !important;
 
         animation-iteration-count:
             1 !important;
@@ -1764,27 +1550,17 @@ footer {
             auto !important;
 
         transition-duration:
-            .001ms !important;
+            0.001ms !important;
     }
+
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     PARTICLE CANVAS
-===================================================== -->
-
 <canvas id="particleCanvas"></canvas>
-
-
-<!-- =====================================================
-     CURSOR
-===================================================== -->
 
 <div
     class="cursor-glow"
@@ -1806,12 +1582,12 @@ footer {
 
     </div>
 
-
     <a
         href="index.html"
-        class="back-button"
-    >
+        class="back-button">
+
         ← Back to Home
+
     </a>
 
 </nav>
@@ -1826,109 +1602,85 @@ footer {
 
 <section class="hero">
 
-    <div class="hero-grid">
+    <div class="hero-content">
 
+        <div class="eyebrow">
+            A tribute from 10th I
+        </div>
 
-        <!-- TEXT -->
+        <h1>
+            Ms. <span>Ariba</span><br>
+            Ansari
+        </h1>
 
-        <div class="hero-content">
+        <div class="hero-role">
+            Biology & Chemistry
+        </div>
 
-            <div class="eyebrow">
+        <p class="hero-description">
+            Strict when we needed it, caring when we least
+            expected it, and somehow always able to tell
+            when someone had mentally disappeared into
+            Lala Land.
+        </p>
 
-                CHAPTER 05 / THE SCIENCE ROASTER
+        <div class="hero-line"></div>
 
-            </div>
+        <div class="hero-meta">
 
+            <span>
+                Science
+            </span>
 
-            <h1>
+            <span>
+                ·
+            </span>
 
-                Ms. <span>Ariba</span><br>
+            <span>
+                Class 10th I
+            </span>
 
-                Ansari.
+            <span>
+                ·
+            </span>
 
-            </h1>
-
-
-            <div class="hero-role">
-
-                Biology · Chemistry
-
-            </div>
-
-
-            <p class="hero-description">
-
-                Strict when we needed it, caring when we least
-                expected it, and somehow always able to tell
-                when someone had mentally disappeared into
-                Lala Land.
-
-            </p>
-
-
-            <div class="hero-line"></div>
-
-
-            <div class="hero-meta">
-
-                <span>
-                    Science
-                </span>
-
-                <span>
-                    ·
-                </span>
-
-                <span>
-                    Class 10th I
-                </span>
-
-                <span>
-                    ·
-                </span>
-
-                <span>
-                    Unforgettable
-                </span>
-
-            </div>
+            <span>
+                Unforgettable
+            </span>
 
         </div>
 
+    </div>
 
-        <!-- PHOTO -->
 
-        <div class="teacher-photo-wrap">
+    <!-- =================================================
+         ARIBA PHOTO
+    ================================================== -->
 
-            <div class="teacher-photo-frame">
+    <div class="teacher-portrait">
 
-                <img
-                    src="Images/ariba-ansari.webp"
-                    alt="Ms. Ariba Ansari"
-                    loading="eager"
-                >
+        <img
+            src="Images/ariba-ansari.webp"
+            alt="Ms. Ariba Ansari"
+            loading="eager"
+        >
 
-                <div
-                    class="photo-corner top-left"
-                ></div>
+        <div class="portrait-caption">
 
-                <div
-                    class="photo-corner bottom-right"
-                ></div>
+            <div>
+
+                <strong>
+                    Ms. Ariba Ansari
+                </strong>
+
+                <small>
+                    Biology · Chemistry
+                </small>
 
             </div>
 
-
-            <div class="photo-caption">
-
-                <span>
-                    05
-                </span>
-
-                <span>
-                    The Science Room
-                </span>
-
+            <div class="portrait-mark">
+                AA
             </div>
 
         </div>
@@ -1936,16 +1688,10 @@ footer {
     </div>
 
 
-    <div class="scroll-hint">
+    <div class="hero-orbit"></div>
 
-        <div class="scroll-line"></div>
-
-        Continue the story
-
-    </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1954,140 +1700,100 @@ footer {
 
 <section class="section">
 
-
     <div class="section-intro reveal">
 
         <div class="section-label">
-
             01 / Things we will remember
-
         </div>
 
-
         <h2 class="section-title">
-
             The quotes that
             <span>became memories.</span>
-
         </h2>
 
-
         <p class="section-copy">
-
             Every classroom has its own language.
             These are a few sentences that instantly
             take 10th I back to the classroom.
-
         </p>
 
     </div>
-
 
 
     <div class="dialogue-wrap reveal">
 
         <div class="dialogues">
 
-
             <article class="dialogue">
 
                 <div class="dialogue-index">
-
                     01 / Lala Land alert
-
                 </div>
 
-
                 <div class="dialogue-text">
-
                     “Jaldi wapas aao apne lala land se.”
-
                 </div>
 
             </article>
 
 
-
             <article class="dialogue">
 
                 <div class="dialogue-index">
-
                     02 / Classroom silence
-
                 </div>
 
-
                 <div class="dialogue-text">
-
                     “Shut up!”
-
                 </div>
 
             </article>
 
 
-
             <article class="dialogue">
 
                 <div class="dialogue-index">
-
                     03 / The observation
-
                 </div>
 
-
                 <div class="dialogue-text">
-
                     “Aayush ki shaqual yaar nhi aa rahi.”
-
                 </div>
 
             </article>
-
 
 
             <article class="dialogue">
 
                 <div class="dialogue-index">
-
                     04 / Identity check
-
                 </div>
 
-
                 <div class="dialogue-text">
-
                     “Tum kaun ho.”
-
                 </div>
 
             </article>
-
 
         </div>
 
     </div>
-
 
 
     <div class="science-strip reveal">
 
         <div class="science-orb"></div>
 
-
         <div>
-
             Biology taught us about life.
             Chemistry taught us about reactions.
             You somehow taught us both — while also
             detecting when our attention had evaporated.
-
         </div>
 
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -2096,59 +1802,43 @@ footer {
 
 <section class="section">
 
-
     <div class="section-intro reveal">
 
         <div class="section-label">
-
             02 / What we really mean
-
         </div>
 
-
         <h2 class="section-title">
-
             Behind every
             <span>roast</span> was care.
-
         </h2>
 
     </div>
-
 
 
     <div class="message reveal">
 
         <div class="message-label">
-
             A message from Class 10th I
-
         </div>
 
-
         <h2>
-
             To the teacher who
             never let us stay in
             <span>Lala Land.</span>
-
         </h2>
 
-
         <p>
-
             Strict, loving, and the ultimate roaster of
             10th I! Thank you for bringing us back from
             'lala land' to focus on science. We secretly
             love the daily roasts as much as we love your
             classes.
-
         </p>
 
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -2157,59 +1847,28 @@ footer {
 
 <section class="section">
 
-
     <div class="section-intro reveal">
 
         <div class="section-label">
-
             03 / More than a subject
-
         </div>
-
 
         <h2 class="section-title">
-
             Some lessons
             <span>stay.</span>
-
         </h2>
 
-    </div>
-
-
-    <div class="final-story">
-
-
-        <div class="story-number reveal">
-
-            03
-
-        </div>
-
-
-        <div class="story-copy reveal">
-
+        <p class="section-copy">
             Years from now, we probably won't remember
             every reaction, equation, diagram or definition.
-
-            <br><br>
-
             But we will remember the people who stood in
             front of the classroom and made those moments
             ours.
-
-            <br><br>
-
-            Biology and Chemistry may have been the
-            subjects, but the memories were always bigger
-            than the syllabus.
-
-        </div>
+        </p>
 
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -2218,39 +1877,24 @@ footer {
 
 <section class="final-section reveal">
 
-
     <div class="final-small">
-
         04 / The final verdict
-
     </div>
 
-
     <h2>
-
         You didn't just teach us.
-
         <br>
-
         You became part of
-
         <span>our story.</span>
-
     </h2>
 
-
     <div class="final-sign">
-
         — With love, respect & a little bit of fear
-
         <br>
-
         Class 10th I
-
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -2259,37 +1903,25 @@ footer {
 
 <footer>
 
-
     <div class="footer-quote">
-
         “A good teacher can inspire hope, ignite the
         imagination, and instill a love of learning.”
-
     </div>
-
 
     <div class="footer-sign">
-
         With deepest respect and gratitude,
-
         <br>
-
         Class 10th I
-
     </div>
 
-
     <div class="footer-location">
-
         Army Public School · Lal Bahadur Shastri Marg
-
     </div>
 
 </footer>
 
 
 </main>
-
 
 
 <script>
@@ -2300,11 +1932,9 @@ footer {
 
 const revealObserver =
     new IntersectionObserver(
-
         (entries) => {
 
             entries.forEach(
-
                 (entry) => {
 
                     if (
@@ -2322,22 +1952,18 @@ const revealObserver =
                     }
 
                 }
-
             );
 
         },
-
         {
             threshold: 0.12
         }
-
     );
 
 
 document
     .querySelectorAll(".reveal")
     .forEach(
-
         (element) => {
 
             revealObserver.observe(
@@ -2345,9 +1971,7 @@ document
             );
 
         }
-
     );
-
 
 
 /* =========================================================
@@ -2367,9 +1991,7 @@ if (
 ) {
 
     window.addEventListener(
-
         "pointermove",
-
         (event) => {
 
             cursorGlow.style.left =
@@ -2379,11 +2001,9 @@ if (
                 `${event.clientY}px`;
 
         },
-
         {
             passive: true
         }
-
     );
 
 } else {
@@ -2394,9 +2014,8 @@ if (
 }
 
 
-
 /* =========================================================
-   PARTICLE SYSTEM
+   PARTICLES
 ========================================================= */
 
 const canvas =
@@ -2412,11 +2031,9 @@ const ctx =
         }
     );
 
-
 let particles = [];
 
 let canvasWidth = 0;
-
 let canvasHeight = 0;
 
 let pixelRatio =
@@ -2424,7 +2041,6 @@ let pixelRatio =
         window.devicePixelRatio || 1,
         1.5
     );
-
 
 
 function resizeCanvas() {
@@ -2435,65 +2051,51 @@ function resizeCanvas() {
             1.5
         );
 
-
     canvasWidth =
         window.innerWidth;
 
-
     canvasHeight =
         window.innerHeight;
-
 
     canvas.width =
         canvasWidth *
         pixelRatio;
 
-
     canvas.height =
         canvasHeight *
         pixelRatio;
 
-
     canvas.style.width =
         `${canvasWidth}px`;
-
 
     canvas.style.height =
         `${canvasHeight}px`;
 
-
     ctx.setTransform(
-
         pixelRatio,
         0,
         0,
         pixelRatio,
         0,
         0
-
     );
-
 
     createParticles();
 
 }
 
 
-
 function createParticles() {
 
     particles = [];
 
-
     const isMobile =
         window.innerWidth < 700;
-
 
     const amount =
         isMobile
             ? 32
             : 58;
-
 
     for (
         let i = 0;
@@ -2537,18 +2139,14 @@ function createParticles() {
 }
 
 
-
 function animateParticles() {
 
     ctx.clearRect(
-
         0,
         0,
         canvasWidth,
         canvasHeight
-
     );
-
 
     for (
         let i = 0;
@@ -2558,7 +2156,6 @@ function animateParticles() {
 
         const p =
             particles[i];
-
 
         p.y -= p.speed;
 
@@ -2574,7 +2171,6 @@ function animateParticles() {
 
         }
 
-
         if (
             p.x < -5
         ) {
@@ -2583,7 +2179,6 @@ function animateParticles() {
                 canvasWidth + 5;
 
         }
-
 
         if (
             p.x >
@@ -2597,31 +2192,20 @@ function animateParticles() {
 
         ctx.beginPath();
 
-
         ctx.arc(
-
             p.x,
             p.y,
             p.size,
             0,
             Math.PI * 2
-
         );
 
-
         ctx.fillStyle =
-            `rgba(
-                232,
-                189,
-                98,
-                ${p.opacity}
-            )`;
-
+            `rgba(232,189,98,${p.opacity})`;
 
         ctx.fill();
 
     }
-
 
     requestAnimationFrame(
         animateParticles
@@ -2630,29 +2214,21 @@ function animateParticles() {
 }
 
 
-
 resizeCanvas();
 
-
 window.addEventListener(
-
     "resize",
-
     resizeCanvas,
-
     {
         passive: true
     }
-
 );
-
 
 animateParticles();
 
 
-
 /* =========================================================
-   TEACHERS' DAY CELEBRATION
+   CONFETTI
 ========================================================= */
 
 function launchCelebration() {
@@ -2663,7 +2239,6 @@ function launchCelebration() {
     ) {
         return;
     }
-
 
     const defaults = {
 
@@ -2687,11 +2262,8 @@ function launchCelebration() {
         particleCount: 55,
 
         origin: {
-
             x: 0.08,
-
             y: 0.42
-
         }
 
     });
@@ -2704,18 +2276,14 @@ function launchCelebration() {
         particleCount: 55,
 
         origin: {
-
             x: 0.92,
-
             y: 0.42
-
         }
 
     });
 
 
     setTimeout(
-
         () => {
 
             confetti({
@@ -2729,29 +2297,21 @@ function launchCelebration() {
                 startVelocity: 20,
 
                 origin: {
-
                     x: 0.5,
-
                     y: 0.28
-
                 }
 
             });
 
         },
-
         250
-
     );
 
 }
 
 
-
 window.addEventListener(
-
     "load",
-
     () => {
 
         setTimeout(
@@ -2760,36 +2320,28 @@ window.addEventListener(
         );
 
     }
-
 );
 
 
-
 /* =========================================================
-   DIALOGUE CLICK
+   CLICK CELEBRATION
 ========================================================= */
 
 document
     .querySelectorAll(".dialogue")
     .forEach(
-
         (dialogue) => {
 
             dialogue.addEventListener(
-
                 "click",
-
                 () => {
 
                     if (
                         typeof confetti !==
                         "function"
                     ) {
-
                         return;
-
                     }
-
 
                     confetti({
 
@@ -2804,56 +2356,28 @@ document
                         scalar: 0.6,
 
                         origin: {
-
                             x: 0.5,
-
                             y: 0.55
-
                         }
 
                     });
 
                 }
-
             );
 
         }
-
     );
-
-
-
-/* =========================================================
-   IMAGE FALLBACK
-========================================================= */
-
-const teacherImage =
-    document.querySelector(
-        ".teacher-photo-frame img"
-    );
-
-
-teacherImage.addEventListener(
-
-    "error",
-
-    () => {
-
-        teacherImage.style.display =
-            "none";
-
-        teacherImage.parentElement.style.background =
-            "linear-gradient(135deg,#081322,#132238)";
-
-    }
-
-);
 
 </script>
 
 
+<!--
+    IMPORTANT:
+    Do NOT load canvas-confetti again here.
+    It is already loaded in <head>.
+-->
+
 <script src="js/main.js"></script>
 
 </body>
-
 </html>
