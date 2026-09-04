@@ -3,11 +3,12 @@
    Class 10th I
    Army Public School, Lal Bahadur Shastri Marg
 
-   PERFORMANCE-FIRST / SILKY VERSION
+   PERFORMANCE-FIRST / SILKY SCROLL VERSION
 
    INCLUDED
-   ✓ Scroll reveal
+   ✓ Silky native scrolling
    ✓ Smooth anchor scrolling
+   ✓ Scroll reveal
    ✓ Report card on index.html
    ✓ Teacher report switching
    ✓ Moderate page-load confetti
@@ -18,6 +19,8 @@
    ✓ Reduced-motion support
    ✓ Hidden-tab protection
    ✓ Race-safe report rendering
+   ✓ Image optimization
+   ✓ Legacy particle cleanup
    ✓ No particle canvas
    ✓ No cursor-following animation
    ✓ No continuous requestAnimationFrame
@@ -29,7 +32,7 @@
    ✗ Particle canvas animation
    ✗ Cursor glow tracking
    ✗ Continuous animation loops
-   ✗ Heavy JS hover effects
+   ✗ Heavy parallax
 ========================================================= */
 
 (() => {
@@ -47,30 +50,50 @@
     const body =
         document.body;
 
+
     const isMobile =
         window.matchMedia(
             "(max-width: 700px)"
         ).matches;
+
 
     const prefersReducedMotion =
         window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches;
 
+
     let pageIsVisible =
         !document.hidden;
 
-    let confettiTimerA = null;
-    let confettiTimerB = null;
 
-    let reportRenderTimer = null;
-    let reportAnimationTimer = null;
+    let confettiTimerA =
+        null;
 
-    let reportRenderVersion = 0;
+    let confettiTimerB =
+        null;
+
+
+    let reportRenderTimer =
+        null;
+
+    let reportAnimationTimer =
+        null;
+
+
+    let reportRenderVersion =
+        0;
 
 
     /* =====================================================
        PERFORMANCE STYLES
+
+       Important:
+       We use CSS native scrolling rather than a JS
+       animation loop.
+
+       This is much lighter than Lenis-style continuous
+       RAF scrolling on low-end phones.
     ===================================================== */
 
     function addPerformanceStyles() {
@@ -85,7 +108,9 @@
 
 
         const style =
-            document.createElement("style");
+            document.createElement(
+                "style"
+            );
 
 
         style.id =
@@ -94,70 +119,164 @@
 
         style.textContent = `
 
+            /* ==========================================
+               GLOBAL SCROLL
+            ========================================== */
+
+            html {
+
+                scroll-behavior:
+                    smooth;
+
+                scroll-padding-top:
+                    100px;
+
+                overscroll-behavior-y:
+                    auto;
+
+            }
+
+
+            body {
+
+                overscroll-behavior-y:
+                    auto;
+
+                -webkit-tap-highlight-color:
+                    transparent;
+
+            }
+
+
             /*
-             * Keep the browser compositor focused
-             * on the properties that are actually animated.
+             * Keep touch scrolling controlled by
+             * the browser compositor.
              */
 
+            * {
+
+                -webkit-tap-highlight-color:
+                    transparent;
+
+            }
+
+
+            /*
+             * Prevent accidental horizontal
+             * overflow from making scrolling feel bad.
+             */
+
+            html,
+            body {
+
+                max-width:
+                    100%;
+
+                overflow-x:
+                    hidden;
+
+            }
+
+
+            /* ==========================================
+               REVEAL PERFORMANCE
+            ========================================== */
+
             .reveal {
+
                 will-change:
                     opacity,
                     transform;
+
             }
 
 
-            /*
-             * Remove legacy particle/cursor elements
-             * without needing to edit every old HTML file.
-             */
+            .reveal.visible {
+
+                will-change:
+                    auto;
+
+            }
+
+
+            /* ==========================================
+               LEGACY EFFECT CLEANUP
+            ========================================== */
 
             #particleCanvas,
             .cursor-glow {
-                display: none !important;
+
+                display:
+                    none !important;
+
             }
 
 
-            /*
-             * Prevent mobile tap flash.
-             */
+            /* ==========================================
+               REPORT CARD
+            ========================================== */
+
+            #reportPanel {
+
+                will-change:
+                    opacity,
+                    transform;
+
+            }
+
+
+            /* ==========================================
+               INTERACTIVE ELEMENTS
+            ========================================== */
 
             .teacher,
             .teacher-arrow,
             .explore,
             button,
             a {
+
                 -webkit-tap-highlight-color:
                     transparent;
+
             }
 
 
-            /*
-             * The report card uses opacity/transform
-             * during teacher switching.
-             */
+            /* ==========================================
+               MOBILE GLASS OPTIMIZATION
+            ========================================== */
 
-            #reportPanel {
-                will-change:
-                    opacity,
-                    transform;
+            @media (max-width: 700px) {
+
+                .topbar,
+                .report-panel,
+                .select-wrap,
+                .glass,
+                .glass-card {
+
+                    backdrop-filter:
+                        blur(10px);
+
+                    -webkit-backdrop-filter:
+                        blur(10px);
+
+                }
+
             }
 
 
-            /*
-             * Don't keep will-change on everything.
-             * It consumes memory.
-             */
-
-            .reveal.visible {
-                will-change: auto;
-            }
-
-
-            /*
-             * Accessibility / reduced motion.
-             */
+            /* ==========================================
+               REDUCED MOTION
+            ========================================== */
 
             @media (prefers-reduced-motion: reduce) {
+
+                html {
+
+                    scroll-behavior:
+                        auto !important;
+
+                }
+
 
                 *,
                 *::before,
@@ -179,38 +298,80 @@
 
             }
 
-
-            /*
-             * Smaller blur on mobile.
-             *
-             * This does NOT remove the glass effect.
-             * It simply reduces GPU work.
-             */
-
-            @media (max-width: 700px) {
-
-                .topbar,
-                .report-panel,
-                .select-wrap,
-                .glass,
-                .glass-card {
-
-                    backdrop-filter:
-                        blur(10px);
-
-                    -webkit-backdrop-filter:
-                        blur(10px);
-
-                }
-
-            }
-
         `;
 
 
         document.head.appendChild(
             style
         );
+
+    }
+
+
+    /* =====================================================
+       SILKY SCROLL
+
+       IMPORTANT:
+
+       We do NOT hijack wheel scrolling.
+
+       We do NOT create a requestAnimationFrame loop.
+
+       We do NOT interpolate scroll position manually.
+
+       Instead we allow the browser compositor to handle
+       normal scrolling and only improve anchor navigation.
+
+       This gives the safest performance on:
+
+       ✓ Android
+       ✓ iPhone
+       ✓ low-end devices
+       ✓ laptops
+       ✓ desktop browsers
+    ===================================================== */
+
+    function initSilkyScroll() {
+
+        /*
+         * Reduced motion:
+         * browser handles normal scrolling.
+         */
+
+        if (
+            prefersReducedMotion
+        ) {
+
+            root.style.scrollBehavior =
+                "auto";
+
+            return;
+
+        }
+
+
+        /*
+         * Desktop / modern browsers:
+         * native smooth scrolling is enough.
+         */
+
+        root.style.scrollBehavior =
+            "smooth";
+
+
+        /*
+         * Mobile browsers are intentionally
+         * left completely native.
+         *
+         * Do NOT add wheel/touch interception.
+         */
+
+        if (isMobile) {
+
+            root.style.scrollBehavior =
+                "smooth";
+
+        }
 
     }
 
@@ -233,19 +394,16 @@
 
         if (canvas) {
 
-            /*
-             * Shrinking the backing buffer to 1x1
-             * prevents an old script from consuming
-             * a large canvas buffer if it somehow still runs.
-             */
-
             try {
 
-                canvas.width = 1;
-                canvas.height = 1;
+                canvas.width =
+                    1;
+
+                canvas.height =
+                    1;
 
             } catch (error) {
-                /* Safe to ignore. */
+                /* Ignore safely. */
             }
 
 
@@ -274,9 +432,23 @@
 
 
         /*
-         * Remove legacy canvas references from
-         * pointer events where possible.
+         * Legacy cursor glow may also
+         * use this class.
          */
+
+        document
+            .querySelectorAll(
+                ".cursor-glow"
+            )
+            .forEach(
+                element => {
+
+                    element.style.display =
+                        "none";
+
+                }
+            );
+
 
         body.classList.add(
             "td-performance-mode"
@@ -287,10 +459,12 @@
 
     /* =====================================================
        SCROLL REVEAL
-       
+
        IntersectionObserver only.
-       No scroll event.
-       No requestAnimationFrame.
+
+       NO scroll event.
+       NO RAF.
+       NO polling.
     ===================================================== */
 
     function initReveal() {
@@ -307,13 +481,16 @@
 
 
         /*
-         * Reduced-motion users should see
-         * everything immediately.
+         * Reduced motion users:
+         * immediately reveal everything.
          */
 
         if (
             prefersReducedMotion ||
-            !("IntersectionObserver" in window)
+            !(
+                "IntersectionObserver"
+                in window
+            )
         ) {
 
             elements.forEach(
@@ -330,6 +507,7 @@
             );
 
             return;
+
         }
 
 
@@ -352,11 +530,6 @@
                             );
 
 
-                            /*
-                             * Once revealed, it never
-                             * needs observation again.
-                             */
-
                             observer.unobserve(
                                 entry.target
                             );
@@ -366,10 +539,13 @@
 
                 },
                 {
-                    threshold: 0.08,
+
+                    threshold:
+                        0.08,
 
                     rootMargin:
                         "0px 0px -40px 0px"
+
                 }
             );
 
@@ -378,8 +554,8 @@
             element => {
 
                 /*
-                 * Elements already visible when
-                 * the page loads shouldn't wait.
+                 * Immediately reveal things
+                 * already visible.
                  */
 
                 const rect =
@@ -395,9 +571,8 @@
                         "visible"
                     );
 
-                    observer.unobserve(
-                        element
-                    );
+                    element.style.willChange =
+                        "auto";
 
                 } else {
 
@@ -415,6 +590,15 @@
 
     /* =====================================================
        SMOOTH ANCHOR SCROLLING
+
+       Handles:
+
+       #home
+       #teachers
+       #message
+       etc.
+
+       No animation loop.
     ===================================================== */
 
     function initSmoothAnchors() {
@@ -451,7 +635,8 @@
                         }
 
 
-                        let target = null;
+                        let target =
+                            null;
 
 
                         try {
@@ -462,11 +647,6 @@
                                 );
 
                         } catch (error) {
-
-                            /*
-                             * Invalid selector.
-                             * Let browser handle it normally.
-                             */
 
                             return;
 
@@ -481,6 +661,10 @@
                         event.preventDefault();
 
 
+                        /*
+                         * Respect reduced motion.
+                         */
+
                         target.scrollIntoView({
 
                             behavior:
@@ -492,6 +676,24 @@
                                 "start"
 
                         });
+
+
+                        /*
+                         * Update URL without
+                         * forcing another page jump.
+                         */
+
+                        try {
+
+                            history.replaceState(
+                                null,
+                                "",
+                                href
+                            );
+
+                        } catch (error) {
+                            /* Ignore. */
+                        }
 
                     }
                 );
@@ -531,12 +733,10 @@
 
 
     /* =====================================================
-       MODERATE PAGE CONFETTI
+       PAGE CONFETTI
        
-       Two sides.
-       Moderate quantity.
-       Short lifetime.
-       No continuous animation.
+       Kept moderate because confetti itself
+       can cause rendering spikes.
     ===================================================== */
 
     function launchPageConfetti() {
@@ -548,10 +748,6 @@
         }
 
 
-        /*
-         * Avoid stacking timers.
-         */
-
         clearTimeout(
             confettiTimerA
         );
@@ -562,8 +758,8 @@
 
 
         /*
-         * Give the browser time to finish
-         * the first visual paint.
+         * Delay until initial rendering
+         * has settled.
          */
 
         confettiTimerA =
@@ -581,46 +777,48 @@
 
                         particleCount:
                             isMobile
-                                ? 34
-                                : 48,
+                                ? 28
+                                : 42,
 
                         spread:
                             isMobile
-                                ? 58
-                                : 68,
+                                ? 55
+                                : 65,
 
                         startVelocity:
                             isMobile
-                                ? 18
-                                : 23,
+                                ? 17
+                                : 21,
 
-                        gravity: 0.88,
+                        gravity:
+                            0.88,
 
                         scalar:
                             isMobile
-                                ? 0.62
-                                : 0.72,
+                                ? 0.60
+                                : 0.70,
 
                         ticks:
                             isMobile
-                                ? 95
-                                : 115,
+                                ? 90
+                                : 110,
 
                         origin: {
-                            x: 0.10,
-                            y: 0.46
+
+                            x:
+                                0.10,
+
+                            y:
+                                0.46
+
                         }
 
                     });
 
                 },
-                900
+                1000
             );
 
-
-        /*
-         * Second side.
-         */
 
         confettiTimerB =
             window.setTimeout(
@@ -637,40 +835,46 @@
 
                         particleCount:
                             isMobile
-                                ? 34
-                                : 48,
+                                ? 28
+                                : 42,
 
                         spread:
                             isMobile
-                                ? 58
-                                : 68,
+                                ? 55
+                                : 65,
 
                         startVelocity:
                             isMobile
-                                ? 18
-                                : 23,
+                                ? 17
+                                : 21,
 
-                        gravity: 0.88,
+                        gravity:
+                            0.88,
 
                         scalar:
                             isMobile
-                                ? 0.62
-                                : 0.72,
+                                ? 0.60
+                                : 0.70,
 
                         ticks:
                             isMobile
-                                ? 95
-                                : 115,
+                                ? 90
+                                : 110,
 
                         origin: {
-                            x: 0.90,
-                            y: 0.46
+
+                            x:
+                                0.90,
+
+                            y:
+                                0.46
+
                         }
 
                     });
 
                 },
-                1050
+                1150
             );
 
     }
@@ -678,8 +882,6 @@
 
     /* =====================================================
        SMALL CONFETTI
-       
-       Used for report-card changes.
     ===================================================== */
 
     function launchSmallConfetti() {
@@ -695,31 +897,38 @@
 
             particleCount:
                 isMobile
-                    ? 16
-                    : 24,
+                    ? 12
+                    : 20,
 
-            spread: 46,
+            spread:
+                44,
 
             startVelocity:
                 isMobile
-                    ? 15
-                    : 18,
+                    ? 14
+                    : 17,
 
-            gravity: 0.95,
+            gravity:
+                0.95,
 
             scalar:
                 isMobile
-                    ? 0.55
-                    : 0.62,
+                    ? 0.52
+                    : 0.60,
 
             ticks:
                 isMobile
-                    ? 78
-                    : 92,
+                    ? 72
+                    : 88,
 
             origin: {
-                x: 0.50,
-                y: 0.55
+
+                x:
+                    0.50,
+
+                y:
+                    0.55
+
             }
 
         });
@@ -728,7 +937,7 @@
 
 
     /* =====================================================
-       REPORT CARD DATA
+       TEACHER DATA
     ===================================================== */
 
     const teacherData = {
@@ -1014,7 +1223,9 @@
         if (
             !Number.isFinite(number)
         ) {
+
             return 0;
+
         }
 
 
@@ -1031,6 +1242,8 @@
 
     /* =====================================================
        CREATE METRIC
+
+       Uses DOM methods instead of innerHTML.
     ===================================================== */
 
     function createMetric(
@@ -1054,15 +1267,11 @@
             );
 
 
-        /*
-         * Build DOM using textContent
-         * rather than injecting arbitrary content.
-         */
-
         const top =
             document.createElement(
                 "div"
             );
+
 
         top.className =
             "metric-top";
@@ -1073,8 +1282,10 @@
                 "div"
             );
 
+
         name.className =
             "metric-name";
+
 
         name.textContent =
             label;
@@ -1085,8 +1296,10 @@
                 "div"
             );
 
+
         scoreElement.className =
             "metric-score";
+
 
         scoreElement.textContent =
             `${safeScore}%`;
@@ -1095,6 +1308,7 @@
         top.appendChild(
             name
         );
+
 
         top.appendChild(
             scoreElement
@@ -1106,6 +1320,7 @@
                 "div"
             );
 
+
         track.className =
             "metric-track";
 
@@ -1115,11 +1330,15 @@
                 "div"
             );
 
+
         fill.className =
             "metric-fill";
 
+
         fill.dataset.score =
-            String(safeScore);
+            String(
+                safeScore
+            );
 
 
         track.appendChild(
@@ -1130,6 +1349,7 @@
         metric.appendChild(
             top
         );
+
 
         metric.appendChild(
             track
@@ -1154,8 +1374,7 @@
 
 
         /*
-         * Teacher pages don't have this element.
-         * Therefore this function exits immediately.
+         * Teacher pages don't have this.
          */
 
         if (!select) {
@@ -1168,40 +1387,42 @@
                 "reportPanel"
             );
 
+
         const reportName =
             document.getElementById(
                 "reportName"
             );
+
 
         const reportSubject =
             document.getElementById(
                 "reportSubject"
             );
 
+
         const metrics =
             document.getElementById(
                 "metrics"
             );
+
 
         const finalWord =
             document.getElementById(
                 "finalWord"
             );
 
+
         const finalMark =
             document.getElementById(
                 "finalMark"
             );
+
 
         const reportRemark =
             document.getElementById(
                 "reportRemark"
             );
 
-
-        /*
-         * Fail safely if markup is incomplete.
-         */
 
         if (
             !reportPanel ||
@@ -1241,14 +1462,8 @@
 
 
             /*
-             * Every render gets a unique version.
-             *
-             * If the user changes:
-             *
-             * Shonali → Ajay → Ariba
-             *
-             * quickly, an older delayed render can
-             * no longer overwrite the latest one.
+             * Version prevents old timers from
+             * overwriting newer selections.
              */
 
             const version =
@@ -1258,6 +1473,7 @@
             clearTimeout(
                 reportRenderTimer
             );
+
 
             clearTimeout(
                 reportAnimationTimer
@@ -1269,6 +1485,7 @@
                 reportPanel.style.opacity =
                     "0.55";
 
+
                 reportPanel.style.transform =
                     "translateY(5px)";
 
@@ -1278,10 +1495,6 @@
             reportRenderTimer =
                 window.setTimeout(
                     () => {
-
-                        /*
-                         * Ignore obsolete render.
-                         */
 
                         if (
                             version !==
@@ -1312,7 +1525,7 @@
 
 
                         /*
-                         * Efficient DOM replacement.
+                         * Build metrics off-DOM.
                          */
 
                         const fragment =
@@ -1338,11 +1551,6 @@
                         );
 
 
-                        /*
-                         * Let the browser commit the
-                         * DOM update before transitioning.
-                         */
-
                         reportAnimationTimer =
                             window.setTimeout(
                                 () => {
@@ -1357,6 +1565,7 @@
 
                                     reportPanel.style.opacity =
                                         "";
+
 
                                     reportPanel.style.transform =
                                         "";
@@ -1417,11 +1626,6 @@
                 : "shonali";
 
 
-        /*
-         * Keep the select synchronized if the
-         * HTML happens to have an invalid value.
-         */
-
         if (
             select.value !==
             initialKey
@@ -1473,21 +1677,7 @@
 
 
     /* =====================================================
-       MESSAGE REVEAL SYSTEM
-       
-       Supports different versions of the HTML.
-
-       The current website can use any of these:
-
-       #messageButton
-       .message-button
-       [data-message-button]
-
-       And:
-
-       #classMessage
-       .class-message
-       [data-class-message]
+       MESSAGE REVEAL
     ===================================================== */
 
     function initMessageReveal() {
@@ -1516,26 +1706,15 @@
             );
 
 
-        /*
-         * If this page doesn't contain the
-         * message interaction, do nothing.
-         */
-
         if (
             !button ||
             !message
         ) {
+
             return;
+
         }
 
-
-        /*
-         * Start hidden only if it has the
-         * expected hidden class.
-         *
-         * We don't force display:none because
-         * that could break an existing design.
-         */
 
         button.addEventListener(
             "click",
@@ -1570,26 +1749,20 @@
                 );
 
 
-                /*
-                 * Accessibility.
-                 */
-
                 button.setAttribute(
                     "aria-expanded",
                     "true"
                 );
 
 
-                /*
-                 * Small celebration only.
-                 */
-
                 launchSmallConfetti();
 
 
                 /*
-                 * Move focus to the message
-                 * when possible.
+                 * Give the browser one frame to
+                 * apply the new class before scrolling.
+                 *
+                 * This is NOT a continuous animation loop.
                  */
 
                 if (
@@ -1607,10 +1780,11 @@
 
                                     block:
                                         "center"
+
                                 });
 
                             } catch (error) {
-                                /* Ignore. */
+                                /* Ignore safely. */
                             }
 
                         },
@@ -1626,7 +1800,7 @@
 
 
     /* =====================================================
-       TEACHER PAGE DETECTION
+       PAGE DETECTION
     ===================================================== */
 
     function getCurrentPage() {
@@ -1642,7 +1816,9 @@
             !path ||
             path === "index.html"
         ) {
+
             return "index";
+
         }
 
 
@@ -1655,18 +1831,14 @@
 
 
     /* =====================================================
-       BACK-TO-HOME SAFETY
-       
-       We don't add click handlers.
-       Normal <a href="index.html"> navigation
-       is faster and more reliable.
+       BACK TO HOME
     ===================================================== */
 
     function initBackHome() {
 
         const backButtons =
             document.querySelectorAll(
-                '.back-home, [data-back-home]'
+                ".back-home, [data-back-home]"
             );
 
 
@@ -1677,10 +1849,6 @@
 
         backButtons.forEach(
             button => {
-
-                /*
-                 * Accessibility enhancement only.
-                 */
 
                 if (
                     button.tagName ===
@@ -1701,13 +1869,11 @@
 
 
     /* =====================================================
-       INTERNAL HTML LINKS
-       
-       No network requests.
+       INTERNAL LINKS
+
        No fetch.
-       No validation loop.
-       
-       The browser handles these naturally.
+       No preload.
+       No network validation.
     ===================================================== */
 
     function prepareInternalLinks() {
@@ -1727,24 +1893,10 @@
             link => {
 
                 /*
-                 * Avoid opening teacher pages
-                 * in a new tab.
-                 */
-
-                if (
-                    link.hasAttribute(
-                        "target"
-                    )
-                ) {
-                    return;
-                }
-
-
-                /*
-                 * Nothing else is needed.
+                 * Intentionally do nothing.
                  *
-                 * Keeping navigation native is
-                 * one of the performance optimizations.
+                 * Native navigation is the fastest
+                 * and most reliable option.
                  */
 
             }
@@ -1755,9 +1907,6 @@
 
     /* =====================================================
        VISIBILITY MANAGEMENT
-       
-       Prevents delayed effects from firing
-       after the user leaves the tab.
     ===================================================== */
 
     function initVisibilityHandling() {
@@ -1774,14 +1923,10 @@
                     !pageIsVisible
                 ) {
 
-                    /*
-                     * Cancel page confetti
-                     * that hasn't started yet.
-                     */
-
                     clearTimeout(
                         confettiTimerA
                     );
+
 
                     clearTimeout(
                         confettiTimerB
@@ -1796,7 +1941,7 @@
 
 
     /* =====================================================
-       MEMORY / TIMER CLEANUP
+       TIMER CLEANUP
     ===================================================== */
 
     function cleanupTimers() {
@@ -1809,13 +1954,16 @@
                     confettiTimerA
                 );
 
+
                 clearTimeout(
                     confettiTimerB
                 );
 
+
                 clearTimeout(
                     reportRenderTimer
                 );
+
 
                 clearTimeout(
                     reportAnimationTimer
@@ -1832,11 +1980,11 @@
 
     /* =====================================================
        IMAGE PERFORMANCE
-       
-       Only adds lazy loading to images that
-       don't already specify a loading strategy.
-       
-       Hero/first-view images remain untouched.
+
+       Only lazy-load images outside the initial
+       viewport.
+
+       Existing loading attributes are respected.
     ===================================================== */
 
     function optimizeImages() {
@@ -1855,11 +2003,6 @@
         images.forEach(
             image => {
 
-                /*
-                 * Don't override an explicit
-                 * developer decision.
-                 */
-
                 if (
                     image.hasAttribute(
                         "loading"
@@ -1874,15 +2017,19 @@
 
 
                 /*
-                 * Images currently near the
-                 * viewport should load normally.
+                 * Keep hero images immediate.
                  */
 
                 if (
                     rect.top <
                     window.innerHeight * 1.2
                 ) {
+
+                    image.decoding =
+                        "async";
+
                     return;
+
                 }
 
 
@@ -1900,9 +2047,7 @@
 
 
     /* =====================================================
-       MOBILE GLASS OPTIMIZATION
-       
-       Only activates when the device is mobile.
+       MOBILE OPTIMIZATION
     ===================================================== */
 
     function optimizeMobileGlass() {
@@ -1912,12 +2057,6 @@
         }
 
 
-        /*
-         * Don't rewrite the entire stylesheet.
-         * Add one lightweight class so CSS can
-         * selectively reduce expensive effects.
-         */
-
         root.classList.add(
             "td-mobile"
         );
@@ -1926,18 +2065,67 @@
 
 
     /* =====================================================
-       PAGE INITIALIZATION
+       PREVENT OLD BODY SCROLL LOCK
+       
+       Some old versions of the website may have left
+       overflow:hidden on body/html.
+       
+       We only correct it if explicitly caused by an
+       old performance mode.
+    ===================================================== */
+
+    function normalizeScrollState() {
+
+        /*
+         * Do NOT force overflow:auto globally.
+         *
+         * That can break modals.
+         *
+         * Only remove accidental inline
+         * scroll-behavior settings.
+         */
+
+        if (
+            root.style.scrollBehavior ===
+            "auto"
+        ) {
+
+            if (
+                !prefersReducedMotion
+            ) {
+
+                root.style.scrollBehavior =
+                    "smooth";
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INITIALIZATION
     ===================================================== */
 
     function init() {
 
         /*
-         * First: make sure old systems are disabled.
+         * Performance setup FIRST.
          */
 
         addPerformanceStyles();
 
         disableLegacyEffects();
+
+
+        /*
+         * Scroll system.
+         */
+
+        initSilkyScroll();
+
+        normalizeScrollState();
 
 
         /*
@@ -1958,7 +2146,7 @@
 
 
         /*
-         * Performance.
+         * Performance optimizations.
          */
 
         optimizeImages();
@@ -1967,7 +2155,7 @@
 
 
         /*
-         * Tab visibility / cleanup.
+         * Tab / lifecycle handling.
          */
 
         initVisibilityHandling();
@@ -1978,8 +2166,7 @@
         /*
          * Celebration LAST.
          *
-         * This prevents confetti from competing
-         * with the initial layout.
+         * Never during first paint.
          */
 
         launchPageConfetti();
@@ -1988,7 +2175,7 @@
 
 
     /* =====================================================
-       START
+       START ONCE
     ===================================================== */
 
     if (
