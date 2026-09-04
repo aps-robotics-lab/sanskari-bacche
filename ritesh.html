@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color" content="#050b16">
+
 <meta
     name="description"
     content="A Teachers' Day tribute to Mr. Ritesh Tiwari from Class 10th I."
@@ -12,15 +14,31 @@
 
 <title>Mr. Ritesh Tiwari — Class 10th I</title>
 
+
+<!-- =========================================================
+     FONTS
+========================================================= -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
 
 <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
     rel="stylesheet"
 >
 
+
+<!-- =========================================================
+     CONFETTI
+========================================================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 
 <style>
 
@@ -35,11 +53,13 @@
 }
 
 html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
 }
 
 body {
+
     min-height: 100vh;
+
     overflow-x: hidden;
 
     color: #f4f5f7;
@@ -47,16 +67,19 @@ body {
     font-family: "DM Sans", sans-serif;
 
     background:
+
         radial-gradient(
             circle at 15% 15%,
             rgba(44, 83, 140, 0.20),
             transparent 30%
         ),
+
         radial-gradient(
             circle at 85% 70%,
             rgba(232, 189, 98, 0.075),
             transparent 28%
         ),
+
         linear-gradient(
             135deg,
             #030811 0%,
@@ -71,6 +94,7 @@ body {
         atmosphere 24s ease-in-out infinite alternate;
 }
 
+
 @keyframes atmosphere {
 
     0% {
@@ -84,22 +108,29 @@ body {
     100% {
         background-position: 20% 100%;
     }
+
 }
 
+
 body::before {
+
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
+
     z-index: 0;
 
     background:
+
         linear-gradient(
             rgba(255,255,255,0.012) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(255,255,255,0.012) 1px,
@@ -116,6 +147,7 @@ body::before {
         );
 }
 
+
 a {
     color: inherit;
     text-decoration: none;
@@ -131,7 +163,9 @@ button {
 ========================================================= */
 
 #particleCanvas {
+
     position: fixed;
+
     inset: 0;
 
     width: 100%;
@@ -150,6 +184,7 @@ button {
 ========================================================= */
 
 .cursor-glow {
+
     position: fixed;
 
     width: 280px;
@@ -162,6 +197,7 @@ button {
     z-index: 2;
 
     background:
+
         radial-gradient(
             circle,
             rgba(232,189,98,0.075),
@@ -178,6 +214,7 @@ button {
 ========================================================= */
 
 .page {
+
     position: relative;
 
     z-index: 3;
@@ -193,21 +230,28 @@ button {
 ========================================================= */
 
 .topbar {
+
     position: fixed;
 
     top: 20px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: min(1100px, 90%);
 
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 10px 12px 10px 16px;
+    padding:
+        10px
+        12px
+        10px
+        16px;
 
     border:
         1px solid
@@ -218,8 +262,11 @@ button {
     background:
         rgba(6,15,28,0.60);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
 
     z-index: 50;
 
@@ -228,7 +275,9 @@ button {
         rgba(0,0,0,0.16);
 }
 
+
 .brand {
+
     display: flex;
 
     align-items: center;
@@ -245,9 +294,13 @@ button {
     text-transform: uppercase;
 }
 
+
 .brand-dot {
+
     width: 7px;
     height: 7px;
+
+    flex: 0 0 auto;
 
     border-radius: 50%;
 
@@ -258,14 +311,18 @@ button {
         rgba(232,189,98,0.75);
 }
 
+
 .back-button {
+
     display: inline-flex;
 
     align-items: center;
 
     gap: 10px;
 
-    padding: 9px 16px;
+    padding:
+        9px
+        16px;
 
     border:
         1px solid
@@ -288,8 +345,11 @@ button {
         box-shadow .3s ease;
 }
 
+
 .back-button:hover {
-    transform: translateX(-3px);
+
+    transform:
+        translateX(-3px);
 
     background:
         rgba(232,189,98,0.12);
@@ -305,39 +365,54 @@ button {
 ========================================================= */
 
 .teacher-hero {
+
     min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    padding:
+        150px
+        0
+        100px;
+}
+
+
+/*
+   HERO LAYOUT
+*/
+
+.hero-grid {
+
+    width: 100%;
 
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(300px, .75fr);
+        minmax(0, 1.18fr)
+        minmax(300px, .62fr);
 
     align-items: center;
 
-    gap: clamp(45px, 7vw, 100px);
+    gap: 70px;
+}
 
-    padding:
-        150px 0
-        100px;
 
-    position: relative;
+.hero-content {
+
+    max-width: 760px;
 }
 
 
 /* =========================================================
-   HERO CONTENT
+   HERO TEXT
 ========================================================= */
 
-.hero-content {
-    position: relative;
-
-    z-index: 3;
-
-    max-width: 720px;
-}
-
 .eyebrow {
+
     display: flex;
 
     align-items: center;
@@ -362,7 +437,9 @@ button {
         revealUp .9s .1s ease forwards;
 }
 
+
 .eyebrow::before {
+
     content: "";
 
     width: 40px;
@@ -371,15 +448,21 @@ button {
     background: #d5b66e;
 }
 
+
 .teacher-hero h1 {
+
     font-family:
         "Playfair Display",
         serif;
 
     font-size:
-        clamp(4rem, 9vw, 8.5rem);
+        clamp(
+            4rem,
+            9vw,
+            8.5rem
+        );
 
-    line-height: .86;
+    line-height: .88;
 
     letter-spacing: -.055em;
 
@@ -391,7 +474,9 @@ button {
         revealUp 1s .25s ease forwards;
 }
 
+
 .teacher-hero h1 span {
+
     color: #e8bd62;
 
     text-shadow:
@@ -399,7 +484,9 @@ button {
         rgba(232,189,98,0.13);
 }
 
+
 .subject {
+
     margin-top: 34px;
 
     color: #d9dfe8;
@@ -409,7 +496,11 @@ button {
         sans-serif;
 
     font-size:
-        clamp(1rem, 2vw, 1.3rem);
+        clamp(
+            1rem,
+            2vw,
+            1.3rem
+        );
 
     letter-spacing: .01em;
 
@@ -419,7 +510,9 @@ button {
         revealUp .9s .42s ease forwards;
 }
 
+
 .hero-intro {
+
     max-width: 690px;
 
     margin-top: 18px;
@@ -436,7 +529,9 @@ button {
         revealUp .9s .58s ease forwards;
 }
 
+
 .hero-scroll {
+
     display: inline-flex;
 
     align-items: center;
@@ -458,32 +553,52 @@ button {
 
     animation:
         revealUp .9s .72s ease forwards;
+
+    transition:
+        color .3s ease;
 }
 
+
+.hero-scroll:hover {
+
+    color:
+        rgba(255,255,255,.75);
+}
+
+
 .hero-scroll span {
+
     color: #e8bd62;
 
     font-size: 1.1rem;
 
     animation:
-        floatArrow 1.8s ease-in-out infinite;
+        floatArrow
+        1.8s
+        ease-in-out
+        infinite;
 }
+
 
 @keyframes floatArrow {
 
-    0%,
-    100% {
-        transform: translateY(0);
+    0%,100% {
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(5px);
+        transform:
+            translateY(5px);
     }
+
 }
+
 
 @keyframes revealUp {
 
     from {
+
         opacity: 0;
 
         transform:
@@ -491,11 +606,13 @@ button {
     }
 
     to {
+
         opacity: 1;
 
         transform:
             translateY(0);
     }
+
 }
 
 
@@ -503,7 +620,8 @@ button {
    TEACHER PHOTO
 ========================================================= */
 
-.teacher-portrait-wrap {
+.teacher-photo-wrap {
+
     position: relative;
 
     width: min(100%, 390px);
@@ -513,60 +631,178 @@ button {
     opacity: 0;
 
     transform:
-        translateY(30px)
+        translateY(35px)
         scale(.97);
 
     animation:
-        portraitReveal
+        photoReveal
         1.1s
-        .35s
+        .38s
         cubic-bezier(.2,.8,.2,1)
         forwards;
 }
 
-@keyframes portraitReveal {
+
+@keyframes photoReveal {
 
     to {
+
         opacity: 1;
 
         transform:
             translateY(0)
             scale(1);
     }
+
 }
 
-.teacher-portrait {
-    position: relative;
 
-    aspect-ratio: 4 / 5;
+/*
+   Decorative golden orbit
+*/
 
-    overflow: hidden;
+.teacher-photo-wrap::before {
 
-    border-radius:
-        38px
-        38px
-        110px
-        38px;
+    content: "";
+
+    position: absolute;
+
+    inset:
+        -18px;
 
     border:
         1px solid
-        rgba(232,189,98,.34);
+        rgba(232,189,98,0.16);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(232,189,98,.12),
-            rgba(255,255,255,.035)
-        );
+    border-radius:
+        34px;
 
-    box-shadow:
-        0 35px 100px
-        rgba(0,0,0,.38),
-        0 0 70px
-        rgba(232,189,98,.075);
+    transform:
+        rotate(3deg);
+
+    pointer-events: none;
+
+    transition:
+        transform .8s ease;
 }
 
-.teacher-portrait::before {
+
+.teacher-photo-wrap::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -90px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,189,98,.11),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+.teacher-photo-wrap:hover::before {
+
+    transform:
+        rotate(-1deg)
+        scale(1.015);
+}
+
+
+/*
+   Actual image frame
+*/
+
+.teacher-photo {
+
+    position: relative;
+
+    aspect-ratio:
+        4 / 5;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius:
+        28px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    box-shadow:
+
+        0 35px 90px
+        rgba(0,0,0,.42),
+
+        0 0 70px
+        rgba(232,189,98,.055);
+
+    isolation: isolate;
+}
+
+
+.teacher-photo img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position:
+        center center;
+
+    filter:
+        saturate(.88)
+        contrast(1.04)
+        brightness(.94);
+
+    transform:
+        scale(1.015);
+
+    transition:
+        transform
+        1s
+        cubic-bezier(.2,.8,.2,1),
+
+        filter
+        .7s ease;
+}
+
+
+.teacher-photo:hover img {
+
+    transform:
+        scale(1.055);
+
+    filter:
+        saturate(.98)
+        contrast(1.05)
+        brightness(1);
+}
+
+
+/*
+   Image cinematic overlay
+*/
+
+.teacher-photo::after {
+
     content: "";
 
     position: absolute;
@@ -575,176 +811,108 @@ button {
 
     z-index: 2;
 
-    pointer-events: none;
-
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.16),
-            transparent 28%,
-            transparent 68%,
-            rgba(232,189,98,.08)
-        );
-}
 
-.teacher-portrait::after {
-    content: "";
-
-    position: absolute;
-
-    left: 12%;
-    right: 12%;
-    bottom: 0;
-
-    height: 30%;
-
-    z-index: 2;
-
-    pointer-events: none;
-
-    background:
         linear-gradient(
             to top,
-            rgba(3,8,17,.60),
-            transparent
+            rgba(3,8,17,.72),
+            transparent 42%
+        ),
+
+        linear-gradient(
+            135deg,
+            rgba(232,189,98,.08),
+            transparent 40%
         );
-}
 
-.teacher-portrait img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    object-position: center top;
-
-    filter:
-        saturate(.88)
-        contrast(1.04);
-
-    transform: scale(1.015);
-
-    transition:
-        transform .8s
-        cubic-bezier(.2,.8,.2,1),
-        filter .8s ease;
-}
-
-.teacher-portrait:hover img {
-    transform: scale(1.045);
-
-    filter:
-        saturate(1)
-        contrast(1.05);
+    pointer-events: none;
 }
 
 
-/* GOLD FRAME */
+/*
+   Photo label
+*/
 
-.portrait-frame {
+.photo-label {
+
     position: absolute;
 
-    inset: -12px;
+    left: 22px;
+    bottom: 20px;
 
-    z-index: -1;
-
-    border:
-        1px solid
-        rgba(232,189,98,.16);
-
-    border-radius:
-        44px
-        44px
-        116px
-        44px;
-
-    transform:
-        rotate(2deg);
-}
-
-.portrait-frame-two {
-    position: absolute;
-
-    inset: 12px -12px -12px 12px;
-
-    z-index: -2;
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
-    border-radius:
-        42px
-        42px
-        105px
-        42px;
-
-    transform:
-        rotate(-2deg);
-}
-
-
-/* PORTRAIT LABEL */
-
-.portrait-label {
-    position: absolute;
-
-    left: 24px;
-    bottom: 23px;
-
-    z-index: 5;
+    z-index: 4;
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 5px;
+    gap: 4px;
 }
 
-.portrait-label-small {
-    color:
-        rgba(255,255,255,.45);
 
-    font-size: .58rem;
+.photo-label-small {
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: .57rem;
 
     letter-spacing: .18em;
 
     text-transform: uppercase;
 }
 
-.portrait-label-name {
-    color: #f3d993;
+
+.photo-label-name {
+
+    color:
+        #f1d48c;
 
     font-family:
         "Playfair Display",
         serif;
 
-    font-size: 1.35rem;
-
-    line-height: 1;
+    font-size: 1.2rem;
 }
 
 
-/* =========================================================
-   PHOTO CORNER DETAIL
-========================================================= */
+/*
+   Small corner marker
+*/
 
-.portrait-index {
+.photo-corner {
+
     position: absolute;
 
-    top: -28px;
-    right: 5px;
+    top: 18px;
+    right: 18px;
+
+    z-index: 4;
+
+    width: 35px;
+    height: 35px;
+
+    border:
+        1px solid
+        rgba(232,189,98,.32);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     color:
-        rgba(232,189,98,.45);
+        #e8bd62;
 
-    font-size: .58rem;
+    font-size: .72rem;
 
-    letter-spacing: .2em;
+    background:
+        rgba(3,8,17,.34);
 
-    text-transform: uppercase;
+    backdrop-filter:
+        blur(8px);
 }
 
 
@@ -753,10 +921,14 @@ button {
 ========================================================= */
 
 .section {
-    padding: 115px 0;
+
+    padding:
+        115px 0;
 }
 
+
 .section-number {
+
     color: #d5b66e;
 
     font-size: .67rem;
@@ -766,7 +938,9 @@ button {
     text-transform: uppercase;
 }
 
+
 .section-title {
+
     margin-top: 15px;
 
     font-family:
@@ -774,18 +948,20 @@ button {
         serif;
 
     font-size:
-        clamp(2.8rem, 6vw, 5.2rem);
+        clamp(
+            2.8rem,
+            6vw,
+            5.2rem
+        );
 
     line-height: .98;
 
     letter-spacing: -.04em;
 }
 
-.section-title span {
-    color: #e8bd62;
-}
 
 .section-description {
+
     max-width: 620px;
 
     margin-top: 20px;
@@ -801,6 +977,7 @@ button {
 ========================================================= */
 
 .dialogues {
+
     display: grid;
 
     grid-template-columns:
@@ -814,7 +991,9 @@ button {
     margin-top: 55px;
 }
 
+
 .dialogue {
+
     position: relative;
 
     min-height: 180px;
@@ -840,17 +1019,25 @@ button {
             rgba(255,255,255,0.025)
         );
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
 
     transition:
+
         transform .45s
         cubic-bezier(.2,.8,.2,1),
+
         border-color .45s ease,
+
         box-shadow .45s ease;
 }
 
+
 .dialogue::before {
+
     content: "“";
 
     position: absolute;
@@ -872,7 +1059,9 @@ button {
     pointer-events: none;
 }
 
+
 .dialogue:hover {
+
     transform:
         translateY(-7px);
 
@@ -880,13 +1069,17 @@ button {
         rgba(232,189,98,0.28);
 
     box-shadow:
+
         0 20px 55px
         rgba(0,0,0,.25),
+
         0 0 35px
         rgba(232,189,98,.045);
 }
 
+
 .dialogue-text {
+
     position: relative;
 
     z-index: 2;
@@ -907,7 +1100,9 @@ button {
     line-height: 1.35;
 }
 
+
 .dialogue-index {
+
     position: absolute;
 
     top: 22px;
@@ -927,12 +1122,15 @@ button {
 ========================================================= */
 
 .message-section {
+
     padding:
         100px 0
         150px;
 }
 
+
 .message-wrap {
+
     position: relative;
 
     max-width: 900px;
@@ -959,8 +1157,11 @@ button {
             rgba(255,255,255,.025)
         );
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
 
     overflow: hidden;
 
@@ -969,7 +1170,9 @@ button {
         rgba(0,0,0,.23);
 }
 
+
 .message-wrap::before {
+
     content: "";
 
     position: absolute;
@@ -992,7 +1195,9 @@ button {
     pointer-events: none;
 }
 
+
 .message-label {
+
     position: relative;
 
     color: #d5b66e;
@@ -1004,7 +1209,9 @@ button {
     text-transform: uppercase;
 }
 
+
 .message {
+
     position: relative;
 
     margin-top: 30px;
@@ -1027,13 +1234,17 @@ button {
     letter-spacing: -.015em;
 }
 
+
 .message strong {
+
     color: #e8bd62;
 
     font-weight: 600;
 }
 
+
 .signature {
+
     position: relative;
 
     margin-top: 35px;
@@ -1054,6 +1265,7 @@ button {
 ========================================================= */
 
 .closing {
+
     position: relative;
 
     padding:
@@ -1063,7 +1275,9 @@ button {
     text-align: center;
 }
 
+
 .closing::before {
+
     content: "";
 
     position: absolute;
@@ -1089,7 +1303,9 @@ button {
     pointer-events: none;
 }
 
+
 .closing-small {
+
     position: relative;
 
     color: #d5b66e;
@@ -1101,7 +1317,9 @@ button {
     text-transform: uppercase;
 }
 
+
 .closing h2 {
+
     position: relative;
 
     max-width: 900px;
@@ -1125,11 +1343,15 @@ button {
     letter-spacing: -.045em;
 }
 
+
 .closing h2 span {
+
     color: #e8bd62;
 }
 
+
 .closing-sign {
+
     position: relative;
 
     margin-top: 35px;
@@ -1148,6 +1370,7 @@ button {
 ========================================================= */
 
 footer {
+
     padding:
         65px 0
         45px;
@@ -1159,7 +1382,9 @@ footer {
     text-align: center;
 }
 
+
 .footer-quote {
+
     max-width: 760px;
 
     margin: auto;
@@ -1180,7 +1405,9 @@ footer {
     line-height: 1.6;
 }
 
+
 .footer-sign {
+
     margin-top: 24px;
 
     color: #d5b66e;
@@ -1190,7 +1417,9 @@ footer {
     line-height: 1.7;
 }
 
+
 .footer-school {
+
     margin-top: 32px;
 
     color:
@@ -1209,18 +1438,23 @@ footer {
 ========================================================= */
 
 .reveal {
+
     opacity: 0;
 
     transform:
         translateY(32px);
 
     transition:
+
         opacity .85s ease,
+
         transform .85s
         cubic-bezier(.2,.8,.2,1);
 }
 
+
 .reveal.visible {
+
     opacity: 1;
 
     transform:
@@ -1232,23 +1466,28 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 820px) {
+@media (max-width: 850px) {
 
     .teacher-hero {
-        grid-template-columns: 1fr;
 
-        gap: 55px;
-
-        padding:
-            145px 0
-            95px;
+        padding-top: 145px;
     }
 
-    .teacher-portrait-wrap {
+
+    .hero-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 65px;
+    }
+
+
+    .teacher-photo-wrap {
+
         width:
             min(
-                100%,
-                360px
+                390px,
+                78vw
             );
 
         justify-self: center;
@@ -1256,105 +1495,171 @@ footer {
         order: 2;
     }
 
+
     .hero-content {
+
         order: 1;
     }
 
-    .teacher-hero h1 {
-        font-size:
-            clamp(
-                3.7rem,
-                17vw,
-                6.2rem
-            );
-    }
-
-    .section {
-        padding:
-            85px 0;
-    }
-
-    .dialogues {
-        grid-template-columns: 1fr;
-
-        gap: 14px;
-    }
-
-    .dialogue {
-        min-height: 160px;
-
-        padding: 27px;
-    }
-
-    .message-section {
-        padding:
-            80px 0
-            110px;
-    }
-
-    .message-wrap {
-        border-radius: 22px;
-    }
-
-    .closing {
-        padding:
-            100px 0
-            120px;
-    }
-
-    .closing::before {
-        width: 350px;
-        height: 350px;
-    }
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
+@media (max-width: 720px) {
 
-@media (max-width: 420px) {
+    .page {
+
+        width:
+            min(
+                92%,
+                520px
+            );
+    }
+
 
     .topbar {
+
         top: 12px;
 
         width: 92%;
     }
 
-    .brand {
-        font-size: .59rem;
+
+    .teacher-hero {
+
+        padding:
+            145px 0
+            85px;
     }
 
+
+    .teacher-hero h1 {
+
+        font-size:
+            clamp(
+                3.7rem,
+                17vw,
+                6rem
+            );
+    }
+
+
+    .teacher-photo-wrap {
+
+        width:
+            min(
+                350px,
+                82vw
+            );
+    }
+
+
+    .section {
+
+        padding:
+            85px 0;
+    }
+
+
+    .dialogues {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 14px;
+    }
+
+
+    .dialogue {
+
+        min-height:
+            160px;
+
+        padding:
+            27px;
+    }
+
+
+    .message-section {
+
+        padding:
+            80px 0
+            110px;
+    }
+
+
+    .message-wrap {
+
+        border-radius:
+            22px;
+    }
+
+
+    .closing {
+
+        padding:
+            100px 0
+            120px;
+    }
+
+
+    .closing::before {
+
+        width:
+            350px;
+
+        height:
+            350px;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .brand {
+
+        font-size:
+            .59rem;
+    }
+
+
     .back-button {
+
         padding:
             8px 12px;
 
-        font-size: .64rem;
+        font-size:
+            .64rem;
     }
+
 
     .teacher-hero h1 {
-        font-size: 3.55rem;
+
+        font-size:
+            3.55rem;
     }
 
-    .hero-intro {
-        font-size: .90rem;
+
+    .teacher-photo-wrap {
+
+        width:
+            88vw;
     }
 
-    .teacher-portrait-wrap {
-        width: 92%;
-    }
 
-    .teacher-portrait {
+    .teacher-photo {
+
         border-radius:
-            30px
-            30px
-            85px
-            30px;
+            23px;
     }
+
 
     .dialogue-text {
-        font-size: 1.15rem;
+
+        font-size:
+            1.15rem;
     }
+
 }
 
 
@@ -1365,23 +1670,41 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
     *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
+    *::before {
 
-        animation-iteration-count: 1 !important;
+        animation-duration:
+            .01ms !important;
 
-        transition-duration: .01ms !important;
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            .01ms !important;
     }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
+<!-- =========================================================
+     PARTICLE CANVAS
+========================================================= -->
+
 <canvas id="particleCanvas"></canvas>
+
+
+<!-- =========================================================
+     CURSOR
+========================================================= -->
 
 <div
     class="cursor-glow"
@@ -1389,9 +1712,9 @@ footer {
 </div>
 
 
-<!-- =====================================================
+<!-- =========================================================
      NAVIGATION
-===================================================== -->
+========================================================= -->
 
 <nav class="topbar">
 
@@ -1408,7 +1731,9 @@ footer {
         href="index.html"
         class="back-button"
     >
+
         ← Back to Home
+
     </a>
 
 </nav>
@@ -1417,101 +1742,117 @@ footer {
 <main class="page">
 
 
-<!-- =====================================================
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
 <section class="teacher-hero">
 
-    <div class="hero-content">
-
-        <div class="eyebrow">
-            02 / Mathematics
-        </div>
+    <div class="hero-grid">
 
 
-        <h1>
-            Mr.<br>
-            <span>Ritesh</span><br>
-            Tiwari
-        </h1>
+        <!-- =================================================
+             HERO TEXT
+        ================================================== -->
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+
+                02 / Mathematics
+
+            </div>
 
 
-        <div class="subject">
-            Mathematics · The Board-Battle Specialist
-        </div>
+            <h1>
+
+                Mr.<br>
+
+                <span>Ritesh</span><br>
+
+                Tiwari
+
+            </h1>
 
 
-        <p class="hero-intro">
-            Behind every warning about boards, every question
-            we were told to solve, and every moment of classroom
-            chaos was a teacher who genuinely wanted us to do
-            better than we thought we could.
-        </p>
+            <div class="subject">
+
+                Mathematics · The Board-Battle Specialist
+
+            </div>
 
 
-        <a
-            href="#dialogues"
-            class="hero-scroll"
-        >
-            Discover the memories
+            <p class="hero-intro">
 
-            <span>
-                ↓
-            </span>
+                Behind every warning about boards, every question
+                we were told to solve, and every moment of classroom
+                chaos was a teacher who genuinely wanted us to do
+                better than we thought we could.
 
-        </a>
-
-    </div>
+            </p>
 
 
-    <!-- =================================================
-         TEACHER PHOTO
-    ================================================== -->
-
-    <div class="teacher-portrait-wrap">
-
-        <div class="portrait-index">
-            02 / Teacher portrait
-        </div>
-
-
-        <div class="portrait-frame"></div>
-
-        <div class="portrait-frame-two"></div>
-
-
-        <div class="teacher-portrait">
-
-            <img
-                src="Images/ritesh-tiwari.webp"
-                alt="Mr. Ritesh Tiwari"
-                loading="eager"
+            <a
+                href="#dialogues"
+                class="hero-scroll"
             >
 
+                Discover the memories
 
-            <div class="portrait-label">
+                <span>↓</span>
 
-                <span class="portrait-label-small">
-                    Mathematics
-                </span>
+            </a>
 
-                <span class="portrait-label-name">
-                    Mr. Ritesh Tiwari
-                </span>
+        </div>
+
+
+        <!-- =================================================
+             TEACHER PHOTO
+        ================================================== -->
+
+        <div class="teacher-photo-wrap">
+
+            <div class="teacher-photo">
+
+
+                <img
+                    src="Images/file_0000000081a482089529e76b011b038c.png"
+                    alt="Mr. Ritesh Tiwari"
+                    loading="eager"
+                >
+
+
+                <div class="photo-corner">
+                    02
+                </div>
+
+
+                <div class="photo-label">
+
+                    <span class="photo-label-small">
+                        Mathematics
+                    </span>
+
+                    <span class="photo-label-name">
+                        Mr. Ritesh Tiwari
+                    </span>
+
+                </div>
+
 
             </div>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      ICONIC DIALOGUES
-===================================================== -->
+========================================================= -->
 
 <section
     class="section"
@@ -1521,7 +1862,9 @@ footer {
     <div class="reveal">
 
         <div class="section-number">
+
             01 / The legendary lines
+
         </div>
 
 
@@ -1607,16 +1950,18 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEARTFELT MESSAGE
-===================================================== -->
+========================================================= -->
 
 <section class="message-section">
 
     <div class="message-wrap reveal">
 
         <div class="message-label">
+
             02 / From 10th I
+
         </div>
 
 
@@ -1629,7 +1974,6 @@ footer {
 
             Behind the strict warnings is a teacher who
             genuinely cares about our boards and our future.
-
             Thank you for making math bearable and for all
             the unforgettable classroom moments.
 
@@ -1637,7 +1981,9 @@ footer {
 
 
         <div class="signature">
+
             — With gratitude, Class 10th I
+
         </div>
 
     </div>
@@ -1645,14 +1991,16 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      CLOSING
-===================================================== -->
+========================================================= -->
 
 <section class="closing reveal">
 
     <div class="closing-small">
+
         03 / Our final answer
+
     </div>
 
 
@@ -1670,17 +2018,16 @@ footer {
 
     <div class="closing-sign">
 
-        And somehow, we'll remember
-        the lessons beyond the classroom.
+        And somehow, we'll remember the lessons beyond the classroom.
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
@@ -1721,6 +2068,7 @@ footer {
 
 const revealObserver =
     new IntersectionObserver(
+
         (entries, observer) => {
 
             entries.forEach(entry => {
@@ -1729,9 +2077,11 @@ const revealObserver =
                     return;
                 }
 
+
                 entry.target.classList.add(
                     "visible"
                 );
+
 
                 observer.unobserve(
                     entry.target
@@ -1740,12 +2090,14 @@ const revealObserver =
             });
 
         },
+
         {
             threshold: 0.12,
 
             rootMargin:
                 "0px 0px -40px 0px"
         }
+
     );
 
 
@@ -1753,7 +2105,9 @@ document
     .querySelectorAll(".reveal")
     .forEach(element => {
 
-        revealObserver.observe(element);
+        revealObserver.observe(
+            element
+        );
 
     });
 
@@ -1782,7 +2136,9 @@ if (
 
 
     window.addEventListener(
+
         "pointermove",
+
         event => {
 
             mouseX =
@@ -1792,9 +2148,11 @@ if (
                 event.clientY;
 
         },
+
         {
             passive: true
         }
+
     );
 
 
@@ -1834,13 +2192,14 @@ if (
 
 
 /* =========================================================
-   LIGHTWEIGHT PARTICLES
+   PARTICLE SYSTEM
 ========================================================= */
 
 const canvas =
     document.getElementById(
         "particleCanvas"
     );
+
 
 const ctx =
     canvas.getContext(
@@ -1854,14 +2213,11 @@ const ctx =
 let particles = [];
 
 let canvasWidth = 0;
+
 let canvasHeight = 0;
 
 let animationFrame;
 
-
-/* =========================================================
-   RESIZE
-========================================================= */
 
 function resizeCanvas() {
 
@@ -1908,10 +2264,6 @@ function resizeCanvas() {
 }
 
 
-/* =========================================================
-   CREATE PARTICLES
-========================================================= */
-
 function createParticles() {
 
     const mobile =
@@ -1919,9 +2271,7 @@ function createParticles() {
 
 
     const count =
-        mobile
-            ? 30
-            : 52;
+        mobile ? 30 : 52;
 
 
     particles =
@@ -1929,6 +2279,7 @@ function createParticles() {
             {
                 length: count
             },
+
             () => ({
 
                 x:
@@ -1959,14 +2310,11 @@ function createParticles() {
                     .06
 
             })
+
         );
 
 }
 
-
-/* =========================================================
-   ANIMATE PARTICLES
-========================================================= */
 
 function animateParticles() {
 
@@ -1988,16 +2336,12 @@ function animateParticles() {
             particles[i];
 
 
-        p.y -=
-            p.speed;
+        p.y -= p.speed;
 
-        p.x +=
-            p.drift;
+        p.x += p.drift;
 
 
-        if (
-            p.y < -5
-        ) {
+        if (p.y < -5) {
 
             p.y =
                 canvasHeight + 5;
@@ -2009,9 +2353,7 @@ function animateParticles() {
         }
 
 
-        if (
-            p.x < -5
-        ) {
+        if (p.x < -5) {
 
             p.x =
                 canvasWidth + 5;
@@ -2019,8 +2361,7 @@ function animateParticles() {
         }
 
 
-        if (
-            p.x >
+        if (p.x >
             canvasWidth + 5
         ) {
 
@@ -2042,12 +2383,7 @@ function animateParticles() {
 
 
         ctx.fillStyle =
-            `rgba(
-                232,
-                189,
-                98,
-                ${p.alpha}
-            )`;
+            `rgba(232,189,98,${p.alpha})`;
 
 
         ctx.fill();
@@ -2062,10 +2398,6 @@ function animateParticles() {
 
 }
 
-
-/* =========================================================
-   START PARTICLES
-========================================================= */
 
 resizeCanvas();
 
@@ -2083,7 +2415,7 @@ animateParticles();
 
 
 /* =========================================================
-   TEACHERS' DAY CELEBRATION
+   TEACHERS' DAY CONFETTI
 ========================================================= */
 
 window.addEventListener(
@@ -2094,91 +2426,84 @@ window.addEventListener(
             typeof confetti !==
             "function"
         ) {
-
             return;
-
         }
 
 
-        const colors = [
+        setTimeout(() => {
 
-            "#e8bd62",
-            "#f5dc9b",
-            "#ffffff",
-            "#9db9d9"
+            confetti({
 
-        ];
+                particleCount: 65,
 
+                spread: 65,
 
-        setTimeout(
-            () => {
+                startVelocity: 25,
 
-                confetti({
+                gravity: .85,
 
-                    particleCount: 65,
+                scalar: .78,
 
-                    spread: 65,
+                ticks: 180,
 
-                    startVelocity: 25,
+                colors: [
+                    "#e8bd62",
+                    "#f5dc9b",
+                    "#ffffff",
+                    "#9db9d9"
+                ],
 
-                    gravity: .85,
+                origin: {
+                    x: .08,
+                    y: .48
+                }
 
-                    scalar: .78,
-
-                    ticks: 180,
-
-                    colors,
-
-                    origin: {
-                        x: .08,
-                        y: .48
-                    }
-
-                });
+            });
 
 
-                confetti({
+            confetti({
 
-                    particleCount: 65,
+                particleCount: 65,
 
-                    spread: 65,
+                spread: 65,
 
-                    startVelocity: 25,
+                startVelocity: 25,
 
-                    gravity: .85,
+                gravity: .85,
 
-                    scalar: .78,
+                scalar: .78,
 
-                    ticks: 180,
+                ticks: 180,
 
-                    colors,
+                colors: [
+                    "#e8bd62",
+                    "#f5dc9b",
+                    "#ffffff",
+                    "#9db9d9"
+                ],
 
-                    origin: {
-                        x: .92,
-                        y: .48
-                    }
+                origin: {
+                    x: .92,
+                    y: .48
+                }
 
-                });
+            });
 
-            },
-            650
-        );
+        }, 650);
 
     }
 );
 
 
 /* =========================================================
-   TAB VISIBILITY
+   PAUSE PARTICLES WHEN TAB IS HIDDEN
 ========================================================= */
 
 document.addEventListener(
     "visibilitychange",
     () => {
 
-        if (
-            document.hidden
-        ) {
+        if (document.hidden) {
 
             cancelAnimationFrame(
                 animationFrame
@@ -2196,13 +2521,14 @@ document.addEventListener(
 </script>
 
 
-<!-- =====================================================
-     MAIN.JS
-     Keep this LAST.
-     Your smooth-scroll system belongs here.
-===================================================== -->
+<!-- =========================================================
+     SHARED MAIN JS
+     Keep this connected.
+     Put smooth-scroll/common website behaviour here.
+========================================================= -->
 
 <script src="js/main.js"></script>
+
 
 </body>
 </html>
