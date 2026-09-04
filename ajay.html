@@ -1,10 +1,24 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050b16">
-<meta name="description" content="A Teachers' Day tribute to Mr. Ajay Trivedi from Class 10th I, Army Public School, Lal Bahadur Shastri Marg."><title>Mr. Ajay Trivedi — Class 10th I</title><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script><style>
+<meta name="description" content="A Teachers' Day tribute to Mr. Ajay Trivedi from Class 10th I, Army Public School, Lal Bahadur Shastri Marg.">
+
+<title>Mr. Ajay Trivedi — Class 10th I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<!-- Smooth scrolling library used by the previous main.js -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+<style>
 
 /* =========================================================
    RESET
@@ -17,7 +31,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {
@@ -111,11 +125,12 @@ body::before {
 
 
 /* =========================================================
-   CANVAS
+   PARTICLES
 ========================================================= */
 
 #particleCanvas {
     position: fixed;
+
     inset: 0;
 
     width: 100%;
@@ -130,7 +145,7 @@ body::before {
 
 
 /* =========================================================
-   CURSOR LIGHT
+   CURSOR GLOW
 ========================================================= */
 
 .cursor-glow {
@@ -163,6 +178,7 @@ body::before {
 
 .page {
     position: relative;
+
     z-index: 3;
 
     width: min(1120px, 90%);
@@ -172,7 +188,7 @@ body::before {
 
 
 /* =========================================================
-   TOP NAV
+   NAV
 ========================================================= */
 
 .topbar {
@@ -189,6 +205,7 @@ body::before {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 15px;
@@ -225,6 +242,7 @@ body::before {
     display: inline-flex;
 
     align-items: center;
+
     gap: 9px;
 
     padding:
@@ -297,32 +315,37 @@ body::before {
 .hero {
     min-height: 100vh;
 
-    display: flex;
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(320px, .85fr);
 
     align-items: center;
+
+    gap: 70px;
 
     position: relative;
 
     padding:
-        150px
+        145px
         0
         100px;
 }
 
 .hero-content {
+    max-width: 720px;
+
     position: relative;
 
-    z-index: 5;
-
-    width: 64%;
-
-    max-width: 720px;
+    z-index: 4;
 }
 
 .eyebrow {
     display: flex;
 
     align-items: center;
+
     gap: 12px;
 
     margin-bottom: 28px;
@@ -351,6 +374,7 @@ body::before {
     content: "";
 
     width: 38px;
+
     height: 1px;
 
     background:
@@ -367,7 +391,7 @@ body::before {
         serif;
 
     font-size:
-        clamp(3.8rem, 8vw, 7.5rem);
+        clamp(3.8rem, 8vw, 7.6rem);
 
     line-height: .91;
 
@@ -441,6 +465,7 @@ body::before {
     display: flex;
 
     align-items: center;
+
     gap: 24px;
 
     margin-top: 40px;
@@ -459,6 +484,7 @@ body::before {
     display: inline-flex;
 
     align-items: center;
+
     gap: 11px;
 
     padding:
@@ -514,237 +540,242 @@ body::before {
         uppercase;
 }
 
-
-/* =========================================================
-   TEACHER PORTRAIT
-========================================================= */
-
-.teacher-portrait {
-    position: absolute;
-
-    z-index: 4;
-
-    right: 0;
-    top: 50%;
-
-    width: 350px;
-    height: 470px;
-
-    transform:
-        translateY(-45%)
-        rotate(2deg);
-
-    border-radius:
-        180px
-        180px
-        34px
-        34px;
-
-    padding: 9px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(232,189,98,0.72),
-            rgba(232,189,98,0.12) 42%,
-            rgba(255,255,255,0.06)
-        );
-
-    box-shadow:
-        0 40px 100px
-        rgba(0,0,0,0.42),
-        0 0 70px
-        rgba(232,189,98,0.08);
-
-    opacity: 0;
-
-    animation:
-        portraitReveal
-        1.1s
-        .35s
-        cubic-bezier(.2,.8,.2,1)
-        forwards;
-}
-
-.teacher-portrait::before {
-    content: "";
-
-    position: absolute;
-
-    inset: -22px;
-
-    border:
-        1px solid
-        rgba(232,189,98,0.13);
-
-    border-radius:
-        200px
-        200px
-        50px
-        50px;
-
-    pointer-events: none;
-
-    animation:
-        portraitPulse
-        5s
-        ease-in-out
-        infinite;
-}
-
-.teacher-portrait::after {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    right: -55px;
-    top: 20%;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(232,189,98,0.14),
-            transparent 70%
-        );
-
-    pointer-events: none;
-}
-
-.teacher-portrait img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    object-position: center top;
-
-    border-radius:
-        172px
-        172px
-        26px
-        26px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #17263b,
-            #07101d
-        );
-
-    filter:
-        saturate(.92)
-        contrast(1.03);
-
-    transition:
-        transform .7s cubic-bezier(.2,.8,.2,1),
-        filter .5s ease;
-}
-
-.teacher-portrait:hover img {
-    transform:
-        scale(1.025);
-
-    filter:
-        saturate(1)
-        contrast(1.05);
-}
-
-.portrait-label {
-    position: absolute;
-
-    right: -30px;
-    bottom: 30px;
-
-    z-index: 5;
-
-    padding:
-        11px
-        16px;
-
-    border:
-        1px solid
-        rgba(232,189,98,0.25);
-
-    border-radius: 100px;
-
-    background:
-        rgba(5,13,25,0.76);
-
-    backdrop-filter:
-        blur(16px);
-
-    -webkit-backdrop-filter:
-        blur(16px);
-
-    color: #e8c879;
-
-    font-size: .62rem;
-
-    letter-spacing: .13em;
-
-    text-transform: uppercase;
-
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.22);
-}
-
-@keyframes portraitReveal {
+@keyframes revealUp {
 
     from {
         opacity: 0;
 
         transform:
-            translateY(-35%)
-            translateX(35px)
-            rotate(5deg)
-            scale(.96);
+            translateY(28px);
     }
 
     to {
         opacity: 1;
 
         transform:
-            translateY(-45%)
-            translateX(0)
-            rotate(2deg)
-            scale(1);
-    }
-}
-
-@keyframes portraitPulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-
-        opacity: .65;
-    }
-
-    50% {
-        transform: scale(1.025);
-
-        opacity: 1;
+            translateY(0);
     }
 }
 
 
 /* =========================================================
-   HERO ORBIT
+   TEACHER IMAGE
+========================================================= */
+
+.teacher-portrait {
+    position: relative;
+
+    width: min(390px, 100%);
+
+    justify-self: end;
+
+    opacity: 0;
+
+    transform:
+        translateY(35px)
+        scale(.97);
+
+    animation:
+        portraitReveal
+        1.2s
+        .35s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+@keyframes portraitReveal {
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.portrait-frame {
+    position: relative;
+
+    padding: 9px;
+
+    border:
+        1px solid
+        rgba(232,189,98,0.24);
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(232,189,98,0.18),
+            rgba(255,255,255,0.035)
+        );
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,0.42);
+
+    overflow: hidden;
+}
+
+.portrait-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 15%,
+            rgba(255,255,255,0.07) 48%,
+            transparent 68%
+        );
+
+    transform:
+        translateX(-100%);
+
+    animation:
+        portraitShine
+        5s
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes portraitShine {
+
+    0%,
+    45% {
+        transform:
+            translateX(-100%);
+    }
+
+    70%,
+    100% {
+        transform:
+            translateX(100%);
+    }
+}
+
+.teacher-image {
+    display: block;
+
+    width: 100%;
+
+    height: 560px;
+
+    object-fit: cover;
+
+    object-position: center 18%;
+
+    border-radius: 25px;
+
+    filter:
+        saturate(.86)
+        contrast(1.03)
+        brightness(.91);
+
+    transition:
+        transform .8s cubic-bezier(.2,.8,.2,1),
+        filter .6s ease;
+}
+
+.teacher-portrait:hover .teacher-image {
+    transform:
+        scale(1.025);
+
+    filter:
+        saturate(.98)
+        contrast(1.04)
+        brightness(.98);
+}
+
+.portrait-caption {
+    position: absolute;
+
+    left: 27px;
+    right: 27px;
+    bottom: 27px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 19px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 18px;
+
+    background:
+        rgba(3,8,17,.66);
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+}
+
+.portrait-caption small {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        rgba(255,255,255,0.45);
+
+    font-size: .57rem;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+}
+
+.portrait-caption strong {
+    color: #f1d38b;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+}
+
+.portrait-mark {
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: .58rem;
+
+    letter-spacing: .13em;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ORBIT
 ========================================================= */
 
 .hero-orbit {
     position: absolute;
 
     right: -100px;
-    bottom: 8%;
+    bottom: 5%;
 
     width: 360px;
     height: 360px;
@@ -762,6 +793,8 @@ body::before {
         24s
         linear
         infinite;
+
+    pointer-events: none;
 }
 
 .hero-orbit::before,
@@ -803,7 +836,8 @@ body::before {
 
 .section {
     padding:
-        120px 0;
+        120px
+        0;
 }
 
 .section-header {
@@ -912,6 +946,7 @@ body::before {
     display: flex;
 
     justify-content: space-between;
+
     align-items: flex-start;
 
     gap: 20px;
@@ -972,7 +1007,8 @@ body::before {
     gap: 18px;
 
     padding:
-        30px 0;
+        30px
+        0;
 
     border-bottom:
         1px solid
@@ -1043,7 +1079,7 @@ body::before {
 
 
 /* =========================================================
-   HINDI QUOTE
+   HINDI
 ========================================================= */
 
 .hindi-section {
@@ -1244,7 +1280,9 @@ body::before {
 
 .message-section {
     padding:
-        135px 0 115px;
+        135px
+        0
+        115px;
 }
 
 .message-wrap {
@@ -1289,7 +1327,9 @@ body::before {
     max-width: 730px;
 
     margin:
-        30px auto 0;
+        30px
+        auto
+        0;
 
     color: #a4afbf;
 
@@ -1317,13 +1357,14 @@ body::before {
 
 
 /* =========================================================
-   EMOTIONAL BUTTON
+   BUTTON
 ========================================================= */
 
 .reveal-message {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 12px;
@@ -1331,7 +1372,8 @@ body::before {
     margin-top: 38px;
 
     padding:
-        15px 23px;
+        15px
+        23px;
 
     border:
         1px solid
@@ -1346,7 +1388,7 @@ body::before {
 
     cursor: pointer;
 
-    font: inherit;
+    font-family: inherit;
 
     transition:
         transform .3s ease,
@@ -1385,7 +1427,9 @@ body::before {
     max-width: 760px;
 
     margin:
-        25px auto 0;
+        25px
+        auto
+        0;
 
     padding:
         0 25px;
@@ -1469,7 +1513,9 @@ body::before {
     position: relative;
 
     padding:
-        100px 0 150px;
+        100px
+        0
+        150px;
 
     text-align: center;
 }
@@ -1516,7 +1562,9 @@ body::before {
     max-width: 900px;
 
     margin:
-        22px auto 0;
+        22px
+        auto
+        0;
 
     font-family:
         "Playfair Display",
@@ -1555,7 +1603,9 @@ body::before {
 
 footer {
     padding:
-        60px 0 45px;
+        60px
+        0
+        45px;
 
     border-top:
         1px solid
@@ -1632,56 +1682,32 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
 
-    .hero-content {
-        width: 100%;
-        max-width: 650px;
+    .hero {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+        padding:
+            145px
+            0
+            80px;
     }
 
     .teacher-portrait {
-        width: 250px;
-        height: 340px;
+        justify-self: center;
 
-        right: -55px;
-        top: auto;
-        bottom: 50px;
-
-        opacity: .26;
-
-        transform:
-            rotate(3deg);
+        width: min(390px, 88vw);
     }
 
-    @keyframes portraitReveal {
-
-        from {
-            opacity: 0;
-
-            transform:
-                translateX(35px)
-                rotate(6deg)
-                scale(.96);
-        }
-
-        to {
-            opacity: .26;
-
-            transform:
-                translateX(0)
-                rotate(3deg)
-                scale(1);
-        }
+    .teacher-image {
+        height: 520px;
     }
 
     .hero-orbit {
-        right: -150px;
-        opacity: .25;
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 7;
+        right: -130px;
+        bottom: 20%;
     }
 }
 
@@ -1702,7 +1728,8 @@ footer {
 
     .home-button {
         padding:
-            9px 13px;
+            9px
+            13px;
 
         font-size: .65rem;
     }
@@ -1711,20 +1738,9 @@ footer {
         display: none;
     }
 
-    .hero {
-        padding:
-            145px 0 80px;
-
-        min-height: 100svh;
-    }
-
     .hero h1 {
         font-size:
             clamp(3.6rem, 17vw, 6.3rem);
-    }
-
-    .hero-description {
-        max-width: 500px;
     }
 
     .hero-bottom {
@@ -1735,43 +1751,19 @@ footer {
         gap: 16px;
     }
 
-    .teacher-portrait {
-        width: 190px;
-        height: 260px;
+    .hero-orbit {
+        width: 240px;
+        height: 240px;
 
-        right: -28px;
-        bottom: 24px;
+        right: -130px;
 
-        opacity: .18;
-
-        border-radius:
-            100px
-            100px
-            24px
-            24px;
-    }
-
-    .teacher-portrait img {
-        border-radius:
-            94px
-            94px
-            18px
-            18px;
-    }
-
-    .portrait-label {
-        right: 5px;
-        bottom: 16px;
-
-        font-size: .52rem;
-
-        padding:
-            8px 11px;
+        bottom: 6%;
     }
 
     .section {
         padding:
-            85px 0;
+            85px
+            0;
     }
 
     .dialogue-stage,
@@ -1786,7 +1778,8 @@ footer {
         gap: 10px;
 
         padding:
-            26px 0;
+            26px
+            0;
     }
 
     .quote-item::before {
@@ -1797,24 +1790,30 @@ footer {
 
     .message-section {
         padding:
-            90px 0 80px;
+            90px
+            0
+            80px;
     }
 
     .final-section {
         padding:
-            80px 0 110px;
+            80px
+            0
+            110px;
     }
 
     .final-glow {
         width: 360px;
         height: 360px;
     }
+
+    .portrait-caption {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
 
 @media (max-width: 420px) {
 
@@ -1824,23 +1823,6 @@ footer {
 
     .hero-subtitle {
         font-size: .95rem;
-    }
-
-    .hero-description {
-        font-size: .86rem;
-    }
-
-    .teacher-portrait {
-        width: 150px;
-        height: 215px;
-
-        right: -24px;
-
-        opacity: .14;
-    }
-
-    .portrait-label {
-        display: none;
     }
 
     .quote-text {
@@ -1861,6 +1843,15 @@ footer {
         padding-left: 0;
         padding-right: 0;
     }
+
+    .teacher-image {
+        height: 470px;
+    }
+
+    .portrait-caption strong {
+        font-size: .95rem;
+    }
+
 }
 
 
@@ -1874,11 +1865,8 @@ footer {
     *::before,
     *::after {
         animation-duration: .01ms !important;
-
         animation-iteration-count: 1 !important;
-
         scroll-behavior: auto !important;
-
         transition-duration: .01ms !important;
     }
 
@@ -1886,353 +1874,509 @@ footer {
     .cursor-glow {
         display: none;
     }
+
 }
 
-</style></head><body><canvas id="particleCanvas"></canvas>
+</style>
+</head>
+
+
+<body>
+
+<canvas id="particleCanvas"></canvas>
 
 <div
     class="cursor-glow"
     id="cursorGlow">
-</div><!-- =====================================================
+</div>
+
+
+<!-- =====================================================
      NAVIGATION
-===================================================== --><nav class="topbar"><a
-    href="index.html"
-    class="home-button"
-    aria-label="Back to Home"
->
+===================================================== -->
 
-    <span class="home-arrow">←</span>
+<nav class="topbar">
 
-    <span>
-        Back to Home
-    </span>
-
-</a>
-
-<div class="nav-title">
-    Class 10th I · Teachers' Day
-</div>
-
-</nav><main class="page"><!-- =====================================================
-     HERO
-===================================================== --><section class="hero"><div class="hero-content">
-
-    <div class="eyebrow">
-        The Hindi classroom
-    </div>
-
-    <h1>
-        Mr. Ajay<br>
-        <span class="gold">Trivedi.</span>
-    </h1>
-
-    <p class="hero-subtitle">
-        Hindi · Sparsh
-    </p>
-
-    <p class="hero-description">
-        A little strict, always connected, and somehow
-        able to turn an ordinary Hindi period into a
-        collection of stories we would remember.
-    </p>
-
-    <div class="hero-bottom">
-
-        <a
-            href="#dialogues"
-            class="scroll-button"
-        >
-            Enter the story
-            <span>↓</span>
-        </a>
-
-        <div class="hero-note">
-            A tribute from 10th I
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =================================================
-     TEACHER IMAGE
-================================================= -->
-
-<div class="teacher-portrait">
-
-    <img
-        src="Images/ajay-trivedi.webp"
-        alt="Mr. Ajay Trivedi"
-        loading="eager"
-        decoding="async"
+    <a
+        href="index.html"
+        class="home-button"
+        aria-label="Back to Home"
     >
-
-    <div class="portrait-label">
-        Our Hindi Teacher
-    </div>
-
-</div>
-
-
-<div class="hero-orbit"></div>
-
-</section><!-- =====================================================
-     ICONIC DIALOGUES
-===================================================== --><section
-    class="section"
-    id="dialogues"
-><div class="section-header reveal">
-
-    <div class="section-number">
-        01 / Things we will remember
-    </div>
-
-    <h2 class="section-title">
-        The dialogues<br>
-        that became memories.
-    </h2>
-
-    <p class="section-description">
-        Every teacher leaves behind lessons.
-        Some leave behind sentences that the class
-        can repeat perfectly years later.
-    </p>
-
-</div>
-
-
-<div class="dialogue-stage reveal">
-
-    <div class="dialogue-top">
-
-        <div>
-
-            <div class="dialogue-label">
-                Iconic Dialogues
-            </div>
-
-            <div class="dialogue-small">
-                Mr. Ajay Trivedi · Hindi
-            </div>
-
-        </div>
-
-        <div class="dialogue-mark">
-            10th I archive
-        </div>
-
-    </div>
-
-
-    <div class="quote-list">
-
-        <div class="quote-item">
-
-            <div class="quote-number">
-                01
-            </div>
-
-            <div class="quote-text">
-                “Devi bataiye mat karo..?”
-            </div>
-
-        </div>
-
-
-        <div class="quote-item">
-
-            <div class="quote-number">
-                02
-            </div>
-
-            <div class="quote-text">
-                “Didi aur bhaisahab.”
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section><!-- =====================================================
-     POETRY
-===================================================== --><section class="section hindi-section"><div class="section-header reveal">
-
-    <div class="section-number">
-        02 / From the class
-    </div>
-
-    <h2 class="section-title">
-        Some lessons<br>
-        become poetry.
-    </h2>
-
-    <p class="section-description">
-        Hindi was never only about chapters and answers.
-        Sometimes, the feelings we couldn't say directly
-        found their way into words.
-    </p>
-
-</div>
-
-
-<div class="hindi-card reveal">
-
-    <div class="hindi-tag">
-        A few words from 10th I
-    </div>
-
-    <div class="hindi-poem">
-
-        Vo humein aage badhna sikhate hai,<br>
-        Hame hamari manzil tak pahunchate hai<br>
-        Vo jinhe ham apne doosri maat pita kehte hai<br>
-        Vo hamare Teacher<br>
-        Kehlate hai
-
-    </div>
-
-    <div class="hindi-author">
-        Swastit Tiwari
-    </div>
-
-</div>
-
-
-<div class="wish-card reveal">
-
-    <div class="wish-poem">
-
-        “ज्ञान की ज्योति से राह दिखाते हैं आप,<br>
-        हर शब्द को सुंदर बनाते हैं आप।<br>
-        शिक्षक दिवस की हार्दिक शुभकामनाएँ! ”
-
-    </div>
-
-    <div class="wish-author">
-        Aarsh Sukla
-    </div>
-
-</div>
-
-</section><!-- =====================================================
-     HEARTFELT MESSAGE
-===================================================== --><section class="message-section"><div class="message-wrap reveal">
-
-    <div class="message-label">
-        03 / What we really wanted to say
-    </div>
-
-    <h2 class="message-title">
-        Strict sometimes.<br>
-        <span>Unforgettable always.</span>
-    </h2>
-
-    <p class="message-text">
-        Thank you for connecting with us so effortlessly.
-        Your Hindi classes were never just about completing
-        a chapter. They were a mixture of discipline,
-        humour, conversations, and little moments that
-        made the classroom feel alive.
-    </p>
-
-    <p class="message-line">
-        You taught us words from books,
-        but you also gave us lessons beyond them.
-    </p>
-
-
-    <button
-        class="reveal-message"
-        id="messageButton"
-        type="button"
-    >
+        <span class="home-arrow">←</span>
 
         <span>
-            A message from Class 10th I
+            Back to Home
         </span>
+    </a>
 
-        <span
-            class="button-icon"
-            id="buttonIcon"
-        >
-            +
-        </span>
+    <div class="nav-title">
+        Class 10th I · Teachers' Day
+    </div>
 
-    </button>
+</nav>
 
 
-    <div
-        class="hidden-message"
-        id="hiddenMessage"
-        aria-hidden="true"
-    >
+<main class="page">
 
-        <div class="hidden-message-inner">
 
-            <p>
-                Sir, years from now we may not remember
-                every answer we wrote in our notebooks,
-                but we will remember the teachers who made
-                those school days feel meaningful.
-                Thank you for being one of them.
-            </p>
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-            <div class="hidden-message-sign">
-                With respect · Class 10th I
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            The Hindi classroom
+        </div>
+
+        <h1>
+            Mr. Ajay<br>
+            <span class="gold">Trivedi.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Hindi · Sparsh
+        </p>
+
+        <p class="hero-description">
+            A little strict, always connected, and somehow
+            able to turn an ordinary Hindi period into a
+            collection of stories we would remember.
+        </p>
+
+        <div class="hero-bottom">
+
+            <a
+                href="#dialogues"
+                class="scroll-button"
+            >
+                Enter the story
+                <span>↓</span>
+            </a>
+
+            <div class="hero-note">
+                A tribute from 10th I
             </div>
 
         </div>
 
     </div>
 
-</div>
 
-</section><!-- =====================================================
+    <!-- TEACHER IMAGE -->
+
+    <div class="teacher-portrait">
+
+        <div class="portrait-frame">
+
+            <img
+                src="Images/ajay-trivedi.webp"
+                alt="Mr. Ajay Trivedi"
+                class="teacher-image"
+                loading="eager"
+            >
+
+            <div class="portrait-caption">
+
+                <div>
+                    <small>Our teacher</small>
+
+                    <strong>
+                        Mr. Ajay Trivedi
+                    </strong>
+                </div>
+
+                <div class="portrait-mark">
+                    10th I
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-orbit"></div>
+
+</section>
+
+
+<!-- =====================================================
+     ICONIC DIALOGUES
+===================================================== -->
+
+<section
+    class="section"
+    id="dialogues"
+>
+
+    <div class="section-header reveal">
+
+        <div class="section-number">
+            01 / Things we will remember
+        </div>
+
+        <h2 class="section-title">
+            The dialogues<br>
+            that became memories.
+        </h2>
+
+        <p class="section-description">
+            Every teacher leaves behind lessons.
+            Some leave behind sentences that the class
+            can repeat perfectly years later.
+        </p>
+
+    </div>
+
+
+    <div class="dialogue-stage reveal">
+
+        <div class="dialogue-top">
+
+            <div>
+
+                <div class="dialogue-label">
+                    Iconic Dialogues
+                </div>
+
+                <div class="dialogue-small">
+                    Mr. Ajay Trivedi · Hindi
+                </div>
+
+            </div>
+
+            <div class="dialogue-mark">
+                10th I archive
+            </div>
+
+        </div>
+
+
+        <div class="quote-list">
+
+            <div class="quote-item">
+
+                <div class="quote-number">
+                    01
+                </div>
+
+                <div class="quote-text">
+                    “Devi bataiye mat karo..?”
+                </div>
+
+            </div>
+
+
+            <div class="quote-item">
+
+                <div class="quote-number">
+                    02
+                </div>
+
+                <div class="quote-text">
+                    “Didi aur bhaisahab.”
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     POETRY
+===================================================== -->
+
+<section class="section hindi-section">
+
+    <div class="section-header reveal">
+
+        <div class="section-number">
+            02 / From the class
+        </div>
+
+        <h2 class="section-title">
+            Some lessons<br>
+            become poetry.
+        </h2>
+
+        <p class="section-description">
+            Hindi was never only about chapters and answers.
+            Sometimes, the feelings we couldn't say directly
+            found their way into words.
+        </p>
+
+    </div>
+
+
+    <div class="hindi-card reveal">
+
+        <div class="hindi-tag">
+            A few words from 10th I
+        </div>
+
+        <div class="hindi-poem">
+
+            Vo humein aage badhna sikhate hai,<br>
+            Hame hamari manzil tak pahunchate hai<br>
+            Vo jinhe ham apne doosri maat pita kehte hai<br>
+            Vo hamare Teacher<br>
+            Kehlate hai
+
+        </div>
+
+        <div class="hindi-author">
+            Swastit Tiwari
+        </div>
+
+    </div>
+
+
+    <div class="wish-card reveal">
+
+        <div class="wish-poem">
+
+            “ज्ञान की ज्योति से राह दिखाते हैं आप,<br>
+            हर शब्द को सुंदर बनाते हैं आप।<br>
+            शिक्षक दिवस की हार्दिक शुभकामनाएँ! ”
+
+        </div>
+
+        <div class="wish-author">
+            Aarsh Sukla
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HEARTFELT MESSAGE
+===================================================== -->
+
+<section class="message-section">
+
+    <div class="message-wrap reveal">
+
+        <div class="message-label">
+            03 / What we really wanted to say
+        </div>
+
+        <h2 class="message-title">
+            Strict sometimes.<br>
+            <span>Unforgettable always.</span>
+        </h2>
+
+        <p class="message-text">
+            Thank you for connecting with us so effortlessly.
+            Your Hindi classes were never just about completing
+            a chapter. They were a mixture of discipline,
+            humour, conversations, and little moments that
+            made the classroom feel alive.
+        </p>
+
+        <p class="message-line">
+            You taught us words from books,
+            but you also gave us lessons beyond them.
+        </p>
+
+
+        <button
+            class="reveal-message"
+            id="messageButton"
+            type="button"
+        >
+
+            <span>
+                A message from Class 10th I
+            </span>
+
+            <span
+                class="button-icon"
+                id="buttonIcon"
+            >
+                +
+            </span>
+
+        </button>
+
+
+        <div
+            class="hidden-message"
+            id="hiddenMessage"
+            aria-hidden="true"
+        >
+
+            <div class="hidden-message-inner">
+
+                <p>
+                    Sir, years from now we may not remember
+                    every answer we wrote in our notebooks,
+                    but we will remember the teachers who made
+                    those school days feel meaningful.
+                    Thank you for being one of them.
+                </p>
+
+                <div class="hidden-message-sign">
+                    With respect · Class 10th I
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
      FINAL
-===================================================== --><section class="final-section reveal"><div class="final-glow"></div>
+===================================================== -->
 
-<div class="final-small">
-    04 / The final verdict
-</div>
+<section class="final-section reveal">
 
-<h2 class="final-heading">
-    You didn't just teach us Hindi.
-    <br>
-    You became part of
-    <span>our story.</span>
-</h2>
+    <div class="final-glow"></div>
 
-<div class="final-sign">
-    — Class 10th I
-</div>
+    <div class="final-small">
+        04 / The final verdict
+    </div>
 
-</section><!-- =====================================================
+    <h2 class="final-heading">
+        You didn't just teach us Hindi.
+        <br>
+        You became part of
+        <span>our story.</span>
+    </h2>
+
+    <div class="final-sign">
+        — Class 10th I
+    </div>
+
+</section>
+
+
+<!-- =====================================================
      FOOTER
-===================================================== --><footer><div class="footer-quote">
-    “A good teacher can inspire hope, ignite the imagination,
-    and instill a love of learning.”
-</div>
+===================================================== -->
 
-<div class="footer-sign">
-    With deepest respect and gratitude,<br>
-    Class 10th I
-</div>
+<footer>
 
-<div class="footer-location">
-    Army Public School · Lal Bahadur Shastri Marg
-</div>
+    <div class="footer-quote">
+        “A good teacher can inspire hope, ignite the imagination,
+        and instill a love of learning.”
+    </div>
 
-</footer></main><script>
+    <div class="footer-sign">
+        With deepest respect and gratitude,<br>
+        Class 10th I
+    </div>
+
+    <div class="footer-location">
+        Army Public School · Lal Bahadur Shastri Marg
+    </div>
+
+</footer>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   SMOOTH SCROLL
+   Embedded from the functionality previously handled
+   by js/main.js — keeps this page completely single-file.
+========================================================= */
+
+let lenis;
+
+if (
+    typeof Lenis !== "undefined" &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+
+    lenis = new Lenis({
+
+        duration: 1.15,
+
+        smoothWheel: true,
+
+        smoothTouch: false,
+
+        wheelMultiplier: 0.9,
+
+        touchMultiplier: 1,
+
+        easing: t =>
+            1 - Math.pow(1 - t, 4)
+
+    });
+
+
+    function raf(time) {
+
+        lenis.raf(time);
+
+        requestAnimationFrame(raf);
+
+    }
+
+    requestAnimationFrame(raf);
+
+
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const target =
+                        document.querySelector(
+                            link.getAttribute("href")
+                        );
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    lenis.scrollTo(
+                        target,
+                        {
+                            offset: -80,
+                            duration: 1.2
+                        }
+                    );
+
+                }
+            );
+
+        });
+
+}
+
 
 /* =========================================================
    CURSOR GLOW
 ========================================================= */
 
 const cursorGlow =
-    document.getElementById("cursorGlow");
+    document.getElementById(
+        "cursorGlow"
+    );
 
 if (
     window.matchMedia("(pointer:fine)").matches
@@ -2323,6 +2467,7 @@ const buttonIcon =
         "buttonIcon"
     );
 
+
 let messageOpened = false;
 
 
@@ -2333,20 +2478,24 @@ messageButton.addEventListener(
         messageOpened =
             !messageOpened;
 
+
         hiddenMessage.classList.toggle(
             "open",
             messageOpened
         );
+
 
         hiddenMessage.setAttribute(
             "aria-hidden",
             String(!messageOpened)
         );
 
+
         buttonIcon.textContent =
             messageOpened
                 ? "×"
                 : "+";
+
 
         if (
             messageOpened &&
@@ -2362,7 +2511,7 @@ messageButton.addEventListener(
 
 
 /* =========================================================
-   CELEBRATION
+   MODERATE CELEBRATION
 ========================================================= */
 
 function celebrateMessage() {
@@ -2383,23 +2532,30 @@ function celebrateMessage() {
 
     };
 
+
     confetti({
+
         ...common,
 
         origin: {
             x: 0.25,
             y: 0.62
         }
+
     });
 
+
     confetti({
+
         ...common,
 
         origin: {
             x: 0.75,
             y: 0.62
         }
+
     });
+
 
     setTimeout(() => {
 
@@ -2465,11 +2621,13 @@ function resizeCanvas() {
             1.5
         );
 
+
     canvasWidth =
         window.innerWidth;
 
     canvasHeight =
         window.innerHeight;
+
 
     canvas.width =
         Math.floor(
@@ -2483,11 +2641,13 @@ function resizeCanvas() {
             pixelRatio
         );
 
+
     canvas.style.width =
         `${canvasWidth}px`;
 
     canvas.style.height =
         `${canvasHeight}px`;
+
 
     ctx.setTransform(
         pixelRatio,
@@ -2498,7 +2658,9 @@ function resizeCanvas() {
         0
     );
 
+
     createParticles();
+
 }
 
 
@@ -2506,10 +2668,12 @@ function createParticles() {
 
     particles.length = 0;
 
+
     const amount =
         window.innerWidth < 600
             ? 28
             : 48;
+
 
     for (
         let i = 0;
@@ -2570,6 +2734,7 @@ function animateParticles(time) {
         canvasHeight
     );
 
+
     particles.forEach(
         particle => {
 
@@ -2579,14 +2744,17 @@ function animateParticles(time) {
             particle.x +=
                 particle.drift;
 
+
             particle.x +=
                 Math.sin(
                     time * .0003 +
                     particle.phase
                 ) * .012;
 
+
             if (
-                particle.y < -5
+                particle.y <
+                -5
             ) {
 
                 particle.y =
@@ -2598,14 +2766,17 @@ function animateParticles(time) {
 
             }
 
+
             if (
-                particle.x < -5
+                particle.x <
+                -5
             ) {
 
                 particle.x =
                     canvasWidth + 5;
 
             }
+
 
             if (
                 particle.x >
@@ -2615,6 +2786,7 @@ function animateParticles(time) {
                 particle.x = -5;
 
             }
+
 
             ctx.beginPath();
 
@@ -2626,6 +2798,7 @@ function animateParticles(time) {
                 Math.PI * 2
             );
 
+
             ctx.fillStyle =
                 `rgba(
                     232,
@@ -2634,20 +2807,23 @@ function animateParticles(time) {
                     ${particle.opacity}
                 )`;
 
+
             ctx.fill();
 
         }
     );
 
+
     animationFrame =
         requestAnimationFrame(
             animateParticles
         );
+
 }
 
 
 /* =========================================================
-   INITIALISE
+   INITIALISE PARTICLES
 ========================================================= */
 
 if (
@@ -2670,6 +2846,7 @@ if (
         requestAnimationFrame(
             animateParticles
         );
+
 }
 
 
@@ -2687,6 +2864,7 @@ window.addEventListener(
         ) {
             return;
         }
+
 
         setTimeout(() => {
 
@@ -2710,6 +2888,7 @@ window.addEventListener(
                 }
 
             });
+
 
             confetti({
 
@@ -2754,8 +2933,16 @@ window.addEventListener(
 
         }
 
+        if (lenis) {
+
+            lenis.destroy();
+
+        }
+
     }
 );
 
-</script></body>
+</script>
+
+</body>
 </html>
