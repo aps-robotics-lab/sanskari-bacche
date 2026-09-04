@@ -1,3234 +1,3897 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#040a16">
-<meta name="description" content="Happy Teachers' Day — Class 10th I, Army Public School, Lal Bahadur Shastri Marg">
-<title>Happy Teachers' Day — Class 10th I</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-<style>
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-
-    color: #f4f5f7;
-
-    font-family: "DM Sans", sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 12% 15%,
-            rgba(45, 87, 145, .20),
-            transparent 31%
-        ),
-        radial-gradient(
-            circle at 85% 60%,
-            rgba(232, 189, 98, .075),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 45% 105%,
-            rgba(28, 66, 112, .18),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #030812 0%,
-            #071324 38%,
-            #09182a 67%,
-            #030811 100%
-        );
-
-    background-size: 180% 180%;
-    animation: atmosphere 25s ease-in-out infinite alternate;
-}
-
-@keyframes atmosphere {
-    0% {
-        background-position: 0% 20%;
-    }
-
-    50% {
-        background-position: 100% 65%;
-    }
-
-    100% {
-        background-position: 20% 100%;
-    }
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-    z-index: 0;
-
-    opacity: .45;
-
-    background:
-        linear-gradient(
-            rgba(255,255,255,.014) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.014) 1px,
-            transparent 1px
-        );
-
-    background-size: 78px 78px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
-}
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#040a16"
+    >
+
+    <meta
+        name="description"
+        content="Happy Teachers' Day — Class 10th I, Army Public School, Lal Bahadur Shastri Marg"
+    >
+
+    <meta name="color-scheme" content="dark">
+
+    <title>Happy Teachers' Day — Class 10th I</title>
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =====================================================
+         CONFETTI
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
+        defer
+    ></script>
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+
+            color: #f4f5f7;
+
+            font-family: "DM Sans", sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 12% 15%,
+                    rgba(45, 87, 145, .20),
+                    transparent 31%
+                ),
+                radial-gradient(
+                    circle at 85% 60%,
+                    rgba(232, 189, 98, .075),
+                    transparent 27%
+                ),
+                radial-gradient(
+                    circle at 45% 105%,
+                    rgba(28, 66, 112, .18),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #030812 0%,
+                    #071324 38%,
+                    #09182a 67%,
+                    #030811 100%
+                );
+
+            background-size: 180% 180%;
+
+            animation:
+                atmosphere 25s ease-in-out infinite alternate;
+        }
+
+        body.loaded {
+            overflow-x: hidden;
+        }
+
+        @keyframes atmosphere {
+            0% {
+                background-position: 0% 20%;
+            }
+
+            50% {
+                background-position: 100% 65%;
+            }
 
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
+            100% {
+                background-position: 20% 100%;
+            }
+        }
 
-    pointer-events: none;
-    z-index: 0;
+        body::before {
+            content: "";
 
-    background:
-        radial-gradient(
-            ellipse at center,
-            transparent 35%,
-            rgba(0,0,0,.25) 100%
-        );
-}
+            position: fixed;
+            inset: 0;
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+            z-index: 0;
 
-button,
-select {
-    font: inherit;
-}
+            pointer-events: none;
 
-/* =========================================================
-   PARTICLES
-========================================================= */
+            opacity: .42;
 
-#particleCanvas {
-    position: fixed;
-    inset: 0;
+            background:
+                linear-gradient(
+                    rgba(255,255,255,.014) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.014) 1px,
+                    transparent 1px
+                );
 
-    width: 100%;
-    height: 100%;
+            background-size: 78px 78px;
 
-    pointer-events: none;
-    z-index: 1;
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 90%
+                );
 
-    opacity: .58;
-}
+            -webkit-mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 90%
+                );
+        }
 
-/* =========================================================
-   CURSOR AURA
-========================================================= */
+        body::after {
+            content: "";
 
-.cursor-glow {
-    position: fixed;
+            position: fixed;
+            inset: 0;
 
-    width: 240px;
-    height: 240px;
+            z-index: 0;
 
-    border-radius: 50%;
+            pointer-events: none;
 
-    pointer-events: none;
-    z-index: 2;
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 35%,
+                    rgba(0,0,0,.25) 100%
+                );
+        }
 
-    transform: translate(-50%, -50%);
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(232,189,98,.075),
-            transparent 68%
-        );
+        button,
+        select {
+            font: inherit;
+        }
 
-    opacity: 0;
-    transition: opacity .3s ease;
-}
+        button {
+            border: 0;
+        }
 
-.cursor-glow.active {
-    opacity: 1;
-}
+        ::selection {
+            color: #071222;
+            background: #e8bd62;
+        }
 
-/* =========================================================
-   PAGE
-========================================================= */
 
-.page {
-    position: relative;
-    z-index: 3;
+        /* =====================================================
+           PARTICLE CANVAS
+        ====================================================== */
 
-    width: min(1180px, 91%);
-    margin: auto;
-}
+        #particleCanvas {
+            position: fixed;
+            inset: 0;
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+            width: 100%;
+            height: 100%;
 
-.topbar {
-    position: fixed;
+            z-index: 1;
 
-    top: 20px;
-    left: 50%;
+            pointer-events: none;
 
-    transform: translateX(-50%);
+            opacity: .58;
+        }
 
-    width: min(1120px, 89%);
 
-    padding: 11px 15px 11px 19px;
+        /* =====================================================
+           CURSOR AURA
+        ====================================================== */
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        .cursor-glow {
+            position: fixed;
 
-    border: 1px solid rgba(255,255,255,.09);
-    border-radius: 100px;
+            width: 240px;
+            height: 240px;
 
-    background: rgba(5,13,25,.62);
+            z-index: 2;
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+            pointer-events: none;
 
-    box-shadow:
-        0 15px 50px rgba(0,0,0,.14);
+            border-radius: 50%;
 
-    z-index: 30;
-}
+            transform:
+                translate3d(-50%, -50%, 0);
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 11px;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(232,189,98,.075),
+                    transparent 68%
+                );
 
-    color: rgba(255,255,255,.72);
+            opacity: 0;
 
-    font-size: .7rem;
-    font-weight: 600;
+            transition:
+                opacity .3s ease;
+        }
 
-    letter-spacing: .16em;
-    text-transform: uppercase;
-}
+        .cursor-glow.active {
+            opacity: 1;
+        }
 
-.brand-dot {
-    width: 7px;
-    height: 7px;
 
-    border-radius: 50%;
+        /* =====================================================
+           PAGE
+        ====================================================== */
 
-    background: #e8bd62;
+        .page {
+            position: relative;
 
-    box-shadow:
-        0 0 13px rgba(232,189,98,.75);
-}
+            z-index: 3;
 
-.nav-label {
-    color: rgba(255,255,255,.34);
+            width: min(1180px, 91%);
 
-    font-size: .65rem;
+            margin-inline: auto;
+        }
 
-    letter-spacing: .12em;
-}
 
-/* =========================================================
-   HERO
-========================================================= */
+        /* =====================================================
+           TOP BAR
+        ====================================================== */
 
-.hero {
-    min-height: 100vh;
+        .topbar {
+            position: fixed;
 
-    display: flex;
-    align-items: center;
+            top: 20px;
+            left: 50%;
 
-    padding: 155px 0 90px;
+            width: min(1120px, 89%);
 
-    position: relative;
-}
+            z-index: 30;
 
-.hero::after {
-    content: "";
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    position: absolute;
+            gap: 20px;
 
-    right: -100px;
-    top: 22%;
+            padding:
+                11px
+                15px
+                11px
+                19px;
 
-    width: 330px;
-    height: 330px;
+            border:
+                1px solid
+                rgba(255,255,255,.09);
 
-    border-radius: 50%;
+            border-radius: 100px;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(232,189,98,.075),
-            transparent 70%
-        );
+            background:
+                rgba(5,13,25,.62);
 
-    pointer-events: none;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
 
-    animation: heroOrb 9s ease-in-out infinite;
-}
+            box-shadow:
+                0 15px 50px rgba(0,0,0,.14);
 
-@keyframes heroOrb {
-    0%,100% {
-        transform: translate3d(0,0,0) scale(1);
-    }
+            transform:
+                translateX(-50%);
+        }
 
-    50% {
-        transform: translate3d(-20px,20px,0) scale(1.08);
-    }
-}
+        .brand {
+            display: flex;
+            align-items: center;
 
-.hero-content {
-    max-width: 960px;
-}
+            gap: 11px;
 
-.hero-kicker {
-    display: flex;
-    align-items: center;
-    gap: 13px;
+            flex-shrink: 0;
 
-    margin-bottom: 27px;
+            color:
+                rgba(255,255,255,.72);
 
-    color: #d5b66e;
+            font-size: .7rem;
+            font-weight: 600;
 
-    font-size: .7rem;
-    font-weight: 600;
+            letter-spacing: .16em;
 
-    letter-spacing: .22em;
-    text-transform: uppercase;
+            text-transform: uppercase;
+        }
 
-    opacity: 0;
+        .brand-dot {
+            width: 7px;
+            height: 7px;
 
-    animation:
-        revealUp .9s .1s ease forwards;
-}
+            flex-shrink: 0;
 
-.hero-kicker::before {
-    content: "";
+            border-radius: 50%;
 
-    width: 40px;
-    height: 1px;
+            background: #e8bd62;
 
-    background: #d5b66e;
-}
+            box-shadow:
+                0 0 13px
+                rgba(232,189,98,.75);
+        }
 
-.hero h1 {
-    font-family: "Playfair Display", serif;
+        .nav-label {
+            overflow: hidden;
 
-    font-size: clamp(
-        4.4rem,
-        11vw,
-        9.7rem
-    );
+            color:
+                rgba(255,255,255,.34);
 
-    line-height: .86;
+            font-size: .65rem;
 
-    font-weight: 600;
+            letter-spacing: .12em;
 
-    letter-spacing: -.06em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
-    opacity: 0;
 
-    animation:
-        revealUp 1s .22s ease forwards;
-}
+        /* =====================================================
+           HERO
+        ====================================================== */
 
-.hero h1 .gold {
-    color: #e8bd62;
+        .hero {
+            position: relative;
 
-    text-shadow:
-        0 0 50px rgba(232,189,98,.13);
-}
+            min-height: 100vh;
 
-.hero-subtitle {
-    max-width: 730px;
+            display: flex;
+            align-items: center;
 
-    margin-top: 40px;
+            padding:
+                155px
+                0
+                90px;
+        }
 
-    color: #dce2eb;
+        .hero::after {
+            content: "";
 
-    font-size: clamp(
-        1rem,
-        2vw,
-        1.28rem
-    );
+            position: absolute;
 
-    line-height: 1.7;
+            right: -100px;
+            top: 22%;
 
-    opacity: 0;
+            width: 330px;
+            height: 330px;
 
-    animation:
-        revealUp .9s .4s ease forwards;
-}
+            border-radius: 50%;
 
-.hero-description {
-    max-width: 680px;
+            pointer-events: none;
 
-    margin-top: 17px;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(232,189,98,.075),
+                    transparent 70%
+                );
 
-    color: #8e9aac;
+            animation:
+                heroOrb 9s ease-in-out infinite;
+        }
 
-    font-size: .94rem;
+        @keyframes heroOrb {
+            0%,
+            100% {
+                transform:
+                    translate3d(0,0,0)
+                    scale(1);
+            }
 
-    line-height: 1.85;
+            50% {
+                transform:
+                    translate3d(-20px,20px,0)
+                    scale(1.08);
+            }
+        }
 
-    opacity: 0;
+        .hero-content {
+            max-width: 960px;
+        }
 
-    animation:
-        revealUp .9s .53s ease forwards;
-}
+        .hero-kicker {
+            display: flex;
+            align-items: center;
 
-.hero-bottom {
-    display: flex;
-    align-items: center;
-    gap: 24px;
+            gap: 13px;
 
-    margin-top: 43px;
+            margin-bottom: 27px;
 
-    opacity: 0;
+            color: #d5b66e;
 
-    animation:
-        revealUp .9s .67s ease forwards;
-}
+            font-size: .7rem;
+            font-weight: 600;
 
-.explore {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
+            letter-spacing: .22em;
 
-    padding: 13px 20px;
+            text-transform: uppercase;
 
-    border: 1px solid rgba(232,189,98,.35);
-    border-radius: 100px;
+            opacity: 0;
 
-    color: #f1d58f;
+            animation:
+                revealUp .9s .1s ease forwards;
+        }
 
-    background: rgba(232,189,98,.055);
+        .hero-kicker::before {
+            content: "";
 
-    transition:
-        transform .3s ease,
-        background .3s ease,
-        box-shadow .3s ease;
-}
+            width: 40px;
+            height: 1px;
 
-.explore:hover {
-    transform: translateY(-3px);
+            flex-shrink: 0;
 
-    background: rgba(232,189,98,.11);
+            background: #d5b66e;
+        }
 
-    box-shadow:
-        0 12px 38px rgba(232,189,98,.09);
-}
+        .hero h1 {
+            font-family: "Playfair Display", serif;
 
-.explore span {
-    font-size: 1.1rem;
+            font-size:
+                clamp(
+                    4.4rem,
+                    11vw,
+                    9.7rem
+                );
 
-    animation: arrowBounce 1.7s ease-in-out infinite;
-}
+            line-height: .86;
 
-@keyframes arrowBounce {
-    0%,100% {
-        transform: translateY(0);
-    }
+            font-weight: 600;
 
-    50% {
-        transform: translateY(4px);
-    }
-}
+            letter-spacing: -.06em;
 
-.hero-note {
-    color: rgba(255,255,255,.31);
+            opacity: 0;
 
-    font-size: .68rem;
+            animation:
+                revealUp 1s .22s ease forwards;
+        }
 
-    letter-spacing: .1em;
-    text-transform: uppercase;
-}
+        .hero h1 .gold {
+            color: #e8bd62;
 
-@keyframes revealUp {
-    from {
-        opacity: 0;
-        transform: translateY(28px);
-    }
+            text-shadow:
+                0 0 50px
+                rgba(232,189,98,.13);
+        }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .hero-subtitle {
+            max-width: 730px;
 
-/* =========================================================
-   SECTION
-========================================================= */
+            margin-top: 40px;
 
-.section {
-    padding: 110px 0;
-}
+            color: #dce2eb;
 
-.section-intro {
-    max-width: 720px;
+            font-size:
+                clamp(
+                    1rem,
+                    2vw,
+                    1.28rem
+                );
 
-    margin-bottom: 52px;
-}
+            line-height: 1.7;
 
-.section-index {
-    color: #d5b66e;
+            opacity: 0;
 
-    font-size: .67rem;
+            animation:
+                revealUp .9s .4s ease forwards;
+        }
 
-    letter-spacing: .22em;
-    text-transform: uppercase;
-}
+        .hero-description {
+            max-width: 680px;
 
-.section-title {
-    margin-top: 14px;
+            margin-top: 17px;
 
-    font-family: "Playfair Display", serif;
+            color: #8e9aac;
 
-    font-size: clamp(
-        2.8rem,
-        6vw,
-        5rem
-    );
+            font-size: .94rem;
 
-    line-height: .98;
+            line-height: 1.85;
 
-    letter-spacing: -.04em;
-}
+            opacity: 0;
 
-.section-description {
-    max-width: 640px;
+            animation:
+                revealUp .9s .53s ease forwards;
+        }
 
-    margin-top: 21px;
+        .hero-bottom {
+            display: flex;
+            align-items: center;
 
-    color: #8d99aa;
+            gap: 24px;
 
-    line-height: 1.8;
-}
+            margin-top: 43px;
 
-/* =========================================================
-   TEACHERS
-========================================================= */
+            opacity: 0;
 
-.teacher-list {
-    border-top: 1px solid rgba(255,255,255,.09);
-}
+            animation:
+                revealUp .9s .67s ease forwards;
+        }
 
-.teacher {
-    position: relative;
+        .explore {
+            display: inline-flex;
+            align-items: center;
 
-    display: grid;
+            gap: 12px;
 
-    grid-template-columns: 80px 1fr auto;
+            padding:
+                13px
+                20px;
 
-    align-items: center;
+            border:
+                1px solid
+                rgba(232,189,98,.35);
 
-    gap: 25px;
+            border-radius: 100px;
 
-    min-height: 145px;
+            color: #f1d58f;
 
-    border-bottom: 1px solid rgba(255,255,255,.09);
+            background:
+                rgba(232,189,98,.055);
 
-    transition:
-        padding .42s ease,
-        border-color .42s ease;
-}
+            transition:
+                transform .3s ease,
+                background .3s ease,
+                box-shadow .3s ease;
+        }
 
-.teacher::before {
-    content: "";
+        .explore:hover {
+            transform: translateY(-3px);
 
-    position: absolute;
+            background:
+                rgba(232,189,98,.11);
 
-    left: -28px;
-    right: -28px;
+            box-shadow:
+                0 12px 38px
+                rgba(232,189,98,.09);
+        }
 
-    top: 11px;
-    bottom: 11px;
+        .explore span {
+            font-size: 1.1rem;
 
-    border-radius: 20px;
+            animation:
+                arrowBounce 1.7s
+                ease-in-out infinite;
+        }
 
-    opacity: 0;
+        @keyframes arrowBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
 
-    background:
-        radial-gradient(
-            circle at 20% 50%,
-            rgba(232,189,98,.075),
-            transparent 48%
-        );
+            50% {
+                transform: translateY(4px);
+            }
+        }
 
-    transform: scaleX(.97);
+        .hero-note {
+            color:
+                rgba(255,255,255,.31);
 
-    transition:
-        opacity .4s ease,
-        transform .4s ease;
-}
+            font-size: .68rem;
 
-.teacher:hover {
-    padding-left: 13px;
-}
+            letter-spacing: .1em;
 
-.teacher:hover::before {
-    opacity: 1;
-    transform: scaleX(1);
-}
+            text-transform: uppercase;
+        }
 
-.teacher-number {
-    position: relative;
 
-    color: rgba(255,255,255,.26);
+        /* =====================================================
+           GENERIC REVEAL
+        ====================================================== */
 
-    font-family: "Manrope", sans-serif;
+        .reveal {
+            opacity: 0;
 
-    font-size: .68rem;
+            transform:
+                translateY(28px);
 
-    letter-spacing: .16em;
-}
+            transition:
+                opacity .8s ease,
+                transform .8s
+                cubic-bezier(.2,.8,.2,1);
+        }
 
-.teacher-info {
-    position: relative;
-}
+        .reveal.visible {
+            opacity: 1;
 
-.teacher-name {
-    font-family: "Playfair Display", serif;
+            transform:
+                translateY(0);
+        }
 
-    color: #f0f1f4;
+        @keyframes revealUp {
+            from {
+                opacity: 0;
 
-    font-size: clamp(
-        1.65rem,
-        3vw,
-        2.45rem
-    );
+                transform:
+                    translateY(28px);
+            }
 
-    transition: color .3s ease;
-}
+            to {
+                opacity: 1;
 
-.teacher:hover .teacher-name {
-    color: #f0d38d;
-}
+                transform:
+                    translateY(0);
+            }
+        }
 
-.teacher-subject {
-    margin-top: 6px;
 
-    color: #788497;
+        /* =====================================================
+           SECTIONS
+        ====================================================== */
 
-    font-size: .81rem;
+        .section {
+            padding:
+                110px
+                0;
+        }
 
-    letter-spacing: .03em;
-}
+        .section-intro {
+            max-width: 720px;
 
-.teacher-action {
-    position: relative;
+            margin-bottom: 52px;
+        }
 
-    display: flex;
-    align-items: center;
-    gap: 12px;
+        .section-index {
+            color: #d5b66e;
 
-    color: rgba(255,255,255,.38);
+            font-size: .67rem;
 
-    font-size: .66rem;
+            letter-spacing: .22em;
 
-    letter-spacing: .12em;
+            text-transform: uppercase;
+        }
 
-    text-transform: uppercase;
-}
+        .section-title {
+            margin-top: 14px;
 
-.teacher-arrow {
-    width: 43px;
-    height: 43px;
+            font-family:
+                "Playfair Display",
+                serif;
 
-    display: grid;
-    place-items: center;
+            font-size:
+                clamp(
+                    2.8rem,
+                    6vw,
+                    5rem
+                );
 
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 50%;
+            line-height: .98;
 
-    color: #d5b66e;
+            letter-spacing: -.04em;
+        }
 
-    transition:
-        transform .35s ease,
-        background .35s ease,
-        color .35s ease,
-        box-shadow .35s ease;
-}
+        .section-description {
+            max-width: 640px;
 
-.teacher:hover .teacher-arrow {
-    transform: rotate(-45deg);
+            margin-top: 21px;
 
-    color: #071222;
+            color: #8d99aa;
 
-    background: #e8bd62;
+            line-height: 1.8;
+        }
 
-    box-shadow:
-        0 0 25px rgba(232,189,98,.17);
-}
 
-/* =========================================================
-   REPORT CARD
-========================================================= */
+        /* =====================================================
+           TEACHERS
+        ====================================================== */
 
-.report-section {
-    padding: 150px 0 120px;
+        .teacher-list {
+            border-top:
+                1px solid
+                rgba(255,255,255,.09);
+        }
 
-    position: relative;
-}
+        .teacher {
+            position: relative;
 
-.report-heading {
-    max-width: 700px;
+            display: grid;
 
-    margin-bottom: 52px;
-}
+            grid-template-columns:
+                80px
+                1fr
+                auto;
 
-.report-pretitle {
-    color: #d5b66e;
+            align-items: center;
 
-    font-size: .67rem;
+            gap: 25px;
 
-    letter-spacing: .22em;
-    text-transform: uppercase;
-}
+            min-height: 145px;
 
-.report-heading h2 {
-    margin-top: 15px;
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.09);
 
-    font-family: "Playfair Display", serif;
+            transition:
+                padding .42s ease,
+                border-color .42s ease;
+        }
 
-    font-size: clamp(
-        2.9rem,
-        6vw,
-        5.4rem
-    );
+        .teacher::before {
+            content: "";
 
-    line-height: .97;
+            position: absolute;
 
-    letter-spacing: -.045em;
-}
+            left: -28px;
+            right: -28px;
 
-.report-heading p {
-    max-width: 650px;
+            top: 11px;
+            bottom: 11px;
 
-    margin-top: 22px;
+            border-radius: 20px;
 
-    color: #8995a8;
+            opacity: 0;
 
-    line-height: 1.8;
-}
+            background:
+                radial-gradient(
+                    circle at 20% 50%,
+                    rgba(232,189,98,.075),
+                    transparent 48%
+                );
 
-/* =========================================================
-   SELECTOR
-========================================================= */
+            transform:
+                scaleX(.97);
 
-.report-selector {
-    max-width: 650px;
+            transition:
+                opacity .4s ease,
+                transform .4s ease;
+        }
 
-    margin-bottom: 32px;
-}
+        .teacher:hover {
+            padding-left: 13px;
+        }
 
-.selector-label {
-    display: block;
+        .teacher:hover::before {
+            opacity: 1;
 
-    margin-bottom: 10px;
+            transform:
+                scaleX(1);
+        }
 
-    color: rgba(255,255,255,.4);
+        .teacher-number {
+            position: relative;
 
-    font-size: .66rem;
+            color:
+                rgba(255,255,255,.26);
 
-    letter-spacing: .18em;
+            font-family:
+                "Manrope",
+                sans-serif;
 
-    text-transform: uppercase;
-}
+            font-size: .68rem;
 
-.select-wrap {
-    position: relative;
-}
+            letter-spacing: .16em;
+        }
 
-select {
-    appearance: none;
-    -webkit-appearance: none;
+        .teacher-info {
+            position: relative;
 
-    width: 100%;
+            min-width: 0;
+        }
 
-    padding: 18px 52px 18px 20px;
+        .teacher-name {
+            font-family:
+                "Playfair Display",
+                serif;
 
-    color: #edf0f5;
+            color: #f0f1f4;
 
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 16px;
+            font-size:
+                clamp(
+                    1.65rem,
+                    3vw,
+                    2.45rem
+                );
 
-    outline: none;
+            transition:
+                color .3s ease;
+        }
 
-    cursor: pointer;
+        .teacher:hover .teacher-name {
+            color: #f0d38d;
+        }
 
-    background: rgba(255,255,255,.045);
+        .teacher-subject {
+            margin-top: 6px;
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+            color: #788497;
 
-    transition:
-        border-color .3s ease,
-        box-shadow .3s ease;
-}
+            font-size: .81rem;
 
-select:hover,
-select:focus {
-    border-color: rgba(232,189,98,.42);
+            letter-spacing: .03em;
+        }
 
-    box-shadow:
-        0 0 35px rgba(232,189,98,.055);
-}
+        .teacher-action {
+            position: relative;
 
-select option {
-    background: #0a1729;
-    color: #fff;
-}
+            display: flex;
+            align-items: center;
 
-.select-arrow {
-    position: absolute;
+            gap: 12px;
 
-    top: 50%;
-    right: 20px;
+            color:
+                rgba(255,255,255,.38);
 
-    transform: translateY(-50%);
+            font-size: .66rem;
 
-    color: #d5b66e;
+            letter-spacing: .12em;
 
-    pointer-events: none;
-}
+            text-transform: uppercase;
+        }
 
-/* =========================================================
-   REPORT PANEL
-========================================================= */
+        .teacher-arrow {
+            width: 43px;
+            height: 43px;
 
-.report-panel {
-    position: relative;
+            display: grid;
+            place-items: center;
 
-    max-width: 900px;
+            border:
+                1px solid
+                rgba(255,255,255,.12);
 
-    padding: clamp(
-        28px,
-        5vw,
-        55px
-    );
+            border-radius: 50%;
 
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 30px;
+            color: #d5b66e;
 
-    overflow: hidden;
+            transition:
+                transform .35s ease,
+                background .35s ease,
+                color .35s ease,
+                box-shadow .35s ease;
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.023)
-        );
+        .teacher:hover .teacher-arrow {
+            transform:
+                rotate(-45deg);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+            color: #071222;
 
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.23);
+            background: #e8bd62;
 
-    transition:
-        border-color .5s ease,
-        box-shadow .5s ease,
-        transform .5s ease;
-}
+            box-shadow:
+                0 0 25px
+                rgba(232,189,98,.17);
+        }
 
-.report-panel::before {
-    content: "";
 
-    position: absolute;
+        /* =====================================================
+           REPORT SECTION
+        ====================================================== */
 
-    width: 390px;
-    height: 390px;
+        .report-section {
+            position: relative;
 
-    right: -180px;
-    top: -190px;
+            padding:
+                150px
+                0
+                120px;
+        }
 
-    border-radius: 50%;
+        .report-heading {
+            max-width: 700px;
 
-    pointer-events: none;
+            margin-bottom: 52px;
+        }
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(232,189,98,.105),
-            transparent 69%
-        );
-}
+        .report-pretitle {
+            color: #d5b66e;
 
-.report-panel::after {
-    content: "";
+            font-size: .67rem;
 
-    position: absolute;
+            letter-spacing: .22em;
 
-    left: -180px;
-    bottom: -210px;
+            text-transform: uppercase;
+        }
 
-    width: 360px;
-    height: 360px;
+        .report-heading h2 {
+            margin-top: 15px;
 
-    border-radius: 50%;
+            font-family:
+                "Playfair Display",
+                serif;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(42,92,153,.08),
-            transparent 70%
-        );
+            font-size:
+                clamp(
+                    2.9rem,
+                    6vw,
+                    5.4rem
+                );
 
-    pointer-events: none;
-}
+            line-height: .97;
 
-.report-panel.active {
-    border-color: rgba(232,189,98,.24);
+            letter-spacing: -.045em;
+        }
 
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.28),
-        0 0 60px rgba(232,189,98,.04);
-}
+        .report-heading p {
+            max-width: 650px;
 
-.report-top {
-    position: relative;
-    z-index: 2;
+            margin-top: 22px;
 
-    display: flex;
+            color: #8995a8;
 
-    justify-content: space-between;
-    align-items: flex-start;
+            line-height: 1.8;
+        }
 
-    gap: 20px;
 
-    padding-bottom: 27px;
+        /* =====================================================
+           SELECTOR
+        ====================================================== */
 
-    border-bottom: 1px solid rgba(255,255,255,.09);
-}
+        .report-selector {
+            max-width: 650px;
 
-.report-type {
-    color: #d5b66e;
+            margin-bottom: 32px;
+        }
 
-    font-size: .64rem;
+        .selector-label {
+            display: block;
 
-    letter-spacing: .18em;
-    text-transform: uppercase;
-}
+            margin-bottom: 10px;
 
-.report-class {
-    margin-top: 8px;
+            color:
+                rgba(255,255,255,.4);
 
-    color: rgba(255,255,255,.3);
+            font-size: .66rem;
 
-    font-size: .66rem;
+            letter-spacing: .18em;
 
-    letter-spacing: .09em;
-}
+            text-transform: uppercase;
+        }
 
-.report-status {
-    color: rgba(255,255,255,.27);
+        .select-wrap {
+            position: relative;
+        }
 
-    font-size: .6rem;
+        select {
+            appearance: none;
+            -webkit-appearance: none;
 
-    letter-spacing: .15em;
+            width: 100%;
 
-    text-transform: uppercase;
-}
+            padding:
+                18px
+                52px
+                18px
+                20px;
 
-.report-name {
-    position: relative;
-    z-index: 2;
+            color: #edf0f5;
 
-    margin-top: 34px;
+            border:
+                1px solid
+                rgba(255,255,255,.12);
 
-    color: #f0d28c;
+            border-radius: 16px;
 
-    font-family: "Playfair Display", serif;
+            outline: none;
 
-    font-size: clamp(
-        2rem,
-        5vw,
-        3.7rem
-    );
+            cursor: pointer;
 
-    line-height: 1;
-}
+            background:
+                rgba(255,255,255,.045);
 
-.report-subject {
-    position: relative;
-    z-index: 2;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
 
-    margin-top: 10px;
+            transition:
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
 
-    color: #8995a8;
+        select:hover,
+        select:focus {
+            border-color:
+                rgba(232,189,98,.42);
 
-    font-size: .86rem;
-}
+            box-shadow:
+                0 0 35px
+                rgba(232,189,98,.055);
+        }
 
-/* =========================================================
-   METRICS
-========================================================= */
+        select option {
+            background: #0a1729;
+            color: #fff;
+        }
 
-.metrics {
-    position: relative;
-    z-index: 2;
+        .select-arrow {
+            position: absolute;
 
-    display: grid;
+            top: 50%;
+            right: 20px;
 
-    grid-template-columns:
-        repeat(2, minmax(0,1fr));
+            color: #d5b66e;
 
-    gap: 19px 45px;
+            pointer-events: none;
 
-    margin-top: 42px;
-}
+            transform:
+                translateY(-50%);
+        }
 
-.metric {
-    min-width: 0;
-}
 
-.metric-top {
-    display: flex;
+        /* =====================================================
+           REPORT PANEL
+        ====================================================== */
 
-    justify-content: space-between;
+        .report-panel {
+            position: relative;
 
-    gap: 15px;
+            max-width: 900px;
 
-    margin-bottom: 9px;
-}
+            padding:
+                clamp(
+                    28px,
+                    5vw,
+                    55px
+                );
 
-.metric-name {
-    color: #b8c1cf;
+            overflow: hidden;
 
-    font-size: .79rem;
-}
+            border:
+                1px solid
+                rgba(255,255,255,.1);
 
-.metric-score {
-    color: #e8bd62;
+            border-radius: 30px;
 
-    font-size: .73rem;
-    font-weight: 600;
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.065),
+                    rgba(255,255,255,.023)
+                );
 
-.metric-track {
-    height: 3px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
 
-    overflow: hidden;
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.23);
 
-    border-radius: 20px;
+            transition:
+                border-color .5s ease,
+                box-shadow .5s ease,
+                transform .5s ease;
+        }
 
-    background: rgba(255,255,255,.08);
-}
+        .report-panel::before {
+            content: "";
 
-.metric-fill {
-    width: 0;
-    height: 100%;
+            position: absolute;
 
-    border-radius: inherit;
+            width: 390px;
+            height: 390px;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(232,189,98,.45),
-            #e8bd62
-        );
+            right: -180px;
+            top: -190px;
 
-    transition:
-        width 1.15s cubic-bezier(.2,.8,.2,1);
-}
+            border-radius: 50%;
 
-/* =========================================================
-   RESULT
-========================================================= */
+            pointer-events: none;
 
-.final-result {
-    position: relative;
-    z-index: 2;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(232,189,98,.105),
+                    transparent 69%
+                );
+        }
 
-    display: flex;
+        .report-panel::after {
+            content: "";
 
-    justify-content: space-between;
-    align-items: flex-end;
+            position: absolute;
 
-    gap: 25px;
+            left: -180px;
+            bottom: -210px;
 
-    margin-top: 50px;
+            width: 360px;
+            height: 360px;
 
-    padding-top: 29px;
+            border-radius: 50%;
 
-    border-top: 1px solid rgba(255,255,255,.09);
-}
+            pointer-events: none;
 
-.final-label {
-    color: rgba(255,255,255,.3);
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(42,92,153,.08),
+                    transparent 70%
+                );
+        }
 
-    font-size: .62rem;
+        .report-panel.active {
+            border-color:
+                rgba(232,189,98,.24);
 
-    letter-spacing: .18em;
-    text-transform: uppercase;
-}
+            box-shadow:
+                0 35px 100px
+                rgba(0,0,0,.28),
+                0 0 60px
+                rgba(232,189,98,.04);
+        }
 
-.final-word {
-    margin-top: 8px;
+        .report-top {
+            position: relative;
 
-    color: #f2d591;
+            z-index: 2;
 
-    font-family: "Manrope", sans-serif;
+            display: flex;
 
-    font-size: clamp(
-        1.8rem,
-        5vw,
-        3rem
-    );
+            justify-content: space-between;
+            align-items: flex-start;
 
-    font-weight: 800;
+            gap: 20px;
 
-    letter-spacing: -.05em;
-}
+            padding-bottom: 27px;
 
-.final-mark {
-    max-width: 270px;
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.09);
+        }
 
-    color: rgba(255,255,255,.29);
+        .report-type {
+            color: #d5b66e;
 
-    font-size: .71rem;
+            font-size: .64rem;
 
-    line-height: 1.6;
+            letter-spacing: .18em;
 
-    text-align: right;
-}
+            text-transform: uppercase;
+        }
 
-.report-remark {
-    position: relative;
-    z-index: 2;
+        .report-class {
+            margin-top: 8px;
 
-    margin-top: 35px;
+            color:
+                rgba(255,255,255,.3);
 
-    color: #aab4c3;
+            font-size: .66rem;
 
-    font-family: "Playfair Display", serif;
+            letter-spacing: .09em;
+        }
 
-    font-size: clamp(
-        1.05rem,
-        2vw,
-        1.35rem
-    );
+        .report-status {
+            color:
+                rgba(255,255,255,.27);
 
-    line-height: 1.6;
-}
+            font-size: .6rem;
 
-.report-remark span {
-    color: #e8bd62;
-}
+            letter-spacing: .15em;
 
-/* =========================================================
-   CLOSING
-========================================================= */
+            text-transform: uppercase;
+        }
 
-.closing {
-    position: relative;
+        .report-name {
+            position: relative;
 
-    padding: 140px 0 100px;
+            z-index: 2;
 
-    text-align: center;
-}
+            margin-top: 34px;
 
-.closing::before {
-    content: "";
+            color: #f0d28c;
 
-    position: absolute;
+            font-family:
+                "Playfair Display",
+                serif;
 
-    left: 50%;
-    top: 50%;
+            font-size:
+                clamp(
+                    2rem,
+                    5vw,
+                    3.7rem
+                );
 
-    width: 500px;
-    height: 500px;
+            line-height: 1;
+        }
 
-    transform: translate(-50%,-50%);
+        .report-subject {
+            position: relative;
 
-    border-radius: 50%;
+            z-index: 2;
 
-    pointer-events: none;
+            margin-top: 10px;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(232,189,98,.06),
-            transparent 70%
-        );
-}
+            color: #8995a8;
 
-.closing-small {
-    position: relative;
+            font-size: .86rem;
+        }
 
-    color: #d5b66e;
 
-    font-size: .67rem;
+        /* =====================================================
+           METRICS
+        ====================================================== */
 
-    letter-spacing: .22em;
-    text-transform: uppercase;
-}
+        .metrics {
+            position: relative;
 
-.closing h2 {
-    position: relative;
+            z-index: 2;
 
-    max-width: 900px;
+            display: grid;
 
-    margin: 22px auto 0;
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0,1fr)
+                );
 
-    font-family: "Playfair Display", serif;
+            gap: 19px 45px;
 
-    font-size: clamp(
-        2.8rem,
-        7vw,
-        6.5rem
-    );
+            margin-top: 42px;
+        }
 
-    line-height: .97;
+        .metric {
+            min-width: 0;
+        }
 
-    letter-spacing: -.05em;
-}
+        .metric-top {
+            display: flex;
 
-.closing h2 span {
-    color: #e8bd62;
+            justify-content: space-between;
 
-    text-shadow:
-        0 0 35px rgba(232,189,98,.11);
-}
+            gap: 15px;
 
-.closing-signature {
-    position: relative;
+            margin-bottom: 9px;
+        }
 
-    margin-top: 30px;
+        .metric-name {
+            color: #b8c1cf;
 
-    color: rgba(255,255,255,.38);
+            font-size: .79rem;
+        }
 
-    font-size: .77rem;
+        .metric-score {
+            color: #e8bd62;
 
-    letter-spacing: .1em;
-}
+            font-size: .73rem;
 
-/* =========================================================
-   CLASS 10 I MESSAGE
-========================================================= */
+            font-weight: 600;
+        }
 
-.message-zone {
-    padding: 10px 0 145px;
+        .metric-track {
+            height: 3px;
 
-    text-align: center;
-}
+            overflow: hidden;
 
-.message-zone-intro {
-    max-width: 620px;
+            border-radius: 20px;
 
-    margin: auto;
-}
+            background:
+                rgba(255,255,255,.08);
+        }
 
-.message-zone-label {
-    color: rgba(255,255,255,.3);
+        .metric-fill {
+            width: 0;
+            height: 100%;
 
-    font-size: .65rem;
+            border-radius: inherit;
 
-    letter-spacing: .2em;
-    text-transform: uppercase;
-}
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(232,189,98,.45),
+                    #e8bd62
+                );
 
-.message-zone h3 {
-    margin-top: 15px;
+            transition:
+                width 1.15s
+                cubic-bezier(.2,.8,.2,1);
+        }
 
-    color: #dce2eb;
 
-    font-family: "Playfair Display", serif;
+        /* =====================================================
+           FINAL RESULT
+        ====================================================== */
 
-    font-size: clamp(
-        1.8rem,
-        4vw,
-        3rem
-    );
+        .final-result {
+            position: relative;
 
-    font-weight: 500;
+            z-index: 2;
 
-    letter-spacing: -.025em;
-}
+            display: flex;
 
-.message-button {
-    position: relative;
+            justify-content: space-between;
+            align-items: flex-end;
 
-    display: inline-flex;
+            gap: 25px;
 
-    align-items: center;
-    justify-content: center;
+            margin-top: 50px;
 
-    gap: 12px;
+            padding-top: 29px;
 
-    margin-top: 30px;
+            border-top:
+                1px solid
+                rgba(255,255,255,.09);
+        }
 
-    padding: 15px 25px;
+        .final-label {
+            color:
+                rgba(255,255,255,.3);
 
-    color: #071222;
+            font-size: .62rem;
 
-    border: 1px solid #e8bd62;
-    border-radius: 100px;
+            letter-spacing: .18em;
 
-    background: #e8bd62;
+            text-transform: uppercase;
+        }
 
-    cursor: pointer;
+        .final-word {
+            margin-top: 8px;
 
-    font-size: .76rem;
-    font-weight: 700;
+            color: #f2d591;
 
-    letter-spacing: .08em;
+            font-family:
+                "Manrope",
+                sans-serif;
 
-    text-transform: uppercase;
+            font-size:
+                clamp(
+                    1.8rem,
+                    5vw,
+                    3rem
+                );
 
-    box-shadow:
-        0 10px 35px rgba(232,189,98,.11);
+            font-weight: 800;
 
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        background .3s ease;
-}
+            letter-spacing: -.05em;
+        }
 
-.message-button:hover {
-    transform: translateY(-4px);
+        .final-mark {
+            max-width: 270px;
 
-    background: #f0cf7d;
+            color:
+                rgba(255,255,255,.29);
 
-    box-shadow:
-        0 16px 45px rgba(232,189,98,.18);
-}
+            font-size: .71rem;
 
-.message-button .button-icon {
-    font-size: 1rem;
+            line-height: 1.6;
 
-    transition:
-        transform .3s ease;
-}
+            text-align: right;
+        }
 
-.message-button.open .button-icon {
-    transform: rotate(45deg);
-}
+        .report-remark {
+            position: relative;
 
-.class-message {
-    max-width: 760px;
+            z-index: 2;
 
-    margin: 30px auto 0;
+            margin-top: 35px;
 
-    padding: 35px 30px;
+            color: #aab4c3;
 
-    border: 1px solid rgba(232,189,98,.16);
-    border-radius: 24px;
+            font-family:
+                "Playfair Display",
+                serif;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
+            font-size:
+                clamp(
+                    1.05rem,
+                    2vw,
+                    1.35rem
+                );
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+            line-height: 1.6;
+        }
 
-    opacity: 0;
+        .report-remark span {
+            color: #e8bd62;
+        }
 
-    transform:
-        translateY(16px)
-        scale(.98);
 
-    max-height: 0;
+        /* =====================================================
+           CLOSING
+        ====================================================== */
 
-    overflow: hidden;
+        .closing {
+            position: relative;
 
-    padding-top: 0;
-    padding-bottom: 0;
+            padding:
+                140px
+                0
+                100px;
 
-    transition:
-        opacity .55s ease,
-        transform .55s ease,
-        max-height .65s ease,
-        padding .55s ease;
-}
+            text-align: center;
+        }
 
-.class-message.visible {
-    opacity: 1;
+        .closing::before {
+            content: "";
 
-    transform:
-        translateY(0)
-        scale(1);
+            position: absolute;
 
-    max-height: 500px;
+            left: 50%;
+            top: 50%;
 
-    padding-top: 35px;
-    padding-bottom: 35px;
-}
+            width: 500px;
+            height: 500px;
 
-.class-message p {
-    color: #d7dce4;
+            border-radius: 50%;
 
-    font-family: "Playfair Display", serif;
+            pointer-events: none;
 
-    font-size: clamp(
-        1.1rem,
-        2.3vw,
-        1.45rem
-    );
+            transform:
+                translate(-50%,-50%);
 
-    line-height: 1.8;
-}
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(232,189,98,.06),
+                    transparent 70%
+                );
+        }
 
-.message-sign {
-    display: block;
+        .closing-small {
+            position: relative;
 
-    margin-top: 20px;
+            color: #d5b66e;
 
-    color: #d5b66e;
+            font-size: .67rem;
 
-    font-family: "DM Sans", sans-serif;
+            letter-spacing: .22em;
 
-    font-size: .7rem;
+            text-transform: uppercase;
+        }
 
-    letter-spacing: .13em;
+        .closing h2 {
+            position: relative;
 
-    text-transform: uppercase;
-}
+            max-width: 900px;
 
-/* =========================================================
-   FOOTER
-========================================================= */
+            margin:
+                22px
+                auto
+                0;
 
-footer {
-    padding: 60px 0 45px;
+            font-family:
+                "Playfair Display",
+                serif;
 
-    border-top: 1px solid rgba(255,255,255,.08);
+            font-size:
+                clamp(
+                    2.8rem,
+                    7vw,
+                    6.5rem
+                );
 
-    text-align: center;
-}
+            line-height: .97;
 
-.footer-quote {
-    max-width: 760px;
+            letter-spacing: -.05em;
+        }
 
-    margin: auto;
+        .closing h2 span {
+            color: #e8bd62;
 
-    color: #c8d0dc;
+            text-shadow:
+                0 0 35px
+                rgba(232,189,98,.11);
+        }
 
-    font-family: "Playfair Display", serif;
+        .closing-signature {
+            position: relative;
 
-    font-size: clamp(
-        1.15rem,
-        2.5vw,
-        1.65rem
-    );
+            margin-top: 30px;
 
-    line-height: 1.6;
-}
+            color:
+                rgba(255,255,255,.38);
 
-.footer-sign {
-    margin-top: 25px;
+            font-size: .77rem;
 
-    color: #d5b66e;
+            letter-spacing: .1em;
+        }
 
-    font-size: .77rem;
 
-    line-height: 1.7;
-}
+        /* =====================================================
+           CLASS MESSAGE
+        ====================================================== */
 
-.footer-location {
-    margin-top: 35px;
+        .message-zone {
+            padding:
+                10px
+                0
+                145px;
 
-    color: rgba(255,255,255,.22);
+            text-align: center;
+        }
 
-    font-size: .62rem;
+        .message-zone-intro {
+            max-width: 620px;
 
-    letter-spacing: .13em;
+            margin-inline: auto;
+        }
 
-    text-transform: uppercase;
-}
+        .message-zone-label {
+            color:
+                rgba(255,255,255,.3);
 
-/* =========================================================
-   REVEAL
-========================================================= */
+            font-size: .65rem;
 
-.reveal {
-    opacity: 0;
+            letter-spacing: .2em;
 
-    transform: translateY(28px);
+            text-transform: uppercase;
+        }
 
-    transition:
-        opacity .8s ease,
-        transform .8s cubic-bezier(.2,.8,.2,1);
-}
+        .message-zone h3 {
+            margin-top: 15px;
 
-.reveal.visible {
-    opacity: 1;
+            color: #dce2eb;
 
-    transform: translateY(0);
-}
+            font-family:
+                "Playfair Display",
+                serif;
 
-/* =========================================================
-   MOBILE
-========================================================= */
+            font-size:
+                clamp(
+                    1.8rem,
+                    4vw,
+                    3rem
+                );
 
-@media (max-width: 760px) {
+            font-weight: 500;
 
-    body {
-        background-size: 250% 250%;
-        animation-duration: 30s;
-    }
+            letter-spacing: -.025em;
+        }
 
-    body::before {
-        background-size: 65px 65px;
-    }
+        .message-button {
+            position: relative;
 
-    .page {
-        width: min(92%, 530px);
-    }
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-    .topbar {
-        top: 12px;
-        width: 92%;
+            gap: 12px;
 
-        padding:
-            10px
-            13px
-            10px
-            15px;
-    }
+            margin-top: 30px;
 
-    .nav-label {
-        display: none;
-    }
+            padding:
+                15px
+                25px;
 
-    .hero {
-        padding-top: 145px;
-    }
+            color: #071222;
 
-    .hero h1 {
-        font-size: clamp(
-            4rem,
-            18vw,
-            6.4rem
-        );
-    }
+            border:
+                1px solid
+                #e8bd62;
 
-    .hero-subtitle {
-        margin-top: 34px;
-    }
+            border-radius: 100px;
 
-    .hero-bottom {
-        flex-direction: column;
-        align-items: flex-start;
+            background: #e8bd62;
 
-        gap: 17px;
-    }
+            cursor: pointer;
 
-    .section {
-        padding: 85px 0;
-    }
+            font-size: .76rem;
+            font-weight: 700;
 
-    .teacher {
-        grid-template-columns:
-            40px
-            1fr
-            auto;
+            letter-spacing: .08em;
 
-        gap: 13px;
+            text-transform: uppercase;
 
-        min-height: 125px;
-    }
+            box-shadow:
+                0 10px 35px
+                rgba(232,189,98,.11);
 
-    .teacher:hover {
-        padding-left: 0;
-    }
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                background .3s ease;
+        }
 
-    .teacher::before {
-        left: -10px;
-        right: -10px;
-    }
+        .message-button:hover {
+            transform:
+                translateY(-4px);
 
-    .teacher-action span {
-        display: none;
-    }
+            background: #f0cf7d;
 
-    .teacher-arrow {
-        width: 38px;
-        height: 38px;
-    }
+            box-shadow:
+                0 16px 45px
+                rgba(232,189,98,.18);
+        }
 
-    .teacher-name {
-        font-size: 1.42rem;
-    }
+        .message-button .button-icon {
+            font-size: 1rem;
 
-    .teacher-subject {
-        font-size: .74rem;
-    }
+            transition:
+                transform .3s ease;
+        }
 
-    .report-section {
-        padding: 95px 0 85px;
-    }
+        .message-button.open
+        .button-icon {
+            transform:
+                rotate(45deg);
+        }
 
-    .report-panel {
-        border-radius: 23px;
-    }
+        .class-message {
+            max-width: 760px;
 
-    .metrics {
-        grid-template-columns: 1fr;
+            margin:
+                30px
+                auto
+                0;
 
-        gap: 19px;
-    }
+            padding:
+                0
+                30px;
 
-    .final-result {
-        flex-direction: column;
+            border:
+                1px solid
+                rgba(232,189,98,.16);
 
-        align-items: flex-start;
-    }
+            border-radius: 24px;
 
-    .final-mark {
-        max-width: 100%;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.018)
+                );
 
-        text-align: left;
-    }
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
 
-    .closing {
-        padding:
-            105px
-            0
-            75px;
-    }
+            opacity: 0;
 
-    .closing::before {
-        width: 340px;
-        height: 340px;
-    }
+            transform:
+                translateY(16px)
+                scale(.98);
 
-    .message-zone {
-        padding-bottom: 100px;
-    }
+            max-height: 0;
 
-    .class-message {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+            overflow: hidden;
 
-    .class-message.visible {
-        padding-top: 28px;
-        padding-bottom: 28px;
-    }
-}
+            transition:
+                opacity .55s ease,
+                transform .55s ease,
+                max-height .65s ease,
+                padding .55s ease;
+        }
 
-@media (max-width: 420px) {
+        .class-message.visible {
+            opacity: 1;
 
-    .brand {
-        font-size: .59rem;
-    }
+            transform:
+                translateY(0)
+                scale(1);
 
-    .hero h1 {
-        font-size: 3.7rem;
-    }
+            max-height: 650px;
 
-    .teacher {
-        grid-template-columns:
-            28px
-            1fr
-            auto;
-    }
+            padding-top: 35px;
+            padding-bottom: 35px;
+        }
 
-    .teacher-number {
-        font-size: .59rem;
-    }
+        .class-message p {
+            color: #d7dce4;
 
-    .teacher-name {
-        font-size: 1.27rem;
-    }
+            font-family:
+                "Playfair Display",
+                serif;
 
-    .teacher-subject {
-        font-size: .7rem;
-    }
+            font-size:
+                clamp(
+                    1.1rem,
+                    2.3vw,
+                    1.45rem
+                );
 
-    .report-panel {
-        padding: 25px 20px;
-    }
+            line-height: 1.8;
+        }
 
-    .report-status {
-        display: none;
-    }
-}
+        .message-sign {
+            display: block;
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+            margin-top: 20px;
 
-@media (prefers-reduced-motion: reduce) {
+            color: #d5b66e;
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-    }
-}
-</style>
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: .7rem;
+
+            letter-spacing: .13em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+            padding:
+                60px
+                0
+                45px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.08);
+
+            text-align: center;
+        }
+
+        .footer-quote {
+            max-width: 760px;
+
+            margin-inline: auto;
+
+            color: #c8d0dc;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(
+                    1.15rem,
+                    2.5vw,
+                    1.65rem
+                );
+
+            line-height: 1.6;
+        }
+
+        .footer-sign {
+            margin-top: 25px;
+
+            color: #d5b66e;
+
+            font-size: .77rem;
+
+            line-height: 1.7;
+        }
+
+        .footer-location {
+            margin-top: 35px;
+
+            color:
+                rgba(255,255,255,.22);
+
+            font-size: .62rem;
+
+            letter-spacing: .13em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           TABLET / MOBILE
+        ====================================================== */
+
+        @media (max-width: 760px) {
+
+            body {
+                background-size:
+                    250% 250%;
+
+                animation-duration: 30s;
+            }
+
+            body::before {
+                background-size:
+                    65px 65px;
+            }
+
+            .page {
+                width:
+                    min(92%, 530px);
+            }
+
+            .topbar {
+                top: 12px;
+
+                width: 92%;
+
+                padding:
+                    10px
+                    13px
+                    10px
+                    15px;
+            }
+
+            .nav-label {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 145px;
+            }
+
+            .hero h1 {
+                font-size:
+                    clamp(
+                        4rem,
+                        18vw,
+                        6.4rem
+                    );
+            }
+
+            .hero-subtitle {
+                margin-top: 34px;
+            }
+
+            .hero-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 17px;
+            }
+
+            .section {
+                padding:
+                    85px
+                    0;
+            }
+
+            .teacher {
+                grid-template-columns:
+                    40px
+                    1fr
+                    auto;
+
+                gap: 13px;
+
+                min-height: 125px;
+            }
+
+            .teacher:hover {
+                padding-left: 0;
+            }
+
+            .teacher::before {
+                left: -10px;
+                right: -10px;
+            }
+
+            .teacher-action span {
+                display: none;
+            }
+
+            .teacher-arrow {
+                width: 38px;
+                height: 38px;
+            }
+
+            .teacher-name {
+                font-size: 1.42rem;
+            }
+
+            .teacher-subject {
+                font-size: .74rem;
+            }
+
+            .report-section {
+                padding:
+                    95px
+                    0
+                    85px;
+            }
+
+            .report-panel {
+                border-radius: 23px;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+
+                gap: 19px;
+            }
+
+            .final-result {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .final-mark {
+                max-width: 100%;
+
+                text-align: left;
+            }
+
+            .closing {
+                padding:
+                    105px
+                    0
+                    75px;
+            }
+
+            .closing::before {
+                width: 340px;
+                height: 340px;
+            }
+
+            .message-zone {
+                padding-bottom: 100px;
+            }
+
+            .class-message {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .class-message.visible {
+                padding-top: 28px;
+                padding-bottom: 28px;
+            }
+        }
+
+
+        /* =====================================================
+           SMALL PHONES
+        ====================================================== */
+
+        @media (max-width: 420px) {
+
+            .brand {
+                font-size: .59rem;
+            }
+
+            .hero h1 {
+                font-size: 3.7rem;
+            }
+
+            .teacher {
+                grid-template-columns:
+                    28px
+                    1fr
+                    auto;
+            }
+
+            .teacher-number {
+                font-size: .59rem;
+            }
+
+            .teacher-name {
+                font-size: 1.27rem;
+            }
+
+            .teacher-subject {
+                font-size: .7rem;
+            }
+
+            .report-panel {
+                padding:
+                    25px
+                    20px;
+            }
+
+            .report-status {
+                display: none;
+            }
+
+            .message-button {
+                max-width: 100%;
+            }
+        }
+
+
+        /* =====================================================
+           TOUCH DEVICES
+        ====================================================== */
+
+        @media (hover: none) {
+
+            .cursor-glow {
+                display: none !important;
+            }
+
+            .teacher:hover {
+                padding-left: 0;
+            }
+
+            .teacher:hover .teacher-name {
+                color: #f0f1f4;
+            }
+
+            .teacher:hover .teacher-arrow {
+                transform: none;
+
+                color: #d5b66e;
+
+                background: transparent;
+
+                box-shadow: none;
+            }
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+
+            #particleCanvas,
+            .cursor-glow {
+                display: none;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<canvas id="particleCanvas"></canvas>
-
-<div
-    class="cursor-glow"
-    id="cursorGlow"
-></div>
-
-
-<nav class="topbar">
-
-    <div class="brand">
-        <span class="brand-dot"></span>
-        Class 10th I
-    </div>
-
-    <div class="nav-label">
-        Army Public School · Lal Bahadur Shastri Marg
-    </div>
-
-</nav>
-
-
-<main class="page">
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="hero-kicker">
-            A tribute from Class 10th I
-        </div>
-
-        <h1>
-            Happy<br>
-            <span class="gold">Teachers'</span><br>
-            Day!
-        </h1>
-
-        <p class="hero-subtitle">
-            To the guiding lights of Army Public School,
-            Lal Bahadur Shastri Marg.
-        </p>
-
-        <p class="hero-description">
-            Thank you for your endless patience, dedication,
-            and for inspiring us. We might not say it enough,
-            but we appreciate everything you do for us.
-        </p>
-
-        <div class="hero-bottom">
-
-            <a
-                href="#teachers"
-                class="explore"
-            >
-                Meet your teachers
-                <span>↓</span>
-            </a>
-
-            <div class="hero-note">
-                Six teachers · One unforgettable class
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     TEACHERS
-===================================================== -->
-
-<section
-    class="section"
-    id="teachers"
->
-
-    <div class="section-intro reveal">
-
-        <div class="section-index">
-            01 / The people behind the lessons
-        </div>
-
-        <h2 class="section-title">
-            More than<br>
-            just subjects.
-        </h2>
-
-        <p class="section-description">
-            Every chapter we studied came with a voice,
-            a story, a warning, a laugh, or a memory.
-            These are the people who made 10th I what it was.
-        </p>
-
-    </div>
-
-
-    <div class="teacher-list">
-
-        <a
-            href="shonali.html"
-            class="teacher reveal"
-        >
-
-            <div class="teacher-number">
-                01
-            </div>
-
-            <div class="teacher-info">
-
-                <div class="teacher-name">
-                    Mrs. Shonali Saha
-                </div>
-
-                <div class="teacher-subject">
-                    English · Class Teacher
-                </div>
-
-            </div>
-
-            <div class="teacher-action">
-                <span>Enter story</span>
-
-                <div class="teacher-arrow">
-                    ↗
-                </div>
-            </div>
-
-        </a>
-
-
-        <a
-            href="ritesh.html"
-            class="teacher reveal"
-        >
-
-            <div class="teacher-number">
-                02
-            </div>
-
-            <div class="teacher-info">
-
-                <div class="teacher-name">
-                    Mr. Ritesh Tiwari
-                </div>
-
-                <div class="teacher-subject">
-                    Mathematics
-                </div>
-
-            </div>
-
-            <div class="teacher-action">
-                <span>Enter story</span>
-
-                <div class="teacher-arrow">
-                    ↗
-                </div>
-            </div>
-
-        </a>
-
-
-        <a
-            href="shalini.html"
-            class="teacher reveal"
-        >
-
-            <div class="teacher-number">
-                03
-            </div>
-
-            <div class="teacher-info">
-
-                <div class="teacher-name">
-                    Mrs. Shalini Sinha
-                </div>
-
-                <div class="teacher-subject">
-                    Social Science
-                </div>
-
-            </div>
-
-            <div class="teacher-action">
-                <span>Enter story</span>
-
-                <div class="teacher-arrow">
-                    ↗
-                </div>
-            </div>
-
-        </a>
-
-
-        <a
-            href="ajay.html"
-            class="teacher reveal"
-        >
-
-            <div class="teacher-number">
-                04
-            </div>
-
-            <div class="teacher-info">
-
-                <div class="teacher-name">
-                    Mr. Ajay Trivedi
-                </div>
-
-                <div class="teacher-subject">
-                    Hindi · Sparsh
-                </div>
-
-            </div>
-
-            <div class="teacher-action">
-                <span>Enter story</span>
-
-                <div class="teacher-arrow">
-                    ↗
-                </div>
-            </div>
-
-        </a>
-
-
-        <a
-            href="ariba.html"
-            class="teacher reveal"
-        >
-
-            <div class="teacher-number">
-                05
-            </div>
-
-            <div class="teacher-info">
-
-                <div class="teacher-name">
-                    Ms. Ariba Ansari
-                </div>
-
-                <div class="teacher-subject">
-                    Biology · Chemistry
-                </div>
-
-            </div>
-
-            <div class="teacher-action">
-                <span>Enter story</span>
-
-                <div class="teacher-arrow">
-                    ↗
-                </div>
-            </div>
-
-        </a>
-
-
-        <a
-            href="himanshu.html"
-            class="teacher reveal"
-        >
-
-            <div class="teacher-number">
-                06
-            </div>
-
-            <div class="teacher-info">
-
-                <div class="teacher-name">
-                    Mr. Himanshu
-                </div>
-
-                <div class="teacher-subject">
-                    Physics
-                </div>
-
-            </div>
-
-            <div class="teacher-action">
-                <span>Enter story</span>
-
-                <div class="teacher-arrow">
-                    ↗
-                </div>
-            </div>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     REPORT CARD
-===================================================== -->
-
-<section
-    class="report-section"
-    id="report"
->
-
-    <div class="report-heading reveal">
-
-        <div class="report-pretitle">
-            02 / One last thing
-        </div>
-
-        <h2>
-            We couldn't<br>
-            give you marks.
-        </h2>
-
-        <p>
-            So we made our own report card.
-            Select a teacher and see what 10th I
-            really thinks about them.
-        </p>
-
-    </div>
-
-
-    <div class="report-selector reveal">
-
-        <label
-            class="selector-label"
-            for="teacherSelect"
-        >
-            Select your teacher
-        </label>
-
-        <div class="select-wrap">
-
-            <select id="teacherSelect">
-
-                <option value="shonali">
-                    Mrs. Shonali Saha
-                </option>
-
-                <option value="ritesh">
-                    Mr. Ritesh Tiwari
-                </option>
-
-                <option value="shalini">
-                    Mrs. Shalini Sinha
-                </option>
-
-                <option value="ajay">
-                    Mr. Ajay Trivedi
-                </option>
-
-                <option value="ariba">
-                    Ms. Ariba Ansari
-                </option>
-
-                <option value="himanshu">
-                    Mr. Himanshu
-                </option>
-
-            </select>
-
-            <div class="select-arrow">
-                ↓
-            </div>
-
-        </div>
-
-    </div>
-
+    <!-- =====================================================
+         BACKGROUND EFFECTS
+    ====================================================== -->
+
+    <canvas
+        id="particleCanvas"
+        aria-hidden="true"
+    ></canvas>
 
     <div
-        class="report-panel reveal"
-        id="reportPanel"
+        class="cursor-glow"
+        id="cursorGlow"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="topbar"
+        aria-label="Site navigation"
     >
 
-        <div class="report-top">
+        <div class="brand">
+            <span
+                class="brand-dot"
+                aria-hidden="true"
+            ></span>
 
-            <div>
+            Class 10th I
+        </div>
 
-                <div class="report-type">
-                    Teacher Report / 10th I
+        <div class="nav-label">
+            Army Public School · Lal Bahadur Shastri Marg
+        </div>
+
+    </nav>
+
+
+    <main class="page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section
+            class="hero"
+            aria-labelledby="hero-title"
+        >
+
+            <div class="hero-content">
+
+                <div class="hero-kicker">
+                    A tribute from Class 10th I
                 </div>
 
-                <div class="report-class">
-                    Army Public School · Lal Bahadur Shastri Marg
+                <h1 id="hero-title">
+                    Happy<br>
+                    <span class="gold">Teachers'</span><br>
+                    Day!
+                </h1>
+
+                <p class="hero-subtitle">
+                    To the guiding lights of Army Public School,
+                    Lal Bahadur Shastri Marg.
+                </p>
+
+                <p class="hero-description">
+                    Thank you for your endless patience, dedication,
+                    and for inspiring us. We might not say it enough,
+                    but we appreciate everything you do for us.
+                </p>
+
+                <div class="hero-bottom">
+
+                    <a
+                        href="#teachers"
+                        class="explore"
+                    >
+                        Meet your teachers
+
+                        <span aria-hidden="true">
+                            ↓
+                        </span>
+                    </a>
+
+                    <div class="hero-note">
+                        Six teachers · One unforgettable class
+                    </div>
+
                 </div>
 
             </div>
 
-            <div class="report-status">
-                Final evaluation
+        </section>
+
+
+        <!-- =================================================
+             TEACHERS
+        ================================================== -->
+
+        <section
+            class="section"
+            id="teachers"
+            aria-labelledby="teachers-title"
+        >
+
+            <div class="section-intro reveal">
+
+                <div class="section-index">
+                    01 / The people behind the lessons
+                </div>
+
+                <h2
+                    class="section-title"
+                    id="teachers-title"
+                >
+                    More than<br>
+                    just subjects.
+                </h2>
+
+                <p class="section-description">
+                    Every chapter we studied came with a voice,
+                    a story, a warning, a laugh, or a memory.
+                    These are the people who made 10th I what it was.
+                </p>
+
             </div>
 
-        </div>
+
+            <div class="teacher-list">
 
 
-        <div
-            class="report-name"
-            id="reportName"
+                <a
+                    href="shonali.html"
+                    class="teacher reveal"
+                    aria-label="Open Mrs. Shonali Saha's page"
+                >
+
+                    <div class="teacher-number">
+                        01
+                    </div>
+
+                    <div class="teacher-info">
+
+                        <div class="teacher-name">
+                            Mrs. Shonali Saha
+                        </div>
+
+                        <div class="teacher-subject">
+                            English · Class Teacher
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-action">
+
+                        <span>
+                            Enter story
+                        </span>
+
+                        <div
+                            class="teacher-arrow"
+                            aria-hidden="true"
+                        >
+                            ↗
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="ritesh.html"
+                    class="teacher reveal"
+                    aria-label="Open Mr. Ritesh Tiwari's page"
+                >
+
+                    <div class="teacher-number">
+                        02
+                    </div>
+
+                    <div class="teacher-info">
+
+                        <div class="teacher-name">
+                            Mr. Ritesh Tiwari
+                        </div>
+
+                        <div class="teacher-subject">
+                            Mathematics
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-action">
+
+                        <span>
+                            Enter story
+                        </span>
+
+                        <div
+                            class="teacher-arrow"
+                            aria-hidden="true"
+                        >
+                            ↗
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="shalini.html"
+                    class="teacher reveal"
+                    aria-label="Open Mrs. Shalini Sinha's page"
+                >
+
+                    <div class="teacher-number">
+                        03
+                    </div>
+
+                    <div class="teacher-info">
+
+                        <div class="teacher-name">
+                            Mrs. Shalini Sinha
+                        </div>
+
+                        <div class="teacher-subject">
+                            Social Science
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-action">
+
+                        <span>
+                            Enter story
+                        </span>
+
+                        <div
+                            class="teacher-arrow"
+                            aria-hidden="true"
+                        >
+                            ↗
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="ajay.html"
+                    class="teacher reveal"
+                    aria-label="Open Mr. Ajay Trivedi's page"
+                >
+
+                    <div class="teacher-number">
+                        04
+                    </div>
+
+                    <div class="teacher-info">
+
+                        <div class="teacher-name">
+                            Mr. Ajay Trivedi
+                        </div>
+
+                        <div class="teacher-subject">
+                            Hindi · Sparsh
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-action">
+
+                        <span>
+                            Enter story
+                        </span>
+
+                        <div
+                            class="teacher-arrow"
+                            aria-hidden="true"
+                        >
+                            ↗
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="ariba.html"
+                    class="teacher reveal"
+                    aria-label="Open Ms. Ariba Ansari's page"
+                >
+
+                    <div class="teacher-number">
+                        05
+                    </div>
+
+                    <div class="teacher-info">
+
+                        <div class="teacher-name">
+                            Ms. Ariba Ansari
+                        </div>
+
+                        <div class="teacher-subject">
+                            Biology · Chemistry
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-action">
+
+                        <span>
+                            Enter story
+                        </span>
+
+                        <div
+                            class="teacher-arrow"
+                            aria-hidden="true"
+                        >
+                            ↗
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="himanshu.html"
+                    class="teacher reveal"
+                    aria-label="Open Mr. Himanshu's page"
+                >
+
+                    <div class="teacher-number">
+                        06
+                    </div>
+
+                    <div class="teacher-info">
+
+                        <div class="teacher-name">
+                            Mr. Himanshu
+                        </div>
+
+                        <div class="teacher-subject">
+                            Physics
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-action">
+
+                        <span>
+                            Enter story
+                        </span>
+
+                        <div
+                            class="teacher-arrow"
+                            aria-hidden="true"
+                        >
+                            ↗
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REPORT CARD
+        ================================================== -->
+
+        <section
+            class="report-section"
+            id="report"
+            aria-labelledby="report-title"
         >
-            Mrs. Shonali Saha
-        </div>
 
-        <div
-            class="report-subject"
-            id="reportSubject"
-        >
-            English · Class Teacher
-        </div>
+            <div class="report-heading reveal">
+
+                <div class="report-pretitle">
+                    02 / One last thing
+                </div>
+
+                <h2 id="report-title">
+                    We couldn't<br>
+                    give you marks.
+                </h2>
+
+                <p>
+                    So we made our own report card.
+                    Select a teacher and see what 10th I
+                    really thinks about them.
+                </p>
+
+            </div>
 
 
-        <div
-            class="metrics"
-            id="metrics"
-        ></div>
+            <div class="report-selector reveal">
+
+                <label
+                    class="selector-label"
+                    for="teacherSelect"
+                >
+                    Select your teacher
+                </label>
+
+                <div class="select-wrap">
+
+                    <select
+                        id="teacherSelect"
+                        aria-label="Select a teacher"
+                    >
+
+                        <option value="shonali">
+                            Mrs. Shonali Saha
+                        </option>
+
+                        <option value="ritesh">
+                            Mr. Ritesh Tiwari
+                        </option>
+
+                        <option value="shalini">
+                            Mrs. Shalini Sinha
+                        </option>
+
+                        <option value="ajay">
+                            Mr. Ajay Trivedi
+                        </option>
+
+                        <option value="ariba">
+                            Ms. Ariba Ansari
+                        </option>
+
+                        <option value="himanshu">
+                            Mr. Himanshu
+                        </option>
+
+                    </select>
+
+                    <div
+                        class="select-arrow"
+                        aria-hidden="true"
+                    >
+                        ↓
+                    </div>
+
+                </div>
+
+            </div>
 
 
-        <div class="final-result">
+            <div
+                class="report-panel reveal"
+                id="reportPanel"
+                aria-live="polite"
+            >
 
-            <div>
+                <div class="report-top">
 
-                <div class="final-label">
-                    Overall result
+                    <div>
+
+                        <div class="report-type">
+                            Teacher Report / 10th I
+                        </div>
+
+                        <div class="report-class">
+                            Army Public School · Lal Bahadur Shastri Marg
+                        </div>
+
+                    </div>
+
+                    <div class="report-status">
+                        Final evaluation
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="report-name"
+                    id="reportName"
+                >
+                    Mrs. Shonali Saha
                 </div>
 
                 <div
-                    class="final-word"
-                    id="finalWord"
+                    class="report-subject"
+                    id="reportSubject"
                 >
-                    INCOMPARABLE
+                    English · Class Teacher
+                </div>
+
+
+                <div
+                    class="metrics"
+                    id="metrics"
+                ></div>
+
+
+                <div class="final-result">
+
+                    <div>
+
+                        <div class="final-label">
+                            Overall result
+                        </div>
+
+                        <div
+                            class="final-word"
+                            id="finalWord"
+                        >
+                            INCOMPARABLE
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="final-mark"
+                        id="finalMark"
+                    >
+                        Some teachers cannot be measured
+                        in marks.
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="report-remark"
+                    id="reportRemark"
+                >
+                    “The person who made English,
+                    stories and 10th I feel a little more
+                    like home.”
                 </div>
 
             </div>
 
-            <div
-                class="final-mark"
-                id="finalMark"
-            >
-                Some teachers cannot be measured
-                in marks.
+        </section>
+
+
+        <!-- =================================================
+             CLOSING
+        ================================================== -->
+
+        <section
+            class="closing reveal"
+            aria-labelledby="closing-title"
+        >
+
+            <div class="closing-small">
+                03 / The final verdict
             </div>
 
-        </div>
-
-
-        <div
-            class="report-remark"
-            id="reportRemark"
-        >
-            “The person who made English,
-            stories and 10th I feel a little more
-            like home.”
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CLOSING
-===================================================== -->
-
-<section class="closing reveal">
-
-    <div class="closing-small">
-        03 / The final verdict
-    </div>
-
-    <h2>
-        You didn't just teach us.
-        <br>
-        You became part of
-        <span>our story.</span>
-    </h2>
-
-    <div class="closing-signature">
-        — Class 10th I
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CLASS 10 I MESSAGE
-===================================================== -->
-
-<section class="message-zone">
-
-    <div class="message-zone-intro reveal">
-
-        <div class="message-zone-label">
-            04 / A message from the class
-        </div>
-
-        <h3>
-            Some things are better
-            said together.
-        </h3>
-
-        <button
-            class="message-button"
-            id="messageButton"
-            type="button"
-            aria-expanded="false"
-        >
-
-            <span>
-                A message from Class 10th I
-            </span>
-
-            <span
-                class="button-icon"
-            >
-                +
-            </span>
-
-        </button>
-
-
-        <div
-            class="class-message"
-            id="classMessage"
-            aria-hidden="true"
-        >
-
-            <p>
-                To all our teachers — thank you for
-                every lesson, every correction, every
-                laugh, every warning, and every moment
-                you chose to believe in us.
-
-                <br><br>
-
-                We may forget a few formulas,
-                dates, definitions and answers...
-
+            <h2 id="closing-title">
+                You didn't just teach us.
                 <br>
+                You became part of
+                <span>our story.</span>
+            </h2>
 
-                but we won't forget the people
-                who taught us how to become better.
+            <div class="closing-signature">
+                — Class 10th I
+            </div>
 
-                <span class="message-sign">
-                    With love · Class 10th I
-                </span>
-            </p>
+        </section>
 
-        </div>
 
-    </div>
+        <!-- =================================================
+             CLASS MESSAGE
+        ================================================== -->
 
-</section>
+        <section
+            class="message-zone"
+            aria-labelledby="message-title"
+        >
 
+            <div class="message-zone-intro reveal">
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+                <div class="message-zone-label">
+                    04 / A message from the class
+                </div>
 
-<footer>
+                <h3 id="message-title">
+                    Some things are better
+                    said together.
+                </h3>
 
-    <div class="footer-quote">
-        “A good teacher can inspire hope, ignite the imagination,
-        and instill a love of learning.”
-    </div>
+                <button
+                    class="message-button"
+                    id="messageButton"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="classMessage"
+                >
 
-    <div class="footer-sign">
-        With deepest respect and gratitude,<br>
-        Class 10th I
-    </div>
+                    <span
+                        id="messageButtonText"
+                    >
+                        A message from Class 10th I
+                    </span>
 
-    <div class="footer-location">
-        Army Public School · Lal Bahadur Shastri Marg
-    </div>
+                    <span
+                        class="button-icon"
+                        aria-hidden="true"
+                    >
+                        +
+                    </span>
 
-</footer>
+                </button>
 
-</main>
 
+                <div
+                    class="class-message"
+                    id="classMessage"
+                    aria-hidden="true"
+                >
 
-<script>
-/* =========================================================
-   TEACHER REPORT DATA
-========================================================= */
+                    <p>
+                        To all our teachers — thank you for
+                        every lesson, every correction, every
+                        laugh, every warning, and every moment
+                        you chose to believe in us.
 
-const teacherData = {
+                        <br><br>
 
-    shonali: {
-        name: "Mrs. Shonali Saha",
-        subject: "English · Class Teacher",
+                        We may forget a few formulas,
+                        dates, definitions and answers...
 
-        metrics: [
-            ["Storytelling", 99],
-            ["Motivation", 100],
-            ["Patience", 98],
-            ["Chaos Management", 100]
-        ],
+                        <br>
 
-        final: "INCOMPARABLE",
+                        but we won't forget the people
+                        who taught us how to become better.
 
-        mark:
-            "Some teachers cannot be measured in marks.",
+                        <span class="message-sign">
+                            With love · Class 10th I
+                        </span>
+                    </p>
 
-        remark:
-            "“The person who made English, stories and 10th I feel a little more like home.”"
-    },
+                </div>
 
-    ritesh: {
-        name: "Mr. Ritesh Tiwari",
-        subject: "Mathematics",
+            </div>
 
-        metrics: [
-            ["Mathematics", 100],
-            ["Board Motivation", 100],
-            ["Hard Work", 99],
-            ["Unexpected Comedy", 98]
-        ],
+        </section>
 
-        final: "LEGENDARY",
 
-        mark:
-            "Strict on the outside. Invested in our future on the inside.",
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
-        remark:
-            "“Five questions, board preparation and somehow... a lot of memories.”"
-    },
+        <footer>
 
-    shalini: {
-        name: "Mrs. Shalini Sinha",
-        subject: "Social Science",
+            <div class="footer-quote">
+                “A good teacher can inspire hope, ignite the imagination,
+                and instill a love of learning.”
+            </div>
 
-        metrics: [
-            ["Storytelling", 100],
-            ["Student Connection", 99],
-            ["Making History Alive", 100],
-            ["Classroom Energy", 98]
-        ],
+            <div class="footer-sign">
+                With deepest respect and gratitude,<br>
+                Class 10th I
+            </div>
 
-        final: "UNFORGETTABLE",
+            <div class="footer-location">
+                Army Public School · Lal Bahadur Shastri Marg
+            </div>
 
-        mark:
-            "Because chapters become memories when someone makes them come alive.",
+        </footer>
 
-        remark:
-            "“Somehow, history stopped feeling like history and started feeling like a story.”"
-    },
+    </main>
 
-    ajay: {
-        name: "Mr. Ajay Trivedi",
-        subject: "Hindi · Sparsh",
 
-        metrics: [
-            ["Student Connection", 100],
-            ["Humour", 98],
-            ["Life Lessons", 99],
-            ["Discipline", 100]
-        ],
+    <script>
 
-        final: "INCOMPARABLE",
+        "use strict";
 
-        mark:
-            "A little strict. A lot caring. Completely unforgettable.",
 
-        remark:
-            "“Some lessons were written in Sparsh. Others were written by you.”"
-    },
+        /* =====================================================
+           TEACHER DATA
+        ====================================================== */
 
-    ariba: {
-        name: "Ms. Ariba Ansari",
-        subject: "Biology · Chemistry",
+        const teacherData = {
 
-        metrics: [
-            ["Science", 100],
-            ["Focus Recovery", 99],
-            ["Roasting", 100],
-            ["Lala Land Detection", 100]
-        ],
+            shonali: {
+                name: "Mrs. Shonali Saha",
+                subject: "English · Class Teacher",
 
-        final: "ICONIC",
+                metrics: [
+                    ["Storytelling", 99],
+                    ["Motivation", 100],
+                    ["Patience", 98],
+                    ["Chaos Management", 100]
+                ],
 
-        mark:
-            "For bringing 10th I back to Earth, one roast at a time.",
+                final: "INCOMPARABLE",
 
-        remark:
-            "“Strict, loving, and somehow always aware when someone had left for Lala Land.”"
-    },
+                mark:
+                    "Some teachers cannot be measured in marks.",
 
-    himanshu: {
-        name: "Mr. Himanshu",
-        subject: "Physics",
+                remark:
+                    "“The person who made English, stories and 10th I feel a little more like home.”"
+            },
 
-        metrics: [
-            ["Concept Clarity", 100],
-            ["Calmness", 99],
-            ["Storytelling", 98],
-            ["Focus Recovery", 97]
-        ],
 
-        final: "UNFORGETTABLE",
+            ritesh: {
+                name: "Mr. Ritesh Tiwari",
+                subject: "Mathematics",
 
-        mark:
-            "Complex physics became easier when you told us the story behind it.",
+                metrics: [
+                    ["Mathematics", 100],
+                    ["Board Motivation", 100],
+                    ["Hard Work", 99],
+                    ["Unexpected Comedy", 98]
+                ],
 
-        remark:
-            "“Idhar dhyan de beta — and somehow, the lesson stayed with us.”"
-    }
-};
+                final: "LEGENDARY",
 
+                mark:
+                    "Strict on the outside. Invested in our future on the inside.",
 
-/* =========================================================
-   REPORT ELEMENTS
-========================================================= */
+                remark:
+                    "“Five questions, board preparation and somehow... a lot of memories.”"
+            },
 
-const teacherSelect =
-    document.getElementById("teacherSelect");
 
-const reportPanel =
-    document.getElementById("reportPanel");
+            shalini: {
+                name: "Mrs. Shalini Sinha",
+                subject: "Social Science",
 
-const reportName =
-    document.getElementById("reportName");
+                metrics: [
+                    ["Storytelling", 100],
+                    ["Student Connection", 99],
+                    ["Making History Alive", 100],
+                    ["Classroom Energy", 98]
+                ],
 
-const reportSubject =
-    document.getElementById("reportSubject");
+                final: "UNFORGETTABLE",
 
-const metrics =
-    document.getElementById("metrics");
+                mark:
+                    "Because chapters become memories when someone makes them come alive.",
 
-const finalWord =
-    document.getElementById("finalWord");
+                remark:
+                    "“Somehow, history stopped feeling like history and started feeling like a story.”"
+            },
 
-const finalMark =
-    document.getElementById("finalMark");
 
-const reportRemark =
-    document.getElementById("reportRemark");
+            ajay: {
+                name: "Mr. Ajay Trivedi",
+                subject: "Hindi · Sparsh",
 
+                metrics: [
+                    ["Student Connection", 100],
+                    ["Humour", 98],
+                    ["Life Lessons", 99],
+                    ["Discipline", 100]
+                ],
 
-let reportTimer = null;
+                final: "INCOMPARABLE",
 
+                mark:
+                    "A little strict. A lot caring. Completely unforgettable.",
 
-function renderReport(key) {
+                remark:
+                    "“Some lessons were written in Sparsh. Others were written by you.”"
+            },
 
-    const teacher =
-        teacherData[key];
 
-    reportPanel.classList.remove("active");
+            ariba: {
+                name: "Ms. Ariba Ansari",
+                subject: "Biology · Chemistry",
 
-    clearTimeout(reportTimer);
+                metrics: [
+                    ["Science", 100],
+                    ["Focus Recovery", 99],
+                    ["Roasting", 100],
+                    ["Lala Land Detection", 100]
+                ],
 
-    reportTimer = setTimeout(() => {
+                final: "ICONIC",
 
-        reportName.textContent =
-            teacher.name;
+                mark:
+                    "For bringing 10th I back to Earth, one roast at a time.",
 
-        reportSubject.textContent =
-            teacher.subject;
+                remark:
+                    "“Strict, loving, and somehow always aware when someone had left for Lala Land.”"
+            },
 
-        finalWord.textContent =
-            teacher.final;
 
-        finalMark.textContent =
-            teacher.mark;
+            himanshu: {
+                name: "Mr. Himanshu",
+                subject: "Physics",
 
-        reportRemark.textContent =
-            teacher.remark;
+                metrics: [
+                    ["Concept Clarity", 100],
+                    ["Calmness", 99],
+                    ["Storytelling", 98],
+                    ["Focus Recovery", 97]
+                ],
 
-        metrics.innerHTML = "";
+                final: "UNFORGETTABLE",
 
-        teacher.metrics.forEach(
-            ([label, score]) => {
+                mark:
+                    "Complex physics became easier when you told us the story behind it.",
 
-                const metric =
-                    document.createElement("div");
+                remark:
+                    "“Idhar dhyan de beta — and somehow, the lesson stayed with us.”"
+            }
 
-                metric.className =
-                    "metric";
+        };
 
-                metric.innerHTML = `
-                    <div class="metric-top">
 
-                        <div class="metric-name">
-                            ${label}
-                        </div>
+        /* =====================================================
+           DOM REFERENCES
+        ====================================================== */
 
-                        <div class="metric-score">
-                            ${score}%
-                        </div>
+        const teacherSelect =
+            document.getElementById(
+                "teacherSelect"
+            );
 
-                    </div>
+        const reportPanel =
+            document.getElementById(
+                "reportPanel"
+            );
 
-                    <div class="metric-track">
+        const reportName =
+            document.getElementById(
+                "reportName"
+            );
 
-                        <div
-                            class="metric-fill"
-                            data-score="${score}"
-                        ></div>
+        const reportSubject =
+            document.getElementById(
+                "reportSubject"
+            );
 
-                    </div>
-                `;
+        const metrics =
+            document.getElementById(
+                "metrics"
+            );
 
-                metrics.appendChild(metric);
+        const finalWord =
+            document.getElementById(
+                "finalWord"
+            );
+
+        const finalMark =
+            document.getElementById(
+                "finalMark"
+            );
+
+        const reportRemark =
+            document.getElementById(
+                "reportRemark"
+            );
+
+        const messageButton =
+            document.getElementById(
+                "messageButton"
+            );
+
+        const messageButtonText =
+            document.getElementById(
+                "messageButtonText"
+            );
+
+        const classMessage =
+            document.getElementById(
+                "classMessage"
+            );
+
+        const particleCanvas =
+            document.getElementById(
+                "particleCanvas"
+            );
+
+        const cursorGlow =
+            document.getElementById(
+                "cursorGlow"
+            );
+
+
+        /* =====================================================
+           MOTION PREFERENCES
+        ====================================================== */
+
+        const reduceMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+        const finePointer =
+            window.matchMedia(
+                "(pointer:fine)"
+            ).matches;
+
+
+        /* =====================================================
+           CONFETTI HELPER
+        ====================================================== */
+
+        function fireConfetti(options = {}) {
+
+            if (
+                reduceMotion ||
+                typeof window.confetti !== "function"
+            ) {
+                return;
+            }
+
+            window.confetti({
+                particleCount: 28,
+                spread: 58,
+                startVelocity: 20,
+                gravity: .92,
+                scalar: .7,
+
+                ...options
+            });
+        }
+
+
+        /* =====================================================
+           REPORT RENDERER
+        ====================================================== */
+
+        let reportRequest = 0;
+
+
+        function renderReport(key, celebrate = false) {
+
+            const teacher =
+                teacherData[key];
+
+            if (!teacher) {
+                return;
+            }
+
+            reportRequest++;
+
+            const currentRequest =
+                reportRequest;
+
+            reportPanel.classList.remove(
+                "active"
+            );
+
+            metrics
+                .querySelectorAll(
+                    ".metric-fill"
+                )
+                .forEach(bar => {
+                    bar.style.width = "0%";
+                });
+
+
+            window.setTimeout(() => {
+
+                if (
+                    currentRequest !==
+                    reportRequest
+                ) {
+                    return;
+                }
+
+
+                reportName.textContent =
+                    teacher.name;
+
+                reportSubject.textContent =
+                    teacher.subject;
+
+                finalWord.textContent =
+                    teacher.final;
+
+                finalMark.textContent =
+                    teacher.mark;
+
+                reportRemark.textContent =
+                    teacher.remark;
+
+
+                const fragment =
+                    document.createDocumentFragment();
+
+
+                teacher.metrics.forEach(
+                    ([label, score]) => {
+
+                        const metric =
+                            document.createElement(
+                                "div"
+                            );
+
+                        metric.className =
+                            "metric";
+
+
+                        const top =
+                            document.createElement(
+                                "div"
+                            );
+
+                        top.className =
+                            "metric-top";
+
+
+                        const name =
+                            document.createElement(
+                                "div"
+                            );
+
+                        name.className =
+                            "metric-name";
+
+                        name.textContent =
+                            label;
+
+
+                        const scoreElement =
+                            document.createElement(
+                                "div"
+                            );
+
+                        scoreElement.className =
+                            "metric-score";
+
+                        scoreElement.textContent =
+                            `${score}%`;
+
+
+                        top.appendChild(name);
+
+                        top.appendChild(
+                            scoreElement
+                        );
+
+
+                        const track =
+                            document.createElement(
+                                "div"
+                            );
+
+                        track.className =
+                            "metric-track";
+
+
+                        const fill =
+                            document.createElement(
+                                "div"
+                            );
+
+                        fill.className =
+                            "metric-fill";
+
+                        fill.dataset.score =
+                            String(score);
+
+
+                        track.appendChild(
+                            fill
+                        );
+
+
+                        metric.appendChild(
+                            top
+                        );
+
+                        metric.appendChild(
+                            track
+                        );
+
+
+                        fragment.appendChild(
+                            metric
+                        );
+
+                    }
+                );
+
+
+                metrics.replaceChildren(
+                    fragment
+                );
+
+
+                requestAnimationFrame(() => {
+
+                    if (
+                        currentRequest !==
+                        reportRequest
+                    ) {
+                        return;
+                    }
+
+
+                    reportPanel.classList.add(
+                        "active"
+                    );
+
+
+                    const bars =
+                        metrics.querySelectorAll(
+                            ".metric-fill"
+                        );
+
+
+                    bars.forEach(
+                        (bar, index) => {
+
+                            window.setTimeout(
+                                () => {
+
+                                    bar.style.width =
+                                        `${bar.dataset.score}%`;
+
+                                },
+                                70 +
+                                index * 55
+                            );
+
+                        }
+                    );
+
+                });
+
+
+                if (celebrate) {
+
+                    fireConfetti({
+                        particleCount: 24,
+                        spread: 52,
+                        origin: {
+                            x: .5,
+                            y: .55
+                        }
+                    });
+
+                }
+
+            }, 160);
+
+        }
+
+
+        /* =====================================================
+           REPORT SELECT
+        ====================================================== */
+
+        let previousTeacher =
+            teacherSelect.value;
+
+
+        teacherSelect.addEventListener(
+            "change",
+            () => {
+
+                const newTeacher =
+                    teacherSelect.value;
+
+                const changed =
+                    newTeacher !==
+                    previousTeacher;
+
+                previousTeacher =
+                    newTeacher;
+
+                renderReport(
+                    newTeacher,
+                    changed
+                );
+
             }
         );
 
-        requestAnimationFrame(() => {
 
-            reportPanel.classList.add("active");
-
-            const bars =
-                metrics.querySelectorAll(
-                    ".metric-fill"
-                );
-
-            bars.forEach((bar, index) => {
-
-                setTimeout(() => {
-
-                    bar.style.width =
-                        `${bar.dataset.score}%`;
-
-                }, 70 + index * 55);
-
-            });
-
-        });
-
-    }, 170);
-}
-
-
-/* =========================================================
-   REPORT SELECT
-========================================================= */
-
-teacherSelect.addEventListener(
-    "change",
-    () => {
+        /* =====================================================
+           INITIAL REPORT
+        ====================================================== */
 
         renderReport(
             teacherSelect.value
         );
 
-        celebrateSelection();
 
-    }
-);
+        /* =====================================================
+           SCROLL REVEAL
+        ====================================================== */
+
+        if (
+            "IntersectionObserver" in window &&
+            !reduceMotion
+        ) {
+
+            const revealObserver =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(
+                            entry => {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target.classList.add(
+                                        "visible"
+                                    );
+
+                                    revealObserver.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: .10,
+
+                        rootMargin:
+                            "0px 0px -30px 0px"
+                    }
+                );
 
 
-/* =========================================================
-   INITIAL REPORT
-========================================================= */
+            document
+                .querySelectorAll(
+                    ".reveal"
+                )
+                .forEach(
+                    element => {
 
-renderReport("shonali");
+                        revealObserver.observe(
+                            element
+                        );
+
+                    }
+                );
+
+        } else {
+
+            document
+                .querySelectorAll(
+                    ".reveal"
+                )
+                .forEach(
+                    element => {
+
+                        element.classList.add(
+                            "visible"
+                        );
+
+                    }
+                );
+
+        }
 
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+        /* =====================================================
+           CLASS MESSAGE
+        ====================================================== */
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
+        messageButton.addEventListener(
+            "click",
+            () => {
 
-            entries.forEach(entry => {
-
-                if (
-                    entry.isIntersecting
-                ) {
-
-                    entry.target.classList.add(
+                const isOpen =
+                    classMessage.classList.toggle(
                         "visible"
                     );
 
-                    revealObserver.unobserve(
-                        entry.target
+
+                messageButton.classList.toggle(
+                    "open",
+                    isOpen
+                );
+
+
+                messageButton.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+
+                classMessage.setAttribute(
+                    "aria-hidden",
+                    String(!isOpen)
+                );
+
+
+                messageButtonText.textContent =
+                    isOpen
+                        ? "Close message"
+                        : "A message from Class 10th I";
+
+
+                if (isOpen) {
+
+                    fireConfetti({
+                        particleCount: 34,
+                        spread: 68,
+                        origin: {
+                            x: .5,
+                            y: .63
+                        }
+                    });
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           CURSOR GLOW
+        ====================================================== */
+
+        if (
+            finePointer &&
+            !reduceMotion
+        ) {
+
+            let cursorX = 0;
+            let cursorY = 0;
+
+            let glowX = 0;
+            let glowY = 0;
+
+            let cursorFrame = null;
+
+
+            window.addEventListener(
+                "pointermove",
+                event => {
+
+                    cursorX =
+                        event.clientX;
+
+                    cursorY =
+                        event.clientY;
+
+                    cursorGlow.classList.add(
+                        "active"
                     );
 
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            window.addEventListener(
+                "pointerleave",
+                () => {
+
+                    cursorGlow.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            function animateCursor() {
+
+                glowX +=
+                    (
+                        cursorX -
+                        glowX
+                    ) * .14;
+
+                glowY +=
+                    (
+                        cursorY -
+                        glowY
+                    ) * .14;
+
+
+                cursorGlow.style.left =
+                    `${glowX}px`;
+
+                cursorGlow.style.top =
+                    `${glowY}px`;
+
+
+                cursorFrame =
+                    requestAnimationFrame(
+                        animateCursor
+                    );
+
+            }
+
+
+            cursorFrame =
+                requestAnimationFrame(
+                    animateCursor
+                );
+
+        } else {
+
+            cursorGlow.style.display =
+                "none";
+
+        }
+
+
+        /* =====================================================
+           PARTICLE SYSTEM
+        ====================================================== */
+
+        const ctx =
+            particleCanvas.getContext(
+                "2d",
+                {
+                    alpha: true
+                }
+            );
+
+
+        let particles = [];
+
+        let canvasWidth = 0;
+        let canvasHeight = 0;
+
+        let particleAnimationFrame =
+            null;
+
+        let lastParticleFrame = 0;
+
+        let resizeTimer = null;
+
+
+        function getParticleCount() {
+
+            const width =
+                window.innerWidth;
+
+
+            if (width < 480) {
+                return 22;
+            }
+
+            if (width < 800) {
+                return 32;
+            }
+
+            return 48;
+
+        }
+
+
+        function createParticles() {
+
+            particles = [];
+
+
+            const amount =
+                getParticleCount();
+
+
+            for (
+                let i = 0;
+                i < amount;
+                i++
+            ) {
+
+                particles.push({
+
+                    x:
+                        Math.random() *
+                        canvasWidth,
+
+                    y:
+                        Math.random() *
+                        canvasHeight,
+
+                    radius:
+                        Math.random() *
+                        1.25 +
+                        .3,
+
+                    speed:
+                        Math.random() *
+                        .18 +
+                        .035,
+
+                    drift:
+                        (
+                            Math.random() -
+                            .5
+                        ) *
+                        .12,
+
+                    opacity:
+                        Math.random() *
+                        .27 +
+                        .06
+
+                });
+
+            }
+
+        }
+
+
+        function resizeCanvas() {
+
+            const dpr =
+                Math.min(
+                    window.devicePixelRatio || 1,
+                    1.5
+                );
+
+
+            canvasWidth =
+                window.innerWidth;
+
+            canvasHeight =
+                window.innerHeight;
+
+
+            particleCanvas.width =
+                Math.floor(
+                    canvasWidth *
+                    dpr
+                );
+
+            particleCanvas.height =
+                Math.floor(
+                    canvasHeight *
+                    dpr
+                );
+
+
+            particleCanvas.style.width =
+                `${canvasWidth}px`;
+
+            particleCanvas.style.height =
+                `${canvasHeight}px`;
+
+
+            ctx.setTransform(
+                dpr,
+                0,
+                0,
+                dpr,
+                0,
+                0
+            );
+
+
+            createParticles();
+
+        }
+
+
+        function drawParticles(timestamp) {
+
+            if (reduceMotion) {
+                return;
+            }
+
+
+            if (
+                document.hidden
+            ) {
+
+                particleAnimationFrame =
+                    requestAnimationFrame(
+                        drawParticles
+                    );
+
+                return;
+
+            }
+
+
+            if (
+                timestamp -
+                lastParticleFrame <
+                32
+            ) {
+
+                particleAnimationFrame =
+                    requestAnimationFrame(
+                        drawParticles
+                    );
+
+                return;
+
+            }
+
+
+            lastParticleFrame =
+                timestamp;
+
+
+            ctx.clearRect(
+                0,
+                0,
+                canvasWidth,
+                canvasHeight
+            );
+
+
+            particles.forEach(
+                particle => {
+
+                    particle.y -=
+                        particle.speed;
+
+                    particle.x +=
+                        particle.drift;
+
+
+                    if (
+                        particle.y <
+                        -5
+                    ) {
+
+                        particle.y =
+                            canvasHeight + 5;
+
+                    }
+
+
+                    if (
+                        particle.x <
+                        -5
+                    ) {
+
+                        particle.x =
+                            canvasWidth + 5;
+
+                    }
+
+
+                    if (
+                        particle.x >
+                        canvasWidth + 5
+                    ) {
+
+                        particle.x = -5;
+
+                    }
+
+
+                    ctx.beginPath();
+
+
+                    ctx.arc(
+                        particle.x,
+                        particle.y,
+                        particle.radius,
+                        0,
+                        Math.PI * 2
+                    );
+
+
+                    ctx.fillStyle =
+                        `rgba(232,189,98,${particle.opacity})`;
+
+
+                    ctx.fill();
+
+                }
+            );
+
+
+            particleAnimationFrame =
+                requestAnimationFrame(
+                    drawParticles
+                );
+
+        }
+
+
+        if (!reduceMotion) {
+
+            resizeCanvas();
+
+            particleAnimationFrame =
+                requestAnimationFrame(
+                    drawParticles
+                );
+
+        } else {
+
+            particleCanvas.style.display =
+                "none";
+
+        }
+
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                clearTimeout(
+                    resizeTimer
+                );
+
+
+                resizeTimer =
+                    window.setTimeout(
+                        () => {
+
+                            if (
+                                !reduceMotion
+                            ) {
+                                resizeCanvas();
+                            }
+
+                        },
+                        150
+                    );
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* =====================================================
+           PAGE LOAD CELEBRATION
+        ====================================================== */
+
+        function celebratePageLoad() {
+
+            if (
+                reduceMotion ||
+                typeof window.confetti !==
+                "function"
+            ) {
+                return;
+            }
+
+
+            fireConfetti({
+
+                particleCount: 38,
+
+                spread: 62,
+
+                startVelocity: 25,
+
+                origin: {
+                    x: .12,
+                    y: .48
                 }
 
             });
 
-        },
-        {
-            threshold: .10,
-            rootMargin: "0px 0px -30px 0px"
-        }
-    );
 
+            fireConfetti({
 
-document
-    .querySelectorAll(".reveal")
-    .forEach(element => {
+                particleCount: 38,
 
-        revealObserver.observe(element);
+                spread: 62,
 
-    });
+                startVelocity: 25,
 
+                origin: {
+                    x: .88,
+                    y: .48
+                }
 
-/* =========================================================
-   CLASS 10 I MESSAGE
-========================================================= */
-
-const messageButton =
-    document.getElementById(
-        "messageButton"
-    );
-
-const classMessage =
-    document.getElementById(
-        "classMessage"
-    );
-
-
-messageButton.addEventListener(
-    "click",
-    () => {
-
-        const isOpen =
-            classMessage.classList.toggle(
-                "visible"
-            );
-
-        messageButton.classList.toggle(
-            "open",
-            isOpen
-        );
-
-        messageButton.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
-
-        classMessage.setAttribute(
-            "aria-hidden",
-            String(!isOpen)
-        );
-
-        if (isOpen) {
-
-            messageButton.querySelector(
-                "span:first-child"
-            ).textContent =
-                "Close message";
-
-            messageCelebration();
-
-        } else {
-
-            messageButton.querySelector(
-                "span:first-child"
-            ).textContent =
-                "A message from Class 10th I";
+            });
 
         }
 
-    }
-);
 
+        /* =====================================================
+           SAFE CONFETTI LOAD
+        ====================================================== */
 
-/* =========================================================
-   CURSOR GLOW
-========================================================= */
+        window.addEventListener(
+            "load",
+            () => {
 
-const cursorGlow =
-    document.getElementById(
-        "cursorGlow"
-    );
+                document.body.classList.add(
+                    "loaded"
+                );
 
 
-const finePointer =
-    window.matchMedia(
-        "(pointer:fine)"
-    ).matches;
+                window.setTimeout(
+                    celebratePageLoad,
+                    550
+                );
 
-
-if (finePointer) {
-
-    let cursorX = 0;
-    let cursorY = 0;
-
-    let glowX = 0;
-    let glowY = 0;
-
-    window.addEventListener(
-        "pointermove",
-        event => {
-
-            cursorX =
-                event.clientX;
-
-            cursorY =
-                event.clientY;
-
-            cursorGlow.classList.add(
-                "active"
-            );
-
-        },
-        { passive: true }
-    );
-
-
-    function animateCursor() {
-
-        glowX +=
-            (cursorX - glowX) * .14;
-
-        glowY +=
-            (cursorY - glowY) * .14;
-
-        cursorGlow.style.left =
-            `${glowX}px`;
-
-        cursorGlow.style.top =
-            `${glowY}px`;
-
-        requestAnimationFrame(
-            animateCursor
-        );
-    }
-
-    animateCursor();
-
-} else {
-
-    cursorGlow.style.display =
-        "none";
-}
-
-
-/* =========================================================
-   OPTIMIZED PARTICLE SYSTEM
-========================================================= */
-
-const canvas =
-    document.getElementById(
-        "particleCanvas"
-    );
-
-const ctx =
-    canvas.getContext(
-        "2d",
-        {
-            alpha: true
-        }
-    );
-
-
-let particles = [];
-
-let canvasWidth = 0;
-let canvasHeight = 0;
-
-let animationFrame = null;
-
-let lastFrame = 0;
-
-const reduceMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-function resizeCanvas() {
-
-    const dpr =
-        Math.min(
-            window.devicePixelRatio || 1,
-            1.5
-        );
-
-    canvasWidth =
-        window.innerWidth;
-
-    canvasHeight =
-        window.innerHeight;
-
-    canvas.width =
-        Math.floor(
-            canvasWidth * dpr
-        );
-
-    canvas.height =
-        Math.floor(
-            canvasHeight * dpr
-        );
-
-    canvas.style.width =
-        `${canvasWidth}px`;
-
-    canvas.style.height =
-        `${canvasHeight}px`;
-
-    ctx.setTransform(
-        dpr,
-        0,
-        0,
-        dpr,
-        0,
-        0
-    );
-
-    createParticles();
-}
-
-
-function createParticles() {
-
-    particles = [];
-
-    let amount;
-
-    if (
-        window.innerWidth < 480
-    ) {
-
-        amount = 22;
-
-    } else if (
-        window.innerWidth < 800
-    ) {
-
-        amount = 32;
-
-    } else {
-
-        amount = 48;
-
-    }
-
-
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
-
-        particles.push({
-
-            x:
-                Math.random() *
-                canvasWidth,
-
-            y:
-                Math.random() *
-                canvasHeight,
-
-            radius:
-                Math.random() * 1.25 +
-                .3,
-
-            speed:
-                Math.random() * .18 +
-                .035,
-
-            drift:
-                (Math.random() - .5) *
-                .12,
-
-            opacity:
-                Math.random() * .27 +
-                .06
-
-        });
-
-    }
-}
-
-
-function animateParticles(timestamp) {
-
-    if (
-        document.hidden
-    ) {
-
-        animationFrame =
-            requestAnimationFrame(
-                animateParticles
-            );
-
-        return;
-    }
-
-
-    if (
-        timestamp - lastFrame < 32
-    ) {
-
-        animationFrame =
-            requestAnimationFrame(
-                animateParticles
-            );
-
-        return;
-    }
-
-
-    lastFrame = timestamp;
-
-
-    ctx.clearRect(
-        0,
-        0,
-        canvasWidth,
-        canvasHeight
-    );
-
-
-    particles.forEach(p => {
-
-        p.y -= p.speed;
-
-        p.x += p.drift;
-
-
-        if (p.y < -5) {
-
-            p.y =
-                canvasHeight + 5;
-
-        }
-
-        if (p.x < -5) {
-
-            p.x =
-                canvasWidth + 5;
-
-        }
-
-        if (
-            p.x >
-            canvasWidth + 5
-        ) {
-
-            p.x = -5;
-
-        }
-
-
-        ctx.beginPath();
-
-        ctx.arc(
-            p.x,
-            p.y,
-            p.radius,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle =
-            `rgba(232,189,98,${p.opacity})`;
-
-        ctx.fill();
-
-    });
-
-
-    animationFrame =
-        requestAnimationFrame(
-            animateParticles
-        );
-}
-
-
-resizeCanvas();
-
-
-let resizeTimer;
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        clearTimeout(
-            resizeTimer
-        );
-
-        resizeTimer =
-            setTimeout(
-                resizeCanvas,
-                150
-            );
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-if (!reduceMotion) {
-
-    animationFrame =
-        requestAnimationFrame(
-            animateParticles
-        );
-
-}
-
-
-/* =========================================================
-   CONFETTI
-========================================================= */
-
-function celebratePageLoad() {
-
-    if (
-        typeof confetti !==
-        "function"
-    ) {
-        return;
-    }
-
-
-    const defaults = {
-
-        spread: 65,
-
-        startVelocity: 28,
-
-        gravity: .9,
-
-        scalar: .78,
-
-        ticks: 220,
-
-        origin: {
-            y: .46
-        }
-
-    };
-
-
-    confetti({
-        ...defaults,
-
-        particleCount: 42,
-
-        origin: {
-            x: .08,
-            y: .48
-        }
-    });
-
-
-    confetti({
-        ...defaults,
-
-        particleCount: 42,
-
-        origin: {
-            x: .92,
-            y: .48
-        }
-    });
-
-
-    /* small second wave */
-
-    setTimeout(() => {
-
-        confetti({
-
-            particleCount: 26,
-
-            spread: 55,
-
-            startVelocity: 21,
-
-            gravity: .95,
-
-            scalar: .7,
-
-            origin: {
-                x: .5,
-                y: .62
+            },
+            {
+                once: true
             }
-
-        });
-
-    }, 260);
-}
-
-
-/* =========================================================
-   SELECTOR CELEBRATION
-========================================================= */
-
-let previousTeacher =
-    teacherSelect.value;
-
-
-function celebrateSelection() {
-
-    if (
-        typeof confetti !==
-        "function"
-    ) {
-        return;
-    }
-
-
-    if (
-        teacherSelect.value ===
-        previousTeacher
-    ) {
-        return;
-    }
-
-
-    previousTeacher =
-        teacherSelect.value;
-
-
-    confetti({
-
-        particleCount: 24,
-
-        spread: 52,
-
-        startVelocity: 20,
-
-        gravity: 1,
-
-        scalar: .68,
-
-        origin: {
-            x: .5,
-            y: .55
-        }
-
-    });
-}
-
-
-/* =========================================================
-   MESSAGE CELEBRATION
-========================================================= */
-
-function messageCelebration() {
-
-    if (
-        typeof confetti !==
-        "function"
-    ) {
-        return;
-    }
-
-
-    confetti({
-
-        particleCount: 34,
-
-        spread: 68,
-
-        startVelocity: 22,
-
-        gravity: .9,
-
-        scalar: .72,
-
-        origin: {
-            x: .5,
-            y: .63
-        }
-
-    });
-}
-
-
-/* =========================================================
-   LOAD CONFETTI
-========================================================= */
-
-window.addEventListener(
-    "load",
-    () => {
-
-        setTimeout(
-            celebratePageLoad,
-            650
         );
 
-    }
-);
 
+        /* =====================================================
+           VISIBILITY OPTIMIZATION
+        ====================================================== */
 
-/* =========================================================
-   VISIBILITY OPTIMIZATION
-========================================================= */
+        document.addEventListener(
+            "visibilitychange",
+            () => {
 
-document.addEventListener(
-    "visibilitychange",
-    () => {
+                particleCanvas.style.opacity =
+                    document.hidden
+                        ? "0"
+                        : ".58";
 
-        if (
-            document.hidden
-        ) {
+            }
+        );
 
-            canvas.style.opacity =
-                "0";
+    </script>
 
-        } else {
-
-            canvas.style.opacity =
-                ".58";
-
-        }
-
-    }
-);
-</script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script src="js/main.js"></script>
 </body>
 </html>
